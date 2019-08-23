@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+<h2>Visualization of WALDO Models </h2>
+	<p>Check the paper <a href="http://www.cc.gatech.edu/~amsmti3/files/waldo_icdcs17.pdf">here</a> for the details of data collection and model construction.</p>
+	
+<div class="form-group">
+      <label for="sel1">Select a channel (select one):</label>
+      <select class="form-control" id="sel1">
+        <option>15</option>
+        <option>17</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>26</option>
+        <option>27</option>
+        <option>30</option>
+        <option>31</option>
+        <option>33</option>
+        <option>39</option>
+        <option>46</option>
+        <option>47</option>
+      </select>
+      <br>
+    <label for="sel2">Select a device that collects the data between <a href="https://www.ettus.com/product/details/UB200-KIT">USRP</a> and <a href="https://www.amazon.com/Keedox%C2%AE-RTL-SDR-DVB-T-RTL2832U-R820T/dp/B00D3GRU24">rtl-sdr</a> (select one):</label>
+    <select class="form-control" id="sel2">
+<option>rtl</option>        
+<option>usrp</option>        
+    </select>	<br>
+<button type="button" onclick="initMap()">Submit</button>
+<p> Data used to generate this map can be found here <a id="link" href="">here</a></p>
+</div>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: new google.maps.LatLng(33.7490,-84.3880),
+          mapTypeId: 'roadmap'
+        });
+
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+	x = document.getElementById("sel1").value;
+	x2 = document.getElementById("sel2").value;
+	console.log(x2+'/'+x+'_'+x2+'.geojson');
+	var yourElement = document.getElementById('link');
+	yourElement.setAttribute('href', x2+'/'+x+'_'+x2+'.geojson');
+        script.src = x2+'/'+x+'_'+x2+'.geojson';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+	var heatmapData = [];
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+	  var magnitude = results.features[i].properties.FIELD4;
+	  var weightedLoc = {
+            location: latLng,
+            weight: 102+magnitude
+          };
+          //heatmapData.push(latLng);
+          heatmapData.push(weightedLoc);
+	}
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            dissipating: false,
+            map: map
+        });
+          //var marker = new google.maps.Marker({
+          //  position: latLng,
+          //  map: map
+          //});
+        //}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKProvlEi6h5BCYVbVqcrrIW28RqJCiFs&callback=initMap&libraries=visualization">
+    </script>
+  </body>
+</html>

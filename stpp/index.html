@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="The Soft Token Passing Protocol (STPP) is an example of protocols that can improve the performance of WiFi without requiring edits to the WiFi protocol itself. The key idea is to allow the soft protocol to set some non-strict schedule and let the WiFi mechanisms handle failure to stick to the schedule. We implement STPP with the goal of lowering latency of WiFi. Using STPP requires a simple kernel patch and a simple network daemon.">
+    <meta name="author" content="Ahmed Saeed">
+      
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ahmad_saeed">
+<meta name="twitter:creator" content="@ahmad_saeed">
+<meta name="twitter:title" content="STPP - Soft Token Passing Protocol">
+<meta name="twitter:description" content="The Soft Token Passing Protocol (STPP) is an example of protocols that can improve the performance of WiFi without requiring edits to the WiFi protocol itself. The key idea is to allow the soft protocol to set some non-strict schedule and let the WiFi mechanisms handle failure to stick to the schedule. We implement STPP with the goal of lowering latency of WiFi. Using STPP requires a simple kernel patch and a simple network daemon.">
+<meta name="twitter:image" content="https://www.cc.gatech.edu/~amsmti3/stpp/scenario.png">
+
+      
+      
+    <title>STPP - Soft Token Passing Protocol</title>
+    <link rel="shortcut icon" href="https://www.gatech.edu/sites/all/themes/gt_tlw/favicon.ico" type="image/vnd.microsoft.icon">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-5878524-3', 'auto');
+  ga('send', 'pageview');
+</script>
+      
+      
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <style>
+        .button {
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        .button1 {
+                    background-color: #4CAF50; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Green */
+        
+        .button2 {
+                    background-color: #007bff; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Blue */
+        .button1:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        .button2:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        code { 
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 250;
+        }
+        .li1 {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Soft Token Passing Protocol</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Getting Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#tutorial">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact2">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+      <div class="container text-center">
+        <h1>Soft Token Passing Protocol</h1>
+          <br/>
+          <h5>If you can't beat them, augment them: Improving Local WiFi with Only Above-driver Changes</h5>
+          <p class="lead" align="right">Ahmed Saeed, Mostafa Ammar, Ellen Zegura, and Khaled Harras</p> 
+          <p class="lead" align="right">Georgia Institute of Technology, and Carnegie Mellon University</p>
+          <p class="lead" align="right">IEEE ICNP 2018</p>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h4>The Soft Token Passing Protocol (STPP) is an example of protocols that can improve the performance of WiFi without requiring edits to the WiFi protocol itself. The key idea is to allow the soft protocol to set some non-strict schedule and let the WiFi mechanisms handle failure to stick to the schedule. We implement STPP with the goal of lowering latency of WiFi. Using STPP requires a simple kernel patch and a simple network daemon.</h4>
+              
+              <p class="lead" align="center"> <button onclick="window.location.href='https://www.cc.gatech.edu/~amsmti3/files/stpp-icnp19.pdf'" class="button1">Paper</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button class="button2" onclick="window.location.href='https://github.com/WL4-WIFI'">Source Code</button> </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>FAQ</h2><br/>
+            <h4>What motivated the work?</h4>
+            <p class="lead">WiFi Medium Access Control (MAC) has been more or less the same for the past 20 years, and not for lack of trying. The main reason for that is the ubiquity of WiFi which makes any updates that require hardware or even firmware updates very hard to implement. Furthermore, application or kernel level edits of WiFi usually require excessive utilization of CPU and/or battery. STPP enhances WiFi with a simple kernel patch without extra CPU or battery requirements.</p><br/>
+              
+            <h4>How does STPP reduce latency of WiFi communication?</h4>
+            <p class="lead">STPP reduces latency by reducing contention for medium access and giving lower latency nodes more access to the medium. To achieve this, a <a href="https://en.wikipedia.org/wiki/Time-division_multiple_access">Time Division Multiple Access (TDMA)</a> schedule is created where shares are divided based on whether a node is low latency or not. In TDMA schedules, each node is allocated a time slot to operate on and the main goal of the protocol is to make sure that slots do not overlap. This requires coordination. </p><br/>
+              
+            <p class="lead">Rather than strictly enforcing the schedule, STPP allows nodes to overshoot or undershoot their shares to reduce the overhead of coordination. When two slots overlap, STPP relies on WiFi MAC protocol to handle contention where STPP mechanisms forces the slots back into a coordinated state. </p><br/>
+              
+            <h4>How does STPP impact legacy WiFi nodes (and vice versa)?</h4>
+            <p class="lead">STPP is backward compatible and does not impact the performance of nodes on the same network that don't implement STPP. Moreover, STPP benefits are incremental, as the number of nodes implementing increases the benefits (in terms of reducing latency) improves.</p><br/>
+            
+            <h4>When does STPP has most impact on performance?</h4>
+            <p class="lead">STPP has most impact on performance when there is clear difference in priority between different communicating nodes. In that case, the highest priority node (i.e., the node that should observe the smallest latency) can have latency reduction by up to 40%. When all nodes have the same priority, STPP can degrade but it can still be beneficial by reducing average network latency by at least 17%.</p><br/>
+
+            <h4>Does STPP hurt network performance?</h4>
+            <p class="lead">STPP reduces latency at the expense of small reduction in throughput. In particular, we found that STPP can throughput by up to 5%. However, this is a standard trade off between the two metrics. With recent technologies (e.g., Augmented Reality and screen mirroring), available throughput is sufficient. However, latency can be a major problem for better user experience.</p><br/>
+              
+            <h4>What are STPP limitations?</h4>
+            <p class="lead">STPP has the following limitations:</p>
+            <ul>
+                <li><p class="lead">STPP assigns priorities per node while ideally it should operate per application. This can be achieved by allocating slots per application.</p> </li>
+                <li><p class="lead">STPP does not provide significant benefits when a limited number of nodes in the network are implementing it.</p></li>
+              </ul>
+
+ 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Getting Started</h2>
+              <p class="lead">STPP implementation has three components</p>
+              <ul>
+                <li><p class="lead">Kernel patch implemented in linux 4.10 which performs queue resume/pause based on allocated time slots along with queue probing to determine demand.</p> </li>
+                <li><p class="lead">A modified <a href="https://w1.fi/hostapd/">hostapd</a> 2.6 to pass the parameters of STPP to kernel.</p></li>
+                <li><p class="lead">A <a href="https://github.com/kohler/click">Click</a>-based daemon to process and pass the token. </p> </li>
+              </ul>
+              <p class="lead">Implementation of all three components can be found on the github repo <a href="https://github.com/WL4-WIFI">(https://github.com/WL4-WIFI)</a> </p>
+              
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <section id="tutorial" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Tutorial</h2>
+              
+              <ol>
+                  <li class="li1">In linux directory, compile required kernel modules<br/>
+                    <code>sudo make SUBDIRS=net/mac80211/</code>
+                  </li>
+                  <li  class="li1">In the same directory, uninstall loaded modules and load newly compiled modules<br/>
+                      <code>sudo modprobe -r ath9k ath9k_htc ath9k_common ath9k_hw ath mac80211 cfg80211 <br/>
+                            sudo insmod net/wireless/cfg80211.ko <br/>
+                            sudo insmod net/mac80211/mac80211.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_hw.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_common.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_htc.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k.ko <br/>
+                      </code>
+                  </li>
+                  <li class="li1">Navigate to  <code>hostap/wpa_supplicant</code> then compile and run wpa_supplicant with a configuration file written following the following <a href="https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf">this template</a>.<br/>
+                      <code>make<br/>
+                            sudo ./wpa_supplicant -Dnl80211 -iwlan4 -c wpa_supplicant.conf<br/>
+                      </code>
+                  </li>
+                  <li class="li1"> Download <a href="https://github.com/kohler/click">Click Modular Router</a> and copy all *.cc and *.hh files to <code>click/elements/local/</code> and run click with the <code>conf.click</code>.
+                  </li>
+                  <li class="li1"> Start <code>wpa_cli</code> to control the schedule. Note that only direct links are scheduled. Hence, setup direct links using<br/>
+                      <code>tdls_discover MAC_ADDRESS_OF_PEER <br/>
+                            tdls_setup MAC_ADDRESS_OF_PEER <br/>
+                      </code>
+                      This step has to be repeated to make sure that all nodes that are intended to be scheduled are paired. This step has to be executed at only one of the pair. <br/>
+                      Allocate quota and setup sleep time<br/>
+                      <code>wl4_change_quota MAC_ADDRESS_OF_PEER QUOTA_IN_BITS (e.g., 60000)</code>                      
+                  </li>
+              </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+      
+    <section id="contact2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Contact</h2>
+              <p class="lead">For questions/comments please email ahmed dot saeed at gatech dot edu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Credits: page format inspired by similar tutorials created by <a href="https://cs.nyu.edu/~anirudh/">Anirudh Sivaraman</a> - page created using <a href="https://startbootstrap.com/template-overviews/scrolling-nav/">Bootstrap Scrolling Nav template</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="js/scrolling-nav.js"></script>
+
+  </body>
+
+</html>
