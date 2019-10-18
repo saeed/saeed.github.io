@@ -38,7 +38,7 @@
 <td align="left"><p>My work spans several domains including networks, systems, and ubiquitous computing. A common theme in my work is feasibility of cost-effective large scale deployments of the developed systems. This emerges from a deep sense of obligation of developing systems that can help both developed and developing countries make the best of the following projects:<br /></p>
 <ul>
 <li><p>Scalable Packet Scheduling in Software<br />
-[<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">NSDI &rsquo;19</a>] [<a href="http://saeed.github.io/files/carousel-sigcomm17.pdf">SIGCOMM &rsquo;17</a>]</p>
+[<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">NSDI &rsquo;19</a>] [<a href="http://saeed.github.io/files/zd_conext19.pdf">CoNEXT &rsquo;19</a>] [<a href="http://saeed.github.io/files/carousel-sigcomm17.pdf">SIGCOMM &rsquo;17</a>]</p>
 </li>
 <li><p>DynaWhite: Dynamic White Space Detection and Utilization<br />
 [<a href="http://saeed.github.io/files/waldo_icdcs17.pdf">ICDCS &rsquo;17</a>] [<a href="http://saeed.github.io/files/netmag_dynawhite.pdf">NetMag &rsquo;15</a>] [<a href="http://saeed.github.io/files/win04f-saeed.pdf">WiNTECH &rsquo;14</a>] [<a href="http://saeed.github.io/files/prob_routing-wcnc14.pdf">WCNC &rsquo;14</a>] [<a href="http://saeed.github.io/files/cogframe13_icc.pdf">ICC &rsquo;13</a>]</p>
@@ -63,6 +63,8 @@
 <li><p><b>Carousel</b>: We started with improving the performance of shaping and rate limiting. We move from a multi-queue system (used in HTB and FQ Qdiscs in Linux) to a single queue time-based design with a single queue per network processing core to reduce the need for locking. This new design is shown to significantly outperform state-of-the-art deployments in large scale datacenter deployment. [<a href="http://saeed.github.io/files/carousel-sigcomm17.pdf">SIGCOMM &rsquo;17</a>]</p>
 </li>
 <li><p><b>Eiffel</b>: We approached the over arching problem of scheduling under programmable policies. We developed efficient priority queues to enforce packet ordering and extended the <a href="http://web.mit.edu/pifo/">PIFO</a> scheduler programming model to enable the implementation of a wider range of scheduling policies. Our new design was shown to outperform state-of-the-art in hierarchical packet scheduling and even outperform Carousel in event-based settings [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">NSDI &rsquo;19</a>].</p>
+</li>
+<li><p><b>zD</b>: We improved the back pressure techniques used in Carousel to lower the burden on the scheduler. In particular, we propose a way to reduce the number of packets processed by a scheduler by keeping track of active flows and scheduling the flows rather than scheduling the packets. This reducing latency as dispatched packets always meet short queues. It also reduces CPU by avoiding expensive retransmissions at the source. Finally, it improves throughput by reducing the CPU bottleneck. [<a href="http://saeed.github.io/files/zd_conext19.pdf">CoNEXT &rsquo;19</a>].</p>
 </li>
 </ol>
 </td></tr></table>
@@ -94,7 +96,7 @@ The purpose of such of this project is to develop highly accurate intrusion dete
 <p>Current operating systems use only one of the available network interfaces to connect to the internet. DNIS aims at aggregating the bandwidth of the multiple network interfaces (WiFi, 3G, Ethernet, etc) available on mobile devices to achieve the highest throughput possible. This was done without the need to change legacy servers by dynamically assigning TCP connections to different interfaces. Also learning algorithms were applied to select map TCP connections to the interfaces based on the characteristics of both the interfaces and the applications creating the connections. [<a href="http://saeed.github.io/files/dnis_mc2r.pdf">MobiCom&rsquo;09-Poster</a>]</p>
 <div id="footer">
 <div id="footer-text">
-Page generated 2019-08-23 07:58:44 EDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+Page generated 2019-10-18 09:59:45 EDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
 </div>
 </div>
 </td>
