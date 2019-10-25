@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Eiffel is a software packet scheduler that can be deployed on end- hosts and software switches to implement any scheduling algorithm. Eiffel provides both efficiency and flexibility by relying on a set of efficient data structures and an expressive programming language.">
+    <meta name="author" content="Ahmed Saeed">
+      
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ahmad_saeed">
+<meta name="twitter:creator" content="@ahmad_saeed">
+<meta name="twitter:title" content="Eiffel - Eifficient and Flexible Packet Scheduling">
+<meta name="twitter:description" content="Eiffel is a software packet scheduler that can be deployed on end- hosts and software switches to implement any scheduling algorithm. Eiffel provides both efficiency and flexibility by relying on a set of efficient data structures and an expressive programming language.">
+<meta name="twitter:image" content="https://www.cc.gatech.edu/~amsmti3/stpp/scenario.png">
+
+      
+      
+    <title>Eiffel - Eifficient and Flexible Packet Scheduling</title>
+    <link rel="shortcut icon" href="https://www.gatech.edu/sites/all/themes/gt_tlw/favicon.ico" type="image/vnd.microsoft.icon">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-5878524-3', 'auto');
+  ga('send', 'pageview');
+</script>
+      
+      
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <style>
+        .button {
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        .button1 {
+                    background-color: #4CAF50; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Green */
+        
+        .button2 {
+                    background-color: #007bff; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 20px;
+                    margin: 16px 20;} /* Blue */
+        .button3 {
+                    background-color: #007bff; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 20px;
+                    margin: 16px 0;} /* Blue */
+        .button1:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        .button2:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        code { 
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 250;
+        }
+        .li1 {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Eifficient and Flexible Packet Scheduling with Eiffel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Getting Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#tutorial">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact2">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+      <div class="container text-center">
+        <h1>Eiffel: Eifficient and Flexible Packet Scheduling</h1>
+          <br/> 
+          <p class="lead" align="right">Ahmed Saeed, Yimeng Zhao, Nandita Dukkipati, Ellen Zegura, Mostafa Ammar, Khaled Harras, and Amin Vahdat</p> 
+          <p class="lead" align="right">Georgia Institute of Technology, Carnegie Mellon University, and Google</p>
+          <p class="lead" align="right">USENIX NSDI 2019</p>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h4>Packet scheduling determines the ordering of packets in a queuing data structure with respect to some ranking function that is mandated by a scheduling policy. It is the core component in many recent innovations to optimize network performance and utilization. Eiffel solves the problem of providing efficient and programmable schedulers in software. Software schedulers have several advantages over hardware including shorter development cycle and flexibility in functionality and deployment location. Eiffel substantially improves current software packet scheduling performance, while maintaining flexibility, by exploiting underlying features of packet ranking; namely, packet ranks are integers and, at any point in time, fall within a limited range of values.</h4>
+
+              <p class="lead" align="center"> <button onclick="window.location.href='https://www.usenix.org/system/files/nsdi19-saeed.pdf'" class="button1">Paper</button><br/><button class="button2" onclick="window.location.href='https://github.com/saeed/eiffel_linux/tree/working_ffs-based_qdisc'">Kernel Implementation</button>&nbsp&nbsp&nbsp&nbsp&nbsp<button class="button3" onclick="window.location.href='#'">BESS Implementation<br/> (in preparation)</button> </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>FAQ</h2><br/>
+            <h4>What motivated the work?</h4>
+            <p class="lead">Packet scheduling is the core component in many recent innovations to optimize network performance and utilization. It has proven difficult to achieve scheduler efficiency in software schedulers, especially handling packets at high line rates, without limiting the supported scheduling policies. Furthermore, CPU-efficient implementation of even the simplest scheduling policies is still an open problem for most platforms. Eiffel tackles and solves this pressing need in modern networks.</p><br/>
+              
+            <h4>How does Eiffel achieve both efficiency and flexibility?</h4>
+            <p class="lead">Eiffel leverages a key characterstic of packet ranks: packet ranks can be represented as integers that at any point in time fall within a limited window of values. Thus, Eiffel employs integer priority queues that have O(1) overhead for packet insertion and extraction. Then, Eiffel combines multiple priority queues to implement arbitrarily complex scheduling policies.</p><br/>
+              
+            <h4>What's the overhead of Eiffel?</h4>
+            <p class="lead">Eiffel shifts the overhead of packet scheduling, from being dependent on the number of packets enqueued or the number of flows with enqueued packets, to the complexity of the scheduling policy itself (e.g., number of priority classes).</p><br/>
+            
+            <h4>Can I program using Eiffel?</h4>
+            <p class="lead">You can express policies using Eiffel programming primitives presented in the paper. The Eiffel abstraction provides a direct mapping to the way priority queues should be structured to implement the policy. All examples presented in the paper were hard coded following the aforementioned approach. A compiler that converts Eiffel primitvies to priority queues is under development. </p><br/>
+              
+            <h4>What are the limitations of Eiffel?</h4>
+               <ul>
+                <li><p class="lead">Eiffel provides it CPU efficiency at the expense of using extra memory. Eiffel requires preallocation of memory (provisioning for the worst case) as well as using slack memory that requires a total preallocation of 2x the worst case memory requirement of a memory efficient algorithm.</p></li>
+                <li><p class="lead">Eiffel is a software-only solution and does not handle the complexities arising from implementing it in hardware.</p> </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Getting Started</h2>
+              <p class="lead">Eiffel is implemented in the Linux kernel as a rate limiting Qdisc. No assumptions are made about the environment running either implementations.</p>
+              
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <section id="tutorial" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Tutorial</h2>
+              
+              <ol>
+                  <li class="li1">Clone the Eiffel linux repo<br/>
+                    <code>git clone https://github.com/saeed/eiffel_linux.git<br/>
+                          cd eiffel_linux</code>
+                  </li>
+                  <li  class="li1">Checkout the FFS-based Qdisc for a full Eiffel-based rate limiter<br/>
+                    <code>git checkout working_ffs-based_qdisc</code><br/>
+                      Note that for Carousel experiments the <code>working_ffs-based_qdisc</code> branch can also be used as a Linux implementation of Carousel as it relies on a time-based data structure for packet sorting and TSQ backpressure. For a Timing Wheel-based implementation, checkout the <code>v4.10-gq</code> branch.
+                  </li>
+                  <li class="li1">Compile and install kernel using the <code>.config</code> file in the repo.</li>
+                  <li class="li1">Install GQ Qdisc<br/>
+                    <code>tc qdisc add dev eth1 root gq</code><br/>
+                    Replace eth1 with name of the networking device for which you are applying the rate limit.
+                  </li>
+                  <li class="li1">The install qdisc will enforce the pacing rate set by the congestion control algorithm applied to a flow. To enforce a custom rate limit, use the <code>SO_MAX_PACING_RATE</code> socket option to set the custom rate.</li>
+              </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+      
+    <section id="contact2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Contact</h2>
+              <p class="lead">For questions/comments please email ahmed dot saeed at gatech dot edu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Credits: page format inspired by similar tutorials created by <a href="https://cs.nyu.edu/~anirudh/">Anirudh Sivaraman</a> - page created using <a href="https://startbootstrap.com/template-overviews/scrolling-nav/">Bootstrap Scrolling Nav template</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="js/scrolling-nav.js"></script>
+
+  </body>
+
+</html>
