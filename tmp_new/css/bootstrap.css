@@ -365,10 +365,28 @@ img {
   vertical-align: middle;
 }
 
-.img-responsive {
-  display: block;
+.img-responsive2 {
   max-width: 100%;
   height: auto;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .img-responsive2 {
+    width: 50%;
+  }
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .img-responsive {
+    width: 30%;
+  }
 }
 
 .img-rounded {
