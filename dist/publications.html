@@ -3,12 +3,12 @@
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
     <meta http-equiv="cache-control" content="no-cache" /> 
     <title> 
-      Your Publications
+      Ahmed Saeed - Publications
     </title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.js" charset="utf-8"></script>
-    <bibtex src="./assets/test.bib"></bibtex>
+    <script type="text/javascript" src="./js/bibtex_js.js" charset="utf-8"></script>
+    <bibtex src="./assets/master.bib"></bibtex>
     
     <!-- Latest compiled and minified CSS -->
     <link href="css/styles.css" rel="stylesheet" />
@@ -39,10 +39,13 @@ $( "#nav-bar" ).load( "./nav_bar.html" );
   
   <div class="bibtex_template" style="display: none;">
     <ul> <li>
-      <span class="if title">
-        <a class="bibtexVar" href="http://www.website.com/~demo/papers/+BIBTEXKEY+.pdf" extra="BIBTEXKEY">
+      <span class="if url">
+        <a class="bibtexVar" href="+URL+" extra="url">
             <span style="text-decoration: underline;" class="title"></span>,
         </a>
+      </span>
+      <span class="if !url">
+        <span class="title"></span>,
       </span>
       <div class="if author">
         <span class="author"></span>
@@ -106,7 +109,7 @@ $( "#nav-bar" ).load( "./nav_bar.html" );
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Ahmed Saeed 2021</p></div>
         </footer>
         <!-- Bootstrap core JS-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="./js/bootstrap3.3.5.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
 </body>
