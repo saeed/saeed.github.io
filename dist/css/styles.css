@@ -3665,6 +3665,22 @@ textarea.form-control-lg {
   display: none;
 }
 
+.collapse.show {
+  visibility: visible;
+}
+
+h1.YEAR { font-size: 17px; font-weight: bold; display: inline; margin-left:8px;}
+
+.collapse.in {
+  display: block;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
+}
+
 .collapsing {
   height: 0;
   overflow: hidden;
