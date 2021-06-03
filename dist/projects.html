@@ -61,10 +61,10 @@
             <h2>Active Projects</h2>
             <div class="row align-items-center">
                                     <h3 class="colorlib-heading2">Scalable End Host Networking</h3>
-                                    <div class="col-lg-4 align-items-center">
+                                    <div class="col-lg-5 align-items-center">
                                         <img src="./assets/carousel.png" class="rounded float-center" height="200px" width="auto" />
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-7">
                                         <p>The goal of the project is develop end-host networking stacks that can scale, not only in terms of their messages per second capacity, but in terms of the number of network connections they can handle. To that end, we tackle problems in schedulers, the VM-hypervisor API, and the transport layer. Our research produced the following results:</p>
                                         <ol>
                                             <li><p><b>Measurements to identify bottlenecks:</b> We define two broad categories of problems; namely, admitting more packets into the network stack than can be handled efficiently, and increasing per-packet over- head within the stack. We show that these problems contribute to high CPU usage and network performance degradation in terms of aggregate throughput and RTT. [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">PAM &rsquo;21</a>]
@@ -78,10 +78,10 @@
             </div>
             <div class="row align-items-center">
                                 <h3 class="colorlib-heading2">Wide Area Network (WAN) Congestion Control</h3>
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <img src="./assets/annulus_schematic.png" alt="alt text" width="350px" height="auto" style="padding-top: 20px; padding-bottom: 20px;" class="img-responsive2"/>
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-7">
                                     <p>This project revisits the classic end-to-end principle, where complex network functions are performed by the end points, simplifying the implementation of network elements. The project identifies scenarios where this end-to-end principle fails in handling congestion scenarios and proposes solutions that improve the reliability of the network with minimal deployment overhead.</p>
                                     <p><b>Handling WAN bottlenecks in the Datacenter Network:</b> When WAN and datacenter traffic compete for bandwidth, both types of traffic suffer from performance degradation. My research on this topic thoroughly characterizes issues arising from the competition between WAN and datacenter traffic and proposes Annulus, a congestion control scheme that handles this type of congestion. My study of this problem is based on measurements conducted on Google’s infrastructure and simulations used to validate our conclusions. I implemented Annulus on a testbed at Google and in simulation. Annulus increases bottleneck utilization by 10% and lowers datacenter flow completion time by 1.3-3.5×. [<a href="http://saeed.github.io/files/annulus-sigcomm20-cr.pdf">SIGCOMM &rsquo;20</a>] <br /> </p>
                                     <p><b>Inter-Autonomous System Congestion Control:</b> The Internet is now flat. Content providers like Google and Amazon are directly connected to Internet Service Providers (ISPs) through peering links. This peering happens through multiple physical connections. Our analysis of congestion measurements between content providers and ISPs shows that when a peering link is congested, there are usually multiple other links with excess capacity. Selecting the best alternative route requires knowing bandwidth demand of traffic flowing between the two networks, which is calculated based on the demand of clients and known only to content providers. It also requires knowing the best route to deliver the data to the clients, which is known only to the ISP. Unison allows content providers and ISPs to work together to select the best alternative route, as neither of them individually has enough information to select the best alternative route. Unison leads to better user quality of experience and higher utilization of the ISP network. [<a href="http://saeed.github.io/files/icnp2019-unison.pdf">ICNP &rsquo;19</a>] </p>
@@ -100,10 +100,10 @@
             </div>
             <div class="row align-items-center">
                                 <h3 class="colorlib-heading2">DynaWhite: Dynamic White Space Detection and Utilization</h3>
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <img src="./assets/dynawhite.png" alt="alt text" width="350px" height="auto" style="padding-top: 20px; padding-bottom: 20px;" class="img-responsive2"/>
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-7">
                                     <p>Our work in improving white space networks tackles two main topics: 1) <b>Detection</b> by improving white space databases and white space detection both in terms of accuracy and cost by exploring new sensors and new detection approaches, and 2) <b>Utilization</b> by improving routing protocols developed for cognitive radio networks whose direct application is white space networks. <br /> <br /></p>
                                     <p><b>Detection:</b> Current approaches available for detecting white space (i.e. spectrum databases and spectrum sensing) waste a lot of white space opportunities due to problems inherent in their conceptual views of white spaces. For instance, spectrum databases rely on propagation models that are has overestimates due to their assumptions about the environment model and spectrum sensing uses low thresholds to avoid hidden node cases. Also, both approaches focus on TV transmitters and ignore the true spectrum incumbent, that is the TV receivers.
                                     In this project, we demonstrate the potential benefits of addressing these drawbacks and provide sample approaches to do so. On one hand, we use ubiquitous sensors to detect TV sets instead of detecting TV towers, which forms the basis of the DynaWhite database. On the other hand, we show the fusing spectrum sensing and geolocation databases can over come the drawbacks of both of them. [<a href="http://saeed.github.io/files/waldo_icdcs17.pdf">ICDCS &rsquo;17</a>] [<a href="http://saeed.github.io/files/netmag_dynawhite.pdf">NetMag&rsquo;15</a>] [<a href="http://saeed.github.io/files/win04f-saeed.pdf">WiNTECH&rsquo;14</a>]<br /> <br /></p>
@@ -112,10 +112,10 @@
             </div>
             <div class="row align-items-center">
                                     <h3 class="colorlib-heading2">NUZZER: Device Free WLAN Localization</h3>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-5">
                                         <img src="./assets/dfp.png" alt="alt text" width="350px" height="auto" style="padding-top: 20px; padding-bottom: 20px;" class="img-responsive2"/>
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-7">
                                     <p>Device free Passive (DfP) Localization is a new technology that enables ordinary WiFi networks to be used to track human motion within indoor environments without the need for the tracked human to carry a device. DfP localization systems depend on the fact that the presence of a human with a wireless environment affects the signal characteristics. 
                                     The purpose of such of this project is to develop highly accurate intrusion detection systems and motion tracking systems. These systems can provide offices, malls, and even homes with security systems with a simple software update and system calibration using the already installed WiFi networks. Other applications include smart homes, elderly or disabled assistance and boarder protection systems.</p>
                                     <p> [<a href="http://saeed.github.io/files/ichnaea_jstsp.pdf">JSTSP&rsquo;14</a>] [<a href="http://saeed.github.io/files/rasid-percom12.pdf">PerCom&rsquo;12</a>] [<a href="http://saeed.github.io/files/nuzzer-tmc.pdf">TMC&rsquo;12</a>] [<a href="http://saeed.github.io/files/robust-wcnc12.pdf">WCNC&rsquo;12</a>] [<a href="http://saeed.github.io/files/rasid_mc2r.pdf">MobiCom&rsquo;11-Poster</a>]</p>
