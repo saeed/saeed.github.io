@@ -284,7 +284,36 @@ function BibtexParser() {
             }
             // In case there is extra stuff in between entries
             this.pos = end + this.input.substring(end, this.input.length).indexOf("@");
-            this.entries[this.currentEntry]["BIBTEXRAW"] = this.input.substring(start, end);
+            var rawBibtexTmp = this.input.substring(start, end);
+
+            const regexBBURL = /\s*biburl.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexBBURL,'');
+            const regexURL = /\s*url.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexURL,'');
+            const regexSLIDES = /\s*slides.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexSLIDES,'');
+            const regexSLIDES2 = /\s*slides.*}/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexSLIDES2,'');
+            const regexTS = /\s*timestamp.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexTS,'');
+            const regexBBSRC = /\s*bibsource.*}/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexBBSRC,'');
+            const regexVIDEO = /\s*video.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexVIDEO,'');
+            const regexVIDEO2 = /\s*video.*}/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexVIDEO2,'');
+            const regexCODE = /\s*code.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexCODE,'');
+            const regexCODE2 = /\s*code.*}/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexCODE2,'');
+            const regexNOTES = /\s*notes.*},/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexNOTES,'');
+            const regexNOTES2 = /\s*notes.*}/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexNOTES2,'');
+            const regexFinal = /,\n}/ig;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexFinal,'\n}');
+
+            this.entries[this.currentEntry]["BIBTEXRAW"] = rawBibtexTmp;
         }
     }
 }
