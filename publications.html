@@ -103,17 +103,33 @@ $( "#nav-bar" ).load( "./nav_bar.html" );
           </a>
         </span>
 
+        <span class="if abstract">
+          <a class="bibtexVar" role="button" data-bs-toggle="collapse"
+         href="#bbib+BIBTEXKEY+" aria-expanded="false"
+         aria-controls="bbib+BIBTEXKEY+" extra="BIBTEXKEY" bibtexjs-css-escape>
+            [Abstract]
+          </a>
+        </span>
+
         <a class="bibtexVar" role="button" data-bs-toggle="collapse"
        href="#bib+BIBTEXKEY+" aria-expanded="false"
        aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY" bibtexjs-css-escape>
           [bib]
         </a>
+        
       </div>
       <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
           <div class="card well">
             <pre><br/><span class="bibtexraw noread"></span></pre>
           </div>
       </div>
+      <span class="if abstract">
+          <div class="bibtexVar collapse" id="bbib+BIBTEXKEY+" extra="BIBTEXKEY">
+              <div class="card well">
+                <small class="text-muted"><b>Abstract:</b> <span class="abstract"></span></small>
+              </div>
+          </div>
+      </span>
       <div style="display:none"><span class="bibtextype"></span></div>
     </li></ul>
   </div>
