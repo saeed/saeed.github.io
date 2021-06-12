@@ -286,33 +286,11 @@ function BibtexParser() {
             this.pos = end + this.input.substring(end, this.input.length).indexOf("@");
             var rawBibtexTmp = this.input.substring(start, end);
 
-            const regexBBURL = /\s*biburl.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexBBURL,'');
-            const regexURL = /\s*url.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexURL,'');
-            const regexSLIDES = /\s*slides.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexSLIDES,'');
-            const regexSLIDES2 = /\s*slides.*}/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexSLIDES2,'');
-            const regexTS = /\s*timestamp.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexTS,'');
-            const regexBBSRC = /\s*bibsource.*}/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexBBSRC,'');
-            const regexVIDEO = /\s*video.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexVIDEO,'');
-            const regexVIDEO2 = /\s*video.*}/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexVIDEO2,'');
-            const regexCODE = /\s*code.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexCODE,'');
-            const regexCODE2 = /\s*code.*}/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexCODE2,'');
-            const regexNOTES = /\s*notes.*},/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexNOTES,'');
-            const regexNOTES2 = /\s*notes.*}/g;
-            rawBibtexTmp = rawBibtexTmp.replaceAll(regexNOTES2,'');
+            // Hide all the additional data coming from DBLP and added to make the HTML pretty
+            const regexHide = /\s+(biburl|url|slides|timestamp|bibsource|video|code|notes)\s+=\s+{.*},?/g;
+            rawBibtexTmp = rawBibtexTmp.replaceAll(regexHide,'');
             const regexFinal = /,\n}/g;
             rawBibtexTmp = rawBibtexTmp.replaceAll(regexFinal,'\n}');
-
             this.entries[this.currentEntry]["BIBTEXRAW"] = rawBibtexTmp;
         }
     }
