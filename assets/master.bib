@@ -4,11 +4,12 @@
                Ahmed Saeed and
                Mohammad Alizadeh and
                Hari Balakrishnan},
-  title     = {Formally Verifying Congestion Control Performance},
+  title     = {Toward Formally Verifying Congestion Control Behavior},
   booktitle = {Proceedings of the 2021 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
   series    = {SIGCOMM '21},
   publisher = {{ACM}},
   year      = {2021},
+  abstract = {The diversity of paths on the Internet makes it difficult for designers and operators to confidently deploy new congestion control algorithms (CCAs) without extensive real-world experiments, but such capabilities are not available to most of the networking community. And even when they are available, understanding why a CCA under-performs by trawling through massive amounts of statistical data from network connections is challenging. The history of congestion control is replete with many examples of surprising and unanticipated behaviors unseen in simulation but observed on real-world paths. In this paper, we propose initial steps toward modeling and improving our confidence in a CCA's behavior. We have developed Congestion Control Anxiety Controller (CCAC), a tool that uses formal verification to establish certain properties of CCAs. It is able to prove hypotheses about CCAs or generate counterexamples for invalid hypotheses. With CCAC, a designer can not only gain greater confidence prior to deployment to avoid unpleasant surprises, but can also use the counterexamples to iteratively improve their algorithm. We have modeled additive-increase/multiplicative-decrease (AIMD), Copa, and BBR with CCAC, and describe some surprising results from the exercise.}
 }
 
 @inproceedings{balasingam-mobius-mobisys-2021,
@@ -25,6 +26,11 @@
   series    = {MobiSys '21},
   publisher = {{ACM}},
   year      = {2021},
+  doi       = {10.1145/3458864.3467881},
+  timestamp = {Thu, 24 Jun 2021 15:47:19 +0200},
+  pages     = {363--375},
+  biburl    = {https://dblp.org/rec/conf/mobisys/BalasingamGMA0A21.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
   url         = {http://saeed.github.io/files/mobius-mobisys21-paper.pdf},
   video    = {https://www.youtube.com/watch?v=2Sntdpk_0xg},
   code     = {http://mobius.csail.mit.edu},
