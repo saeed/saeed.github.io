@@ -287,7 +287,7 @@ function BibtexParser() {
             var rawBibtexTmp = this.input.substring(start, end);
 
             // Hide all the additional data coming from DBLP and added to make the HTML pretty
-            const regexHide = /\s+(biburl|editor|url|slides|abstract|timestamp|bibsource|video|code|notes)\s+=\s+{.*},?/g;
+            const regexHide = /\s+(biburl|editor|url|slides|abstract|timestamp|bibsource|gadget|video|code|notes)\s+=\s+{.*},?/g;
             rawBibtexTmp = rawBibtexTmp.replaceAll(regexHide,'');
             const regexFinal = /,\n}/g;
             rawBibtexTmp = rawBibtexTmp.replaceAll(regexFinal,'\n}');
