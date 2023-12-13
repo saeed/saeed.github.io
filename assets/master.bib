@@ -1,3 +1,34 @@
+@inproceedings{cho-ldb-nsdi-2024,
+  author    = {Inho Cho and
+               Seo Jin Park and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {LDB: An Efficient Latency Debugging Tool for Datacenter Applications },
+  booktitle = {Proceedings of the 21th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '24},
+  publisher = {{USENIX} Association},
+  year      = {2024},
+  abstract  = {Maintaining low tail latency is critical for the efficiency and performance of large-scale datacenter systems. Software bugs that cause tail latency problems, however, are notoriously difficult to debug. We present LDB, a new latency profiling tool that aims to overcome this challenge by precisely identifying the specific functions that are responsible for tail latency anomalies. LDB observes the latency of all functions in a running program. It uses a novel, software-only technique called stack sampling, where a busy-spinning stack scanner thread polls light-weight metadata recorded in call frames, shifting instrumentation cost away from program threads. In addition, LDB uses event tagging to record requests, inter-thread synchronization, and context switching. This can be used, for example, to generate per-request timelines and to find the root cause of complex tail latency problems such as lock contention in multi-threaded programs. We evaluate LDB with four datacenter workloads, finding latency problems in each. Our results further show that LDBproduces actionable insights, has low overhead, and can rapidly analyze recordings, making it feasible to use in production settings.}
+}
+
+
+@inproceedings{bhosale-astolabe-leonet-2023,
+  author = {Vaibhav Bhosale and 
+                  Ketan Bhardwaj and 
+                  Ahmed Saeed},
+  title = {Astrolabe: Modeling RTT Variability in LEO Networks},
+  booktitle = {The 1st ACM Workshop on LEO Networking and Communication 2023 (LEO-NET)},
+  series    = {LEO-NET '23},
+  publisher = {ACM},
+  year = {2023},
+  url       = {http://saeed.github.io/files/astrolabe_leonet23.pdf},
+  abstract  = {Networking practitioners heavily rely on intuitive models of the behavior of networks when designing and analyzing protocols and algorithms. However, there is still a lack of such intuitive models of the behavior of LEO satellite networks, hindering innovation. In this paper, we provide a first step towards improving the intuitive understanding of the behavior of LEO satellite networks. In particular, we focus on developing a model that captures the RTT variability exhibited by such networks. We rely on simple and intuitive calculations instead of expensive simulations. To capture the high RTT variability exhibited by satellite networks, we estimate lower and upper bounds for the RTT between a pair of ground stations. We introduce Astrolabe, a novel approach that achieves accurate bounds, with a median lower bound within 1.15x the actual lowest RTT and a median upper bound within 2x the highest RTT in a few seconds instead of hours required by simulations or measurements.}}
+  
+                 
+
+
+
 @inproceedings{bhosale-leo-study-pam-2023,
   author = {Vaibhav Bhosale and 
                   Ahmed Saeed and  
@@ -7,8 +38,9 @@
   booktitle = {Proceedings of the 24nd International Conference on Passive and Active Measurement ({PAM})},
   series    = {Lecture Notes in Computer Science},
   publisher = {Springer},
-  year      = {2022},
+  year      = {2023},
   url       = {http://saeed.github.io/files/leo_study_pam2023.pdf},
+  video     = {https://www.youtube.com/watch?v=h972BkrD_Pk},
   abstract  = {LEO satellite networks possess highly dynamic topologies, with satellites moving at 27,000 km/hour to maintain their orbit. As satellites move, the characteristics of the satellite network routes change, triggering rerouting events. Frequent rerouting can cause poor performance for path-adaptive algorithms (e.g., congestion control). In this paper, we provide a thorough characterization of route variability in LEO satellite networks, focusing on route churn and RTT variability. We show that high route churn is common, with most paths used for less than half of their lifetime. With some paths used for just a few seconds. This churn is also unnecessary with rerouting leading to marginal gains in most cases (e.g., less than a 15\% reduction in RTT). Moreover, we show that the high route churn is harmful to network utilization and congestion control performance. By examining RTT variability, we find that the smallest achievable RTT between two ground stations can increase by $2.5\times$ as satellites move in their orbits. We show that the magnitude of RTT variability depends on the location of the communicating ground stations, exhibiting a spatial structure.  Finally, we show that adding more satellites, and providing more routes between stations, does not necessarily reduce route variability. Rather, constellation configuration (i.e., the number of orbits and their inclination) plays a more significant role. We hope that the findings of this study will help with designing more robust routing algorithms for LEO satellite networks. }}
 
 @inproceedings{cho-protego-nsdi-2023,
@@ -23,6 +55,8 @@
   publisher = {{USENIX} Association},
   year      = {2023},
   url       = {https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf},
+  code      = {https://github.com/inhocho89/shenango-protego/tree/protego/breakwater},
+  video     = {https://www.youtube.com/watch?v=IDzqZ6JmtMs},
   abstract  = {Modern datacenter applications are concurrent, so they require synchronization to control access to shared data. Requests can contend for different combinations of locks, depending on application and request state. In this paper, we show that locks, especially blocking synchronization, can squander throughput and harm tail latency, even when the CPU is underutilized. Moreover, the presence of a large number of contention points, and the unpredictability in knowing which locks a request will require, make it difficult to prevent contention through overload control using traditional signals such as queueing delay and CPU utilization. We present Protego, a system that resolves these problems with two key ideas. First, it contributes a new admission control strategy that prevents compute congestion in the presence of lock contention. The key idea is to use marginal improvements in observed throughput, rather than CPU load or latency measurements, within a credit-based admission control algorithm that regulates the rate of incoming requests to a server. Second, it introduces a new latency-aware synchronization abstraction called Active Synchronization Queue Management (ASQM) that allows applications to abort requests if delays exceed latency objectives. We apply Protego to two real-world applications, Lucene and Memcached, and show that it achieves up to 3.3x more goodput and 12.2x lower 99th percentile latency than the state-of-the-art overload control systems while avoiding congestion collapse.}
 }
 
