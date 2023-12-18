@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>CS8803 - Datacenter Networks & Systems</title>
+        
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet" />
+
+        <!-- make my life easier-->
+        <script src="js/jquery-3.6.0.min.js"></script>
+        
+        <!-- include the icons-->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+        <script src="https://kit.fontawesome.com/af673dde11.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="https://brand.gatech.edu/themes/custom/brand/favicon.ico" />
+
+        <!-- Google analytics-->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-5878524-3', 'auto');
+          ga('send', 'pageview');
+        </script>
+        
+    </head>
+    <body>
+       
+        <div id="nav-bar"></div>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">CS8803 - Datacenter Networks & Systems</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./syllabus.html">Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./assignments.html">Assignments</a></li>
+                        <!--<li class="nav-item"><a class="nav-link" href="./resources.html">Resources</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content-->
+        <div class="container" style="margin-top: 80pt;">
+         
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                
+                <div class="col-lg-7">
+                    <h1>Datacenter Networks & Systems</h1>
+                    <h3>CS 8803, Georgia Tech, Spring 2024</h3>
+                    
+                   
+                </div>
+                <div class="col-lg-3 align-items-center">
+                    <img class="rounded float-center" src="datacenter.jpg" alt="..." width="300" height="auto" />
+                </div>
+            </div>
+            
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Topics</th>
+                      <th scope="col">Main Readings</th>
+                      <th scope="col">Supplementary Readings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <td colspan="4" style="text-align:center;">
+                        <strong>Introduction</strong> <br/>
+                    </td>
+                    <tr>
+                      <th scope="row"><center>Week 1 </br> (1/9 and 1/11) <br/> <strong style="color:red;">(No paper summaries for week 1)</strong></center></th>
+                      <td>Overview of datacenters</td>
+                      <td>
+                        <a href="https://link.springer.com/book/10.1007/978-3-031-01761-2">Datacenter as a computer</a> </br>
+                        <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-28.pdf">Berkeley View on Cloud</a> </br>
+                      </td>
+                      <td>
+                        <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2019/EECS-2019-3.pdf">Berkeley View on Serverless</a> </br>
+                        <a href="https://www.youtube.com/watch?v=27zuReojDVw">Fifth Epoch of Distributed Computing</a></td>
+                      </td>
+                    </tr>
+                    <!--<td colspan="4" style="text-align:center;">
+                        <strong>What runs inside the datacenter?</strong>
+                    </td>-->
+                    <tr>
+                      <th scope="row"><center> Week 2 </br> (1/16 and 1/18)</center></th>
+                      <td>Applications</td>
+                      <td>
+                        <a href="./assets/rpc_char_sosp23.pdf">RPC Characterization</a></br>
+                        <a href="https://www.usenix.org/system/files/osdi18-moritz.pdf">Ray</a></br>
+                      </td>
+                      <td>
+                        <a href="https://www.cs.princeton.edu/~wlloyd/papers/sve-sosp17.pdf">SVE</a></br>
+                        <a href="https://www.usenix.org/system/files/nsdi19-pu.pdf">Data analytics</a></td>
+                    </tr>
+
+
+                    
+                    <td colspan="4" style="text-align:center;">
+                        <strong>Units of Compute</strong>
+                    </td>
+                    <tr>
+                      <th scope="row"><center> Week 3</br> (1/23 and 1/25)</center></th>
+                      <td>Hardware - Disaggregation</td>
+                      <td>
+                        <a href="./assets/pond_asplos2023.pdf">Pond</a></br>
+                        <a href="https://people.ucsc.edu/~hlitz/papers/reflex.pdf">ReFlex</a></br>
+                      </td>
+                      <td>
+                        <a href="https://www.usenix.org/system/files/osdi20-ruan.pdf">AIFM</a></br>
+                        <a href="https://www.usenix.org/system/files/conference/hotstorage17/hotstorage17-paper-legtchenko.pdf">Disaggregated Storage</a></br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" style="text-align:left;">
+                        <i>1/26 - Project Proposal - Deadline</i></br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><center> Week 4 (1/30) </center></th>
+                      <td>Hardware - Accelerators</td>
+                      <td><a href="./assets/vcu_asplos2021.pdf">VCU</a>
+                      </td>
+                      <td>
+                        <a href="https://arxiv.org/pdf/1704.04760.pdf">TPUs</a></br>
+                      </td>
+                    </tr>
+                                      
+                    
+                    <tr>
+                      <th scope="row"><center> Week 4 (2/1)</center></th>
+                      <td>Software - Virtualization</td>
+                      <td>
+                        <a href="https://www.usenix.org/system/files/nsdi20-paper-agache.pdf">Firecracker</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="http://www.cs.toronto.edu/~demke/2227/S.14/Papers/p275-soltesz.pdf">Containers</a></br>
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><center> Week 5</br> (2/6 and 2/8)</center></th>
+                      <td>Software - OS</td>
+                      <td>
+                        <a href="https://irenezhang.net/papers/demikernel-sosp21.pdf">DemiKernel</a></br>
+                        <a href="https://www.usenix.org/system/files/osdi18-shan.pdf">LegoOS</a></br>
+                      </td>
+                      <td>
+                        <a href="https://dl.acm.org/doi/pdf/10.1145/3626780">Kernel vs User</a></br>
+                        <a href="https://cs.stanford.edu/~jhumphri/documents/ghost.pdf">ghOSt</a></br>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 6 (2/13)</center></th>
+                      <td>Algorithms - Core Allocation</td>
+                      <td>
+                        <a href="https://amyousterhout.com/papers/scheduling_policies_nsdi22.pdf">Efficient Policies</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="https://dslab.epfl.ch/pubs/concord.pdf">Concord</a></br>
+                        
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 6 (2/15)</center></th>
+                      <td>Algorithms - Overload Control</td>
+                      <td>
+                        <a href="https://saeed.github.io/files/breakwater_osdi20.pdf">Breakwater</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="https://www.cs.cornell.edu/~ragarwal/pubs/hostcc.pdf">Host Congestion</a></br>
+                        
+                      </td>
+                    </tr>
+
+
+                    <tr>
+                      <td colspan="4" style="text-align:left;">
+                        <i>1/27 - Project Proposal - Deadline</i></br>
+                      </td>
+                    </tr>
+
+
+                    <td colspan="4" style="text-align:center;">
+                        <strong>Connecting the Units</strong>
+                    </td>
+
+
+                    <tr>
+                      <th scope="row"><center> Week 7</br> (2/20 and 2/22)</center></th>
+                      <td>Hardware - RDMA</td>
+                      <td>
+                        <a href="./assets/rdma_guidelines_atc16_paper-kalia.pdf">RDMA Design Guidelines</a></br>
+                        <a href="./assets/prism-sosp21.pdf">Rethinking RDMA</a></br>
+                      </td>
+                      <td>
+                        <a href="./assets/rdma_sigcomm2016.pdf">RDMA over Ethernet at Scale</a></br>
+                        <a href="./assets/fasst_osdi16.pdf">FaSST</a>
+                      </td>
+                      
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 8 (2/27)</center></th>
+                      <td>Hardware - SmartNICs</td>
+                      <td>
+                        <a href="https://www.microsoft.com/en-us/research/uploads/prod/2018/03/Azure_SmartNIC_NSDI_2018.pdf">Azure SmartNIC</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="https://homes.cs.washington.edu/~arvind/papers/ipipe.pdf">iPipe</a></br>
+                        
+                      </td>
+                    </tr>
+                    
+                    
+                    
+
+                    <tr>
+                      <th scope="row"><center> Week 8 (2/29) </center></th>
+                      <td>Hardware - Topology</td>
+                      <td>
+                        
+                        <a href="./assets/fattree_sigcomm08.pdf">FatTree</a></br>
+                        
+                      </td>
+                      <td> 
+                        
+                        <a href="https://www.morganclaypool.com/doi/pdf/10.2200/S00341ED1V01Y201103CAC014">High Perf. DC Networks</a></br>
+                      </td>
+                    </tr>
+
+                    <td colspan="4" style="text-align:left;">
+                        <i>3/1 - Project Progress Report 1 - Deadline</i>
+                    </td>
+
+                    <tr>
+                      <th scope="row"><center> Week 9 (3/5) </center></th>
+                      <td>Hardware - Topology</td>
+                      <td>
+                        
+                        
+                        <a href="https://www.usenix.net/system/files/nsdi19-zhang.pdf">FatClique</a></br>
+                      </td>
+                      <td> 
+                        
+                        <a href="https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/43837.pdf">Jupiter</a></br>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 9 (3/7)</center></th>
+                      <td>Hardware - Reconfigurable Topologies</td>
+                      <td>
+                        <a href="https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/fab3f179641c4a568fa09ceb9c41cc2db381815b.pdf">Jupiter++</a></br>
+                      </td>
+                      <td>
+                        <a href="./assets/lightwave_sigcomm2023.pdf">Lightwave</a></br>
+                        
+                        
+                      </td>
+                    </tr>
+
+
+
+                    <tr>
+                      <th scope="row"><center> Week 10 (3/12)</center></th>
+                      <td>Software - Transport</td>
+                      <td>
+                        <a href="https://people.csail.mit.edu/alizadeh/papers/homa-sigcomm18.pdf">Homa</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="./assets/srd.pdf">SRD</a></br>
+                        
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 10 (3/14)</center></th>
+                      <td>Software - Network Control Plane</td>
+                      <td>
+                        <a href="https://www.usenix.org/system/files/nsdi21-ferguson.pdf">Orion</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="https://www.usenix.org/system/files/nsdi21-abhashkumar.pdf">BGP</a></br>
+                        
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="4" style="text-align:left;">
+                        <i>Week 11 - Spring Break</i></br>
+                      </td>
+                    </tr>
+
+
+
+                    <tr>
+                      <th scope="row"><center> Week 12 (3/26)</center></th>
+                      <td>Algorithms - Congestion Control</td>
+                      <td>
+                        <a href="./assets/swift_sigcomm20.pdf">Swift</a></br>
+                        
+                      </td>
+                      <td>
+                        <a href="https://people.csail.mit.edu/alizadeh/papers/dctcp-sigcomm10.pdf">DCTCP</a></br>
+                        
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 12 (3/28)</center></th>
+                      <td>Algorithms - Scheduling</td>
+                      <td>
+                        <a href="https://www.mosharaf.com/wp-content/uploads/faircloud-sigcomm12.pdf">FairCloud</a>,<a href="https://conferences.sigcomm.org/hotnets/2012/papers/hotnets12-final51.pdf"> Coflows</a></br>
+                      </td>
+                      <td>
+                        <a href="http://fastpass.mit.edu/Fastpass-SIGCOMM14-Perry.pdf">FastPass</a><br/>
+                      </td>
+                    </tr>
+                    <tr>
+                    <td colspan="4" style="text-align:left;">
+                        <i>3/29 - Project Progress Report 2 - Deadline</i>
+                    </td>
+                    </tr>
+
+
+                    <td colspan="4" style="text-align:center;">
+                        <strong>Operation</strong>
+                    </td>
+
+
+                    <tr>
+                      <th scope="row"><center> Week 13</br> (4/2 and 4/4)</center></th>
+                      <td>Software - Cluster Management</td>
+                      <td>                        
+                        <a href="./assets/borg.pdf">Borg</a></br>
+                        <a href="https://www.usenix.org/system/files/osdi20-tang.pdf">Twine</a>
+
+                      </td>
+                      <td>
+                        <a href="https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/5bf4ebfbf98ead7f6ee1552860fab88e75a5ed7e.pdf">Borg++</a></br>
+                        <a href="https://www.usenix.org/system/files/nsdi19-curino.pdf">Hydra</a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row"><center> Week 14 (4/9)</center></th>
+                      <td>Algoirthms - Scheduling</td>
+                      <td>                        
+                        <a href="./assets/tetris_grandl_sigcomm14.pdf">Tetris</a> and 
+                        <a href="./assets/themis_nsdi20-paper-mahajan.pdf">Themis</a>
+
+                      </td>
+                      <td>
+                        <a href="./assets/nsdi_drf.pdf">DRF</a></br>
+                      </td>
+                    </tr>
+
+
+                    <tr>
+                      <th scope="row"><center> Week 14 (4/11)</center></th>
+                      <td>Algoirthms - Energy Efficiency</td>
+                      <td>
+                        <a href="./assets/dynamo_isca16.pdf">Dynamo</a></br>
+                      </td>
+                      <td>
+                        <a href="https://www.usenix.org/system/files/atc21-kumbhare.pdf">Prediction for power</a></br>
+                      </td>
+
+                    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </tbody>
+                </table>
+            
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Ahmed Saeed 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
