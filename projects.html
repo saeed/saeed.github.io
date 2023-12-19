@@ -43,15 +43,20 @@
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <p>My work spans several domains including networks, systems, and IoT. A common theme in my work is feasibility of cost-effective large scale deployments of the developed systems. This emerges from a deep sense of obligation of developing systems that can help both developed and developing.<br /></p>
-                <div class="text-center animate-box">
+                <!-- <div class="text-center animate-box">
                     <img src="./assets/my_work.png" alt="alt text" width="350px" height="413px" align="middle" style="padding-top: 20px; padding-bottom: 20px;" class="img-responsive2"/>
-                </div>
+                </div> -->
                 <ul>
-                    <li>Scalable End Host Networking<br />
-                    [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">PAM &rsquo;21</a>] [<a href="http://saeed.github.io/files/breakwater_osdi20.pdf">OSDI &rsquo;20</a>] [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">NSDI &rsquo;19</a>] [<a href="http://saeed.github.io/files/zd_conext19.pdf">CoNEXT &rsquo;19</a>] [<a href="http://saeed.github.io/files/carousel-sigcomm17.pdf">SIGCOMM &rsquo;17</a>]
+                    
+
+                    <li>Scalable End Host Networking<br/>
+                    [<a href="https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf">NSDI &rsquo;23</a>] [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">PAM &rsquo;21</a>] [<a href="http://saeed.github.io/files/breakwater_osdi20.pdf">OSDI &rsquo;20</a>] [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">NSDI &rsquo;19</a>] [<a href="http://saeed.github.io/files/zd_conext19.pdf">CoNEXT &rsquo;19</a>] [<a href="http://saeed.github.io/files/carousel-sigcomm17.pdf">SIGCOMM &rsquo;17</a>]
                     </li>
-                    <li>Formal Verification of Performance Properties of Distributed Systems<br/>
-                    [<a href="http://saeed.github.io/files/ccac-sigcomm21.pdf">SIGCOMM &rsquo;21</a>]
+                    <li>Formal Verification of Performance Properties of Resource Allocation Heuristics<br/>
+                    [<a href="https://arxiv.org/pdf/2301.04205.pdf">arXiv</a>] [<a href="http://saeed.github.io/files/ccac-sigcomm21.pdf">SIGCOMM &rsquo;21</a>]
+                    </li>
+                    <li>Understanding the Performance of  LEO Satellite Networks<br/>
+                    [<a href="http://saeed.github.io/files/leo_study_pam2023.pdf">PAM &rsquo;23</a>] [<a href="http://saeed.github.io/files/astrolabe_leonet23.pdf">LEO-NET &rsquo;23</a>]
                     </li>
                     <li>Wide Area Network (WAN) Congestion Control<br />
                     [<a href="http://saeed.github.io/files/annulus-sigcomm20-cr.pdf">SIGCOMM &rsquo;20</a>] [<a href="http://saeed.github.io/files/icnp2019-unison.pdf">ICNP &rsquo;19</a>] 
@@ -84,8 +89,10 @@
 
                                         Our research produced the following results:</p>
                                         <ol>
+                                            <li><b>Compute Congestion Control:</b> Datacenter applications are sensitive to tail latency and require high request throughput. Maintaining low tail latency and high throughput is especially diffcult under overload for RPCs with short service times.  We developed an overload control scheme that can eliminate the side effects of overload in microsecond-scale services through a new, server-driven admission control scheme that issues credits based on server-side queueing delay. [<a href="https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf">NSDI &rsquo;23</a>] [<a href="http://saeed.github.io/files/breakwater_osdi20.pdf">OSDI &rsquo;20</a>] </li>
+
                                             <li><p><b>Measurements to identify bottlenecks:</b> We define two broad categories of problems; namely, admitting more packets into the network stack than can be handled efficiently, and increasing per-packet over- head within the stack. We show that these problems contribute to high CPU usage and network performance degradation in terms of aggregate throughput and RTT. [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">PAM &rsquo;21</a>]
-                                            <li><b>Compute Congestion Control:</b> Datacenter applications are sensitive to tail latency and require high request throughput. Maintaining low tail latency and high throughput is especially diffcult under overload for RPCs with short service times.  We developed an overload control scheme that can eliminate the side effects of overload in microsecond-scale services through a new, server-driven admission control scheme that issues credits based on server-side queueing delay. [<a href="http://saeed.github.io/files/breakwater_osdi20.pdf">OSDI &rsquo;20</a>] </li>
+                                            
                                             <li><p><b>Scheduling</b>: We started with improving the performance of shaping and rate limiting. We move from a multi-queue system (used in HTB and FQ Qdiscs in Linux) to a single queue time-based design with a single queue per network processing core to reduce the need for locking. This new design is shown to significantly outperform state-of-the-art deployments in large scale datacenter deployment. [<a href="http://saeed.github.io/files/carousel-sigcomm17.pdf">SIGCOMM &rsquo;17</a>]</p>
                                             <p> Then, we approached the over arching problem of scheduling under programmable policies. We developed efficient priority queues to enforce packet ordering and extended the <a href="http://web.mit.edu/pifo/">PIFO</a> scheduler programming model to enable the implementation of a wider range of scheduling policies. Our new design was shown to outperform state-of-the-art in hierarchical packet scheduling and even outperform Carousel in event-based settings [<a href="http://saeed.github.io/files/eiffel_nsdi19.pdf">NSDI &rsquo;19</a>].</p>
                                             </li>
@@ -95,14 +102,28 @@
                                     </div>
             </div>
             <div class="row align-items-center">
-                                <h3 class="colorlib-heading2">Formal Verification of Performance Properties of Distributed Systems</h3>
+                                <h3 class="colorlib-heading2">Formal Verification of Performance Properties of Resource Allocation Heuristics</h3>
                                 <div class="col-lg-5">
                                     <img src="./assets/ccac_model.png" alt="alt text" width="350px" height="auto" style="padding-top: 20px; padding-bottom: 20px;" class="img-responsive2"/>
                                 </div>
                                 <div class="col-lg-7">
-                                    <p>This project attempts to provide concrete analytical tools to understand the performance of heuristics used in resource allocation and management of distributed system. The project leverages progress made in formal verification tools (e.g., Z3) that can efficiently search through all potential scenarios that can encounter a heuristic. We use such tools to identify scenarios where systems underperform, helping system designers avoid them or plan for them. Our first step is to apply apply this approach to Wide Area Network Congestion Control [<a href="http://saeed.github.io/files/ccac-sigcomm21.pdf">SIGCOMM &rsquo;21</a>].<br/><br/>
+                                    <p>This project attempts to provide concrete analytical tools to understand the performance of heuristics used in resource allocation and management of distributed system. The project leverages progress made in formal verification tools (e.g., Z3) that can efficiently search through all potential scenarios that can encounter a heuristic. We use such tools to identify scenarios where systems underperform, helping system designers avoid them or plan for them. Our first step is to apply apply this approach to Wide Area Network Congestion Control  [<a href="http://saeed.github.io/files/ccac-sigcomm21.pdf">SIGCOMM &rsquo;21</a>].<br/><br/>
 
-                                    <b style="color:#CD0000">Current interest: Building such performance models for other distributed processing and network management algorithms.</b>
+                                    <b style="color:#CD0000">Current interest: Building such performance models for other network management algorithms. Examples can be found in this technical report [<a href="https://arxiv.org/pdf/2301.04205.pdf">arXiv</a>].</b>
+
+                                    </p>
+                                </div>
+            </div>
+
+            <div class="row align-items-center">
+                                <h3 class="colorlib-heading2">Understanding the Performance of LEO Satellite Networks</h3>
+                                <div class="col-lg-5">
+                                    <img src="./assets/null_island_pdf.jpg" alt="alt text" width="350px" height="auto" style="padding-top: 20px; padding-bottom: 20px;" class="img-responsive2"/>
+                                </div>
+                                <div class="col-lg-7">
+                                    <p>The aim of my work is to develop robust and intuitive models that can accurately describe and predict variability in satellite networks, and leverage these models to improve network protocols used for satellite networking. [<a href="http://saeed.github.io/files/leo_study_pam2023.pdf">PAM &rsquo;23</a>] [<a href="http://saeed.github.io/files/astrolabe_leonet23.pdf">LEO-NET &rsquo;23</a>]<br/><br/>
+
+                                    <b style="color:#CD0000">Current interest: build on our insights and expertise, providing a more formal and detailed characterization of LEO satellite networks, leveraging that understanding to improve the network's performance..</b>
 
                                     </p>
                                 </div>
