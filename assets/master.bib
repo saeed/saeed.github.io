@@ -99,6 +99,20 @@
   abstract  = {Maintaining low tail latency is critical for the efficiency and performance of large-scale datacenter systems. Software bugs that cause tail latency problems, however, are notoriously difficult to debug. We present LDB, a new latency profiling tool that aims to overcome this challenge by precisely identifying the specific functions that are responsible for tail latency anomalies. LDB observes the latency of all functions in a running program. It uses a novel, software-only technique called stack sampling, where a busy-spinning stack scanner thread polls light-weight metadata recorded in call frames, shifting instrumentation cost away from program threads. In addition, LDB uses event tagging to record requests, inter-thread synchronization, and context switching. This can be used, for example, to generate per-request timelines and to find the root cause of complex tail latency problems such as lock contention in multi-threaded programs. We evaluate LDB with four datacenter workloads, finding latency problems in each. Our results further show that LDBproduces actionable insights, has low overhead, and can rapidly analyze recordings, making it feasible to use in production settings.}
 }
 
+@techreport{virelay-goel-tr-2023,
+  author      = {Saksham Goel and
+                  Benjamin Mikek and
+                  Jehad Aly and
+                  Venkat Arun and
+                  Ahmed Saeed and
+                  Aditya Akella},
+  title       = {A Performance Verification Methodology for Resource Allocation Heuristics},
+  year        = {2023},
+  url          = {https://arxiv.org/pdf/2301.04205},
+  doi          = {10.48550/ARXIV.2301.04205},
+  abstract    = {Performance verification is a nascent but promising tool for understanding the performance and limitations of heuristics under realistic assumptions. Bespoke performance verification tools have already demonstrated their value in settings like congestion control and packet scheduling. In this paper, we aim to emphasize the broad applicability and utility of performance verification. To that end, we highlight the design principles of performance verification. Then, we leverage that understanding to develop a set of easy-to-follow guidelines that are applicable to a wide range of resource allocation heuristics. In particular, we introduce Virelay, a framework that enables heuristic designers to express the behavior of their algorithms and their assumptions about the system in an environment that resembles a discrete-event simulator. We demonstrate the utility and ease-of-use of Virelay by applying it to six diverse case studies. We produce bounds on the performance of classical algorithms, work stealing and SRPT scheduling, under practical assumptions. We demonstrate Virelay's expressiveness by capturing existing models for congestion control and packet scheduling, and we verify the observation that TCP unfairness can cause some ML training workloads to spontaneously converge to a state of high network utilization. Finally, we use Virelay to identify two bugs in the Linux CFS load balancer.}
+}
+
 
 @inproceedings{bhosale-astolabe-leonet-2023,
   author = {Vaibhav Bhosale and 
