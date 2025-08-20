@@ -1,3 +1,23 @@
+@inproceedings{bhosale-leo-failover-imc-2025,
+  author      = {Vaibhav Bhosale and
+                  Ying Zhang and
+                  Sameer Kapoor and
+                  Robin Kim and
+                  Miguel Schlicht and
+                  Muskaan Gupta and
+                  Ekaterina Tumanova and
+                  Zachary Bischof and
+                  Fabi'an E. Bustamante and
+                  Alberto Dainotti and
+                  Ahmed Saeed},
+  title       = {Assessing LEO Satellite Networks for National Emergency Failover},
+  booktitle   = {Proceedings of the 2025 ACM Internet Measurement Conference (IMC '25)},
+  series      = {IMC '25},
+  publisher   = {ACM},
+  year        = {2025},
+  abstract  = {In this paper, we study the viability of LEO networks as a failover network. We contextualize our analysis by framing the capacity of satellite networks relative to lost capacity due to submarine cable failure. Specifically, we focus on scenarios where LEO networks act as failovers for submarine cables, providing a concrete target capacity to be fulfilled by the satellite network. We introduce a new model and simulator that help us estimate the failover capacity. We identify key factors determining the actual capacity available on the satellite network: the total area of the country, the terminal distribution policy used by the government, the spectrum allocation and traffic engineering policies used by the LEO network operator. Based on our findings, we make policy recommendations to governments that can result in an increase of up to 1.8× in the failover capacity without requiring additional infrastructure. However, we find after implementing all our recommendations, with 200k terminals deployed and no competing traffic in the network, a satellite network can only satisfy 0.9-14.7% of the capacity lost due to submarine cable failure in four out of six case studies.}
+}
+
 @inproceedings{pardeshi-coresync-icnp-2025,
   author      = {Bhaskar Pardeshi and
                 Eric Stuhr and
@@ -7,6 +27,8 @@
   series      = {ICNP '25},
   publisher   = {IEEE},
   year        = {2025},
+  code        = {https://github.com/GT-ANSR-Lab/CoreSync},
+  url         = {http://saeed.github.io/files/coresync-icnp25.pdf},
   abstract  = {Modern datacenter operators require high resource utilization and low application latency, multiplexing the resources of individual servers between multiple applications, while minimizing latency faced by their requests, even at high loads. To meet these objectives, servers employ multiple resource management algorithms, including fast core schedulers and overload controllers. Individual algorithms and their amalgamation are required to meet these tight performance requirements. In this paper, we demonstrate that state-of-the-art core schedulers and overload controllers produce poor performance when deployed simultaneously. Fundamentally, the design assumptions of each controller are violated by the other controller. An overload controller assumes that all resources are dedicated to an application, while a core scheduler assumes that all incoming load will be admitted. To overcome this fundamental limitation, we present CoreSync, a server-driven credit-based protocol for joint core scheduling and overload control. CoreSync relies on the basic idea that the admitted load should be proportional to the allocated resources. However, strict proportionality can lead to low utilization when admitted load does not materialize at the server (e.g., when demand drops). Thus, CoreSync uses partial proportionality to balance latency, throughput, and utilization. Our evaluation across synthetic and real-world workloads shows that CoreSync outperforms state-of-the-art schedulers and overload controllers. In particular, in overload scenarios, CoreSync improves throughput by up to 6%. At low loads, CoreSync reduces the 99th percentile latency by up to 1.7× and improves CPU utilization by up to 1.4×.}
 }
 
