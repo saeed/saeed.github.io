@@ -84,22 +84,22 @@
   abstract  = {QUIC is experiencing phenomenal success as a low-latency, secure, and flexible protocol, adopted and deployed by multiple hyperscale content providers. However, the throughput of all its implementations remains remarkably low compared to that of TCP + TLS. Approaches to accelerating QUIC's throughput remain scattered, applied to a single implementation at a time, and one approach at a time. In this paper, we systematically identify the different bottlenecks that arise in different implementations. We use our findings to propose an application-agnostic architecture to accelerate single-connection throughput in QUIC. We demonstrate the value of our proposal by accelerating two implementations: quicly and mvfst, improving their throughput by 1.36× and 1.88× respectively, compared to their baseline implementations.}
 }
 
-
-@inproceedings{lei-caas-leonet-2024,
-  author      = {Demi Lei and
-                 Ahmed Saeed},
-  title       = {Do We Need a Million Satellites in Orbit?},
-  booktitle   = {The 2nd ACM Workshop on LEO Networking and Communication 2024 (LEO-NET)},
-  series	    = {LEO-NET '24},
-  pages	      = {61--66},
-  publisher   = {ACM},
-  year        = {2024},
-  url         = {http://saeed.github.io/files/caas_leonet24.pdf},
-  code        = {https://github.com/GT-ANSR-Lab/CaaS-Simulator},
-  doi         = {10.1145/3697253.3697262},
-  abstract  = {In this paper, we argue that deploying many mission-specific satellite mega-constellations incurs significant monetary and environmental costs. Instead, we propose launching a single or a small number of mega-constellations equipped with heterogeneous computing, communication, storage, and sensing capabilities, allowing them to offer a broad range of services to customers who no longer need to launch their own satellites. We argue that the hardware technology for building such platforms is already widely accessible. Thus, we highlight the algorithmic and systems challenges that the community needs to address to enable cost-efficient and secure constellation-as-a-service platforms. We also develop a simulator that allows for experimenting with different scheduling algorithms for constellation-as-a-service platforms.}
+@inproceedings{cho-ldb-nsdi-2024,
+  author    = {Inho Cho and
+               Seo Jin Park and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {LDB: An Efficient Latency Debugging Tool for Datacenter Applications },
+  booktitle = {Proceedings of the 21th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '24},
+  publisher = {{USENIX} Association},
+  year      = {2024},
+  url       = {http://saeed.github.io/files/ldb_nsdi24.pdf},
+  code      = {https://github.com/inhocho89/llvm14-ldb},
+  abstract  = {Maintaining low tail latency is critical for the efficiency and performance of large-scale datacenter systems. Software bugs that cause tail latency problems, however, are notoriously difficult to debug. We present LDB, a new latency profiling tool that aims to overcome this challenge by precisely identifying the specific functions that are responsible for tail latency anomalies. LDB observes the latency of all functions in a running program. It uses a novel, software-only technique called stack sampling, where a busy-spinning stack scanner thread polls light-weight metadata recorded in call frames, shifting instrumentation cost away from program threads. In addition, LDB uses event tagging to record requests, inter-thread synchronization, and context switching. This can be used, for example, to generate per-request timelines and to find the root cause of complex tail latency problems such as lock contention in multi-threaded programs. We evaluate LDB with four datacenter workloads, finding latency problems in each. Our results further show that LDBproduces actionable insights, has low overhead, and can rapidly analyze recordings, making it feasible to use in production settings.}
 }
- 
+
 @inproceedings{bortha-archie-hotnets-2024,
   author       = {Rahul Bothra and
                   Venkat Arun and
@@ -116,24 +116,52 @@
   doi          = {10.1145/3696348.3696865},
   abstract = {Architecting a modern data center network is increasingly complicated. Seeking the highest performance and support for emerging workloads, network architects planning a build-out must choose from a large selection of switching components, NICs, network stacks, congestion control algorithms, routing schemes, measurement systems, virtualization software, centralized bandwidth allocators and security mechanisms, all from various vendors. Today, manual planning by human experts is time-consuming at best, and can easily result in overlooked design choices or missed complex inter-dependencies. We propose a radical departure from typical whiteboard-and-spreadsheet planning, and ask: is it possible to reason automatically about possible network architectural designs? Such an approach is nontrivial since formal reasoning about even a single component (like routing systems) is difficult, and we seek to understand how a variety of functional components fit together. We explore the challenge through examples and propose an automated lightweight reasoning framework that models architectural complexities at a broad, but shallow, level of abstraction. Such a framework could serve as a useful design tool for network architects, for careful cross-team planning, and even to help vendors plan product features and requirements.}
 }
-  
-  
 
-@inproceedings{cho-ldb-nsdi-2024,
+@inproceedings{lei-caas-leonet-2024,
+  author      = {Demi Lei and
+                 Ahmed Saeed},
+  title       = {Do We Need a Million Satellites in Orbit?},
+  booktitle   = {The 2nd ACM Workshop on LEO Networking and Communication 2024 (LEO-NET)},
+  series	    = {LEO-NET '24},
+  pages	      = {61--66},
+  publisher   = {ACM},
+  year        = {2024},
+  url         = {http://saeed.github.io/files/caas_leonet24.pdf},
+  code        = {https://github.com/GT-ANSR-Lab/CaaS-Simulator},
+  doi         = {10.1145/3697253.3697262},
+  abstract  = {In this paper, we argue that deploying many mission-specific satellite mega-constellations incurs significant monetary and environmental costs. Instead, we propose launching a single or a small number of mega-constellations equipped with heterogeneous computing, communication, storage, and sensing capabilities, allowing them to offer a broad range of services to customers who no longer need to launch their own satellites. We argue that the hardware technology for building such platforms is already widely accessible. Thus, we highlight the algorithmic and systems challenges that the community needs to address to enable cost-efficient and secure constellation-as-a-service platforms. We also develop a simulator that allows for experimenting with different scheduling algorithms for constellation-as-a-service platforms.}
+}
+
+@inproceedings{cho-protego-nsdi-2023,
   author    = {Inho Cho and
-               Seo Jin Park and
                Ahmed Saeed and
+               Seo Jin Park and
                Mohammad Alizadeh and
                Adam Belay},
-  title     = {LDB: An Efficient Latency Debugging Tool for Datacenter Applications },
-  booktitle = {Proceedings of the 21th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
-  series    = {NSDI '24},
+  title     = {Protego: Overload Control for Applications with Unpredictable Lock Contention},
+  booktitle = {Proceedings of the 20th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '23},
   publisher = {{USENIX} Association},
-  year      = {2024},
-  url       = {http://saeed.github.io/files/ldb_nsdi24.pdf},
-  code      = {https://github.com/inhocho89/llvm14-ldb},
-  abstract  = {Maintaining low tail latency is critical for the efficiency and performance of large-scale datacenter systems. Software bugs that cause tail latency problems, however, are notoriously difficult to debug. We present LDB, a new latency profiling tool that aims to overcome this challenge by precisely identifying the specific functions that are responsible for tail latency anomalies. LDB observes the latency of all functions in a running program. It uses a novel, software-only technique called stack sampling, where a busy-spinning stack scanner thread polls light-weight metadata recorded in call frames, shifting instrumentation cost away from program threads. In addition, LDB uses event tagging to record requests, inter-thread synchronization, and context switching. This can be used, for example, to generate per-request timelines and to find the root cause of complex tail latency problems such as lock contention in multi-threaded programs. We evaluate LDB with four datacenter workloads, finding latency problems in each. Our results further show that LDBproduces actionable insights, has low overhead, and can rapidly analyze recordings, making it feasible to use in production settings.}
-}
+  year      = {2023},
+  url       = {https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf},
+  code      = {https://github.com/inhocho89/shenango-protego/tree/protego/breakwater},
+  video     = {https://www.youtube.com/watch?v=IDzqZ6JmtMs},
+  abstract  = {Modern datacenter applications are concurrent, so they require synchronization to control access to shared data. Requests can contend for different combinations of locks, depending on application and request state. In this paper, we show that locks, especially blocking synchronization, can squander throughput and harm tail latency, even when the CPU is underutilized. Moreover, the presence of a large number of contention points, and the unpredictability in knowing which locks a request will require, make it difficult to prevent contention through overload control using traditional signals such as queueing delay and CPU utilization. We present Protego, a system that resolves these problems with two key ideas. First, it contributes a new admission control strategy that prevents compute congestion in the presence of lock contention. The key idea is to use marginal improvements in observed throughput, rather than CPU load or latency measurements, within a credit-based admission control algorithm that regulates the rate of incoming requests to a server. Second, it introduces a new latency-aware synchronization abstraction called Active Synchronization Queue Management (ASQM) that allows applications to abort requests if delays exceed latency objectives. We apply Protego to two real-world applications, Lucene and Memcached, and show that it achieves up to 3.3x more goodput and 12.2x lower 99th percentile latency than the state-of-the-art overload control systems while avoiding congestion collapse.}
+} 
+  
+ @inproceedings{bhosale-leo-study-pam-2023,
+  author = {Vaibhav Bhosale and 
+                  Ahmed Saeed and  
+                  Ketan Bhardwaj and 
+                  Ada Gavrilovska},
+  title = {A Characterization of Route Variability in LEO Satellite Networks},  
+  booktitle = {Proceedings of the 24nd International Conference on Passive and Active Measurement ({PAM})},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  year      = {2023},
+  url       = {http://saeed.github.io/files/leo_study_pam2023.pdf},
+  video     = {https://www.youtube.com/watch?v=h972BkrD_Pk},
+  abstract  = {LEO satellite networks possess highly dynamic topologies, with satellites moving at 27,000 km/hour to maintain their orbit. As satellites move, the characteristics of the satellite network routes change, triggering rerouting events. Frequent rerouting can cause poor performance for path-adaptive algorithms (e.g., congestion control). In this paper, we provide a thorough characterization of route variability in LEO satellite networks, focusing on route churn and RTT variability. We show that high route churn is common, with most paths used for less than half of their lifetime. With some paths used for just a few seconds. This churn is also unnecessary with rerouting leading to marginal gains in most cases (e.g., less than a 15\% reduction in RTT). Moreover, we show that the high route churn is harmful to network utilization and congestion control performance. By examining RTT variability, we find that the smallest achievable RTT between two ground stations can increase by $2.5\times$ as satellites move in their orbits. We show that the magnitude of RTT variability depends on the location of the communicating ground stations, exhibiting a spatial structure.  Finally, we show that adding more satellites, and providing more routes between stations, does not necessarily reduce route variability. Rather, constellation configuration (i.e., the number of orbits and their inclination) plays a more significant role. We hope that the findings of this study will help with designing more robust routing algorithms for LEO satellite networks. }}
 
 @techreport{virelay-goel-tr-2023,
   author      = {Saksham Goel and
@@ -167,36 +195,7 @@
 
 
 
-@inproceedings{bhosale-leo-study-pam-2023,
-  author = {Vaibhav Bhosale and 
-                  Ahmed Saeed and  
-                  Ketan Bhardwaj and 
-                  Ada Gavrilovska},
-  title = {A Characterization of Route Variability in LEO Satellite Networks},  
-  booktitle = {Proceedings of the 24nd International Conference on Passive and Active Measurement ({PAM})},
-  series    = {Lecture Notes in Computer Science},
-  publisher = {Springer},
-  year      = {2023},
-  url       = {http://saeed.github.io/files/leo_study_pam2023.pdf},
-  video     = {https://www.youtube.com/watch?v=h972BkrD_Pk},
-  abstract  = {LEO satellite networks possess highly dynamic topologies, with satellites moving at 27,000 km/hour to maintain their orbit. As satellites move, the characteristics of the satellite network routes change, triggering rerouting events. Frequent rerouting can cause poor performance for path-adaptive algorithms (e.g., congestion control). In this paper, we provide a thorough characterization of route variability in LEO satellite networks, focusing on route churn and RTT variability. We show that high route churn is common, with most paths used for less than half of their lifetime. With some paths used for just a few seconds. This churn is also unnecessary with rerouting leading to marginal gains in most cases (e.g., less than a 15\% reduction in RTT). Moreover, we show that the high route churn is harmful to network utilization and congestion control performance. By examining RTT variability, we find that the smallest achievable RTT between two ground stations can increase by $2.5\times$ as satellites move in their orbits. We show that the magnitude of RTT variability depends on the location of the communicating ground stations, exhibiting a spatial structure.  Finally, we show that adding more satellites, and providing more routes between stations, does not necessarily reduce route variability. Rather, constellation configuration (i.e., the number of orbits and their inclination) plays a more significant role. We hope that the findings of this study will help with designing more robust routing algorithms for LEO satellite networks. }}
 
-@inproceedings{cho-protego-nsdi-2023,
-  author    = {Inho Cho and
-               Ahmed Saeed and
-               Seo Jin Park and
-               Mohammad Alizadeh and
-               Adam Belay},
-  title     = {Protego: Overload Control for Applications with Unpredictable Lock Contention},
-  booktitle = {Proceedings of the 20th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
-  series    = {NSDI '23},
-  publisher = {{USENIX} Association},
-  year      = {2023},
-  url       = {https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf},
-  code      = {https://github.com/inhocho89/shenango-protego/tree/protego/breakwater},
-  video     = {https://www.youtube.com/watch?v=IDzqZ6JmtMs},
-  abstract  = {Modern datacenter applications are concurrent, so they require synchronization to control access to shared data. Requests can contend for different combinations of locks, depending on application and request state. In this paper, we show that locks, especially blocking synchronization, can squander throughput and harm tail latency, even when the CPU is underutilized. Moreover, the presence of a large number of contention points, and the unpredictability in knowing which locks a request will require, make it difficult to prevent contention through overload control using traditional signals such as queueing delay and CPU utilization. We present Protego, a system that resolves these problems with two key ideas. First, it contributes a new admission control strategy that prevents compute congestion in the presence of lock contention. The key idea is to use marginal improvements in observed throughput, rather than CPU load or latency measurements, within a credit-based admission control algorithm that regulates the rate of incoming requests to a server. Second, it introduces a new latency-aware synchronization abstraction called Active Synchronization Queue Management (ASQM) that allows applications to abort requests if delays exceed latency objectives. We apply Protego to two real-world applications, Lucene and Memcached, and show that it achieves up to 3.3x more goodput and 12.2x lower 99th percentile latency than the state-of-the-art overload control systems while avoiding congestion collapse.}
-}
 
 @inproceedings{arun-ccac-sigcomm-2021,
   author    = {Venkat Arun and
@@ -312,6 +311,32 @@
   abstract  = {Cloud services are deployed in datacenters connected though high-bandwidth Wide Area Networks (WANs). We find that WAN traffic negatively impacts the performance of datacenter traffic, increasing tail latency by 2.5×, despite its small bandwidth demand. This behavior is caused by the long round-trip time (RTT) for WAN traffic, combined with limited buffering in datacenter switches. The long WAN RTT forces datacenter traffic to take the full burden of reacting to congestion. Furthermore, datacenter traffic changes on a faster time-scale than the WAN RTT, making it difficult for WAN congestion control to estimate available bandwidth accurately. We present Annulus, a congestion control scheme that relies on two control loops to address these challenges. One control loop leverages existing congestion control algorithms for bottlenecks where there is only one type of traffic (i.e., WAN or datacenter). The other loop handles bottlenecks shared between WAN and datacenter traffic near the traffic source, using direct feedback from the bottleneck. We implement Annulus on a testbed and in simulation. Compared to baselines using BBR for WAN congestion control and DCTCP or DCQCN for datacenter congestion control, Annulus increases bottleneck utilization by 10% and lowers datacenter flow completion time by 1.3-3.5×.}
 }
 
+@inproceedings{saeed-eiffel-nsdi-2019,
+  author    = {Ahmed Saeed and
+               Yimeng Zhao and
+               Nandita Dukkipati and
+               Ellen W. Zegura and
+               Mostafa H. Ammar and
+               Khaled Harras and
+               Amin Vahdat},
+  editor    = {Jay R. Lorch and Minlan Yu},
+  title     = {Eiffel: Efficient and Flexible Software Packet Scheduling},
+  booktitle = {Proceedings of the 16th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '19},
+  pages     = {17--32},
+  publisher = {{USENIX} Association},
+  year      = {2019},
+  url       = {http://saeed.github.io/files/eiffel_nsdi19.pdf},
+  notes     = {https://arxiv.org/pdf/1810.03060.pdf},
+  slides    = {http://saeed.github.io/files/eiffel_nsdi_slides.pdf},
+  video     = {https://youtu.be/Oijnef-C_44},
+  code      = {http://saeed.github.io/eiffel},
+  timestamp = {Tue, 02 Feb 2021 08:05:46 +0100},
+  biburl    = {https://dblp.org/rec/conf/nsdi/0001ZDZAHV19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Packet scheduling determines the ordering of packets in a queuing data structure with respect to some ranking function that is mandated by a scheduling policy. It is the core component in many recent innovations to optimize network performance and utilization. Our focus in this paper is on the design and deployment of packet scheduling in software. Software schedulers have several advantages over hardware including shorter development cycle and flexibility in functionality and deployment location. We substantially improve current software packet scheduling performance, while maintaining flexibility, by exploiting underlying features of packet ranking; namely, packet ranks are integers and, at any point in time, fall within a limited range of values. We introduce Eiffel, a novel programmable packet scheduling system. At the core of Eiffel is an integer priority queue based on the Find First Set (FFS) instruction and designed to support a wide range of policies and ranking functions efficiently. As an even more efficient alternative, we also propose a new approximate priority queue that can outperform FFS-based queues for some scenarios. To support flexibility, Eiffel introduces novel programming abstractions to express scheduling policies that cannot be captured by current, state-of-the-art scheduler programming models. We evaluate Eiffel in a variety of settings and in both kernel and userspace deployments. We show that it outperforms state of the art systems by 3-40x in terms of either number of cores utilized for network processing or number of flows given fixed processing capacity.}
+}
+
 @article{saeed-argus2-tosn-2019,
   author    = {Ahmed Saeed and
                Ahmed Abdelkader and
@@ -375,31 +400,6 @@
   abstract  = {BGP was initially created assuming by default that all ASes are equal. Its policies and protocols, namely BGP, evolved to accommodate a hierarchical Internet, allowing an autonomous system more control over outgoing traffic than incoming traffic. However, the modern Internet is flat, making BGP asymmetrical. In particular, routing decisions are mostly in the hands of traffic sources (i.e., content providers). This leads to suboptimal routing decisions as traffic sources can only estimate route capacity at the destination (i.e., ISP). In this paper, we present the design of Unison, a system that allows an ISP to jointly optimize its intra-domain routes and inter-domain routes, in collaboration with content providers. Unison provides the ISP operator and the neighbors of the ISP with an abstraction ISP network in the form of a virtual switch. This abstraction allows the content providers to program the virtual switch with their requirements. It also allows the ISP to use that information to optimize the overall performance of its network. We show through extensive simulations that Unison can improve ISP throughput by up to 30% through cooperation with content providers. We also show that cooperation of content providers only improves performance, even for non-cooperating content providers (e.g., a single cooperating neighbour can improve ISP throughput by up to 6%).}
 }
 
-@inproceedings{saeed-eiffel-nsdi-2019,
-  author    = {Ahmed Saeed and
-               Yimeng Zhao and
-               Nandita Dukkipati and
-               Ellen W. Zegura and
-               Mostafa H. Ammar and
-               Khaled Harras and
-               Amin Vahdat},
-  editor    = {Jay R. Lorch and Minlan Yu},
-  title     = {Eiffel: Efficient and Flexible Software Packet Scheduling},
-  booktitle = {Proceedings of the 16th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
-  series    = {NSDI '19},
-  pages     = {17--32},
-  publisher = {{USENIX} Association},
-  year      = {2019},
-  url       = {http://saeed.github.io/files/eiffel_nsdi19.pdf},
-  notes     = {https://arxiv.org/pdf/1810.03060.pdf},
-  slides    = {http://saeed.github.io/files/eiffel_nsdi_slides.pdf},
-  video     = {https://youtu.be/Oijnef-C_44},
-  code      = {http://saeed.github.io/eiffel},
-  timestamp = {Tue, 02 Feb 2021 08:05:46 +0100},
-  biburl    = {https://dblp.org/rec/conf/nsdi/0001ZDZAHV19.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org},
-  abstract  = {Packet scheduling determines the ordering of packets in a queuing data structure with respect to some ranking function that is mandated by a scheduling policy. It is the core component in many recent innovations to optimize network performance and utilization. Our focus in this paper is on the design and deployment of packet scheduling in software. Software schedulers have several advantages over hardware including shorter development cycle and flexibility in functionality and deployment location. We substantially improve current software packet scheduling performance, while maintaining flexibility, by exploiting underlying features of packet ranking; namely, packet ranks are integers and, at any point in time, fall within a limited range of values. We introduce Eiffel, a novel programmable packet scheduling system. At the core of Eiffel is an integer priority queue based on the Find First Set (FFS) instruction and designed to support a wide range of policies and ranking functions efficiently. As an even more efficient alternative, we also propose a new approximate priority queue that can outperform FFS-based queues for some scenarios. To support flexibility, Eiffel introduces novel programming abstractions to express scheduling policies that cannot be captured by current, state-of-the-art scheduler programming models. We evaluate Eiffel in a variety of settings and in both kernel and userspace deployments. We show that it outperforms state of the art systems by 3-40x in terms of either number of cores utilized for network processing or number of flows given fixed processing capacity.}
-}
 
 @inproceedings{abdullah-lte-tma-2019,
   author    = {Kareem Abdullah and
@@ -446,6 +446,29 @@
   abstract  = {The basic MAC mechanisms in IEEE 802.11 (WiFi) have remained largely unchanged for over 20 years. In this paper, we argue that the prevalence of WiFi makes it almost impossible to improve its performance through changes that require modifying hardware, firmware, or drivers. New applications, however, continue to exert novel performance demands. We suggest that changes should be developed as augmentation-only solutions through above-driver, kernel-level software modifications. An augmentation-only solution needs to maintain inter-operability and afford transparency in performance to existing WiFi devices, as well as enable minimum overhead upgradability. Our goal is to demonstrate the feasibility of MAC augmentation according to these principles. To this end, we leverage soft scheduling, where nodes are asked for a best-effort attempt to adhere to a given schedule. We allow the soft scheduler to coexist with and work at a different time scale from WiFi’s Distributed Coordination Function (DCF); allowing it to reduce the time nodes spend contending for the medium while allowing DCF to handle only missed schedule slots and schedule divergence. We present a new Soft Token Passing Protocol (STPP) as an instance of this family of Soft Scheduling Protocols. We then show how STPP can be made part of a MAC protocol with specific performance improvement goals by developing the Wireless Low-Latency Local Links (WL4) system. We evaluate WL4 on a five node microbenchmark and quantify the system’s overhead on network throughput and latency. We show that soft scheduling, via STPP, enables WL4 to adhere to our augmentation principles while improving the latency within the system.}
 }
 
+@inproceedings{saeed-carousel-sigcomm-2017,
+  author    = {Ahmed Saeed and
+               Nandita Dukkipati and
+               Vytautas Valancius and
+               Vinh The Lam and
+               Carlo Contavalli and
+               Amin Vahdat},
+  title     = {Carousel: Scalable Traffic Shaping at End Hosts},
+  booktitle = {Proceedings of the 2017 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
+  series    = {SIGCOMM '17},
+  pages     = {404--417},
+  publisher = {{ACM}},
+  year      = {2017},
+  url       = {http://saeed.github.io/files/carousel-sigcomm17.pdf},
+  slides    = {http://saeed.github.io/files/carousel_sigcomm_final.pdf},
+  video     = {https://youtu.be/0Q8ROfwH9aQ},
+  doi       = {10.1145/3098822.3098852},
+  timestamp = {Tue, 06 Nov 2018 11:07:11 +0100},
+  biburl    = {https://dblp.org/rec/conf/sigcomm/SaeedDVLCV17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Traffic shaping, including pacing and rate limiting, is fundamental to the correct and effcient operation of both datacenter and wide area networks. Sample use cases include policy-based bandwidth allocation to flow aggregates, rate-based congestion control algorithms, and packet pacing to avoid bursty transmissions that can overwhelm router buffers. Driven by the need to scale to millions of flows and to apply complex policies, traffic shaping is moving from network switches into the end hosts, typically implemented in software in the kernel networking stack. In this paper, we show that the performance overhead of end-host traffic shaping is substantial limits overall system scalability as we move to thousands of individual traffic classes per server. Measurements from production servers show that shaping at hosts consumes considerable CPU and memory, unnecessarily drops packets, suffers from head of line blocking and inaccuracy, and does not provide backpressure up the stack. We present Carousel, a framework that scales to tens of thousands of policies and flows per server, built from the synthesis of three key ideas: i) a single queue shaper using time as the basis for releasing packets, ii) fine-grained, just-in-time freeing of resources in higher layers coupled to actual packet departures, and iii) one shaper per CPU core, with lock-free coordination. Our production experience in serving video traffic at a Cloud service provider shows that Carousel shapes traffic accurately while improving overall machine CPU utilization by 8% (an improvement of 20% in the CPU utilization attributed to networking) relative to state-of-art deployments. It also conforms 10 times more accurately to target rates, and consumes two orders of magnitude less memory than existing approaches.}
+}
+
 @inproceedings{saeed-waldo-icdcs-2017,
   author    = {Ahmed Saeed and
                Khaled A. Harras and
@@ -489,30 +512,6 @@
   bibsource = {dblp computer science bibliography, https://dblp.org},
   abstract  = {Low-cost mini-drones with advanced sensing and maneuverability enable a new class of intelligent visual sensing systems. This potential motivated several research efforts to employ drones as standalone surveillance systems or to assist legacy deployments. However, several fundamental challenges remain unsolved including: 1) Adequate coverage of sizable targets; 2) Target orientation that render coverage effective only from certain directions; 3) Occlusion by elements in the environment, including other targets. In this paper, we present Argus, a system that provides visual coverage of wide and oriented targets, using camera-mounted drones, taking into account the challenges stated above. Argus relies on a geometric model that captures both target shapes and coverage constraints. With drones being the scarcest resource in Argus, we study the problem of minimizing the number of drones required to cover a set of such targets and derive a best-possible approximation algorithm. Building upon that, we present a sampling heuristic performs favorably yet is up to 100x faster compared to the approximation algorithm. We implement a complete prototype of Argus to demonstrate and evaluate the proposed coverage algorithms within a fully autonomous surveillance system. Finally, we evaluate the proposed algorithms via simulations to compare their performance at scale under various conditions.}
 }
-
-@inproceedings{saeed-carousel-sigcomm-2017,
-  author    = {Ahmed Saeed and
-               Nandita Dukkipati and
-               Vytautas Valancius and
-               Vinh The Lam and
-               Carlo Contavalli and
-               Amin Vahdat},
-  title     = {Carousel: Scalable Traffic Shaping at End Hosts},
-  booktitle = {Proceedings of the 2017 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
-  series    = {SIGCOMM '17},
-  pages     = {404--417},
-  publisher = {{ACM}},
-  year      = {2017},
-  url       = {http://saeed.github.io/files/carousel-sigcomm17.pdf},
-  slides    = {http://saeed.github.io/files/carousel_sigcomm_final.pdf},
-  video     = {https://youtu.be/0Q8ROfwH9aQ},
-  doi       = {10.1145/3098822.3098852},
-  timestamp = {Tue, 06 Nov 2018 11:07:11 +0100},
-  biburl    = {https://dblp.org/rec/conf/sigcomm/SaeedDVLCV17.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org},
-  abstract  = {Traffic shaping, including pacing and rate limiting, is fundamental to the correct and effcient operation of both datacenter and wide area networks. Sample use cases include policy-based bandwidth allocation to flow aggregates, rate-based congestion control algorithms, and packet pacing to avoid bursty transmissions that can overwhelm router buffers. Driven by the need to scale to millions of flows and to apply complex policies, traffic shaping is moving from network switches into the end hosts, typically implemented in software in the kernel networking stack. In this paper, we show that the performance overhead of end-host traffic shaping is substantial limits overall system scalability as we move to thousands of individual traffic classes per server. Measurements from production servers show that shaping at hosts consumes considerable CPU and memory, unnecessarily drops packets, suffers from head of line blocking and inaccuracy, and does not provide backpressure up the stack. We present Carousel, a framework that scales to tens of thousands of policies and flows per server, built from the synthesis of three key ideas: i) a single queue shaper using time as the basis for releasing packets, ii) fine-grained, just-in-time freeing of resources in higher layers coupled to actual packet departures, and iii) one shaper per CPU core, with lock-free coordination. Our production experience in serving video traffic at a Cloud service provider shows that Carousel shapes traffic accurately while improving overall machine CPU utilization by 8% (an improvement of 20% in the CPU utilization attributed to networking) relative to state-of-art deployments. It also conforms 10 times more accurately to target rates, and consumes two orders of magnitude less memory than existing approaches.}
-}
-
 
 @article{saeed-dynawhite-netmag-2015,
   author    = {Ahmed Saeed and
