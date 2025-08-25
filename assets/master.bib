@@ -11,7 +11,7 @@
                   Alberto Dainotti and
                   Ahmed Saeed},
   title       = {Assessing LEO Satellite Networks for National Emergency Failover},
-  booktitle   = {Proceedings of the 2025 ACM Internet Measurement Conference (IMC '25)},
+  booktitle   = {Proceedings of the 2025 ACM Internet Measurement Conference (IMC)},
   series      = {IMC '25},
   publisher   = {ACM},
   year        = {2025},
@@ -31,6 +31,20 @@
   url         = {http://saeed.github.io/files/coresync-icnp25.pdf},
   abstract  = {Modern datacenter operators require high resource utilization and low application latency, multiplexing the resources of individual servers between multiple applications, while minimizing latency faced by their requests, even at high loads. To meet these objectives, servers employ multiple resource management algorithms, including fast core schedulers and overload controllers. Individual algorithms and their amalgamation are required to meet these tight performance requirements. In this paper, we demonstrate that state-of-the-art core schedulers and overload controllers produce poor performance when deployed simultaneously. Fundamentally, the design assumptions of each controller are violated by the other controller. An overload controller assumes that all resources are dedicated to an application, while a core scheduler assumes that all incoming load will be admitted. To overcome this fundamental limitation, we present CoreSync, a server-driven credit-based protocol for joint core scheduling and overload control. CoreSync relies on the basic idea that the admitted load should be proportional to the allocated resources. However, strict proportionality can lead to low utilization when admitted load does not materialize at the server (e.g., when demand drops). Thus, CoreSync uses partial proportionality to balance latency, throughput, and utilization. Our evaluation across synthetic and real-world workloads shows that CoreSync outperforms state-of-the-art schedulers and overload controllers. In particular, in overload scenarios, CoreSync improves throughput by up to 6%. At low loads, CoreSync reduces the 99th percentile latency by up to 1.7× and improves CPU utilization by up to 1.4×.}
 }
+
+@inproceedings{hussien-coresync-model-mascots-2025,
+  author      = {Jehad Hussien and
+                Pratyush Sahu and
+                Eric Stuhr and
+                Ahmed Saeed},
+  title       = {Modeling the Interactions between Core Allocation and Overload Control in μs-Scale Network Stacks},
+  booktitle   = {33rd International Symposium on the Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)},
+  series      = {MASCOTS '25},
+  publisher   = {IEEE},
+  year        = {2025},
+  abstract  = {Modern datacenter operators aim to maximize the utilization of limited resources, especially CPU cores. Achieving such an objective requires fast and accurate core scheduling policies. Operating at high utilization requires the employment of overload controllers that shed excess load beyond the allocated capacity. Core allocation and overload control algorithms belong to different parts of the stack (that is, the operating system and the RPC library, respectively). Thus, it is typical for them to be designed, analyzed, and deployed separately. However, system performance is affected by their combined behavior, requiring tools to analyze interactions between the two controllers. Currently, no analytical techniques are available to study the interactions between these controllers. In this paper, we use performance verification to establish bounds on the throughput and latency achieved by a server that employs fine-grained core allocation and overload control mechanisms. Performance verification leverages recent advances in formal verification techniques to model a system as a set of satisfiability modulo theories (SMT) formulas. An SMT solver is used to find satisfying assignments to the model that result in certain performance properties (e.g., low throughput or high latency). Our model enables system performance analysis under a wide range of workload and system configurations (e.g., RTT, load, and burstiness). We show that worst-case throughput and latency degrade by 1.8× and 2.3×, respectively, under high load and burstiness due to the interactions between overload control and fast core allocation. We validate our findings using simulations that demonstrate the plausibility of the identified worst-case behavior under realistic conditions.}
+}
+
 
 @inproceedings{bhosale-leo-failover-tprc-2025,
   author      = {Vaibhav Bhosale and
@@ -129,6 +143,7 @@
                   Ahmed Saeed and
                   Aditya Akella},
   title       = {A Performance Verification Methodology for Resource Allocation Heuristics},
+  booktitle    = {arXiv},
   year        = {2023},
   url          = {https://arxiv.org/pdf/2301.04205},
   doi          = {10.48550/ARXIV.2301.04205},
