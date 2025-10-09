@@ -86,6 +86,19 @@
   abstract  = {QUIC is experiencing phenomenal success as a low-latency, secure, and flexible protocol, adopted and deployed by multiple hyperscale content providers. However, the throughput of all its implementations remains remarkably low compared to that of TCP + TLS. Approaches to accelerating QUIC's throughput remain scattered, applied to a single implementation at a time, and one approach at a time. In this paper, we systematically identify the different bottlenecks that arise in different implementations. We use our findings to propose an application-agnostic architecture to accelerate single-connection throughput in QUIC. We demonstrate the value of our proposal by accelerating two implementations: quicly and mvfst, improving their throughput by 1.36× and 1.88× respectively, compared to their baseline implementations.}
 }
 
+@inproceedings{song-nanomodular-placement-arxiv-2025,
+  author      = {Peidi Song and
+                 Alexandros Daglis and
+                 Michael Filler and
+                 Ahmed Saeed},
+  title       = {Algorithmic Tradeoff Exploration for Component Placement and Wire Routing in Nanomodular Electronics},
+  booktitle   = {arXiv},
+  year        = {2025},
+  url         = {https://arxiv.org/pdf/2510.03126},
+  doi         = {10.48550/arXiv.2510.03126},
+  abstract  = {Advances in fabrication technology have enabled modularizing electronic components at the micro- or nano-scale and composing these modules on demand into larger circuits. Micromodular and nanomodular electronics (ME and NE) open a new design space in electronics, promising a degree of flexibility, extensibility, and accessibility far superior to traditional monolithic methods. ME/NE leverage a multi-stage process of initial imprecise component deposition, followed by precise wire printing to compose them into a circuit. Due to imperfections in deposition, each circuit instance has a unique layout with its own component placement and wire routing solutions, putting the design automation process on the critical path. Moreover, high-performance nanomodular components enable the synthesis of larger heterogeneous circuits than traditional printed electronics, requiring more scalable algorithms. ME/NE thus introduce a tradeoff between the time-to-solution for placement/routing algorithms and the resulting total wire length, with the latter dictating circuit printing time. We explore this tradeoff by adapting standard partitioning, floorplanning, placement, and routing algorithms to the unique characteristics of ME/NE. Our evaluations demonstrate significant optimization headroom in different dimensions. For example, our tunable algorithms can deliver a 108× improvement in end-to-end manufacturing time at the cost of 21% increase in total wire length. Conversely, circuit quality/performance can be prioritized at the cost of increased manufacturing time, highlighting the value of the ability to dynamically navigate the tradeoff space according to the primary optimization metric.}
+}
+
 @inproceedings{cho-ldb-nsdi-2024,
   author    = {Inho Cho and
                Seo Jin Park and
