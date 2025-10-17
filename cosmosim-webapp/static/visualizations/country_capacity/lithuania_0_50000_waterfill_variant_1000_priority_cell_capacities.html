@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  <style>
+    .legend {
+        position: absolute;
+        bottom: 20px;
+        right: 10px;
+        /* Increased width */
+        width: 180px; 
+        background-color: white;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        z-index: 1000;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .legend h4 {
+        margin: 0 0 8px 0;
+        text-align: center;
+        font-size: 13px;
+    }
+    .gradient {
+        width: 100%;
+        /* Increased height */
+        height: 18px; 
+        border: 1px solid #555;
+        /* Reversed color gradient to Red -> Yellow -> Green */
+        background: linear-gradient(to right, rgb(255, 0, 0), rgb(255, 255, 0), rgb(0, 255, 0));
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2px;
+    }
+    .special-label {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        padding-top: 5px;
+        border-top: 1px solid #eee;
+    }
+    .white-square {
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border: 1px solid black;
+        margin-right: 5px;
+    }
+</style>
+<div class="legend">
+    <h4>Normalized Received Capacity</h4>
+    <div class="gradient"></div>
+    <div class="labels">
+        <span>0.0</span>
+        <span>0.5</span>
+        <span>1.0</span>
+    </div>
+    <div class="special-label">
+        <div class="white-square"></div>
+        <span>means the cell received 0 terminals</span>
+    </div>
+</div></body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 55.1694,
+    "longitude": 23.8813,
+    "pitch": 0,
+    "zoom": 6
+  },
+  "layers": [
+    {
+      "@@type": "H3HexagonLayer",
+      "data": [
+        {
+          "capacity": 5120.0,
+          "hex": "851f4003fffffff",
+          "normalized_capacity": 0.5
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4007fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f400bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f400ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4013fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 3840.0,
+          "hex": "851f4017fffffff",
+          "normalized_capacity": 0.375
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f401bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4023fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f4027fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f402bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f402ffffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4033fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4037fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f403bfffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4043fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4047fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 3860.0,
+          "hex": "851f404bfffffff",
+          "normalized_capacity": 0.376953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f404ffffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f4053fffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4057fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f405bfffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4063fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 4490.0,
+          "hex": "851f4067fffffff",
+          "normalized_capacity": 0.4384765625
+        },
+        {
+          "capacity": 4490.0,
+          "hex": "851f406bfffffff",
+          "normalized_capacity": 0.4384765625
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f406ffffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4073fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4077fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f407bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4083fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4087fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f408bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f408ffffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f4093fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4097fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 3900.0,
+          "hex": "851f409bfffffff",
+          "normalized_capacity": 0.380859375
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f40a3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f40a7fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f40abfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f40affffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f40b3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f40b7fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 4490.0,
+          "hex": "851f40bbfffffff",
+          "normalized_capacity": 0.4384765625
+        },
+        {
+          "capacity": 3860.0,
+          "hex": "851f40c3fffffff",
+          "normalized_capacity": 0.376953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f40c7fffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f40cbfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f40cffffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f40d3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f40d7fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f40dbfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f419bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f41cbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f41d3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f41dbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4213fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4217fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4283fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4287fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f428ffffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4293fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4297fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f429bfffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f42a3fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f42abfffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f42affffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f42b3fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f42b7fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f42bbfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4387fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4393fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f439bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f43d3fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4403fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4407fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f440bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f440ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4413fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f4417fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f441bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4423fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f4427fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f442bfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f442ffffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4433fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4437fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f443bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4443fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4447fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f444bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f444ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f4453fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f4457fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f445bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4463fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4467fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f446bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f446ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4473fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f4477fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f447bfffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4483fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4487fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f448bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f448ffffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f4493fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4497fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f449bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f44a3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f44a7fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f44abfffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f44affffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f44b3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f44b7fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f44bbfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f44c3fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f44c7fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f44cbfffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f44cffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f44d3fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f44d7fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f44dbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 1280.0,
+          "hex": "851f4503fffffff",
+          "normalized_capacity": 0.125
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4507fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f450bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f450ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4513fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4517fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f451bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4523fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f452bfffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f452ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f4533fffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4537fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f453bfffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4543fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4547fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 4490.0,
+          "hex": "851f454bfffffff",
+          "normalized_capacity": 0.4384765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f454ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4553fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4557fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f455bfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4563fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4567fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f456bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f456ffffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f4573fffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4577fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f457bfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4583fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4587fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f458bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f458ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4593fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f4597fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f459bfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f45a3fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f45abfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 0.0,
+          "hex": "851f45affffffff",
+          "normalized_capacity": 0.0
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f45b3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f45bbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f45c3fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f45c7fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f45cbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f45cffffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f45d3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f45d7fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f45dbfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4603fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4607fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f460bfffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f460ffffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4617fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f4623fffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f4627fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f462bfffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f462ffffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f4633fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 4510.0,
+          "hex": "851f4637fffffff",
+          "normalized_capacity": 0.4404296875
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f463bfffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f4663fffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 3860.0,
+          "hex": "851f4667fffffff",
+          "normalized_capacity": 0.376953125
+        },
+        {
+          "capacity": 5770.0,
+          "hex": "851f4673fffffff",
+          "normalized_capacity": 0.5634765625
+        },
+        {
+          "capacity": 4490.0,
+          "hex": "851f4677fffffff",
+          "normalized_capacity": 0.4384765625
+        },
+        {
+          "capacity": 3900.0,
+          "hex": "851f4683fffffff",
+          "normalized_capacity": 0.380859375
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4687fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f468ffffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f4693fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f4697fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f469bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f46a3fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f46a7fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f46abfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f46affffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f46b3fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f46b7fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f46bbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 8330.0,
+          "hex": "851f6203fffffff",
+          "normalized_capacity": 0.8134765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f620bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f620ffffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f6223fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6227fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f622bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f622ffffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f623bfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6243fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6247fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f624bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f624ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6253fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6257fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f625bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f6263fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6267fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f626bfffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f626ffffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6273fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6277fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f627bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f62cbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f62cffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6303fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f630bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f630ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f632bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f632ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6343fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f6347fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f634bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f634ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f6353fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6357fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f635bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6363fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f6367fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f636bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f636ffffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6373fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6377fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f637bfffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f6e4bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f7103fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7107fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f710bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f710ffffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7113fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7117fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f711bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7123fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7127fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f712bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f712ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f7133fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f7137fffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 5140.0,
+          "hex": "851f713bfffffff",
+          "normalized_capacity": 0.501953125
+        },
+        {
+          "capacity": 7608.7,
+          "hex": "851f7143fffffff",
+          "normalized_capacity": 0.743037109375
+        },
+        {
+          "capacity": 5191.0,
+          "hex": "851f7147fffffff",
+          "normalized_capacity": 0.50693359375
+        },
+        {
+          "capacity": 10240.0,
+          "hex": "851f714ffffffff",
+          "normalized_capacity": 1.0
+        },
+        {
+          "capacity": 10240.0,
+          "hex": "851f7153fffffff",
+          "normalized_capacity": 1.0
+        },
+        {
+          "capacity": 5821.0,
+          "hex": "851f7157fffffff",
+          "normalized_capacity": 0.56845703125
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f7163fffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f7167fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5191.0,
+          "hex": "851f716bfffffff",
+          "normalized_capacity": 0.50693359375
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f716ffffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f7173fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7050.0,
+          "hex": "851f7177fffffff",
+          "normalized_capacity": 0.6884765625
+        },
+        {
+          "capacity": 5942.9,
+          "hex": "851f717bfffffff",
+          "normalized_capacity": 0.580361328125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f7183fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f7187fffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f718bfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f718ffffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f7193fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7197fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f719bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f71a3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f71a7fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6420.0,
+          "hex": "851f71abfffffff",
+          "normalized_capacity": 0.626953125
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f71affffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f71b3fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f71b7fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f71bbfffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 6618.2,
+          "hex": "851f71c3fffffff",
+          "normalized_capacity": 0.6463085937499999
+        },
+        {
+          "capacity": 6400.0,
+          "hex": "851f71c7fffffff",
+          "normalized_capacity": 0.625
+        },
+        {
+          "capacity": 9950.5,
+          "hex": "851f71cbfffffff",
+          "normalized_capacity": 0.971728515625
+        },
+        {
+          "capacity": 5942.9,
+          "hex": "851f71cffffffff",
+          "normalized_capacity": 0.580361328125
+        },
+        {
+          "capacity": 9615.9,
+          "hex": "851f71d3fffffff",
+          "normalized_capacity": 0.9390527343749999
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f71d7fffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7523fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7527fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7680.0,
+          "hex": "851f752bfffffff",
+          "normalized_capacity": 0.75
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f752ffffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 7898.2,
+          "hex": "851f7563fffffff",
+          "normalized_capacity": 0.7713085937499999
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7567fffffff",
+          "normalized_capacity": 0.5654296875
+        },
+        {
+          "capacity": 10240.0,
+          "hex": "851f756bfffffff",
+          "normalized_capacity": 1.0
+        },
+        {
+          "capacity": 3900.0,
+          "hex": "851f756ffffffff",
+          "normalized_capacity": 0.380859375
+        },
+        {
+          "capacity": 5790.0,
+          "hex": "851f7577fffffff",
+          "normalized_capacity": 0.5654296875
+        }
+      ],
+      "extruded": false,
+      "filled": true,
+      "getFillColor": "@@=[normalized_capacity <= 0.5 ? 255 : 255 * 2 * (1 - normalized_capacity), normalized_capacity <= 0.5 ? 255 * 2 * normalized_capacity : 255, 0, 185]",
+      "getHexagon": "@@=hex",
+      "getLineColor": [
+        255,
+        255,
+        255
+      ],
+      "id": "aebea491-8e40-47fc-9e0d-f18556dcffb9",
+      "lineWidthMinPixels": 2,
+      "pickable": true,
+      "stroked": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'text': 'Capacity: {capacity} Mb'};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
