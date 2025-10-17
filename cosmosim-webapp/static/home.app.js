@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const baseFilename = `${countryFn}_0_${terminalsVal}_${utAlgoFn}_${beamAllocFn}`;
     
-    const vizPathCapacity = `../static/visualizations/country_capacity/${baseFilename}_cell_capacities.html`.toLowerCase();
-    const vizPathGs = `../static/visualizations/gs_utilizations/${baseFilename}_gs_utilizations.html`.toLowerCase();
+    const vizPathCapacity = `static/visualizations/country_capacity/${baseFilename}_cell_capacities.html`.toLowerCase();
+    const vizPathGs = `static/visualizations/gs_utilizations/${baseFilename}_gs_utilizations.html`.toLowerCase();
     
     console.log('Loading Capacity map from:', vizPathCapacity);
     console.log('Loading GS map from:', vizPathGs);
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
     
-    const vizPath = `../static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
+    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
     console.log('Loading heatmap from:', vizPath);
     
     mapFrameHeatmap.src = vizPath;
