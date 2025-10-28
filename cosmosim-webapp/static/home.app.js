@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
   // --- SECTION 1: Capacity & GS Utilization ---
   
-  const countrySelect = document.getElementById('Country');
-  const terminalsSelect = document.getElementById('Number_of_terminals');
+  // Renamed to avoid variable conflicts
+  const countrySelectMerged = document.getElementById('Country');
+  const terminalsSelectMerged = document.getElementById('Number_of_terminals');
   const utAlgoSelect = document.getElementById('User_terminal_distribution_algorithm');
   const beamAllocSelect = document.getElementById('Beam_allocation');
   const generateBtnMerged = document.getElementById('generate-btn-merged');
@@ -20,17 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const errorContainerMerged = document.getElementById('error-container-merged');
 
   // Attach listener to country select
-  countrySelect.addEventListener('change', function() {
-    updateTerminals(countrySelect, terminalsSelect, null);
+  countrySelectMerged.addEventListener('change', function() {
+    // Use the shared updateTerminals function from viz_logic.js
+    updateTerminals(countrySelectMerged, terminalsSelectMerged, null);
   });
 
   // Initial population of terminals dropdown
-  updateTerminals(countrySelect, terminalsSelect, '20000');
+  updateTerminals(countrySelectMerged, terminalsSelectMerged, '20000');
   
   // Attach listener to the generate button
   generateBtnMerged.addEventListener('click', function() {
-    const countryVal = countrySelect.value;
-    const terminalsVal = terminalsSelect.value;
+    const countryVal = countrySelectMerged.value;
+    const terminalsVal = terminalsSelectMerged.value;
     const utAlgoVal = utAlgoSelect.value;
     const beamAllocVal = beamAllocSelect.value;
 
@@ -67,30 +69,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- SECTION 2: Capacity Degradation Heatmap ---
   
+  const heatmapTerminalOptions = {
+      'Britain': ['200000 / 10K', '50000 / 100K'],
+      'Ghana': ['10000 / 100K', '100000 / 10K'],
+      'Haiti': ['5000 / 100K', '100000 / 10K'],
+      'Lithuania': ['1000 / 100K', '10000 / 10K'],
+      'South Africa': ['20000 / 100K', '200000 / 10K'],
+      'Tonga': ['500 / 10K', '1000 / 1K']
+  };
+
+  const countrySelectHeatmap = document.getElementById('country-select-heatmap');
+  const terminalsSelectHeatmap = document.getElementById('terminals-cap-select-heatmap');
+
+  function updateHeatmapTerminalOptions() {
+      const selectedCountry = countrySelectHeatmap.value;
+      const options = heatmapTerminalOptions[selectedCountry] || [];
+
+      terminalsSelectHeatmap.innerHTML = '';
+
+      options.forEach(optionText => {
+          const optionElement = document.createElement('option');
+          
+          const optionValue = terminalsCapMapHeatmap[optionText];
+          
+          optionElement.value = optionValue; // Set the value to the filename part
+          
+          optionElement.textContent = optionText; // Keep the text as the display string
+          terminalsSelectHeatmap.appendChild(optionElement);
+      });
+  }
+
+  countrySelectHeatmap.addEventListener('change', updateHeatmapTerminalOptions);
+  // --- (END OF MOVED LOGIC) ---
+
+
+  // --- (Original Section 2 Logic) ---
   const generateBtnHeatmap = document.getElementById('generate-btn-heatmap');
   const mapFrameHeatmap = document.getElementById('map-frame-heatmap');
   const resultContainerHeatmap = document.getElementById('result-container-heatmap');
   const errorContainerHeatmap = document.getElementById('error-container-heatmap');
 
   generateBtnHeatmap.addEventListener('click', function() {
-    const countryVal = document.getElementById('country-select-heatmap').value;
-    const terminalsCapVal = document.getElementById('terminals-cap-select-heatmap').value;
-    const demandVal = document.getElementById('demand-select-heatmap').value;
+    const countryVal = document.getElementById('country-select-heatmap').value;
+    
+    const terminalsCapFn = document.getElementById('terminals-cap-select-heatmap').value;
+    // --- END MODIFICATION ---
+    
+    const demandVal = document.getElementById('demand-select-heatmap').value;
 
-    const countryFn = countryMapHeatmap[countryVal];
-    const terminalsCapFn = terminalsCapMapHeatmap[terminalsCapVal];
-    const demandFn = demandMapHeatmap[demandVal];
+    const countryFn = countryMapHeatmap[countryVal];
     
-    const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
-    
-    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
-    console.log('Loading heatmap from:', vizPath);
-    
-    mapFrameHeatmap.src = vizPath;
-    resultContainerHeatmap.style.display = 'block';
-    errorContainerHeatmap.style.display = 'none';
-  });
+    const demandFn = demandMapHeatmap[demandVal];
+    
+    // This will now correctly construct the filename
+    const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
+    
+    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
+    console.log('Loading heatmap from:', vizPath);
+    
+    mapFrameHeatmap.src = vizPath;
+    resultContainerHeatmap.style.display = 'block';
+    errorContainerHeatmap.style.display = 'none';
+  });
+
+  updateHeatmapTerminalOptions();
   
-  // Load default visualization on page load
   generateBtnHeatmap.click();
+
 });

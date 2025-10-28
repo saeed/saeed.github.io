@@ -138,10 +138,12 @@ button:active {
 /* Map container */
 .result {
     width: 100%;
-    max-width: 1400px;
+    max-width: 2200px;
     margin-top: 2rem;
     padding: 0 1rem;
-    display: none; /* Hide by default */
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .map-frame {
@@ -153,7 +155,6 @@ button:active {
     background: white;
 }
 
-/* --- ADDED FROM REFACTOR --- */
 .back-button {
     display: inline-block;
     background: #f1f1f1;
@@ -190,4 +191,70 @@ button:active {
 .form-row button {
     margin-top: 1.75rem; /* Align button with dropdowns */
     min-width: auto;
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 1.5rem 1.25rem;
+    }
+    .form-container {
+        padding: 1.5rem;
+    }
+    h1 {
+        font-size: 1.75rem;
+    }
+    .form-row {
+        gap: 16px;
+    }
+    .map-frame {
+        height: 500px;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        font-size: 0.95rem;
+    }
+    .container {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 1.35rem;
+        line-height: 1.3;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .form-row button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    .form-group,
+    .error,
+    .back-button {
+        max-width: 100%;
+    }
+    button {
+        width: 100%;
+        min-width: auto;
+    }
+    select {
+        font-size: 0.9rem;
+        padding: 0.65rem 0.85rem;
+        background-position: right 0.5rem center;
+    }
+    label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    .map-frame {
+        height: 360px;
+    }
+    .result {
+        padding: 0;
+    }
+    .back-button {
+        text-align: center;
+    }
 }

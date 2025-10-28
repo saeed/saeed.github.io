@@ -28,7 +28,26 @@
   <body>
     <div id="deck-container">
     </div>
-  <style>
+  
+    <style>
+        .capacity-box {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            background-color: white;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+    <div class="capacity-box">
+        Total failover capacity: <strong>1271.18 Gb</strong>
+    </div>
+    <style>
     .legend {
         position: absolute;
         bottom: 20px;
@@ -794,7 +813,7 @@
         255,
         255
       ],
-      "id": "175684a5-d9b4-4426-ab2d-505cca2e2618",
+      "id": "4d54447a-b9d3-4727-a5c7-cd314b5f4a49",
       "lineWidthMinPixels": 2,
       "pickable": true,
       "stroked": true

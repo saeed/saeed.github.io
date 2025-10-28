@@ -30,6 +30,10 @@ def create_country_capacity_map(h3_data, country_display_name, config_name):
     df = pd.DataFrame(h3_data, columns=['hex', 'capacity'])
     df['capacity'] = pd.to_numeric(df['capacity'])
 
+    total_capacity_mb = df['capacity'].sum()
+    total_capacity_gb = total_capacity_mb / 1000.0
+    display_capacity_str = f"{total_capacity_gb:.2f} Gb"
+
     # Normalize capacity to a 0-1 range for coloring
     min_cap, max_cap = df['capacity'].min(), df['capacity'].max()
     df['normalized_capacity'] = (df['capacity'] - min_cap) / (max_cap - min_cap) if max_cap > min_cap else 0.5
@@ -66,11 +70,36 @@ def create_country_capacity_map(h3_data, country_display_name, config_name):
     
     html_content = r.to_html(as_string=True, notebook_display=False)
     
+    capacity_box_html = f"""
+    <style>
+        .capacity-box {{
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            background-color: white;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }}
+    </style>
+    <div class="capacity-box">
+        Total failover capacity: <strong>{display_capacity_str}</strong>
+    </div>
+    """
+    # Inject the new HTML just before the closing </body> tag
+    html_content = html_content.replace('</body>', f'{capacity_box_html}</body>')
+    # --- END NEW ---
+    
     # Add the custom color scale legend to the HTML
     color_scale_path = os.path.join('templates', 'color_scales', 'country_capacity_color_scale.html')
     if os.path.exists(color_scale_path):
         with open(color_scale_path, 'r') as f:
             color_scale_html = f.read()
+        # This will now add the legend *after* the capacity box
         html_content = html_content.replace('</body>', f'{color_scale_html}</body>')
     
     with open(html_path, 'w') as f:
@@ -148,9 +177,9 @@ def generate_all_visualizations():
                         skipped_count += 1
     
     print("\n--------------------------------------------------")
-    print("                 Generation Complete                ")
-    print(f"      Total HTML files generated: {generated_count}")
-    print(f"    Total configurations skipped: {skipped_count}")
+    print("                Generation Complete                ")
+    print(f"     Total HTML files generated: {generated_count}")
+    print(f"   Total configurations skipped: {skipped_count}")
     print("--------------------------------------------------")
 
 if __name__ == "__main__":

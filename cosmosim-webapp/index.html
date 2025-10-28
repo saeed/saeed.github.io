@@ -27,11 +27,19 @@
       <a href="#" class="link-item">Code</a>
     </div>
   </div>
+  <div class="abstract-container">
+    <h2>Abstract</h2>
+    <p>
+      In this paper, we study the viability of LEO networks as a failover network. We contextualize our analysis by framing the capacity of satellite networks relative to lost capacity due to submarine cable failure. Specifically, we focus on scenarios where LEO networks act as failovers for submarine cables, providing a concrete target capacity to be fulfilled by the satellite network. We introduce a new model and simulator that help us estimate the failover capacity. We identify key factors determining the actual capacity available on the satellite network: the total area of the country, the terminal distribution policy used by the government, the spectrum allocation and traffic engineering policies used by the LEO network operator. Based on our findings, we make policy recommendations to governments that can result in an increase of up to 1.8× in the failover capacity without requiring additional infrastructure. However, we find after implementing all our recommendations, with 200k terminals deployed and no competing traffic in the network, a satellite network can only satisfy 0.9-14.7% of the capacity lost due to submarine cable failure in four out of six case studies.
+    </p>
+  </div>
 
   <div class="viz-section-container">
-    <h2>Per Cell Capacity & Ground Station Utilization</h2>
+    <h2>National Failover Capacity: Per Cell Capacity & Gateway Utilization</h2>
     <p class="description-placeholder">
-      This visualization provides insight into the estimated maximum capacity Starlink can provide for emergency failover traffic in a given country. Select a country, number of user terminals, a terminal distribution strategy, and a RF beam allocation policy to define the simulation scenario. The output is two maps - one showing the resulting per-cell aggregate capacity within the selected country and another showing the utilization load on Starlink's gateway stations used by the failover traffic.
+      This visualization provides insight into the estimated maximum capacity Starlink can provide for emergency failover traffic in a given country. Select a country, number of user terminals, a terminal distribution strategy, and a RF beam allocation policy to define the simulation scenario. In Uncoordinated beam allocation, beams are first distributed across all cells to prevent starvation, ensuring every cell receives at least one beam, and then prioritized by population density. This approach is our best estimate of satellite operator behavior which will avoid starving any of their clients while attempting to prioritize cells based on their estimated population density. In Coordinated beam allocation, beams are allocated to cells strictly prioritizing based on the number of terminals at each cell to maximize the overall failover capacity for the nation.
+      The output is two maps: one showing the resulting per-cell aggregate capacity within the selected country and another showing the utilization load on Starlink's gateway stations used by the failover traffic.
+      These two visualizations correspond to Figures 5 and 7 in the paper. 
     </p>
 
     <div class="viz-wrapper viz-wrapper-stacked">
@@ -65,8 +73,8 @@
         <div class="form-group">
           <label for="Beam_allocation">Beam allocation</label>
           <select name="Beam allocation" id="Beam_allocation">
-            <option value="Priority" selected>Priority</option>
-            <option value="Population waterfill">Population waterfill</option>
+            <option value="Priority" selected>Uncoordinated</option>
+            <option value="Population waterfill">Coordinated</option>
           </select>
         </div>
         <button type="button" id="generate-btn-merged">Generate Visualization</button>
@@ -78,7 +86,7 @@
           <iframe id="map-frame-capacity" class="map-frame" src=""></iframe>
         </div>
         <div id="result-container-gs" class="result">
-          <h3>Ground Station Utilization Map</h3>
+          <h3>Gateway Utilization Map</h3>
           <iframe id="map-frame-gs" class="map-frame" src=""></iframe>
         </div>
       </div>
@@ -88,7 +96,7 @@
 
 
   <div class="viz-section-container">
-    <h2>Capacity Degradation Heatmap</h2>
+    <h2>Global Impact of Failover Traffic</h2>
     <p class="description-placeholder">
       This visualization explores the trade-off of dedicating LEO network resources to a single country's failover traffic by simulating the impact on existing incumbent traffic across the network. Based on the selected country, terminal distribution scheme, and satellite incumbent demand, the visualization generates a heatmap of available capacity for incumbent cells worldwide. This visualization corresponds to Figures 14 and 23 in the paper.
     </p>
@@ -110,7 +118,6 @@
         <div class="form-group">
           <label for="terminals-cap-select-heatmap">Number of terminals / GCB cap</label>
           <select id="terminals-cap-select-heatmap">
-            <option value="200000 / 10K">200000 / 10K</option>
           </select>
         </div>
 
@@ -138,5 +145,6 @@
 
   <script src="static/viz_logic.js"></script>
   <script src="static/home.app.js"></script>
-</body>
+
+  </body>
 </html>

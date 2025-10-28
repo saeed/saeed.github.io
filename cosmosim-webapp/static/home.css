@@ -73,6 +73,13 @@ body {
   color: white;
 }
 
+.abstract-container {
+  width: 95%;
+  margin: 0 auto 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 .viz-section-container {
   background: white;
   padding: 2rem;
@@ -84,6 +91,7 @@ body {
   box-sizing: border-box;
 }
 
+.abstract-container h2,
 .viz-section-container h2 {
   font-size: 1.75rem;
   font-weight: 600;
@@ -101,6 +109,17 @@ body {
   margin-right: auto;
   text-align: left;
   line-height: 1.6;
+}
+
+.abstract-container p {
+  font-size: 1.2rem;
+  color: #475569;
+  line-height: 1.7;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-left: 5px solid var(--border, #e2e8f0);
+  padding-left: 1.5rem;
+  text-align: left; 
 }
 
 .viz-wrapper {
@@ -135,7 +154,7 @@ body {
   width: 100%;
   min-width: unset;
   /* Align button with dropdowns (which have labels) */
-  margin-top: 1.75rem; 
+  margin-top: 1.75rem;
 }
 
 .outputs-container {
@@ -189,4 +208,102 @@ body {
 
 .form-row button {
   margin-top: 1.75rem;
+}
+
+@media (max-width: 1024px) {
+  .paper-header {
+    padding: 2.5rem 3rem;
+    text-align: center;
+  }
+  .paper-header h1 {
+    font-size: 1.9rem;
+    text-align: center;
+  }
+  .paper-header h2 {
+    font-size: 1.3rem;
+  }
+  .paper-header p {
+    font-size: 1.3rem;
+  }
+  .links-container {
+    margin: 1.5rem 1rem 2rem;
+  }
+  .links-wrapper {
+    flex-wrap: wrap;
+  }
+  .abstract-container,
+  .viz-section-container {
+    padding: 1.75rem;
+  }
+  .abstract-container p,
+  .description-placeholder {
+    font-size: 1rem;
+  }
+  .viz-wrapper {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .controls-horizontal {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .outputs-container {
+    width: 100%;
+  }
+  .abstract-container {
+    padding: 0 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .paper-header {
+    padding: 1.5rem;
+  }
+  .paper-header h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  .paper-header h2 {
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+  .paper-header p {
+    font-size: 1.1rem;
+  }
+  .paper-header .institutions {
+    font-size: 0.9rem;
+  }
+  .links-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+  .link-item {
+    border-right: none;
+    border-bottom: 1px solid #007bff;
+    text-align: center;
+  }
+  .link-item:last-child {
+    border-bottom: none;
+  }
+  .abstract-container,
+  .viz-section-container {
+    padding: 1.25rem;
+  }
+  .abstract-container p,
+  .description-placeholder {
+    font-size: 0.95rem;
+  }
+  .controls-horizontal {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .controls-horizontal button {
+    margin-top: 0.5rem;
+  }
+  .viz-section-container .result h3 {
+    font-size: 1.1rem;
+  }
+  .abstract-container {
+    padding: 0 1.25rem;
+  }
 }

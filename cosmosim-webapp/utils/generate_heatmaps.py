@@ -13,7 +13,6 @@ COUNTRY_CONFIGS = {
     'Haiti': {'latitude': 18.9712, 'longitude': -72.2852, 'zoom': 7}
 }
 
-# --- Function signature still accepts 'scale_min' ---
 def create_heatmap_map(nation_cells_df, heatmap_cells_df, country_display_name, config_name, scale_min):
     """
     Generates and saves a pydeck map visualization for capacity degradation.
@@ -116,24 +115,71 @@ def generate_all_visualizations():
     Iterates through all possible configurations and generates a map for each.
     """
     print("Starting pre-generation of all Capacity Degradation Heatmaps...")
-    
+        
+    # Maps country display name to its filename part
     countries_map = {
         'South Africa': 'southafrica', 'Ghana': 'ghana', 'Tonga': 'tonga',
         'Lithuania': 'lithuania', 'Britain': 'britain', 'Haiti': 'haiti'
     }
-    terminal_configs = {'200000 / 10K': '200000_10000'}
-    demand_map = {
-        '8400 Mbps': '0.7', '9600 Mbps': '0.8', 
-        '10800 Mbps': '0.9', '12000 Mbps': '1.0'
+    
+    # Maps terminal config display name to its filename part
+    TERMINAL_CONFIGS_FN = {
+        '50000 / 100K': '50000_100000',
+        '200000 / 10K': '200000_10000',
+        '10000 / 100K': '10000_100000',
+        '100000 / 10K': '100000_10000',
+        '5000 / 100K': '5000_100000',
+        '1000 / 100K': '1000_100000',
+        '10000 / 10K': '10000_10000',
+        '20000 / 100K': '20000_100000',
+        '500 / 10K': '500_10000',
+        '1000 / 1K': '1000_1000'
     }
+    
+    # Defines the valid pairs of Country -> [Terminal Configs]
+    COUNTRY_TERMINAL_PAIRS = {
+        'Britain': ['50000 / 100K', '200000 / 10K'],
+        'Ghana': ['10000 / 100K', '100000 / 10K'],
+        'Haiti': ['5000 / 100K', '100000 / 10K'],
+        'Lithuania': ['1000 / 100K', '10000 / 10K'],
+        'South Africa': ['20000 / 100K', '200000 / 10K'],
+        'Tonga': ['500 / 10K', '1000 / 1K']
+    }
+    
+    # Maps demand display name to its filename part
+    demand_map = {
+        '8400 Mbps': '0.7', 
+        '9600 Mbps': '0.8', 
+        '10800 Mbps': '0.9', 
+        '12000 Mbps': '1.0'
+    }
+    # === END UPDATED CONFIGURATIONS ===
 
     generated_count = 0
     skipped_count = 0
 
-    # Loop through every combination of parameters
-    for country_display, country_fn in countries_map.items():
+    # === UPDATED LOOPING LOGIC ===
+    # Loop through the valid pairs defined in COUNTRY_TERMINAL_PAIRS
+    for country_display, terminal_display_list in COUNTRY_TERMINAL_PAIRS.items():
         print(f"\nProcessing Country: {country_display}")
-        for term_cap_fn in terminal_configs.values():
+        
+        # Get the country filename part from countries_map
+        country_fn = countries_map.get(country_display)
+        if not country_fn:
+            print(f"  - SKIPPED (Country '{country_display}' not found in countries_map)")
+            continue
+
+        # Iterate over the valid terminal configs for this country
+        for terminal_display in terminal_display_list:
+            # Get the terminal config filename part from TERMINAL_CONFIGS_FN
+            term_cap_fn = TERMINAL_CONFIGS_FN.get(terminal_display)
+            if not term_cap_fn:
+                print(f"  - SKIPPED (Terminal config '{terminal_display}' not found in TERMINAL_CONFIGS_FN)")
+                continue
+            
+            print(f"  - Processing config: {terminal_display}")
+
+            # Loop through all demand levels for this valid pair
             for demand_fn in demand_map.values():
                 
                 # Construct expected filenames
@@ -145,7 +191,7 @@ def generate_all_visualizations():
                 nation_path = os.path.join('static', 'cell_heatmap_data', nation_data_filename)
 
                 if os.path.exists(heatmap_path) and os.path.exists(nation_path):
-                    print(f"  - Generating for: {config_name}...")
+                    print(f"    - Generating for: {config_name}...")
                     try:
                         # Read heatmap data (non-nation cells)
                         heatmap_df = pd.read_csv(heatmap_path, header=None, names=['hex', 'value'])
@@ -171,6 +217,7 @@ def generate_all_visualizations():
                         print(f"    - FAILED to process {config_name}: {e}")
                         skipped_count += 1
                 else:
+                    print(f"    - SKIPPED (Data files not found for config): {config_name}")
                     skipped_count += 1
     
     print("\n--------------------------------------------------")
