@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -117,7 +117,9 @@
     "latitude": 18.9712,
     "longitude": -72.2852,
     "pitch": 0,
-    "zoom": 7
+    "zoom": 7,
+      "minZoom": 3,
+      "maxZoom": 15
   },
   "layers": [
     {
@@ -819,7 +821,7 @@
   "views": [
     {
       "@@type": "MapView",
-      "controller": true
+      "controller": { "minZoom": 3, "maxZoom": 15 }
     }
   ]
 };

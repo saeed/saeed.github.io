@@ -17,8 +17,138 @@ document.addEventListener('DOMContentLoaded', function() {
   const resultContainerCapacity = document.getElementById('result-container-capacity');
   const mapFrameGs = document.getElementById('map-frame-gs');
   const resultContainerGs = document.getElementById('result-container-gs');
+  const loadingCapacity = document.getElementById('loading-capacity');
+  const loadingGs = document.getElementById('loading-gs');
   
   const errorContainerMerged = document.getElementById('error-container-merged');
+
+  const MIN_ZOOM = 3;
+  const MAX_ZOOM = 15;
+
+  function clampDeckZoom(iframe, attempts = 0) {
+    const MAX_ATTEMPTS = 12;
+    if (!iframe) {
+      return;
+    }
+
+    const scheduleRetry = () => {
+      if (attempts < MAX_ATTEMPTS) {
+        setTimeout(() => clampDeckZoom(iframe, attempts + 1), 200);
+      }
+    };
+
+    try {
+      const deckWindow = iframe.contentWindow;
+
+      if (!deckWindow) {
+        scheduleRetry();
+        return;
+      }
+
+      let deckInstance = deckWindow.deckInstance;
+
+      if (!deckInstance && typeof deckWindow.eval === 'function') {
+        deckInstance = deckWindow.eval('typeof deckInstance !== "undefined" ? deckInstance : null');
+      }
+
+      if (!deckInstance || typeof deckInstance.setProps !== 'function') {
+        scheduleRetry();
+        return;
+      }
+
+      deckWindow.deckInstance = deckInstance;
+
+      const props = deckInstance.props || {};
+      const controllerProp = props.controller;
+      const controller =
+        controllerProp && controllerProp !== true
+          ? { ...controllerProp }
+          : {};
+
+      controller.minZoom = MIN_ZOOM;
+      controller.maxZoom = MAX_ZOOM;
+
+      const updates = { controller };
+
+      if (props.initialViewState && typeof props.initialViewState === 'object') {
+        updates.initialViewState = {
+          ...props.initialViewState,
+          minZoom: MIN_ZOOM,
+          maxZoom: MAX_ZOOM
+        };
+      }
+
+      if (Array.isArray(props.views)) {
+        updates.views = props.views.map(view => {
+          if (!view) {
+            return view;
+          }
+          const viewClone = { ...view };
+          if (viewClone.controller === true) {
+            viewClone.controller = { minZoom: MIN_ZOOM, maxZoom: MAX_ZOOM };
+          } else if (viewClone.controller && typeof viewClone.controller === 'object') {
+            viewClone.controller = {
+              ...viewClone.controller,
+              minZoom: MIN_ZOOM,
+              maxZoom: MAX_ZOOM
+            };
+          }
+          return viewClone;
+        });
+      }
+
+      deckInstance.setProps(updates);
+
+      const currentViewState =
+        (typeof deckInstance.getViewState === 'function' && deckInstance.getViewState()) ||
+        deckInstance.viewState ||
+        props.initialViewState ||
+        {};
+
+      if (typeof currentViewState === 'object') {
+        const adjustedZoom =
+          typeof currentViewState.zoom === 'number'
+            ? Math.min(Math.max(currentViewState.zoom, MIN_ZOOM), MAX_ZOOM)
+            : MIN_ZOOM;
+
+        deckInstance.setProps({
+          viewState: {
+            ...currentViewState,
+            zoom: adjustedZoom,
+            minZoom: MIN_ZOOM,
+            maxZoom: MAX_ZOOM
+          }
+        });
+      }
+    } catch (err) {
+      console.warn('Unable to enforce zoom bounds for iframe visualization.', err);
+    }
+  }
+
+  function loadVisualization(iframe, loader, src, options = {}) {
+    if (!iframe || !loader) {
+      return;
+    }
+
+    const { clampZoom = true } = options;
+
+    loader.classList.add('active');
+    iframe.classList.add('is-loading');
+
+    const handleLoad = () => {
+      setTimeout(() => {
+        loader.classList.remove('active');
+        iframe.classList.remove('is-loading');
+        iframe.removeEventListener('load', handleLoad);
+        if (clampZoom) {
+          clampDeckZoom(iframe);
+        }
+      }, 1000);
+    };
+
+    iframe.addEventListener('load', handleLoad);
+    iframe.src = src;
+  }
 
   // Attach listener to country select
   countrySelectMerged.addEventListener('change', function() {
@@ -45,6 +175,10 @@ document.addEventListener('DOMContentLoaded', function() {
       errorContainerMerged.style.display = 'block';
       resultContainerCapacity.style.display = 'none';
       resultContainerGs.style.display = 'none';
+      loadingCapacity.classList.remove('active');
+      loadingGs.classList.remove('active');
+      mapFrameCapacity.classList.remove('is-loading');
+      mapFrameGs.classList.remove('is-loading');
       return;
     }
     
@@ -56,12 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Loading Capacity map from:', vizPathCapacity);
     console.log('Loading GS map from:', vizPathGs);
     
-    mapFrameCapacity.src = vizPathCapacity;
-    mapFrameGs.src = vizPathGs;
-    
     resultContainerCapacity.style.display = 'block';
     resultContainerGs.style.display = 'block';
     errorContainerMerged.style.display = 'none';
+
+    loadVisualization(mapFrameCapacity, loadingCapacity, vizPathCapacity);
+    loadVisualization(mapFrameGs, loadingGs, vizPathGs, { clampZoom: false });
   });
   
   // Load default visualization on page load
@@ -108,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const mapFrameHeatmap = document.getElementById('map-frame-heatmap');
   const resultContainerHeatmap = document.getElementById('result-container-heatmap');
   const errorContainerHeatmap = document.getElementById('error-container-heatmap');
+  const loadingHeatmap = document.getElementById('loading-heatmap');
 
   generateBtnHeatmap.addEventListener('click', function() {
     const countryVal = document.getElementById('country-select-heatmap').value;
@@ -122,15 +257,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const demandFn = demandMapHeatmap[demandVal];
     
     // This will now correctly construct the filename
-    const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
-    
-    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
-    console.log('Loading heatmap from:', vizPath);
-    
-    mapFrameHeatmap.src = vizPath;
-    resultContainerHeatmap.style.display = 'block';
-    errorContainerHeatmap.style.display = 'none';
-  });
+    const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
+    
+    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
+    console.log('Loading heatmap from:', vizPath);
+    
+    loadVisualization(mapFrameHeatmap, loadingHeatmap, vizPath);
+    resultContainerHeatmap.style.display = 'block';
+    errorContainerHeatmap.style.display = 'none';
+  });
 
   updateHeatmapTerminalOptions();
   

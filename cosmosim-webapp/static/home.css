@@ -38,9 +38,18 @@ body {
 }
 
 .paper-header .institutions {
-  font-size: 1rem;
-  color: #6c757d;
-  font-weight: 450;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.paper-header .institutions img {
+  max-height: 56px;
+  width: auto;
+  object-fit: contain;
 }
 
 .links-container {
@@ -271,7 +280,11 @@ body {
     font-size: 1.1rem;
   }
   .paper-header .institutions {
-    font-size: 0.9rem;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+  .paper-header .institutions img {
+    max-height: 48px;
   }
   .links-wrapper {
     flex-direction: column;
