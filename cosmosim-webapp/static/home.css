@@ -38,20 +38,9 @@ body {
 }
 
 .paper-header .institutions {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.paper-header .institutions img {
-  height: clamp(32px, 8vw, 56px);
-  width: auto;
-  max-width: clamp(120px, 35vw, 220px);
-  flex: 0 1 clamp(120px, 35vw, 220px);
-  object-fit: contain;
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: 450;
 }
 
 .links-container {
@@ -282,13 +271,7 @@ body {
     font-size: 1.1rem;
   }
   .paper-header .institutions {
-    justify-content: center;
-    gap: 1.25rem;
-  }
-  .paper-header .institutions img {
-    height: clamp(28px, 12vw, 48px);
-    max-width: clamp(110px, 45vw, 180px);
-    flex-basis: clamp(110px, 45vw, 180px);
+    font-size: 0.9rem;
   }
   .links-wrapper {
     flex-direction: column;

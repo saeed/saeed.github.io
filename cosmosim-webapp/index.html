@@ -12,22 +12,19 @@
   <div class="paper-header">
     <h1>Assessing LEO Satellite Networks for National Emergency Failover</h1>
     <h2>
-      Vaibhav Bhosale, Ying Zhang, Sameer Kapoor, Robin Kim, Miguel Schlicht,
-      Muskaan Gupta, Ekaterina Tumanova, Zachary S. Bischof, Fabián E. Bustamante,
+      Vaibhav Bhosale, Ying Zhang*, Sameer Kapoor, Robin Kim, Miguel Schlicht,
+      Muskaan Gupta, Ekaterina Tumanova, Zachary S. Bischof, Fabián E. Bustamante*,
       Alberto Dainotti, Ahmed Saeed
     </h2>
     <p>ACM IMC 2025</p>
-    <div class="institutions">
-      <img src="static/logos/gt-logo.png" alt="Georgia Tech logo" loading="lazy">
-      <img src="static/logos/northwestern-logo.png" alt="Northwestern University logo" loading="lazy">
-    </div>
+    <p class="institutions">— Georgia Tech, Northwestern University*</p>
   </div>
 
   <div class="links-container">
     <div class="links-wrapper">
-      <a href="http://saeed.github.io/files/cosmosim-imc25.pdf" class="link-item" target="_blank" rel="noopener noreferrer">Paper PDF</a>
+      <a href="#" class="link-item">Paper PDF</a>
       <a href="#" class="link-item">Slides</a>
-      <a href="https://github.com/GT-ANSR-Lab/CosmoSim/" class="link-item" target="_blank" rel="noopener noreferrer">Code</a>
+      <a href="#" class="link-item">Code</a>
     </div>
   </div>
   <div class="abstract-container">
@@ -86,18 +83,10 @@
       <div class="outputs-container">
         <div id="result-container-capacity" class="result">
           <h3>Per Cell Capacity Map</h3>
-          <div class="loading-indicator" id="loading-capacity" aria-live="polite">
-            <div class="loading-spinner" aria-hidden="true"></div>
-            <span>Loading visualization&hellip;</span>
-          </div>
           <iframe id="map-frame-capacity" class="map-frame" src=""></iframe>
         </div>
         <div id="result-container-gs" class="result">
           <h3>Gateway Utilization Map</h3>
-          <div class="loading-indicator" id="loading-gs" aria-live="polite">
-            <div class="loading-spinner" aria-hidden="true"></div>
-            <span>Loading visualization&hellip;</span>
-          </div>
           <iframe id="map-frame-gs" class="map-frame" src=""></iframe>
         </div>
       </div>
@@ -150,17 +139,9 @@
 
     <div id="result-container-heatmap" class="result">
       <h3>Capacity Degradation Map</h3>
-      <div class="loading-indicator" id="loading-heatmap" aria-live="polite">
-        <div class="loading-spinner" aria-hidden="true"></div>
-        <span>Loading visualization&hellip;</span>
-      </div>
       <iframe id="map-frame-heatmap" class="map-frame" src=""></iframe>
     </div>
   </div>
-
-  <footer class="site-footer">
-    <p>This web app was developed by Sameer (Sammy) Kapoor, under the direction of Professor Ahmed Saeed. -</p>
-  </footer>
 
   <script src="static/viz_logic.js"></script>
   <script src="static/home.app.js"></script>
