@@ -262,9 +262,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
     console.log('Loading heatmap from:', vizPath);
     
-    loadVisualization(mapFrameHeatmap, loadingHeatmap, vizPath);
     resultContainerHeatmap.style.display = 'block';
     errorContainerHeatmap.style.display = 'none';
+    loadVisualization(mapFrameHeatmap, loadingHeatmap, vizPath);
   });
 
   updateHeatmapTerminalOptions();
