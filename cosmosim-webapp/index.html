@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CosmoSim Web App</title>
   <link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="static/home.css">
+  <link rel="icon" type="image/x-icon" href="https://brand.gatech.edu/themes/custom/brand/favicon.ico" />
 </head>
 
 <body>
@@ -22,9 +22,9 @@
 
   <div class="links-container">
     <div class="links-wrapper">
-      <a href="http://saeed.github.io/files/cosmosim-imc25.pdf" class="link-item">Paper PDF</a>
-      <a href="http://saeed.github.io/files/cosmosim-imc25-ppt.pdf" class="link-item">Slides</a>
-      <a href="https://github.com/GT-ANSR-Lab/CosmoSim/" class="link-item">Code</a>
+      <a href="http://saeed.github.io/files/cosmosim-imc25.pdf" class="link-item" target="_blank">Paper PDF</a>
+      <a href="http://saeed.github.io/files/cosmosim-imc25-ppt.pdf" class="link-item" target="_blank">Slides</a>
+      <a href="https://github.com/GT-ANSR-Lab/CosmoSim/" class="link-item" target="_blank">Code</a>
     </div>
   </div>
   <div class="abstract-container">
@@ -83,11 +83,17 @@
       <div class="outputs-container">
         <div id="result-container-capacity" class="result">
           <h3>Per Cell Capacity Map</h3>
-          <iframe id="map-frame-capacity" class="map-frame" src=""></iframe>
+          <div class="iframe-wrapper">
+            <div class="spinner"></div>
+            <iframe id="map-frame-capacity" class="map-frame" src=""></iframe>
+          </div>
         </div>
         <div id="result-container-gs" class="result">
           <h3>Gateway Utilization Map</h3>
-          <iframe id="map-frame-gs" class="map-frame" src=""></iframe>
+          <div class="iframe-wrapper">
+            <div class="spinner"></div>
+            <iframe id="map-frame-gs" class="map-frame" src=""></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -139,12 +145,21 @@
 
     <div id="result-container-heatmap" class="result">
       <h3>Capacity Degradation Map</h3>
-      <iframe id="map-frame-heatmap" class="map-frame" src=""></iframe>
+      <div class="iframe-wrapper">
+        <div class="spinner"></div>
+        <iframe id="map-frame-heatmap" class="map-frame" src=""></iframe>
+      </div>
     </div>
   </div>
 
-  <script src="static/viz_logic.js"></script>
-  <script src="static/home.app.js"></script>
+  <script src="static/viz_helper.js"></script>
+  <script src="static/index.js"></script>
+
+  <footer class="footer">
+    <p>
+      This web app was developed by Sameer (Sammy) Kapoor, under the direction of Professor Ahmed Saeed.
+    </p>
+  </footer>
 
   </body>
 </html>
