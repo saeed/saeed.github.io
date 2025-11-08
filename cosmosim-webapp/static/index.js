@@ -1,12 +1,7 @@
-/**
- * Page-specific JavaScript for home.html
- * Assumes viz_logic.js is already loaded.
- */
 document.addEventListener('DOMContentLoaded', function() {
     
   // --- SECTION 1: Capacity & GS Utilization ---
   
-  // Renamed to avoid variable conflicts
   const countrySelectMerged = document.getElementById('Country');
   const terminalsSelectMerged = document.getElementById('Number_of_terminals');
   const utAlgoSelect = document.getElementById('User_terminal_distribution_algorithm');
@@ -20,16 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const errorContainerMerged = document.getElementById('error-container-merged');
 
-  // Attach listener to country select
   countrySelectMerged.addEventListener('change', function() {
-    // Use the shared updateTerminals function from viz_logic.js
     updateTerminals(countrySelectMerged, terminalsSelectMerged, null);
   });
 
-  // Initial population of terminals dropdown
   updateTerminals(countrySelectMerged, terminalsSelectMerged, '20000');
   
-  // Attach listener to the generate button
   generateBtnMerged.addEventListener('click', function() {
     const countryVal = countrySelectMerged.value;
     const terminalsVal = terminalsSelectMerged.value;
@@ -56,6 +47,19 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Loading Capacity map from:', vizPathCapacity);
     console.log('Loading GS map from:', vizPathGs);
     
+    const wrapperCapacity = mapFrameCapacity.parentElement;
+    const wrapperGs = mapFrameGs.parentElement;
+
+    mapFrameCapacity.onload = () => {
+      wrapperCapacity.classList.remove('loading');
+    };
+    mapFrameGs.onload = () => {
+      wrapperGs.classList.remove('loading');
+    };
+
+    wrapperCapacity.classList.add('loading');
+    wrapperGs.classList.add('loading');
+    
     mapFrameCapacity.src = vizPathCapacity;
     mapFrameGs.src = vizPathGs;
     
@@ -64,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
     errorContainerMerged.style.display = 'none';
   });
   
-  // Load default visualization on page load
   generateBtnMerged.click();
 
   // --- SECTION 2: Capacity Degradation Heatmap ---
@@ -82,25 +85,24 @@ document.addEventListener('DOMContentLoaded', function() {
   const terminalsSelectHeatmap = document.getElementById('terminals-cap-select-heatmap');
 
   function updateHeatmapTerminalOptions() {
-      const selectedCountry = countrySelectHeatmap.value;
-      const options = heatmapTerminalOptions[selectedCountry] || [];
+      const selectedCountry = countrySelectHeatmap.value;
+      const options = heatmapTerminalOptions[selectedCountry] || [];
 
-      terminalsSelectHeatmap.innerHTML = '';
+      terminalsSelectHeatmap.innerHTML = '';
 
-      options.forEach(optionText => {
-          const optionElement = document.createElement('option');
+      options.forEach(optionText => {
+          const optionElement = document.createElement('option');
           
-          const optionValue = terminalsCapMapHeatmap[optionText];
+          const optionValue = terminalsCapMapHeatmap[optionText];
           
-          optionElement.value = optionValue; // Set the value to the filename part
+          optionElement.value = optionValue; 
           
-          optionElement.textContent = optionText; // Keep the text as the display string
-          terminalsSelectHeatmap.appendChild(optionElement);
-      });
-  }
+          optionElement.textContent = optionText; 
+          terminalsSelectHeatmap.appendChild(optionElement);
+      });
+  }
 
   countrySelectHeatmap.addEventListener('change', updateHeatmapTerminalOptions);
-  // --- (END OF MOVED LOGIC) ---
 
 
   // --- (Original Section 2 Logic) ---
@@ -110,27 +112,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const errorContainerHeatmap = document.getElementById('error-container-heatmap');
 
   generateBtnHeatmap.addEventListener('click', function() {
-    const countryVal = document.getElementById('country-select-heatmap').value;
+    const countryVal = document.getElementById('country-select-heatmap').value;
     
-    const terminalsCapFn = document.getElementById('terminals-cap-select-heatmap').value;
-    // --- END MODIFICATION ---
+    const terminalsCapFn = document.getElementById('terminals-cap-select-heatmap').value;
     
-    const demandVal = document.getElementById('demand-select-heatmap').value;
+    const demandVal = document.getElementById('demand-select-heatmap').value;
 
-    const countryFn = countryMapHeatmap[countryVal];
+    const countryFn = countryMapHeatmap[countryVal];
     
-    const demandFn = demandMapHeatmap[demandVal];
-    
-    // This will now correctly construct the filename
-    const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
-    
-    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
-    console.log('Loading heatmap from:', vizPath);
-    
-    mapFrameHeatmap.src = vizPath;
-    resultContainerHeatmap.style.display = 'block';
-    errorContainerHeatmap.style.display = 'none';
-  });
+    const demandFn = demandMapHeatmap[demandVal];
+    
+    const filename = `${countryFn}_${terminalsCapFn}_${demandFn}_cell_heatmap.html`;
+    
+    const vizPath = `static/visualizations/cell_heatmaps/${filename.toLowerCase()}`;
+    console.log('Loading heatmap from:', vizPath);
+    
+    const wrapperHeatmap = mapFrameHeatmap.parentElement;
+
+    mapFrameHeatmap.onload = () => {
+      wrapperHeatmap.classList.remove('loading');
+    };
+
+    wrapperHeatmap.classList.add('loading');
+    
+    mapFrameHeatmap.src = vizPath;
+
+    resultContainerHeatmap.style.display = 'block';
+    errorContainerHeatmap.style.display = 'none';
+  });
 
   updateHeatmapTerminalOptions();
   
