@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Constellation-as-a-Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.5;
+    }
+    .iframe-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+/*       gap: 20px; */
+      flex-wrap: wrap;
+/*       margin-top: 30px; */
+    }
+    .iframe-box {
+      width: 45%;
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      border: none;
+/*       border-radius: 10px; */
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    }
+    h2 {
+      text-align: center;
+    }
+      .left-list {
+    margin-left: 0;
+    padding-left: 40px;
+    text-align: left;
+    list-style-position: outside; /* makes bullets align with text */
+  }
+  </style>
+</head>
+<body>
+
+<h1>Constellation-as-a-Service</h1>
+
+  <h2>Case 1: Simple Strategy Comparison</h2>
+<p>
+Below, we demonstrate a simple case where focusing on maximizing global throughput generates unfair and different assignments compared to the max-min scheduling algorithm.
+<br>
+Each satellite in this constellation carries 200 units of the computing resource that both users ask for. 
+<br>  
+The green user demand requests 1000 units of compute (e.g., CPU or GPU), and the orange user demand requests 300 units of the same resource.
+</p>
+
+
+
+<div class="iframe-container">
+  <div class="iframe-box">
+    <h3>Maximize Throughput</h3>
+    <iframe src="Basic_Throughput.html"></iframe>
+    <p class="caption">
+      The constellation maximizes global throughput. 
+      <ul class="left-list">
+      <li> User Green: Demanded 1000, assigned 1000 </li>
+      <li> User Orange: Demanded 300, assigned 200 </li>
+      </ul> 
+    </p>
+  </div>
+
+  <div class="iframe-box">
+    <h3>Max-Min Fairness</h3>
+    <iframe src="Basic_MaxMin.html"></iframe>
+    <p class="caption">
+      The constellation uses a max-min fairness strategy. 
+      <ul class="left-list">
+       <li> User Green: Demanded 1000, assigned 800 </li>  
+       <li> User Orange: Demanded 300, assigned 300  </li>  
+    </ul>
+    </p>
+  </div>
+</div>
+
+<div style="height:50px;"></div>
+
+  <h2>Case 2: Strategy Comparison at 2 Locations </h2>
+
+<p>
+  Here, we present the case where users in 2 locations competing for resources, scaling up from the previous simple case. 
+ </p>
+  <ul>
+    <li>Each satellite is equipped with 256 units of memory and 200 units of computing power. 
+    </li>
+    <li>
+  For the case in Asia, users have the same demands as the previous case, where the blue user demands 1600 units of computing power and 1024 units of memory, while the green user demands 100 units of memory. 
+ </li>
+  <li>
+      The second case is on the U.S. East Coast, where the green user requested 700 units of memory, while the red user only requested 20 units of memory. 
+</li>
+  </ul>
+
+
+<div class="iframe-container">
+  <div class="iframe-box">
+    <h3>Maximize Throughput</h3>
+    <iframe src="Asia_EastCoast_throughput.html"></iframe>
+    <p class="caption">
+      Maximize global throughput
+
+      <ul class="left-list">
+    <li>
+      User Blue (Asia): Demanded 1600 units of compute, assigned 1200; demanded 1024 units of memory, assigned 1536
+    </li>
+        
+    <li>
+  User Green (Asia): Demanded 100 units of memory, assigned 0 <br>
+  User Green (U.S. East Coast): Demanded 700 units of memory, assigned 600. 
+ </li>
+  <li>
+     User Red (U.S. East Coast): Demanded 20 units of memory, assigned 0
+</li>
+  </ul>
+    
+      
+    </p>
+  </div>
+
+  <div class="iframe-box">
+    <h3>Max-Min Fairness</h3>
+    <iframe src="Asia_EastCoast_maxmin.html"></iframe>
+    <p class="caption">
+      Max-min fairness strategy
+
+
+<ul class="left-list">
+    <li>
+      User Blue (Asia): Demanded 1600 units of compute, assigned 1000; demanded 1024 units of memory, assigned 1280
+    </li>
+        
+    <li>
+  User Green (Asia): Demanded 100 units of memory, assigned 200 <br>
+  User Green (U.S. East Coast): Demanded 700 units of memory, assigned 400. 
+ </li>
+  <li>
+     User Red (U.S. East Coast): Demanded 20 units of memory, assigned 200
+</li>
+  </ul>
+
+    </p>
+  </div>
+</div>
+
+  <div style="height:50px;"></div>
+
+  <h2>Case 3: Global Scheduling Strategy Comparison </h2>
+
+  <p>
+  In this case, we demonstrate that the simulator and the scheduler are capable of computing at the global scale, handling multiple types of user demands at the same time.
+  </p>
+
+
+  <div class="iframe-container">
+  <div class="iframe-box">
+    <h3>Maximize Throughput</h3>
+    <iframe src="global_throughput.html"></iframe>
+    <p class="caption">
+      Maximize global throughput
+
+      <ul class="left-list">
+    <li>
+      User Blue (Asia): Demanded 1600 units of compute, assigned 1200; demanded 1024 units of memory, assigned 1536
+    </li>
+        
+   
+  <li>
+     User Red (U.S. East Coast): Demanded 20 units of memory, assigned 0
+</li>
+<li>
+     User Orange (Arabian Peninsula): Demanded 1000 units of compute, assigned 1000
+</li>
+<li>
+  User Green (Asia): Demanded 100 units of memory, assigned 0 <br>
+  User Green (U.S. East Coast): Demanded 700 units of memory, assigned 600. <br>
+  User Green (Arabian Peninsula): Demanded 100 units of memory, assigned 0. 
+ </li>
+  </ul>
+    
+      
+    </p>
+  </div>
+
+  <div class="iframe-box">
+    <h3>Max-Min Fairness</h3>
+    <iframe src="global_maxmin.html"></iframe>
+    <p class="caption">
+      Max-min fairness strategy
+
+
+<ul class="left-list">
+    <li>
+      User Blue (Asia): Demanded 1600 units of compute, assigned 1000; demanded 1024 units of memory, assigned 1280
+    </li>
+  <li>
+     User Red (U.S. East Coast): Demanded 20 units of memory, assigned 200
+</li>
+  <li>
+     User Orange (Arabian Peninsula): Demanded 1000 units of compute, assigned 800
+</li>
+   <li>
+  User Green (Asia): Demanded 100 units of memory, assigned 200 <br>
+  User Green (U.S. East Coast): Demanded 700 units of memory, assigned 400. <br>
+  User Green (Arabian Peninsula): Demanded 100 units of memory, assigned 200. 
+ </li>
+  </ul>
+
+    </p>
+  </div>
+</div>
+
+  <script>
+  // Auto-size same-origin iframes to their content height
+  function setFrameHeight(frame) {
+    try {
+      const doc = frame.contentDocument || frame.contentWindow.document;
+      if (!doc) return;
+      const body = doc.body;
+      const html = doc.documentElement;
+      const height = Math.max(
+        body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight
+      );
+      frame.style.height = height + 'px';
+    } catch (e) {
+      // Cross-origin or access issue; leave the fallback height
+    }
+  }
+
+  function attachAutoResize(frame) {
+    // Initial resize when the iframe finishes loading
+    frame.addEventListener('load', () => {
+      setFrameHeight(frame);
+      // Re-check a few times for late content (images, fonts, JS-rendered charts)
+      let ticks = 0;
+      const interval = setInterval(() => {
+        setFrameHeight(frame);
+        if (++ticks > 10) clearInterval(interval); // ~5 seconds at 500ms
+      }, 500);
+    });
+  }
+
+  // Attach to all iframes on the page
+  const frames = document.querySelectorAll('iframe');
+  frames.forEach(attachAutoResize);
+
+  // Also reflow on window resize (fonts/layout can rewrap)
+  window.addEventListener('resize', () => frames.forEach(setFrameHeight));
+</script>
+  
+</body>
+</html>
