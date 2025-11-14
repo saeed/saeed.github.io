@@ -90,13 +90,10 @@
               <a class="nav-link js-scroll-trigger" href="#pubs">Publications</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Getting Started</a>
+              <a class="nav-link js-scroll-trigger" href="#collaborators">Collaborators</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#tutorial">Tutorial</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact2">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#edu_outreach">Educational Activities and Outreach</a>
             </li>
           </ul>
         </div>
@@ -237,82 +234,35 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="collaborators">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Getting Started</h2>
-              <p class="lead">STPP implementation has three components</p>
-              <ul>
-                <li><p class="lead">Kernel patch implemented in linux 4.10 which performs queue resume/pause based on allocated time slots along with queue probing to determine demand.</p> </li>
-                <li><p class="lead">A modified <a href="https://w1.fi/hostapd/">hostapd</a> 2.6 to pass the parameters of STPP to kernel.</p></li>
-                <li><p class="lead">A <a href="https://github.com/kohler/click">Click</a>-based daemon to process and pass the token. </p> </li>
-              </ul>
-              <p class="lead">Implementation of all three components can be found on the github repo <a href="https://github.com/WL4-WIFI">(https://github.com/WL4-WIFI)</a> </p>
-              
+            <h3>Collaborators</h3>
+              <p>C1 , C2, C3</p>
           </div>
         </div>
       </div>
     </section>
       
-    <section id="tutorial" class="bg-light">
+    <section id="edu_outreach" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Tutorial</h2>
+            <h3>Educational Activities and Outreach</h3>
               
-              <ol>
-                  <li class="li1">In linux directory, compile required kernel modules<br/>
-                    <code>sudo make SUBDIRS=net/mac80211/</code>
-                  </li>
-                  <li  class="li1">In the same directory, uninstall loaded modules and load newly compiled modules<br/>
-                      <code>sudo modprobe -r ath9k ath9k_htc ath9k_common ath9k_hw ath mac80211 cfg80211 <br/>
-                            sudo insmod net/wireless/cfg80211.ko <br/>
-                            sudo insmod net/mac80211/mac80211.ko <br/>
-                            sudo insmod drivers/net/wireless/ath/ath.ko <br/>
-                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_hw.ko <br/>
-                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_common.ko <br/>
-                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_htc.ko <br/>
-                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k.ko <br/>
-                      </code>
-                  </li>
-                  <li class="li1">Navigate to  <code>hostap/wpa_supplicant</code> then compile and run wpa_supplicant with a configuration file written following the following <a href="https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf">this template</a>.<br/>
-                      <code>make<br/>
-                            sudo ./wpa_supplicant -Dnl80211 -iwlan4 -c wpa_supplicant.conf<br/>
-                      </code>
-                  </li>
-                  <li class="li1"> Download <a href="https://github.com/kohler/click">Click Modular Router</a> and copy all *.cc and *.hh files to <code>click/elements/local/</code> and run click with the <code>conf.click</code>.
-                  </li>
-                  <li class="li1"> Start <code>wpa_cli</code> to control the schedule. Note that only direct links are scheduled. Hence, setup direct links using<br/>
-                      <code>tdls_discover MAC_ADDRESS_OF_PEER <br/>
-                            tdls_setup MAC_ADDRESS_OF_PEER <br/>
-                      </code>
-                      This step has to be repeated to make sure that all nodes that are intended to be scheduled are paired. This step has to be executed at only one of the pair. <br/>
-                      Allocate quota and setup sleep time<br/>
-                      <code>wl4_change_quota MAC_ADDRESS_OF_PEER QUOTA_IN_BITS (e.g., 60000)</code>                      
-                  </li>
-              </ol>
+              
           </div>
         </div>
       </div>
     </section>
     
       
-    <section id="contact2">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Contact</h2>
-              <p class="lead">For questions/comments please email ahmed dot saeed at gatech dot edu</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Credits: page format inspired by similar tutorials created by <a href="https://cs.nyu.edu/~anirudh/">Anirudh Sivaraman</a> - page created using <a href="https://startbootstrap.com/template-overviews/scrolling-nav/">Bootstrap Scrolling Nav template</a></p>
+        <p>Footer</p>
       </div>
       <!-- /.container -->
     </footer>
