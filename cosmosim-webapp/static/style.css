@@ -424,6 +424,9 @@ button:active {
     .abstract-container {
         padding: 0 1.75rem;
     }
+    .logo-container {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 640px) {
@@ -478,6 +481,12 @@ button:active {
     .abstract-container {
         padding: 0 1.25rem;
     }
+    .institution-logo {
+        height: 1.5rem; 
+    }
+    .logo-container {
+        gap: 1rem;
+    }
 }
 
 
@@ -528,4 +537,35 @@ button:active {
 
 .iframe-wrapper.loading .map-frame {
     visibility: hidden;
+}
+
+#global-spinner-wrapper {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#global-spinner-wrapper .spinner {
+  display: block;
+}
+
+#main-content-wrapper {
+    display: none;
+}
+
+logo-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    justify-content: flex-end; 
+}
+
+.institution-logo {
+    height: 3.5rem;   
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
