@@ -735,7 +735,7 @@ function BibtexDisplay() {
                     header.attr("id", this.fixValue(groupNameValue));
                 } else {
                     newStruct.children("." + groupName.toLowerCase()).first().prepend("<h" + (level + 1) + " class='" +
-                        groupName + "' id=\"" + groupNameValue + "\">" + this.fixValue(groupNameValue) + "</h" + (level + 1) + ">");
+                        groupName + "' id=\"" + groupNameValue + "\">" + this.fixValue(groupNameValue) + "</h" + (level + 5) + ">");
                 }
 
                 //Divide the array into group with groupNameValue
