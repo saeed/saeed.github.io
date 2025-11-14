@@ -1,0 +1,50 @@
+@inproceedings{hussien-coresync-model-mascots-2025,
+  author      = {Jehad Hussien and
+                Pratyush Sahu and
+                Eric Stuhr and
+                Ahmed Saeed},
+  title       = {Modeling the Interactions between Core Allocation and Overload Control in μs-Scale Network Stacks},
+  booktitle   = {33rd International Symposium on the Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS) Workshop},
+  series      = {MASCOTS '25},
+  publisher   = {IEEE},
+  year        = {2025},
+  url         = {http://saeed.github.io/files/coresync_model-mascots25.pdf},
+  code        = {https://github.com/GT-ANSR-Lab/core-allocation_overload-control_model},
+  slides      = {http://saeed.github.io/files/coresync_model_mascots25_ppt.pdf},
+  abstract  = {Modern datacenter operators aim to maximize the utilization of limited and expensive resources, especially CPU cores. Achieving such an objective requires fast and accurate core scheduling policies. Meanwhile, operating at high utilization requires the employment of overload controllers that shed excess load beyond the allocated capacity. Currently, no analytical techniques exist to study the interactions between these controllers. In this paper, we use performance verification to establish bounds on the throughput and latency achieved by a server that employs state-of-the-art fine-grained core allocation and overload control mechanisms. Our model enables system performance analysis under a wide range of workload and system configurations (e.g., RTT, load, and burstiness). We show that worst-case throughput and latency degrade by 1.8× and 2.3×, respectively, under high load and burstiness due to the interactions between overload control and fast core allocation. We validate our findings using simulations that demonstrate the plausibility of the identified worst-case behavior under realistic conditions.}
+}
+
+@inproceedings{bortha-archie-hotnets-2024,
+  author       = {Rahul Bothra and
+                  Venkat Arun and
+                  Brighten Godfrey and
+                  Akshay Narayan and
+                  Ahmed Saeed},
+  title        = {Lightweight Automated Reasoning for Network Architectures},
+  booktitle    = {Proceedings of the 23rd {ACM} Workshop on Hot Topics in Networks (HotNets)},
+  series       = {HotNets '24},
+  pages        = {237--245},
+  publisher    = {{ACM}},
+  year         = {2024},
+  url          = {http://saeed.github.io/files/archie_hoetnetst24.pdf},
+  doi          = {10.1145/3696348.3696865},
+  abstract = {Architecting a modern data center network is increasingly complicated. Seeking the highest performance and support for emerging workloads, network architects planning a build-out must choose from a large selection of switching components, NICs, network stacks, congestion control algorithms, routing schemes, measurement systems, virtualization software, centralized bandwidth allocators and security mechanisms, all from various vendors. Today, manual planning by human experts is time-consuming at best, and can easily result in overlooked design choices or missed complex inter-dependencies. We propose a radical departure from typical whiteboard-and-spreadsheet planning, and ask: is it possible to reason automatically about possible network architectural designs? Such an approach is nontrivial since formal reasoning about even a single component (like routing systems) is difficult, and we seek to understand how a variety of functional components fit together. We explore the challenge through examples and propose an automated lightweight reasoning framework that models architectural complexities at a broad, but shallow, level of abstraction. Such a framework could serve as a useful design tool for network architects, for careful cross-team planning, and even to help vendors plan product features and requirements.}
+}
+
+
+@techreport{virelay-goel-tr-2023,
+  author      = {Saksham Goel and
+                  Benjamin Mikek and
+                  Jehad Aly and
+                  Venkat Arun and
+                  Ahmed Saeed and
+                  Aditya Akella},
+  title       = {A Performance Verification Methodology for Resource Allocation Heuristics},
+  booktitle    = {arXiv},
+  year        = {2023},
+  url          = {https://arxiv.org/pdf/2301.04205},
+  doi          = {10.48550/ARXIV.2301.04205},
+  abstract    = {Performance verification is a nascent but promising tool for understanding the performance and limitations of heuristics under realistic assumptions. Bespoke performance verification tools have already demonstrated their value in settings like congestion control and packet scheduling. In this paper, we aim to emphasize the broad applicability and utility of performance verification. To that end, we highlight the design principles of performance verification. Then, we leverage that understanding to develop a set of easy-to-follow guidelines that are applicable to a wide range of resource allocation heuristics. In particular, we introduce Virelay, a framework that enables heuristic designers to express the behavior of their algorithms and their assumptions about the system in an environment that resembles a discrete-event simulator. We demonstrate the utility and ease-of-use of Virelay by applying it to six diverse case studies. We produce bounds on the performance of classical algorithms, work stealing and SRPT scheduling, under practical assumptions. We demonstrate Virelay's expressiveness by capturing existing models for congestion control and packet scheduling, and we verify the observation that TCP unfairness can cause some ML training workloads to spontaneously converge to a state of high network utilization. Finally, we use Virelay to identify two bugs in the Linux CFS load balancer.}
+}
+
+

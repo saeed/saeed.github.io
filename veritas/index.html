@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <bibtex src="./master.bib"></bibtex>
+  
+    <title>Veritas</title>
+    <link rel="shortcut icon" href="https://www.gatech.edu/sites/all/themes/gt_tlw/favicon.ico" type="image/vnd.microsoft.icon">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-5878524-3', 'auto');
+      ga('send', 'pageview');
+    </script>
+      
+      
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <style>
+        .button {
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        .button1 {
+                    background-color: #4CAF50; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Green */
+        
+        .button2 {
+                    background-color: #007bff; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Blue */
+        .button1:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        .button2:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        code { 
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 250;
+        }
+        .li1 {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Veritas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#pubs">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Getting Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#tutorial">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact2">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+      <div class="container text-center">
+          <h3>Robust Behavioral Analysis and Synthesis of Network Control Protocols Using Formal Verification</h3>
+          <p class="lead" align="left">PI: Hari Balakrishnan - MIT</p> 
+          <p class="lead" align="left">Co-PI: Ahmed Saeed - Georgia Tech</p>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <p>Networked systems in general, and the Internet in particular, are complex systems involving many interacting components. Network control algorithms implemented in numerous network protocols are at the core of these systems. To date, the design and analysis of network control algorithms has been based on heuristics and idealized models of networks, without any guarantees on their performance in practice. This proposal aims to address this shortcoming and develop methods to prove performance properties of network control algorithms and to synthesize algorithms with performance proofs.</p>
+
+<p>Innovations in network control algorithms are occurring at a rapid pace, spurred by evolving network technologies, a fast-changing application mix, and the rising importance of quality-of-experience for users, who react negatively to poor performance (e.g., by giving applications poor ratings or finding alternatives). Performance matters not only in the mean, but also in the tail statistics. In response, the research community and industry have developed numerous innovative network control algorithms to improve performance. Despite these advances, little is known about performance guarantees of such algorithms, nor is there is principled proof-driven framework to help the development of these algorithms. The research proposed herein will, if successful, improve the community's ability to verify performance properties and synthesize new algorithms with provable properties. The tools produced in the proposed work will open new directions in network resource allocation research. The education plan includes the incorporation of this research's findings into the undergraduate and graduate curricula and offers students an opportunity to implement verifiable network control algorithms using the tools from Veritas, treating performance as correctness.</p>
+
+<p>This proposal develops a framework, Veritas, which uses formal verification to prove performance properties of a network control algorithm. With Veritas a user can (1) encode an algorithm in first-order logic, (2) specify a hypothesis about the algorithm, and (3) test if the hypothesis holds by running the encoded algorithm in a customizable, built-in environment model. In addition, given constraints on a control algorithm---input observations usable by the algorithm and an action space over which it can respond to observations---along with the environment model encoded in first-order logic and a specification of performance objectives, Veritas automatically searches over the space of controllers to propose a mapping between input observations and controller actions.
+</p>
+              
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pubs" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h3>Publications</h3>
+
+
+            <div class="bibtex_structure">
+              <div class="group year" extra="DES number">
+                  <div style="padding-bottom:10px;"></div>
+                  <div class="sort journal" extra="ASCE string">
+                    <div class="templates"></div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row" id="bibtex_display">
+              
+              <div class="bibtex_template" style="display: none;">
+                
+                <ul> <li>
+                  <span class="if url">
+                    <a class="bibtexVar" href="+URL+" extra="url">
+                        <span style="text-decoration: underline;" class="title"></span>,
+                    </a>
+                  </span>
+                  <span class="if !url">
+                    <span class="title"></span>,
+                  </span>
+                  <div class="if author">
+                    <span class="author"></span>
+                  </div>
+                  <div>
+                    <span class="if journal"><em><span class="journal"></span></em>,</span>
+                    <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
+                    <span class="if publisher"><em><span class="publisher"></span></em>,</span>
+                    <span class="if institution"><span class="institution"></span>,</span>
+                    <span class="if address"><span class="address"></span>,</span>
+                    <span class="if month"><span class="month"></span>,</span>
+                    <span class="if year"><span class="year"></span>.</span>
+                    <br/>
+                    <span class="if url">
+                      <a class="bibtexVar" href="+URL+" extra="url">
+                        <i class="far fa-file"></i> Paper
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if notes">
+                      <a class="bibtexVar" href="+NOTES+" extra="notes">
+                        <i class="far fa-file-alt"></i> Extended Version
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if video">
+                      <a class="bibtexVar" href="+VIDEO+" extra="video">
+                        <i class="far fa-file-video"></i> Video
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if code">
+                      <a class="bibtexVar" href="+CODE+" extra="code">
+                        <i class="far fa-file-code"></i> Code
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if gadget">
+                      <a class="bibtexVar" href="+GADGET+" extra="gadget">
+                        <i class="fas fa-play-circle"></i> Gadget
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if slides">
+                      <a class="bibtexVar" href="+SLIDES+" extra="slides">
+                        <i class="far fa-file-powerpoint"></i> Slides
+                      </a> &nbsp;&nbsp;
+                    </span>
+
+                    <span class="if abstract">
+                      <a class="bibtexVar" role="button" data-bs-toggle="collapse"
+                     href="#bbib+BIBTEXKEY+" aria-expanded="false"
+                     aria-controls="bbib+BIBTEXKEY+" extra="BIBTEXKEY" bibtexjs-css-escape>
+                        [Abstract]
+                      </a> &nbsp;&nbsp;
+                    </span>
+
+                    <a class="bibtexVar" role="button" data-bs-toggle="collapse"
+                   href="#bib+BIBTEXKEY+" aria-expanded="false"
+                   aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY" bibtexjs-css-escape>
+                      [bib]
+                    </a>
+                    
+                  </div>
+                  <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+                      <div class="card well">
+                        <pre><br/><span class="bibtexraw noread"></span></pre>
+                      </div>
+                  </div>
+                  <span class="if abstract">
+                      <div class="bibtexVar collapse" id="bbib+BIBTEXKEY+" extra="BIBTEXKEY">
+                          <div class="card well">
+                            <small class="text-muted"><b>Abstract:</b> <span class="abstract"></span></small>
+                          </div>
+                      </div>
+                  </span>
+                  <div style="display:none"><span class="bibtextype"></span></div>
+                </li></ul>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Getting Started</h2>
+              <p class="lead">STPP implementation has three components</p>
+              <ul>
+                <li><p class="lead">Kernel patch implemented in linux 4.10 which performs queue resume/pause based on allocated time slots along with queue probing to determine demand.</p> </li>
+                <li><p class="lead">A modified <a href="https://w1.fi/hostapd/">hostapd</a> 2.6 to pass the parameters of STPP to kernel.</p></li>
+                <li><p class="lead">A <a href="https://github.com/kohler/click">Click</a>-based daemon to process and pass the token. </p> </li>
+              </ul>
+              <p class="lead">Implementation of all three components can be found on the github repo <a href="https://github.com/WL4-WIFI">(https://github.com/WL4-WIFI)</a> </p>
+              
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <section id="tutorial" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Tutorial</h2>
+              
+              <ol>
+                  <li class="li1">In linux directory, compile required kernel modules<br/>
+                    <code>sudo make SUBDIRS=net/mac80211/</code>
+                  </li>
+                  <li  class="li1">In the same directory, uninstall loaded modules and load newly compiled modules<br/>
+                      <code>sudo modprobe -r ath9k ath9k_htc ath9k_common ath9k_hw ath mac80211 cfg80211 <br/>
+                            sudo insmod net/wireless/cfg80211.ko <br/>
+                            sudo insmod net/mac80211/mac80211.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_hw.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_common.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k_htc.ko <br/>
+                            sudo insmod drivers/net/wireless/ath/ath9k/ath9k.ko <br/>
+                      </code>
+                  </li>
+                  <li class="li1">Navigate to  <code>hostap/wpa_supplicant</code> then compile and run wpa_supplicant with a configuration file written following the following <a href="https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf">this template</a>.<br/>
+                      <code>make<br/>
+                            sudo ./wpa_supplicant -Dnl80211 -iwlan4 -c wpa_supplicant.conf<br/>
+                      </code>
+                  </li>
+                  <li class="li1"> Download <a href="https://github.com/kohler/click">Click Modular Router</a> and copy all *.cc and *.hh files to <code>click/elements/local/</code> and run click with the <code>conf.click</code>.
+                  </li>
+                  <li class="li1"> Start <code>wpa_cli</code> to control the schedule. Note that only direct links are scheduled. Hence, setup direct links using<br/>
+                      <code>tdls_discover MAC_ADDRESS_OF_PEER <br/>
+                            tdls_setup MAC_ADDRESS_OF_PEER <br/>
+                      </code>
+                      This step has to be repeated to make sure that all nodes that are intended to be scheduled are paired. This step has to be executed at only one of the pair. <br/>
+                      Allocate quota and setup sleep time<br/>
+                      <code>wl4_change_quota MAC_ADDRESS_OF_PEER QUOTA_IN_BITS (e.g., 60000)</code>                      
+                  </li>
+              </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+      
+    <section id="contact2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Contact</h2>
+              <p class="lead">For questions/comments please email ahmed dot saeed at gatech dot edu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Credits: page format inspired by similar tutorials created by <a href="https://cs.nyu.edu/~anirudh/">Anirudh Sivaraman</a> - page created using <a href="https://startbootstrap.com/template-overviews/scrolling-nav/">Bootstrap Scrolling Nav template</a></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="js/scrolling-nav.js"></script>
+
+  </body>
+
+</html>
