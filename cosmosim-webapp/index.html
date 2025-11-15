@@ -17,7 +17,10 @@
       Alberto Dainotti, Ahmed Saeed
     </h2>
     <p>ACM IMC 2025</p>
-    <p class="institutions">— Georgia Tech, Northwestern University*</p>
+    <div class="logo-container">
+      <img src="static/logos/gt-logo.png" alt="Georgia Tech Logo" class="institution-logo">
+      <img src="static/logos/northwestern-logo.png" alt="Northwestern University Logo" class="institution-logo">
+    </div>
   </div>
 
   <div class="links-container">
@@ -34,132 +37,138 @@
     </p>
   </div>
 
-  <div class="viz-section-container">
-    <h2>National Failover Capacity: Per Cell Capacity & Gateway Utilization</h2>
-    <p class="description-placeholder">
-      This visualization provides insight into the estimated maximum capacity Starlink can provide for emergency failover traffic in a given country. Select a country, number of user terminals, a terminal distribution strategy, and a RF beam allocation policy to define the simulation scenario. In Uncoordinated beam allocation, beams are first distributed across all cells to prevent starvation, ensuring every cell receives at least one beam, and then prioritized by population density. This approach is our best estimate of satellite operator behavior which will avoid starving any of their clients while attempting to prioritize cells based on their estimated population density. In Coordinated beam allocation, beams are allocated to cells strictly prioritizing based on the number of terminals at each cell to maximize the overall failover capacity for the nation.
-      The output is two maps: one showing the resulting per-cell aggregate capacity within the selected country and another showing the utilization load on Starlink's gateway stations used by the failover traffic.
-      These two visualizations correspond to Figures 5 and 7 in the paper. 
-    </p>
-
-    <div class="viz-wrapper viz-wrapper-stacked">
-      
-      <div class="controls-horizontal">
-        <div class="form-group">
-          <label for="Country">Country</label>
-          <select name="Country" id="Country">
-            <option value="South Africa">South Africa</option>
-            <option value="Ghana">Ghana</option>
-            <option value="Tonga">Tonga</option>
-            <option value="Lithuania">Lithuania</option>
-            <option value="Britain" selected>Britain</option>
-            <option value="Haiti">Haiti</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="Number_of_terminals">Number of terminals</label>
-          <select name="Number of terminals" id="Number_of_terminals"></select>
-        </div>
-        <div class="form-group">
-          <label for="User_terminal_distribution_algorithm">User terminal distribution algorithm</label>
-          <select name="User terminal distribution algorithm" id="User_terminal_distribution_algorithm">
-            <option value="Population density" selected>Population density</option>
-            <option value="GCB No Cap">GCB No Cap</option>
-            <option value="GCB 1K">GCB 1K</option>
-            <option value="GCB 10K">GCB 10K</option>
-            <option value="GCB 100K">GCB 100K</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="Beam_allocation">Beam allocation</label>
-          <select name="Beam allocation" id="Beam_allocation">
-            <option value="Priority" selected>Uncoordinated</option>
-            <option value="Population waterfill">Coordinated</option>
-          </select>
-        </div>
-        <button type="button" id="generate-btn-merged">Generate Visualization</button>
-      </div>
-
-      <div class="outputs-container">
-        <div id="result-container-capacity" class="result">
-          <h3>Per Cell Capacity Map</h3>
-          <div class="iframe-wrapper">
-            <div class="spinner"></div>
-            <iframe id="map-frame-capacity" class="map-frame" src=""></iframe>
-          </div>
-        </div>
-        <div id="result-container-gs" class="result">
-          <h3>Gateway Utilization Map</h3>
-          <div class="iframe-wrapper">
-            <div class="spinner"></div>
-            <iframe id="map-frame-gs" class="map-frame" src=""></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="error-container-merged" class="error"></div>
+  <div id="global-spinner-wrapper">
+    <div class="spinner"></div>
   </div>
 
+  <div id="main-content-wrapper">
+    
+    <div class="viz-section-container">
+      <h2>National Failover Capacity: Per Cell Capacity & Gateway Utilization</h2>
+      <p class="description-placeholder">
+        This visualization provides insight into the estimated maximum capacity Starlink can provide for emergency failover traffic in a given country. Select a country, number of user terminals, a terminal distribution strategy, and a RF beam allocation policy to define the simulation scenario. In Uncoordinated beam allocation, beams are first distributed across all cells to prevent starvation, ensuring every cell receives at least one beam, and then prioritized by population density. This approach is our best estimate of satellite operator behavior which will avoid starving any of their clients while attempting to prioritize cells based on their estimated population density. In Coordinated beam allocation, beams are allocated to cells strictly prioritizing based on the number of terminals at each cell to maximize the overall failover capacity for the nation.
+        The output is two maps: one showing the resulting per-cell aggregate capacity within the selected country and another showing the utilization load on Starlink's gateway stations used by the failover traffic.
+        These two visualizations correspond to Figures 5 and 7 in the paper. 
+      </p>
 
-  <div class="viz-section-container">
-    <h2>Global Impact of Failover Traffic</h2>
-    <p class="description-placeholder">
-      This visualization explores the trade-off of dedicating LEO network resources to a single country's failover traffic by simulating the impact on existing incumbent traffic across the network. Based on the selected country, terminal distribution scheme, and satellite incumbent demand, the visualization generates a heatmap of available capacity for incumbent cells worldwide. This visualization corresponds to Figures 14 and 23 in the paper.
-    </p>
-
-    <div id="controls-heatmap">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="country-select-heatmap">Country</label>
-          <select id="country-select-heatmap">
-            <option value="Britain" selected>Britain</option>
-            <option value="Ghana">Ghana</option>
-            <option value="South Africa">South Africa</option>
-            <option value="Tonga">Tonga</option>
-            <option value="Lithuania">Lithuania</option>
-            <option value="Haiti">Haiti</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="terminals-cap-select-heatmap">Number of terminals / GCB cap</label>
-          <select id="terminals-cap-select-heatmap">
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="demand-select-heatmap">Incumbent demand</label>
-          <select id="demand-select-heatmap">
-            <option value="8400 Mbps">8400 Mbps</option>
-            <option value="9600 Mbps">9600 Mbps</option>
-            <option value="10800 Mbps">10800 Mbps</option>
-            <option value="12000 Mbps">12000 Mbps</option>
-          </select>
-        </div>
+      <div class="viz-wrapper viz-wrapper-stacked">
         
-        <button type="button" id="generate-btn-heatmap">Generate Visualization</button>
+        <div class="controls-horizontal">
+          <div class="form-group">
+            <label for="Country">Country</label>
+            <select name="Country" id="Country">
+              <option value="South Africa">South Africa</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Tonga">Tonga</option>
+              <option value="Lithuania">Lithuania</option>
+              <option value="Britain" selected>Britain</option>
+              <option value="Haiti">Haiti</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Number_of_terminals">Number of terminals</label>
+            <select name="Number of terminals" id="Number_of_terminals"></select>
+          </div>
+          <div class="form-group">
+            <label for="User_terminal_distribution_algorithm">User terminal distribution algorithm</label>
+            <select name="User terminal distribution algorithm" id="User_terminal_distribution_algorithm">
+              <option value="Population density" selected>Population density</option>
+              <option value="GCB No Cap">GCB No Cap</option>
+              <option value="GCB 1K">GCB 1K</option>
+              <option value="GCB 10K">GCB 10K</option>
+              <option value="GCB 100K">GCB 100K</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Beam_allocation">Beam allocation</label>
+            <select name="Beam allocation" id="Beam_allocation">
+              <option value="Priority" selected>Uncoordinated</option>
+              <option value="Population waterfill">Coordinated</option>
+            </select>
+          </div>
+          <button type="button" id="generate-btn-merged">Generate Visualization</button>
+        </div>
+
+        <div class="outputs-container">
+          <div id="result-container-capacity" class="result">
+            <h3>Per Cell Capacity Map</h3>
+            <div class="iframe-wrapper">
+              <div class="spinner"></div>
+              <iframe id="map-frame-capacity" class="map-frame" src=""></iframe>
+            </div>
+          </div>
+          <div id="result-container-gs" class="result">
+            <h3>Gateway Utilization Map</h3>
+            <div class="iframe-wrapper">
+              <div class="spinner"></div>
+              <iframe id="map-frame-gs" class="map-frame" src=""></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="error-container-merged" class="error"></div>
+    </div>
+
+
+    <div class="viz-section-container">
+      <h2>Global Impact of Failover Traffic</h2>
+      <p class="description-placeholder">
+        This visualization explores the trade-off of dedicating LEO network resources to a single country's failover traffic by simulating the impact on existing incumbent traffic across the network. Based on the selected country, terminal distribution scheme, and satellite incumbent demand, the visualization generates a heatmap of available capacity for incumbent cells worldwide. This visualization corresponds to Figures 14 and 23 in the paper.
+      </p>
+
+      <div id="controls-heatmap">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="country-select-heatmap">Country</label>
+            <select id="country-select-heatmap">
+              <option value="Britain" selected>Britain</option>
+              <option value="Ghana">Ghana</option>
+              <option value="South Africa">South Africa</option>
+              <option value="Tonga">Tonga</option>
+              <option value="Lithuania">Lithuania</option>
+              <option value="Haiti">Haiti</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="terminals-cap-select-heatmap">Number of terminals / GCB cap</label>
+            <select id="terminals-cap-select-heatmap">
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="demand-select-heatmap">Incumbent demand</label>
+            <select id="demand-select-heatmap">
+              <option value="8400 Mbps">8400 Mbps</option>
+              <option value="9600 Mbps">9600 Mbps</option>
+              <option value="10800 Mbps">10800 Mbps</option>
+              <option value="12000 Mbps">12000 Mbps</option>
+            </select>
+          </div>
+          
+          <button type="button" id="generate-btn-heatmap">Generate Visualization</button>
+        </div>
+      </div>
+
+      <div id="error-container-heatmap" class="error"></div>
+
+      <div id="result-container-heatmap" class="result">
+        <h3>Capacity Degradation Map</h3>
+        <div class="iframe-wrapper">
+          <div class="spinner"></div>
+          <iframe id="map-frame-heatmap" class="map-frame" src=""></iframe>
+        </div>
       </div>
     </div>
 
-    <div id="error-container-heatmap" class="error"></div>
+    <footer class="footer">
+      <p>
+        This web app was developed by Sameer (Sammy) Kapoor, under the direction of Professor Ahmed Saeed.
+      </p>
+    </footer>
 
-    <div id="result-container-heatmap" class="result">
-      <h3>Capacity Degradation Map</h3>
-      <div class="iframe-wrapper">
-        <div class="spinner"></div>
-        <iframe id="map-frame-heatmap" class="map-frame" src=""></iframe>
-      </div>
-    </div>
-  </div>
-
-  <script src="static/viz_helper.js"></script>
+  </div> <script src="static/viz_helper.js"></script>
   <script src="static/index.js"></script>
-
-  <footer class="footer">
-    <p>
-      This web app was developed by Sameer (Sammy) Kapoor, under the direction of Professor Ahmed Saeed.
-    </p>
-  </footer>
 
   </body>
 </html>

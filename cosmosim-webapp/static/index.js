@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+  const globalSpinnerWrapper = document.getElementById('global-spinner-wrapper');
+  const mainContentWrapper = document.getElementById('main-content-wrapper');
+  let capacityMapLoaded = false;
+  let gsMapLoaded = false;
+  
+  function checkGlobalLoad() {
+    if (capacityMapLoaded && gsMapLoaded) {
+      globalSpinnerWrapper.style.display = 'none';
+      mainContentWrapper.style.display = 'block';
+    }
+  }
+
   // --- SECTION 1: Capacity & GS Utilization ---
   
   const countrySelectMerged = document.getElementById('Country');
@@ -52,9 +64,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     mapFrameCapacity.onload = () => {
       wrapperCapacity.classList.remove('loading');
+      if (!capacityMapLoaded) {
+          capacityMapLoaded = true;
+          checkGlobalLoad();
+      }
     };
     mapFrameGs.onload = () => {
       wrapperGs.classList.remove('loading');
+      if (!gsMapLoaded) {
+          gsMapLoaded = true;
+          checkGlobalLoad();
+      }
     };
 
     wrapperCapacity.classList.add('loading');
@@ -105,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
   countrySelectHeatmap.addEventListener('change', updateHeatmapTerminalOptions);
 
 
-  // --- (Original Section 2 Logic) ---
   const generateBtnHeatmap = document.getElementById('generate-btn-heatmap');
   const mapFrameHeatmap = document.getElementById('map-frame-heatmap');
   const resultContainerHeatmap = document.getElementById('result-container-heatmap');
@@ -143,6 +162,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateHeatmapTerminalOptions();
   
-  generateBtnHeatmap.click();
-
 });
