@@ -65,6 +65,28 @@
   abstract    = {Performance verification is a nascent but promising tool for understanding the performance and limitations of heuristics under realistic assumptions. Bespoke performance verification tools have already demonstrated their value in settings like congestion control and packet scheduling. In this paper, we aim to emphasize the broad applicability and utility of performance verification. To that end, we highlight the design principles of performance verification. Then, we leverage that understanding to develop a set of easy-to-follow guidelines that are applicable to a wide range of resource allocation heuristics. In particular, we introduce Virelay, a framework that enables heuristic designers to express the behavior of their algorithms and their assumptions about the system in an environment that resembles a discrete-event simulator. We demonstrate the utility and ease-of-use of Virelay by applying it to six diverse case studies. We produce bounds on the performance of classical algorithms, work stealing and SRPT scheduling, under practical assumptions. We demonstrate Virelay's expressiveness by capturing existing models for congestion control and packet scheduling, and we verify the observation that TCP unfairness can cause some ML training workloads to spontaneously converge to a state of high network utilization. Finally, we use Virelay to identify two bugs in the Linux CFS load balancer.}
 }
 
+@phdthesis{arun2023verifying,
+  title={Verifying the Performance of Network Control Algorithms},
+  author={Arun, Venkat},
+  year={2023},
+  school={Massachusetts Institute of Technology}
+}
+
+
+@inproceedings{arun-starvation-sigcomm-2023,
+  author    = {Venkat Arun and
+               Mohammad Alizadeh and
+               Hari Balakrishnan},
+  title     = {Starvation in end-to-end congestion control},
+  booktitle = {Proceedings of the 2023 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
+  series    = {SIGCOMM '23},
+  publisher = {{ACM}},
+  year      = {2023},
+  url       = {https://dl.acm.org/doi/pdf/10.1145/3544216.3544223},
+  abstract  = {To overcome weaknesses in traditional loss-based congestion control algorithms (CCAs), researchers have developed and deployed several delay-bounding CCAs that achieve high utilization without bloating delays (e.g., Vegas, FAST, BBR, PCC, Copa, etc.). When run on a path with a fixed bottleneck rate, these CCAs converge to a small delay range in equilibrium. This paper proves a surprising result: although designed to achieve reasonable inter-flow fairness, current methods to develop delay-bounding CCAs cannot always avoid starvation, an extreme form of unfairness. Starvation may occur when such a CCA runs on paths where non-congestive network delay variations due to real-world factors such as ACK aggregation and end-host scheduling exceed double the delay range that the CCA converges to in equilibrium. We provide experimental evidence for this result for BBR, PCC Vivace, and Copa with a link emulator. We discuss the implications of this result and posit that to guarantee no starvation an efficient delay-bounding CCA should design for a certain amount of non-congestive jitter and ensure that its equilibrium delay oscillations are at least one-half of this jitter.}}
+
+
+
 @inproceedings{arun-ccac-sigcomm-2021,
   author    = {Venkat Arun and
                Mina Tahmasbi Arashloo and
