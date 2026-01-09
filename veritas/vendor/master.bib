@@ -1,3 +1,20 @@
+@inproceedings{karimi-metaease-nsdi-2026,
+  author      = {Pantea Karimi and
+                Siva Kakarla and
+                Pooria Namyar  and
+                Santiago Segarra and
+                Ryan Beckett  and
+                Mohammad Alizadeh and
+                Behnaz Arzani},
+  title       = {MetaEase: Heuristic Analysis from Source Code via Symbolic-Guided Optimization},
+  booktitle   = {Proceedings of the 23rd {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series      = {NSDI '26},
+  publisher   = {{USENIX} Association},
+  year        = {2026},
+  abstract    = {COMING SOON},
+  code        = {https://github.com/microsoft/MetaEase}
+}
+
 @inproceedings{hussien-coresync-model-mascots-2025,
   author      = {Jehad Hussien and
                 Pratyush Sahu and
@@ -48,4 +65,23 @@
   abstract    = {Performance verification is a nascent but promising tool for understanding the performance and limitations of heuristics under realistic assumptions. Bespoke performance verification tools have already demonstrated their value in settings like congestion control and packet scheduling. In this paper, we aim to emphasize the broad applicability and utility of performance verification. To that end, we highlight the design principles of performance verification. Then, we leverage that understanding to develop a set of easy-to-follow guidelines that are applicable to a wide range of resource allocation heuristics. In particular, we introduce Virelay, a framework that enables heuristic designers to express the behavior of their algorithms and their assumptions about the system in an environment that resembles a discrete-event simulator. We demonstrate the utility and ease-of-use of Virelay by applying it to six diverse case studies. We produce bounds on the performance of classical algorithms, work stealing and SRPT scheduling, under practical assumptions. We demonstrate Virelay's expressiveness by capturing existing models for congestion control and packet scheduling, and we verify the observation that TCP unfairness can cause some ML training workloads to spontaneously converge to a state of high network utilization. Finally, we use Virelay to identify two bugs in the Linux CFS load balancer.}
 }
 
+@inproceedings{arun-ccac-sigcomm-2021,
+  author    = {Venkat Arun and
+               Mina Tahmasbi Arashloo and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Hari Balakrishnan},
+  title     = {Toward Formally Verifying Congestion Control Behavior},
+  booktitle = {Proceedings of the 2021 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
+  series    = {SIGCOMM '21},
+  publisher = {{ACM}},
+  year      = {2021},
+  doi       = {10.1145/3452296.3472912},
+  pages  = {1--16},
+  url         = {http://saeed.github.io/files/ccac-sigcomm21.pdf},
+  code      = {https://github.com/venkatarun95/ccac},
+  video     = {https://www.youtube.com/watch?v=D_BjxRsXvC4},
+  gadget   = {https://projects.csail.mit.edu/ccac/},
+  abstract = {The diversity of paths on the Internet makes it difficult for designers and operators to confidently deploy new congestion control algorithms (CCAs) without extensive real-world experiments, but such capabilities are not available to most of the networking community. And even when they are available, understanding why a CCA under-performs by trawling through massive amounts of statistical data from network connections is challenging. The history of congestion control is replete with many examples of surprising and unanticipated behaviors unseen in simulation but observed on real-world paths. In this paper, we propose initial steps toward modeling and improving our confidence in a CCA's behavior. We have developed Congestion Control Anxiety Controller (CCAC), a tool that uses formal verification to establish certain properties of CCAs. It is able to prove hypotheses about CCAs or generate counterexamples for invalid hypotheses. With CCAC, a designer can not only gain greater confidence prior to deployment to avoid unpleasant surprises, but can also use the counterexamples to iteratively improve their algorithm. We have modeled additive-increase/multiplicative-decrease (AIMD), Copa, and BBR with CCAC, and describe some surprising results from the exercise.}
+}
 
