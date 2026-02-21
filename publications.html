@@ -76,6 +76,7 @@ $( "#nav-bar" ).load( "./nav_bar.html" );
       <div>
         <span class="if journal"><em><span class="journal"></span></em>,</span>
         <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
+        <span class="if !booktitle"><span class="if !journal">Technical Report<em><span class="booktitle"></span></em>,</span></span>
         <span class="if publisher"><em><span class="publisher"></span></em>,</span>
         <span class="if institution"><span class="institution"></span>,</span>
         <span class="if address"><span class="address"></span>,</span>
@@ -83,9 +84,24 @@ $( "#nav-bar" ).load( "./nav_bar.html" );
         <span class="if year"><span class="year"></span>.</span>
         <br/>
         <span class="if url">
-          <a class="bibtexVar" href="+URL+" extra="url">
-            <i class="far fa-file"></i> Paper
-          </a> &nbsp;&nbsp;
+          <span class="if !booktitle">
+            <span class="if !journal">
+              <a class="bibtexVar" href="+URL+" extra="url">
+                <i class="far fa-file"></i> Report
+              </a> &nbsp;&nbsp;
+            </span>
+          </span>
+          <span class="if booktitle">
+            <a class="bibtexVar" href="+URL+" extra="url">
+              <i class="far fa-file"></i> Paper
+            </a> &nbsp;&nbsp;
+          </span>
+          
+          <span class="if journal">
+            <a class="bibtexVar" href="+URL+" extra="url">
+              <i class="far fa-file"></i> Paper
+            </a> &nbsp;&nbsp;
+          </span>
         </span>
         <span class="if notes">
           <a class="bibtexVar" href="+NOTES+" extra="notes">
