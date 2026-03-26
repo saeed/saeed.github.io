@@ -1,3 +1,15 @@
+@inproceedings{pardeshi-svalinn-osdi-2026,
+  author      = {Bhaskar Pardeshi and
+                Peidi Song and
+                Ahmed Saeed},
+  title       = {Svalinn: Overload Control in Large-Scale Servers with Multiple Resource Bottlenecks},
+  booktitle   = {Proceedings of the 20th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI})},
+  series      = {OSDI '26'},
+  publisher   = {USENIX},
+  year        = {2026},
+  abstract  = {COMING SOON}
+}
+
 @inproceedings{xygkou-morp4-nsdi-2026,
   author      = {Iliana Xygkou and
                   Jithin Sojan and
@@ -13,7 +25,9 @@
   series      = {NSDI '26},
   publisher   = {{USENIX} Association},
   year        = {2026},
-  abstract  = {COMING SOON}
+  abstract    = {A network telescope passively monitors traffic reaching Internet address space that is not assigned to any hosts but is advertised to the global routing system. This traffic is by definition unsolicited. For more than two decades, network telescopes have enabled research breakthroughs by allowing global visibility into a wide range of Internet phenomena. However, telescopes are afflicted by two main issues: progressive erosion, due to the increasing scarcity and commercial value of address space, and blacklisting. To overcome these issues, we propose MORP4, a programmable data-plane framework implementing a “dynamic” network telescope. MORP4 accurately and adaptively tracks unused space of an organization’s network with configurable time and space granularity and captures only traffic directed towards unused addresses at line rate. We provide an implementation in P4 and Python/C++, and deploy it on a Tofino switch. We show that it can detect unused IPv4 address space at the finest granularity (/32) while operating at line rate as well as providing an effective approach for operating a telescope in the IPv6 domain.},
+  url         = {http://saeed.github.io/files/morp4-nsdi26.pdf},
+  code        = {https://github.com/InetIntel/morp4-dynamic-telescope}
 }
 
 @techreport{saeed-dc-ga-report-2026,
