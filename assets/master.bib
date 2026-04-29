@@ -30,6 +30,20 @@
   code        = {https://github.com/InetIntel/morp4-dynamic-telescope}
 }
 
+@inproceedings{sahu-kepler-arxiv-2026,
+  author      = {Pratyush Sahu and
+                 Rahul Bothra and
+                 Venkat Arun and
+                 Brighten Godfrey and
+                 Akshay Narayan and
+                 Ahmed Saeed},
+  title       = {Assistants, Not Architects: The Role of LLMs in Networked Systems  Design},
+  booktitle   = {arXiv},
+  year        = {2026},
+  abstract  = {Designing the architecture of modern networked systems requires navigating a large, combinatorial space of hardware, systems, and configuration choices with complex cross-layer interactions. Architects must balance competing objectives such as performance, cost, and deployability while satisfying compatibility and resource constraints, often relying on scattered rules-of-thumb drawn from benchmarks, papers, documentation, and expert experience. This raises a natural question: can large language models (LLMs) reliably perform this kind of architectural reasoning? We find that they cannot. While LLMs produce plausible configurations, they frequently miss critical constraints, encode incorrect assumptions, and exhibit ``stickiness'' to familiar patterns. A natural workaround--iterative validation via simulation or experimentation--is often prohibitively expensive at scale and, in many cases, infeasible, particularly when comparing hardware-dependent alternatives. Motivated by this gap, we present Kepler, a lightweight reasoning framework for architecture design that combines structured, expert-driven specifications with SMT-based optimization. Kepler encodes architecturally significant properties--requirements, incompatibilities, and qualitative trade-offs--about systems, hardware, and workloads as constraints, and synthesizes feasible designs that optimize user-defined objectives. It operates at an abstract level, capturing ``rules-of-thumb'' rather than detailed system behavior, enabling tractable reasoning while preserving key interactions, and provides explanations for its decisions. Through experiments and case studies, we show that Kepler uncovers interactions missed by LLMs and supports systematic, explainable design exploration.},
+  url     = {https://arxiv.org/pdf/2604.25506v1}
+}
+
 @techreport{saeed-dc-ga-report-2026,
   author      = {Ahmed Saeed and
                  Josiah Hester},
