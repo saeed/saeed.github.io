@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+    <script type="text/javascript" src="./js/bibtex_js.js" charset="utf-8"></script>
+    <bibtex src="./vendor/master.bib"></bibtex>
+  
+    <title>NSF CAREER - Ahmed Saeed</title>
+    
+ 
+    
+    <!-- Latest compiled and minified CSS -->
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- include the icons-->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <script src="https://kit.fontawesome.com/af673dde11.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="https://brand.gatech.edu/themes/custom/brand/favicon.ico" />
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <style>
+        .button {
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        .button1 {
+                    background-color: #4CAF50; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Green */
+        
+        .button2 {
+                    background-color: #007bff; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 25px;
+                    margin: 16px 0;} /* Blue */
+        .button1:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        .button2:hover {
+            background-color: cadetblue; /* Green */
+            color: white;
+        }
+        code { 
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 250;
+        }
+        .li1 {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">NSF CAREER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#pubs">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#personnel">Personnel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#collaborators">Collaborators</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#edu">Educational Activities and Outreach</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="paper-header">
+      <div class="container text-center" style="background-color: #eaecef;
+    padding: 3rem 10rem;
+    width: 100%;
+    border-bottom: 0px solid #e2e8f0;
+    text-align: right;
+    box-sizing: border-box;">
+        <br/>
+        <br/>
+        <h2>CAREER: Integrated Load and Resource Management for High-Utilization Datacenters</h2>
+        <br/>
+        <p class="lead" align="left">PI: Ahmed Saeed - Georgia Tech</p> 
+        
+        <div style="justify-content: center; gap: 0rem; display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: 100%;
+    justify-content: flex-end; ">
+          <img src="static/logos/gt-logo.png" alt="Georgia Tech Logo" style="height: 3rem; ">
+        </div>
+      </div>
+  </div>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <p>Modern cloud services rely on expensive and power-hungry hardware, making efficient use of computing resources essential for controlling cost and energy consumption. This project focuses on maximizing how much useful work each server can perform without becoming overloaded or unresponsive. The central idea is to make cloud systems decide how much work a server can handle before accepting new requests, assign resources to individual tasks accordingly, and then distribute incoming work across servers based on these decisions. Today, resource allocation and load distribution are handled separately. This project brings them together and makes these capabilities easier for users to adopt. The overall goal is to improve cloud services without constantly adding more hardware.</p>
+
+            <p>The intellectual merit of the project lies in a coordinated redesign of load and resource management across software and hardware layers. This problem is fundamentally challenging because resource demands vary widely across requests, bottlenecks shift over time, and independent control mechanisms often operate at similar timescales and interfere with each other. Addressing these challenges requires fine grained visibility into application behavior and new control abstractions that can coordinate decisions across layers without introducing excessive overhead. The work is organized around three technical thrusts. The first thrust develops unified and transparent mechanisms that track resource usage for each application request and enforce admission decisions across multiple shared bottlenecks. The second thrust integrates these decisions with operating system scheduling, jointly managing application load and the resources allocated to handle it. The third thrust extends these ideas to clusters of servers, redesigning load balancing, backpressure, and scaling mechanisms for applications built as chains of microservices.</p>
+
+            <p>The broader impacts of this project include improved performance, lower cost, and reduced energy use for cloud services that support the modern economy. By reducing the need for over provisioned computing resources, the project contributes to more sustainable and environmentally responsible infrastructure. The resulting tools will help application developers build faster and more predictable systems without deep expertise in low level resource management. Educational activities will integrate the research into courses, seminars, and online programs, preparing students for careers in computing systems while encouraging innovation through hands on projects and research experiences.</p>
+
+
+
+            <div class="row justify-content-center">
+              <div class="col-md-12 text-center">
+                <!-- 2. The Clickable Image -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" style="width: 90%;">
+                  <img src="./static/CAREER_overview.png" class="img-fluid rounded shadow" style="width: 90%;" alt="Thumbnail">
+                </a>
+              </div>
+            </div>
+
+
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content border-0 bg-transparent">
+                  <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <img src="./static/CAREER_overview.png" class="w-100" alt="Large View">
+                  </div>
+                </div>
+              </div>
+            </div>              
+
+            <br/>
+            <br/>
+
+            <p>The figure summarizes the three thrusts of the proposed research, each characterized by a different scale of investigation. Starting from the scale of a single application, we will develop a holistic overload controller that can track all resources and react to per-request behavior, depending on the execution path taken by the specific request. At the server level, we will integrate overload control and resource scheduling decisions for all applications running on the server, focusing on CPU and GPU use cases. At the cluster level, we will explore mechanisms that can leverage fine-grained control at the server level to improve decision making when scheduling multiple servers (e.g., load balancing). In particular, we will pursue the following thrusts:
+            </p>
+
+            <ul>
+              <li><strong>Thrust 1.  Unified and Transparent In-Application Overload Control:</strong> We start by tackling the problem of overload control for a single application across multiple resources (i.e., CPU, memory, GPU, and network). Instead of the current approach of bespoke per-resource controllers, we will develop a unified controller that can manage multiple bottlenecks while taking into account fine-grained application behavior. To facilitate the deployment of such controllers, the thrust will also explore making such tracking and control of resource utilization within an application transparent to application developers.</li>
+              <li><strong>Thrust 2. Integrated Server Scheduling and Overload Control:</strong> High utilization requires fast schedulers that can react quickly and precisely to resource congestion. This thrust will explore techniques to integrate server scheduling decisions with overload control decisions, aligning the load admitted to a particular application and the resources allocated to it, focusing on CPU and GPU scheduling.</li>
+              <li><strong>Thrust 3. Integrated Load and Resource Management in Microservice Chains:</strong> This thrust will explore the implications of operating a single server at very high utilization levels on the operations of a cluster of servers. The thrust will focus on fine-grained load balancing, taking into account per-replica per-resource availability and per-request resource requirements. Moreover, it will explore leveraging the techniques developed in the previous thrusts to improve the performance of distributed applications, focusing on microservice chains.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pubs" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h3>Publications</h3>
+
+
+            <div class="bibtex_structure">
+              <div class="group year" extra="DES number">
+                  
+                  
+                    <div class="templates"></div>
+                  
+              </div>
+            </div>
+
+            <div class="row" id="bibtex_display">
+              
+              <div class="bibtex_template" style="display: none;">
+                
+                <ul> <li>
+                  <span class="if url">
+                    <a class="bibtexVar" href="+URL+" extra="url">
+                        <span style="text-decoration: underline;" class="title"></span>,
+                    </a>
+                  </span>
+                  <span class="if !url">
+                    <span class="title"></span>,
+                  </span>
+                  <div class="if author">
+                    <span class="author"></span>
+                  </div>
+                  <div>
+                    <span class="if journal"><em><span class="journal"></span></em>,</span>
+                    <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
+                    <span class="if publisher"><em><span class="publisher"></span></em>,</span>
+                    <span class="if institution"><span class="institution"></span>,</span>
+                    <span class="if address"><span class="address"></span>,</span>
+                    <span class="if month"><span class="month"></span>,</span>
+                    <span class="if year"><span class="year"></span>.</span>
+                    <br/>
+                    <span class="if url">
+                      <a class="bibtexVar" href="+URL+" extra="url">
+                        <i class="far fa-file"></i> Paper
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if notes">
+                      <a class="bibtexVar" href="+NOTES+" extra="notes">
+                        <i class="far fa-file-alt"></i> Extended Version
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if video">
+                      <a class="bibtexVar" href="+VIDEO+" extra="video">
+                        <i class="far fa-file-video"></i> Video
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if code">
+                      <a class="bibtexVar" href="+CODE+" extra="code">
+                        <i class="far fa-file-code"></i> Code
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if gadget">
+                      <a class="bibtexVar" href="+GADGET+" extra="gadget">
+                        <i class="fas fa-play-circle"></i> Gadget
+                      </a> &nbsp;&nbsp;
+                    </span>
+                    <span class="if slides">
+                      <a class="bibtexVar" href="+SLIDES+" extra="slides">
+                        <i class="far fa-file-powerpoint"></i> Slides
+                      </a> &nbsp;&nbsp;
+                    </span>
+
+                    <span class="if abstract">
+                      <a class="bibtexVar" role="button" data-bs-toggle="collapse"
+                     href="#bbib+BIBTEXKEY+" aria-expanded="false"
+                     aria-controls="bbib+BIBTEXKEY+" extra="BIBTEXKEY" bibtexjs-css-escape>
+                        [Abstract]
+                      </a> &nbsp;&nbsp;
+                    </span>
+
+                    <a class="bibtexVar" role="button" data-bs-toggle="collapse"
+                   href="#bib+BIBTEXKEY+" aria-expanded="false"
+                   aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY" bibtexjs-css-escape>
+                      [bib]
+                    </a>
+                    
+                  </div>
+                  <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+                      <div class="card well">
+                        <pre><br/><span class="bibtexraw noread"></span></pre>
+                      </div>
+                  </div>
+                  <span class="if abstract">
+                      <div class="bibtexVar collapse" id="bbib+BIBTEXKEY+" extra="BIBTEXKEY">
+                          <div class="card well">
+                            <small class="text-muted"><b>Abstract:</b> <span class="abstract"></span></small>
+                          </div>
+                      </div>
+                  </span>
+                  <div style="display:none"><span class="bibtextype"></span></div>
+                  
+                </li></ul>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="personnel">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h3>Personnel</h3>
+              <h4 class="colorlib-heading">PhD Students</h4>
+                <div class="row">
+                  <p>TBD</p>
+                  <!--<div class="col-md-6 col-lg-2">
+                      <div class="img-block mb-5">
+                          <img  src="https://people.csail.mit.edu/pkarimib/images/pantea_small.jpg" class="img-fluid  img-thumbnail rounded-circle" alt="image1" width="158">
+                          <div class="content mt-2">
+                              <h6><a href="https://people.csail.mit.edu/pkarimib/">Pantea Karimi</a></h6>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-lg-2">
+                      <div class="img-block mb-5">
+                          <img src="https://cruisesong7.github.io/images/profile.jpg" class="img-fluid  img-thumbnail rounded-circle" alt="image1" width="158">
+                          <div class="content mt-2">
+                              <h6><a href="https://cruisesong7.github.io/">Cruise Song</a></h6>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-lg-2">
+                      <div class="img-block mb-5">
+                          <img src="https://saeed.github.io/assets/group_profiles/missing.webp" class="img-fluid  img-thumbnail rounded-circle" alt="image1" width="158">
+                          <div class="content mt-2">
+                              <h6><a href="#">Jehad Hussien</a></h6>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+
+              <h4 class="colorlib-heading">Master's Students</h4>
+                <div class="row">
+                  <div class="col-md-6 col-lg-2">
+                            <div class="img-block mb-5">
+                                <img src="https://saeed.github.io/assets/group_profiles/pratyush.jpg" class="img-fluid  img-thumbnail rounded-circle" alt="image1" width="158">
+                                <div class="content mt-2">
+                                    <h6><a href="#">Pratyush Sahu</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                </div>-->
+                    
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collaborators"  class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h3>Collaborators</h3>
+              <p>TBD</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <section id="edu">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h3>Educational Activities and Outreach</h3>
+              <p> TBD</p>
+              
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Ahmed Saeed 2026</p></div>
+      <!-- /.container -->
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript 
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../js/scripts.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="js/scrolling-nav.js"></script>
+
+  </body>
+
+</html>
