@@ -201,12 +201,6 @@ section {
   margin: 0 0 1.4rem;
 }
 
-.intro-grid {
-  display: grid;
-  gap: 1.8rem;
-  grid-template-columns: minmax(0, 1fr) 320px;
-}
-
 .intro-copy p {
   margin: 0 0 1.15rem;
 }
@@ -219,35 +213,6 @@ section {
 
 .focus-list li {
   margin: 0.35rem 0;
-}
-
-.quick-panel {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.2rem;
-}
-
-.quick-panel h3 {
-  color: var(--gt-navy);
-  font-size: 1.05rem;
-  margin: 0 0 0.9rem;
-}
-
-.quick-panel dl {
-  margin: 0;
-}
-
-.quick-panel dt {
-  color: var(--muted);
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-top: 0.9rem;
-  text-transform: uppercase;
-}
-
-.quick-panel dd {
-  margin: 0.15rem 0 0;
 }
 
 .news-list,
@@ -656,7 +621,6 @@ section {
     justify-content: flex-start;
   }
 
-  .intro-grid,
   .research-grid,
   .people-grid,
   .member-grid,
@@ -705,7 +669,6 @@ section {
     padding: 2.4rem 0;
   }
 
-  .quick-panel,
   .research-card,
   .person-card {
     padding: 1rem;
