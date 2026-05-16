@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="News and updates from the Advanced Networked Systems Research Lab at Georgia Tech."
+    >
+    <title>News | ANSR Lab</title>
+    <link rel="icon" type="image/x-icon" href="https://brand.gatech.edu/themes/custom/brand/favicon.ico">
+    <link href="static/site.css?v=gt-lockup" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html" aria-label="ANSR Lab home">
+          <img src="top_logo.png" alt="">
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="news.html" aria-current="page">News</a>
+          <a href="publications.html">Publications</a>
+          <a href="index.html#people">People</a>
+          <a href="index.html#join">Join</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero" aria-labelledby="news-title">
+        <div class="container">
+          <p class="page-kicker">ANSR Lab</p>
+          <h1 id="news-title">News</h1>
+          <p class="lead">
+            Lab updates, announcements, awards, publications, talks, and outreach.
+          </p>
+        </div>
+      </section>
+
+      <section aria-label="News updates">
+        <div class="container">
+          <div class="news-list" id="news-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Copyright &copy; Ahmed Saeed 2026</p>
+      </div>
+    </footer>
+
+    <script>
+      (function populateNews() {
+        var sourceUrl = "https://saeed.github.io/";
+        var fallbackNews = [
+          {
+            title: "Received the NSF CAREER Award.",
+            date: "May, 2026",
+            href: "https://saeed.github.io/career/index.html"
+          },
+          {
+            title: "Paper accepted at TPRC 54.",
+            date: "May, 2026",
+            detail: "The paper examines the intersection of regulatory hurdles, technical limitations, and state-level policy interventions across the U.S."
+          },
+          {
+            title: "Op-ed published at the AJC.",
+            date: "May, 2026",
+            href: "https://www.ajc.com/opinion/2026/05/georgias-data-center-boom-requires-a-strategy-not-just-hoping-for-the-best/"
+          },
+          {
+            title: "Paper accepted at OSDI 2026.",
+            date: "Mar, 2026",
+            detail: "Bhaskar's work introduces memory semaphores for managing memory-bandwidth congestion in modern applications."
+          },
+          {
+            title: "Released a report on datacenter development in Georgia",
+            date: "Feb, 2026",
+            href: "https://saeed.github.io/files/Policy_Brief_on_Data_Center_Development_in Georgia.pdf"
+          }
+        ];
+
+        function absoluteUrl(href) {
+          if (!href || href === "#") {
+            return "";
+          }
+          return new URL(href, sourceUrl).href;
+        }
+
+        function itemTextWithoutDetails(item) {
+          var clone = item.cloneNode(true);
+          clone.querySelectorAll("p, small, .float-right").forEach(function (node) {
+            node.remove();
+          });
+          return clone.textContent.replace(/\s+/g, " ").trim();
+        }
+
+        function parseNews(html) {
+          var doc = new DOMParser().parseFromString(html, "text/html");
+          return Array.prototype.slice.call(doc.querySelectorAll(".timeline2 > li"))
+            .map(function (item) {
+              var links = Array.prototype.slice.call(item.querySelectorAll("a"));
+              var primaryLink = links.find(function (link) {
+                return !link.classList.contains("float-right");
+              });
+              var dateNode = item.querySelector(".float-right small");
+              var detailNode = item.querySelector("p small, p");
+              var title = primaryLink ? primaryLink.textContent.trim() : itemTextWithoutDetails(item);
+              var date = dateNode ? dateNode.textContent.trim() : "";
+              var href = primaryLink ? absoluteUrl(primaryLink.getAttribute("href")) : "";
+              var detail = detailNode ? detailNode.textContent.replace(/\s+/g, " ").trim() : "";
+
+              return {
+                title: title,
+                date: date,
+                href: href,
+                detail: detail
+              };
+            })
+            .filter(function (item) {
+              return item.title && item.date;
+            });
+        }
+
+        function renderNews(items) {
+          var list = document.getElementById("news-list");
+          list.textContent = "";
+          items.forEach(function (item) {
+            var article = document.createElement("article");
+            article.className = "news-item";
+
+            var date = document.createElement("div");
+            date.className = "news-date";
+            date.textContent = item.date;
+
+            var content = document.createElement("div");
+            var title = item.href ? document.createElement("a") : document.createElement("span");
+            title.className = "news-title";
+            title.textContent = item.title;
+            if (item.href) {
+              title.href = item.href;
+            }
+            content.appendChild(title);
+
+            if (item.detail) {
+              var detail = document.createElement("p");
+              detail.textContent = item.detail;
+              content.appendChild(detail);
+            }
+
+            article.appendChild(date);
+            article.appendChild(content);
+            list.appendChild(article);
+          });
+        }
+
+        fetch(sourceUrl, { cache: "no-store" })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("News source unavailable");
+            }
+            return response.text();
+          })
+          .then(function (html) {
+            var items = parseNews(html);
+            renderNews(items.length ? items : fallbackNews);
+          })
+          .catch(function () {
+            renderNews(fallbackNews);
+          });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,843 @@
+@inproceedings{pardeshi-svalinn-osdi-2026,
+  author      = {Bhaskar Pardeshi and
+                Peidi Song and
+                Ahmed Saeed},
+  title       = {Svalinn: Overload Control in Large-Scale Servers with Multiple Resource Bottlenecks},
+  booktitle   = {Proceedings of the 20th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI})},
+  series      = {OSDI '26'},
+  publisher   = {USENIX},
+  year        = {2026},
+  abstract  = {COMING SOON}
+}
+
+@inproceedings{xygkou-morp4-nsdi-2026,
+  author      = {Iliana Xygkou and
+                  Jithin Sojan and
+                  Dhruv Rauthan  and
+                  Feng Zhu and
+                  Thomas Holterbach and
+                  Shane Alcock and
+                  Brian Flanagan and
+                  Ahmed Saeed and
+                  Alberto Dainotti},
+  title       = {Morp4: A Dynamic Network Telescope},
+  booktitle   = {Proceedings of the 23rd {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series      = {NSDI '26},
+  publisher   = {{USENIX} Association},
+  year        = {2026},
+  abstract    = {A network telescope passively monitors traffic reaching Internet address space that is not assigned to any hosts but is advertised to the global routing system. This traffic is by definition unsolicited. For more than two decades, network telescopes have enabled research breakthroughs by allowing global visibility into a wide range of Internet phenomena. However, telescopes are afflicted by two main issues: progressive erosion, due to the increasing scarcity and commercial value of address space, and blacklisting. To overcome these issues, we propose MORP4, a programmable data-plane framework implementing a “dynamic” network telescope. MORP4 accurately and adaptively tracks unused space of an organization’s network with configurable time and space granularity and captures only traffic directed towards unused addresses at line rate. We provide an implementation in P4 and Python/C++, and deploy it on a Tofino switch. We show that it can detect unused IPv4 address space at the finest granularity (/32) while operating at line rate as well as providing an effective approach for operating a telescope in the IPv6 domain.},
+  url         = {http://saeed.github.io/files/morp4-nsdi26.pdf},
+  code        = {https://github.com/InetIntel/morp4-dynamic-telescope}
+}
+
+@inproceedings{sahu-kepler-arxiv-2026,
+  author      = {Pratyush Sahu and
+                 Rahul Bothra and
+                 Venkat Arun and
+                 Brighten Godfrey and
+                 Akshay Narayan and
+                 Ahmed Saeed},
+  title       = {Assistants, Not Architects: The Role of LLMs in Networked Systems  Design},
+  booktitle   = {arXiv},
+  year        = {2026},
+  abstract  = {Designing the architecture of modern networked systems requires navigating a large, combinatorial space of hardware, systems, and configuration choices with complex cross-layer interactions. Architects must balance competing objectives such as performance, cost, and deployability while satisfying compatibility and resource constraints, often relying on scattered rules-of-thumb drawn from benchmarks, papers, documentation, and expert experience. This raises a natural question: can large language models (LLMs) reliably perform this kind of architectural reasoning? We find that they cannot. While LLMs produce plausible configurations, they frequently miss critical constraints, encode incorrect assumptions, and exhibit ``stickiness'' to familiar patterns. A natural workaround--iterative validation via simulation or experimentation--is often prohibitively expensive at scale and, in many cases, infeasible, particularly when comparing hardware-dependent alternatives. Motivated by this gap, we present Kepler, a lightweight reasoning framework for architecture design that combines structured, expert-driven specifications with SMT-based optimization. Kepler encodes architecturally significant properties--requirements, incompatibilities, and qualitative trade-offs--about systems, hardware, and workloads as constraints, and synthesizes feasible designs that optimize user-defined objectives. It operates at an abstract level, capturing ``rules-of-thumb'' rather than detailed system behavior, enabling tractable reasoning while preserving key interactions, and provides explanations for its decisions. Through experiments and case studies, we show that Kepler uncovers interactions missed by LLMs and supports systematic, explainable design exploration.},
+  url     = {https://arxiv.org/pdf/2604.25506v1}
+}
+
+@inproceedings{saeed-dc-tprc-2026,
+  author      = {Ahmed Saeed and
+                 Josiah Hester},
+  title       = {Governing Datacenter Growth: Regulatory Challenges, Technical Constraints, and Policy Responses Across States},
+  booktitle   = {Proceedings of the 2026 The Research Conference on Communications, Information and Internet Policy (TPRC 54)},
+  series      = {TPRC 54},
+  publisher   = {SSRN},
+  year        = {2026},
+  abstract  = {COMING SOON.}
+}
+
+@techreport{saeed-dc-ga-report-2026,
+  author      = {Ahmed Saeed and
+                 Josiah Hester},
+  title       = {The Future of Data Center Development in Georgia: Overview and policy exploration},
+  booktitle   = {Policy report},
+  year        = {2026},
+  url         = {https://saeed.github.io/files/Policy_Brief_on_Data_Center_Development_in Georgia.pdf},
+  abstract  = {The report provides an overview of the different technical and economic challenges, benefits, and risks associated with the recent and rapid growth in the development of data centers. We examine these aspects in three dimensions: the power grid, the environment, and the local economy. For each of the three dimensions, we will discuss several case studies demonstrating the possible benefits and risks associated with data center development. We use that analysis to highlight several policy recommendations.}
+}
+
+
+@inproceedings{bhosale-leo-failover-imc-2025,
+  author      = {Vaibhav Bhosale and
+                  Ying Zhang and
+                  Sameer Kapoor and
+                  Robin Kim and
+                  Miguel Schlicht and
+                  Muskaan Gupta and
+                  Ekaterina Tumanova and
+                  Zachary Bischof and
+                  Fabi'an E. Bustamante and
+                  Alberto Dainotti and
+                  Ahmed Saeed},
+  title       = {Assessing LEO Satellite Networks for National Emergency Failover},
+  booktitle   = {Proceedings of the 2025 ACM Internet Measurement Conference (IMC)},
+  series      = {IMC '25},
+  publisher   = {ACM},
+  year        = {2025},
+  url         = {http://saeed.github.io/files/cosmosim-imc25.pdf},
+  code      = {https://github.com/GT-ANSR-Lab/CosmoSim/},
+  gadget   = {https://saeed.github.io/cosmosim-webapp/},
+  slides    = {http://saeed.github.io/files/cosmosim-imc25-ppt.pdf},
+  abstract  = {In this paper, we study the viability of LEO networks as a failover network. We contextualize our analysis by framing the capacity of satellite networks relative to lost capacity due to submarine cable failure. Specifically, we focus on scenarios where LEO networks act as failovers for submarine cables, providing a concrete target capacity to be fulfilled by the satellite network. We introduce a new model and simulator that help us estimate the failover capacity. We identify key factors determining the actual capacity available on the satellite network: the total area of the country, the terminal distribution policy used by the government, the spectrum allocation and traffic engineering policies used by the LEO network operator. Based on our findings, we make policy recommendations to governments that can result in an increase of up to 1.8× in the failover capacity without requiring additional infrastructure. However, we find after implementing all our recommendations, with 200k terminals deployed and no competing traffic in the network, a satellite network can only satisfy 0.9-14.7% of the capacity lost due to submarine cable failure in four out of six case studies.}
+}
+
+@inproceedings{pardeshi-coresync-icnp-2025,
+  author      = {Bhaskar Pardeshi and
+                Eric Stuhr and
+                Ahmed Saeed},
+  title       = {CoreSync: A Protocol for Joint Core Scheduling and Overload Control of μs-Scale Tasks},
+  booktitle   = {33nd {IEEE} International Conference on Network Protocols (ICNP)},
+  series      = {ICNP '25},
+  publisher   = {IEEE},
+  year        = {2025},
+  code        = {https://github.com/GT-ANSR-Lab/CoreSync},
+  url         = {http://saeed.github.io/files/coresync-icnp25.pdf},
+  abstract  = {Modern datacenter operators require high resource utilization and low application latency, multiplexing the resources of individual servers between multiple applications, while minimizing latency faced by their requests, even at high loads. To meet these objectives, servers employ multiple resource management algorithms, including fast core schedulers and overload controllers. Individual algorithms and their amalgamation are required to meet these tight performance requirements. In this paper, we demonstrate that state-of-the-art core schedulers and overload controllers produce poor performance when deployed simultaneously. Fundamentally, the design assumptions of each controller are violated by the other controller. An overload controller assumes that all resources are dedicated to an application, while a core scheduler assumes that all incoming load will be admitted. To overcome this fundamental limitation, we present CoreSync, a server-driven credit-based protocol for joint core scheduling and overload control. CoreSync relies on the basic idea that the admitted load should be proportional to the allocated resources. However, strict proportionality can lead to low utilization when admitted load does not materialize at the server (e.g., when demand drops). Thus, CoreSync uses partial proportionality to balance latency, throughput, and utilization. Our evaluation across synthetic and real-world workloads shows that CoreSync outperforms state-of-the-art schedulers and overload controllers. In particular, in overload scenarios, CoreSync improves throughput by up to 6%. At low loads, CoreSync reduces the 99th percentile latency by up to 1.7× and improves CPU utilization by up to 1.4×.}
+}
+
+@inproceedings{hussien-coresync-model-mascots-2025,
+  author      = {Jehad Hussien and
+                Pratyush Sahu and
+                Eric Stuhr and
+                Ahmed Saeed},
+  title       = {Modeling the Interactions between Core Allocation and Overload Control in μs-Scale Network Stacks},
+  booktitle   = {33rd International Symposium on the Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS) Workshop},
+  series      = {MASCOTS '25},
+  publisher   = {IEEE},
+  year        = {2025},
+  url         = {http://saeed.github.io/files/coresync_model-mascots25.pdf},
+  code        = {https://github.com/GT-ANSR-Lab/core-allocation_overload-control_model},
+  slides      = {http://saeed.github.io/files/coresync_model_mascots25_ppt.pdf},
+  abstract  = {Modern datacenter operators aim to maximize the utilization of limited and expensive resources, especially CPU cores. Achieving such an objective requires fast and accurate core scheduling policies. Meanwhile, operating at high utilization requires the employment of overload controllers that shed excess load beyond the allocated capacity. Currently, no analytical techniques exist to study the interactions between these controllers. In this paper, we use performance verification to establish bounds on the throughput and latency achieved by a server that employs state-of-the-art fine-grained core allocation and overload control mechanisms. Our model enables system performance analysis under a wide range of workload and system configurations (e.g., RTT, load, and burstiness). We show that worst-case throughput and latency degrade by 1.8× and 2.3×, respectively, under high load and burstiness due to the interactions between overload control and fast core allocation. We validate our findings using simulations that demonstrate the plausibility of the identified worst-case behavior under realistic conditions.}
+}
+
+
+@inproceedings{bhosale-leo-failover-tprc-2025,
+  author      = {Vaibhav Bhosale and
+                  Ying Zhang and
+                  Sameer Kapoor and
+                  Robin Kim and
+                  Miguel Schlicht and
+                  Muskaan Gupta and
+                  Ekaterina Tumanova and
+                  Zachary Bischof and
+                  Fabi'an E. Bustamante and
+                  Alberto Dainotti and
+                  Ahmed Saeed},
+  title       = {Are LEO Networks the Future of National Emergency Failover? – A Quantitative Study and Policy Blueprint},
+  booktitle   = {Proceedings of the 2025 The Research Conference on Communications, Information and Internet Policy (TPRC 53)},
+  series      = {TPRC 53},
+  url         = {http://saeed.github.io/files/leo_policy_tprc53.pdf},
+  publisher   = {SSRN},
+  year        = {2025},
+  abstract  = {Low Earth Orbit (LEO) satellite networks are emerging as backups for national-scale outages. While they have demonstrated value in small-scale disasters such as supporting first responders during hurricanes, their effectiveness during large-scale infrastructure failures remains underexplored. This paper evaluates the capacity of LEO networks to act as national failover infrastructure using six real-world submarine cable failures. The failure capacity provided by a LEO network to a specific nation depends on a few key factors: the size of the country, the distribution of the user terminals, and the policies of the network operator for spectrum allocation and traffic engineering. We find that coordinated policies between governments and network operators, especially regarding terminal placement and spectrum use, can improve failover capacity by up to 1.8× without requiring additional infrastructure. However, even under optimistic conditions with 200,000 terminals and a dedicated failover network, LEO networks can only restore 0.9–14.7% of lost submarine cable capacity in most cases.}
+}
+
+
+@inproceedings{mukherjee-quic-anrw-2025,
+  author      = {Saubhik Mukherjee and
+                  Demi Lei and
+                  Mostafa H. Ammar and
+                  Ahmed Saeed},
+  title       = {Understanding QUIC's Throughput Speedbumps},
+  booktitle   = {Proceedings of the 2025 Applied Networking Research Workshop (ANRW)},
+  series      = {ANRW '25},
+  pages       = {78--84},
+  publisher   = {ACM},
+  year        = {2025},
+  url         = {https://doi.org/10.1145/3744200.3744780},
+  doi         = {10.1145/3744200.3744780},
+  abstract  = {QUIC is experiencing phenomenal success as a low-latency, secure, and flexible protocol, adopted and deployed by multiple hyperscale content providers. However, the throughput of all its implementations remains remarkably low compared to that of TCP + TLS. Approaches to accelerating QUIC's throughput remain scattered, applied to a single implementation at a time, and one approach at a time. In this paper, we systematically identify the different bottlenecks that arise in different implementations. We use our findings to propose an application-agnostic architecture to accelerate single-connection throughput in QUIC. We demonstrate the value of our proposal by accelerating two implementations: quicly and mvfst, improving their throughput by 1.36× and 1.88× respectively, compared to their baseline implementations.}
+}
+
+@inproceedings{song-nanomodular-placement-arxiv-2025,
+  author      = {Peidi Song and
+                 Alexandros Daglis and
+                 Michael Filler and
+                 Ahmed Saeed},
+  title       = {Algorithmic Tradeoff Exploration for Component Placement and Wire Routing in Nanomodular Electronics},
+  booktitle   = {arXiv},
+  year        = {2025},
+  url         = {https://arxiv.org/pdf/2510.03126},
+  doi         = {10.48550/arXiv.2510.03126},
+  abstract  = {Advances in fabrication technology have enabled modularizing electronic components at the micro- or nano-scale and composing these modules on demand into larger circuits. Micromodular and nanomodular electronics (ME and NE) open a new design space in electronics, promising a degree of flexibility, extensibility, and accessibility far superior to traditional monolithic methods. ME/NE leverage a multi-stage process of initial imprecise component deposition, followed by precise wire printing to compose them into a circuit. Due to imperfections in deposition, each circuit instance has a unique layout with its own component placement and wire routing solutions, putting the design automation process on the critical path. Moreover, high-performance nanomodular components enable the synthesis of larger heterogeneous circuits than traditional printed electronics, requiring more scalable algorithms. ME/NE thus introduce a tradeoff between the time-to-solution for placement/routing algorithms and the resulting total wire length, with the latter dictating circuit printing time. We explore this tradeoff by adapting standard partitioning, floorplanning, placement, and routing algorithms to the unique characteristics of ME/NE. Our evaluations demonstrate significant optimization headroom in different dimensions. For example, our tunable algorithms can deliver a 108× improvement in end-to-end manufacturing time at the cost of 21% increase in total wire length. Conversely, circuit quality/performance can be prioritized at the cost of increased manufacturing time, highlighting the value of the ability to dynamically navigate the tradeoff space according to the primary optimization metric.}
+}
+
+@inproceedings{cho-ldb-nsdi-2024,
+  author    = {Inho Cho and
+               Seo Jin Park and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {LDB: An Efficient Latency Debugging Tool for Datacenter Applications },
+  booktitle = {Proceedings of the 21th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '24},
+  publisher = {{USENIX} Association},
+  year      = {2024},
+  url       = {http://saeed.github.io/files/ldb_nsdi24.pdf},
+  code      = {https://github.com/inhocho89/llvm14-ldb},
+  abstract  = {Maintaining low tail latency is critical for the efficiency and performance of large-scale datacenter systems. Software bugs that cause tail latency problems, however, are notoriously difficult to debug. We present LDB, a new latency profiling tool that aims to overcome this challenge by precisely identifying the specific functions that are responsible for tail latency anomalies. LDB observes the latency of all functions in a running program. It uses a novel, software-only technique called stack sampling, where a busy-spinning stack scanner thread polls light-weight metadata recorded in call frames, shifting instrumentation cost away from program threads. In addition, LDB uses event tagging to record requests, inter-thread synchronization, and context switching. This can be used, for example, to generate per-request timelines and to find the root cause of complex tail latency problems such as lock contention in multi-threaded programs. We evaluate LDB with four datacenter workloads, finding latency problems in each. Our results further show that LDBproduces actionable insights, has low overhead, and can rapidly analyze recordings, making it feasible to use in production settings.}
+}
+
+@inproceedings{bortha-archie-hotnets-2024,
+  author       = {Rahul Bothra and
+                  Venkat Arun and
+                  Brighten Godfrey and
+                  Akshay Narayan and
+                  Ahmed Saeed},
+  title        = {Lightweight Automated Reasoning for Network Architectures},
+  booktitle    = {Proceedings of the 23rd {ACM} Workshop on Hot Topics in Networks (HotNets)},
+  series       = {HotNets '24},
+  pages        = {237--245},
+  publisher    = {{ACM}},
+  year         = {2024},
+  url          = {http://saeed.github.io/files/archie_hoetnetst24.pdf},
+  doi          = {10.1145/3696348.3696865},
+  abstract = {Architecting a modern data center network is increasingly complicated. Seeking the highest performance and support for emerging workloads, network architects planning a build-out must choose from a large selection of switching components, NICs, network stacks, congestion control algorithms, routing schemes, measurement systems, virtualization software, centralized bandwidth allocators and security mechanisms, all from various vendors. Today, manual planning by human experts is time-consuming at best, and can easily result in overlooked design choices or missed complex inter-dependencies. We propose a radical departure from typical whiteboard-and-spreadsheet planning, and ask: is it possible to reason automatically about possible network architectural designs? Such an approach is nontrivial since formal reasoning about even a single component (like routing systems) is difficult, and we seek to understand how a variety of functional components fit together. We explore the challenge through examples and propose an automated lightweight reasoning framework that models architectural complexities at a broad, but shallow, level of abstraction. Such a framework could serve as a useful design tool for network architects, for careful cross-team planning, and even to help vendors plan product features and requirements.}
+}
+
+@inproceedings{lei-caas-leonet-2024,
+  author      = {Demi Lei and
+                 Ahmed Saeed},
+  title       = {Do We Need a Million Satellites in Orbit?},
+  booktitle   = {The 2nd ACM Workshop on LEO Networking and Communication 2024 (LEO-NET)},
+  series	    = {LEO-NET '24},
+  pages	      = {61--66},
+  publisher   = {ACM},
+  year        = {2024},
+  url         = {http://saeed.github.io/files/caas_leonet24.pdf},
+  code        = {https://github.com/GT-ANSR-Lab/CaaS-Simulator},
+  doi         = {10.1145/3697253.3697262},
+  abstract  = {In this paper, we argue that deploying many mission-specific satellite mega-constellations incurs significant monetary and environmental costs. Instead, we propose launching a single or a small number of mega-constellations equipped with heterogeneous computing, communication, storage, and sensing capabilities, allowing them to offer a broad range of services to customers who no longer need to launch their own satellites. We argue that the hardware technology for building such platforms is already widely accessible. Thus, we highlight the algorithmic and systems challenges that the community needs to address to enable cost-efficient and secure constellation-as-a-service platforms. We also develop a simulator that allows for experimenting with different scheduling algorithms for constellation-as-a-service platforms.}
+}
+
+@inproceedings{cho-protego-nsdi-2023,
+  author    = {Inho Cho and
+               Ahmed Saeed and
+               Seo Jin Park and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {Protego: Overload Control for Applications with Unpredictable Lock Contention},
+  booktitle = {Proceedings of the 20th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '23},
+  publisher = {{USENIX} Association},
+  year      = {2023},
+  url       = {https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf},
+  code      = {https://github.com/inhocho89/shenango-protego/tree/protego/breakwater},
+  video     = {https://www.youtube.com/watch?v=IDzqZ6JmtMs},
+  abstract  = {Modern datacenter applications are concurrent, so they require synchronization to control access to shared data. Requests can contend for different combinations of locks, depending on application and request state. In this paper, we show that locks, especially blocking synchronization, can squander throughput and harm tail latency, even when the CPU is underutilized. Moreover, the presence of a large number of contention points, and the unpredictability in knowing which locks a request will require, make it difficult to prevent contention through overload control using traditional signals such as queueing delay and CPU utilization. We present Protego, a system that resolves these problems with two key ideas. First, it contributes a new admission control strategy that prevents compute congestion in the presence of lock contention. The key idea is to use marginal improvements in observed throughput, rather than CPU load or latency measurements, within a credit-based admission control algorithm that regulates the rate of incoming requests to a server. Second, it introduces a new latency-aware synchronization abstraction called Active Synchronization Queue Management (ASQM) that allows applications to abort requests if delays exceed latency objectives. We apply Protego to two real-world applications, Lucene and Memcached, and show that it achieves up to 3.3x more goodput and 12.2x lower 99th percentile latency than the state-of-the-art overload control systems while avoiding congestion collapse.}
+} 
+  
+ @inproceedings{bhosale-leo-study-pam-2023,
+  author = {Vaibhav Bhosale and 
+                  Ahmed Saeed and  
+                  Ketan Bhardwaj and 
+                  Ada Gavrilovska},
+  title = {A Characterization of Route Variability in LEO Satellite Networks},  
+  booktitle = {Proceedings of the 24nd International Conference on Passive and Active Measurement ({PAM})},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  year      = {2023},
+  url       = {http://saeed.github.io/files/leo_study_pam2023.pdf},
+  video     = {https://www.youtube.com/watch?v=h972BkrD_Pk},
+  abstract  = {LEO satellite networks possess highly dynamic topologies, with satellites moving at 27,000 km/hour to maintain their orbit. As satellites move, the characteristics of the satellite network routes change, triggering rerouting events. Frequent rerouting can cause poor performance for path-adaptive algorithms (e.g., congestion control). In this paper, we provide a thorough characterization of route variability in LEO satellite networks, focusing on route churn and RTT variability. We show that high route churn is common, with most paths used for less than half of their lifetime. With some paths used for just a few seconds. This churn is also unnecessary with rerouting leading to marginal gains in most cases (e.g., less than a 15\% reduction in RTT). Moreover, we show that the high route churn is harmful to network utilization and congestion control performance. By examining RTT variability, we find that the smallest achievable RTT between two ground stations can increase by $2.5\times$ as satellites move in their orbits. We show that the magnitude of RTT variability depends on the location of the communicating ground stations, exhibiting a spatial structure.  Finally, we show that adding more satellites, and providing more routes between stations, does not necessarily reduce route variability. Rather, constellation configuration (i.e., the number of orbits and their inclination) plays a more significant role. We hope that the findings of this study will help with designing more robust routing algorithms for LEO satellite networks. }}
+
+@techreport{virelay-goel-tr-2023,
+  author      = {Saksham Goel and
+                  Benjamin Mikek and
+                  Jehad Aly and
+                  Venkat Arun and
+                  Ahmed Saeed and
+                  Aditya Akella},
+  title       = {A Performance Verification Methodology for Resource Allocation Heuristics},
+  booktitle    = {arXiv},
+  year        = {2023},
+  url          = {https://arxiv.org/pdf/2301.04205},
+  doi          = {10.48550/ARXIV.2301.04205},
+  abstract    = {Performance verification is a nascent but promising tool for understanding the performance and limitations of heuristics under realistic assumptions. Bespoke performance verification tools have already demonstrated their value in settings like congestion control and packet scheduling. In this paper, we aim to emphasize the broad applicability and utility of performance verification. To that end, we highlight the design principles of performance verification. Then, we leverage that understanding to develop a set of easy-to-follow guidelines that are applicable to a wide range of resource allocation heuristics. In particular, we introduce Virelay, a framework that enables heuristic designers to express the behavior of their algorithms and their assumptions about the system in an environment that resembles a discrete-event simulator. We demonstrate the utility and ease-of-use of Virelay by applying it to six diverse case studies. We produce bounds on the performance of classical algorithms, work stealing and SRPT scheduling, under practical assumptions. We demonstrate Virelay's expressiveness by capturing existing models for congestion control and packet scheduling, and we verify the observation that TCP unfairness can cause some ML training workloads to spontaneously converge to a state of high network utilization. Finally, we use Virelay to identify two bugs in the Linux CFS load balancer.}
+}
+
+
+@inproceedings{bhosale-astolabe-leonet-2023,
+  author = {Vaibhav Bhosale and 
+                  Ketan Bhardwaj and 
+                  Ahmed Saeed},
+  title = {Astrolabe: Modeling RTT Variability in LEO Networks},
+  booktitle = {The 1st ACM Workshop on LEO Networking and Communication 2023 (LEO-NET)},
+  series    = {LEO-NET '23},
+  publisher = {ACM},
+  year = {2023},
+  url       = {http://saeed.github.io/files/astrolabe_leonet23.pdf},
+  abstract  = {Networking practitioners heavily rely on intuitive models of the behavior of networks when designing and analyzing protocols and algorithms. However, there is still a lack of such intuitive models of the behavior of LEO satellite networks, hindering innovation. In this paper, we provide a first step towards improving the intuitive understanding of the behavior of LEO satellite networks. In particular, we focus on developing a model that captures the RTT variability exhibited by such networks. We rely on simple and intuitive calculations instead of expensive simulations. To capture the high RTT variability exhibited by satellite networks, we estimate lower and upper bounds for the RTT between a pair of ground stations. We introduce Astrolabe, a novel approach that achieves accurate bounds, with a median lower bound within 1.15x the actual lowest RTT and a median upper bound within 2x the highest RTT in a few seconds instead of hours required by simulations or measurements.}}
+  
+                 
+
+
+
+
+
+@inproceedings{arun-ccac-sigcomm-2021,
+  author    = {Venkat Arun and
+               Mina Tahmasbi Arashloo and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Hari Balakrishnan},
+  title     = {Toward Formally Verifying Congestion Control Behavior},
+  booktitle = {Proceedings of the 2021 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
+  series    = {SIGCOMM '21},
+  publisher = {{ACM}},
+  year      = {2021},
+  doi       = {10.1145/3452296.3472912},
+  pages  = {1--16},
+  url         = {http://saeed.github.io/files/ccac-sigcomm21.pdf},
+  code      = {https://github.com/venkatarun95/ccac},
+  video     = {https://www.youtube.com/watch?v=D_BjxRsXvC4},
+  gadget   = {https://projects.csail.mit.edu/ccac/},
+  abstract = {The diversity of paths on the Internet makes it difficult for designers and operators to confidently deploy new congestion control algorithms (CCAs) without extensive real-world experiments, but such capabilities are not available to most of the networking community. And even when they are available, understanding why a CCA under-performs by trawling through massive amounts of statistical data from network connections is challenging. The history of congestion control is replete with many examples of surprising and unanticipated behaviors unseen in simulation but observed on real-world paths. In this paper, we propose initial steps toward modeling and improving our confidence in a CCA's behavior. We have developed Congestion Control Anxiety Controller (CCAC), a tool that uses formal verification to establish certain properties of CCAs. It is able to prove hypotheses about CCAs or generate counterexamples for invalid hypotheses. With CCAC, a designer can not only gain greater confidence prior to deployment to avoid unpleasant surprises, but can also use the counterexamples to iteratively improve their algorithm. We have modeled additive-increase/multiplicative-decrease (AIMD), Copa, and BBR with CCAC, and describe some surprising results from the exercise.}
+}
+
+@inproceedings{balasingam-mobius-mobisys-2021,
+  author    = {Arjun Balasingam and
+               Karthik Gopalakrishnan and
+               Radhika Mittal and
+               Venkat Arun and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Hamsa Balakrishnan and
+               Hari Balakrishnan},
+  title     = {Throughput-Fairness Tradeoffs in Mobility Platforms},
+  booktitle = {Proceedings of the 19th {ACM} International Conference on Mobile Systems, Applications, and Services ({MobiSys})},
+  series    = {MobiSys '21},
+  publisher = {{ACM}},
+  year      = {2021},
+  doi       = {10.1145/3458864.3467881},
+  timestamp = {Thu, 24 Jun 2021 15:47:19 +0200},
+  pages     = {363--375},
+  biburl    = {https://dblp.org/rec/conf/mobisys/BalasingamGMA0A21.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  url         = {http://saeed.github.io/files/mobius-mobisys21-paper.pdf},
+  video    = {https://www.youtube.com/watch?v=2Sntdpk_0xg},
+  code     = {http://mobius.csail.mit.edu},
+  notes     = {https://arxiv.org/pdf/2105.11999.pdf},
+  abstract  = {This paper studies the problem of allocating tasks from different customers to vehicles in mobility platforms, which are used for applications like food and package delivery, ridesharing, and mobile sensing. A mobility platform should allocate tasks to vehicles and schedule them in order to optimize both throughput and fairness across customers. However, existing approaches to scheduling tasks in mobility platforms ignore fairness. We introduce Mobius, a system that uses guided optimization to achieve both high throughput and fairness across customers. Mobius supports spatiotemporally diverse and dynamic customer demands. It provides a principled method to navigate inherent tradeoffs between fairness and throughput caused by shared mobility. Our evaluation demonstrates these properties, along with the versatility and scalability of Mobius, using traces gathered from ridesharing and aerial sensing applications. Our ridesharing case study shows that Mobius can schedule more than 16,000 tasks across 40 customers and 200 vehicles in an online manner.}
+}
+
+@inproceedings{zhao-scouting-pam-2021,
+  author    = {Yimeng Zhao and
+               Ahmed Saeed and
+               Mostafa H. Ammar and
+               Ellen W. Zegura},
+  editor    = {Oliver Hohlfeld and Andra Lutu and Dave Levin},
+  title     = {Scouting the Path to a Million-Client Server},
+  booktitle = {Proceedings of the 22nd International Conference on Passive and Active Measurement ({PAM})},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  year      = {2021},
+  url       = {http://saeed.github.io/files/scout-pam2021.pdf},
+  video     = {https://youtu.be/XSujurLX5Q0},
+  doi       = {10.1007/978-3-030-72582-2\_20},
+  timestamp = {Tue, 30 Mar 2021 18:55:05 +0200},
+  biburl    = {https://dblp.org/rec/conf/pam/ZhaoSAZ21.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {To keep up with demand, servers will scale up to handle hundreds of thousands of clients simultaneously. Much of the focus of the community has been on scaling servers in terms of aggregate traffic intensity (packets transmitted per second). However, bottlenecks caused by the increasing number of concurrent clients, resulting in a large number of concurrent flows, have received little attention. In this work, we focus on identifying such bottlenecks. In particular, we define two broad categories of problems; namely, admitting more packets into the network stack than can be handled efficiently, and increasing per-packet overhead within the stack. We show that these problems contribute to high CPU usage and network performance degradation in terms of aggregate throughput and RTT. Our measurement and analysis are performed in the context of the Linux networking stack, the the most widely used publicly available networking stack. Further, we discuss the relevance of our findings to other network stacks. The goal of our work is to highlight considerations required in the design of future networking stacks to enable efficient handling of large numbers of clients and flows.}
+}
+
+@inproceedings{cho-breakwater-osdi-2020,
+  author    = {Inho Cho and
+               Ahmed Saeed and
+               Joshua Fried and
+               Seo Jin Park and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {Overload Control for us-scale RPCs with Breakwater},
+  booktitle = {Proceedings of the 14th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI})},
+  series    = {OSDI '20},
+  publisher = {{USENIX} Association},
+  year      = {2020},
+  url       = {http://saeed.github.io/files/breakwater_osdi20.pdf},
+  video     = {https://youtu.be/-sXsEfnn5vA},
+  slides    = {https://joshfried.io/assets/breakwater_osdi20_slides.pdf},
+  code      = {https://github.com/shenango/caladan/tree/main/breakwater},
+  abstract  = {Modern datacenter applications are composed of hundreds of microservices with high degrees of fanout. As a result, they are sensitive to tail latency and require high request throughputs. Maintaining these characteristics under overload is difficult, especially for RPCs with short service times. In this paper, we consider the challenging case of microsecond-scale RPCs, where the cost of communicating information and dropping a request is similar to the cost of processing a request. We present Breakwater, an overload control scheme that can prevent overload in microsecond-scale services through a new, server-driven admission control scheme that issues credits based on server-side queueing delay. Breakwater contributes several techniques to amortize communication costs. It engages in demand speculation, where it assumes clients have unmet demand and issues additional credits when the server is not overloaded. Moreover, it piggybacks client-side demand information in RPC requests and credits in RPC responses. To cope with the occasional bursts in load caused by demand speculation, Breakwater drops requests when overloaded using active queue management. When clients’ demand spikes unexpectedly to 1.4× capacity, Breakwater converges to stable performance in less than 20 ms with no congestion collapse while DAGOR and SEDA take 500 ms and 1.58 s to recover from congestion collapse, respectively.}
+}
+
+@inproceedings{saeed-annulus-sigcomm-2020,
+  author    = {Ahmed Saeed and
+               Varun Gupta and
+               Prateesh Goyal and
+               Milad Sharif and
+               Rong Pan and
+               Mostafa H. Ammar and
+               Ellen W. Zegura and
+               Keon Jang and
+               Mohammad Alizadeh and
+               Abdul Kabbani and
+               Amin Vahdat},
+  title     = {Annulus: {A} Dual Congestion Control Loop for Datacenter and {WAN}
+               Traffic Aggregates},
+  booktitle = {Proceedings of the 2020 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
+  series    = {SIGCOMM '20},
+  pages     = {735--749},
+  publisher = {{ACM}},
+  year      = {2020},
+  url       = {http://saeed.github.io/files/annulus-sigcomm20-cr.pdf},
+  video     = {https://youtu.be/U6HDUFQlick},
+  slides     = {https://saeed.github.io/files/annulus_sigcomm_slides_long.pdf},
+  doi       = {10.1145/3387514.3405899},
+  timestamp = {Mon, 10 Aug 2020 12:02:30 +0200},
+  biburl    = {https://dblp.org/rec/conf/sigcomm/0001GGSPAZJAKV20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Cloud services are deployed in datacenters connected though high-bandwidth Wide Area Networks (WANs). We find that WAN traffic negatively impacts the performance of datacenter traffic, increasing tail latency by 2.5×, despite its small bandwidth demand. This behavior is caused by the long round-trip time (RTT) for WAN traffic, combined with limited buffering in datacenter switches. The long WAN RTT forces datacenter traffic to take the full burden of reacting to congestion. Furthermore, datacenter traffic changes on a faster time-scale than the WAN RTT, making it difficult for WAN congestion control to estimate available bandwidth accurately. We present Annulus, a congestion control scheme that relies on two control loops to address these challenges. One control loop leverages existing congestion control algorithms for bottlenecks where there is only one type of traffic (i.e., WAN or datacenter). The other loop handles bottlenecks shared between WAN and datacenter traffic near the traffic source, using direct feedback from the bottleneck. We implement Annulus on a testbed and in simulation. Compared to baselines using BBR for WAN congestion control and DCTCP or DCQCN for datacenter congestion control, Annulus increases bottleneck utilization by 10% and lowers datacenter flow completion time by 1.3-3.5×.}
+}
+
+@inproceedings{saeed-eiffel-nsdi-2019,
+  author    = {Ahmed Saeed and
+               Yimeng Zhao and
+               Nandita Dukkipati and
+               Ellen W. Zegura and
+               Mostafa H. Ammar and
+               Khaled Harras and
+               Amin Vahdat},
+  editor    = {Jay R. Lorch and Minlan Yu},
+  title     = {Eiffel: Efficient and Flexible Software Packet Scheduling},
+  booktitle = {Proceedings of the 16th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '19},
+  pages     = {17--32},
+  publisher = {{USENIX} Association},
+  year      = {2019},
+  url       = {http://saeed.github.io/files/eiffel_nsdi19.pdf},
+  notes     = {https://arxiv.org/pdf/1810.03060.pdf},
+  slides    = {http://saeed.github.io/files/eiffel_nsdi_slides.pdf},
+  video     = {https://youtu.be/Oijnef-C_44},
+  code      = {http://saeed.github.io/eiffel},
+  timestamp = {Tue, 02 Feb 2021 08:05:46 +0100},
+  biburl    = {https://dblp.org/rec/conf/nsdi/0001ZDZAHV19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Packet scheduling determines the ordering of packets in a queuing data structure with respect to some ranking function that is mandated by a scheduling policy. It is the core component in many recent innovations to optimize network performance and utilization. Our focus in this paper is on the design and deployment of packet scheduling in software. Software schedulers have several advantages over hardware including shorter development cycle and flexibility in functionality and deployment location. We substantially improve current software packet scheduling performance, while maintaining flexibility, by exploiting underlying features of packet ranking; namely, packet ranks are integers and, at any point in time, fall within a limited range of values. We introduce Eiffel, a novel programmable packet scheduling system. At the core of Eiffel is an integer priority queue based on the Find First Set (FFS) instruction and designed to support a wide range of policies and ranking functions efficiently. As an even more efficient alternative, we also propose a new approximate priority queue that can outperform FFS-based queues for some scenarios. To support flexibility, Eiffel introduces novel programming abstractions to express scheduling policies that cannot be captured by current, state-of-the-art scheduler programming models. We evaluate Eiffel in a variety of settings and in both kernel and userspace deployments. We show that it outperforms state of the art systems by 3-40x in terms of either number of cores utilized for network processing or number of flows given fixed processing capacity.}
+}
+
+@article{saeed-argus2-tosn-2019,
+  author    = {Ahmed Saeed and
+               Ahmed Abdelkader and
+               Mouhyemen Khan and
+               Azin Neishaboori and
+               Khaled A. Harras and
+               Amr Mohamed},
+  title     = {On Realistic Target Coverage by Autonomous Drones},
+  journal   = {{ACM} Transactions on Sensor Networks},
+  volume    = {15},
+  number    = {3},
+  pages     = {32:1--32:33},
+  year      = {2019},
+  url       = {https://arxiv.org/pdf/1702.03456.pdf},
+  doi       = {10.1145/3325512},
+  timestamp = {Tue, 18 May 2021 01:00:00 +0200},
+  biburl    = {https://dblp.org/rec/journals/tosn/0001AKNHM19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Low-cost mini-drones with advanced sensing and maneuverability enable a new class of intelligent sensing systems. To achieve the full potential of such drones, it is necessary to develop new enhanced formulations of both common and emerging sensing scenarios. Namely, several fundamental challenges in visual sensing remain unsolved including: 1) Fitting sizable targets in camera frames; 2) Effective viewpoints matching target poses; 3) Occlusion by elements in the environment, including other targets. In this paper, we introduce Argus: an autonomous system that utilizes drones to incrementally collect target information through a two-tier architecture. To tackle the stated challenges, Argus employs a novel geometric model that captures both target shapes and coverage constraints. Recognizing drones as the scarcest resource, Argus aims to minimize the number of drones required to cover a set of targets. We prove this problem is NP-hard, and even hard to approximate, before deriving a best-possible approximation algorithm along with a competitive sampling heuristic which runs up to 100x faster according to large-scale simulations. To test Argus in action, we demonstrate and analyze its performance on a prototype implementation. Finally, we present a number of extensions to accommodate more application requirements and highlight some open problems.}
+}
+
+@inproceedings{zhao-zd-conext-2019,
+  author    = {Yimeng Zhao and
+               Ahmed Saeed and
+               Ellen W. Zegura and
+               Mostafa H. Ammar},
+  editor    = {Aziz Mohaisen and Zhi{-}Li Zhang},
+  title     = {zD: a scalable zero-drop network stack at end hosts},
+  booktitle = {Proceedings of the 15th International Conference on Emerging Networking Experiments And Technologies ({CoNEXT})},
+  pages     = {220--232},
+  series    = {CoNEXT '19},
+  publisher = {{ACM}},
+  year      = {2019},
+  url       = {http://saeed.github.io/files/zd_conext19.pdf},
+  code      = {https://zd-linux.github.io/},
+  doi       = {10.1145/3359989.3365425},
+  timestamp = {Mon, 09 Dec 2019 14:08:31 +0100},
+  biburl    = {https://dblp.org/rec/conf/conext/Zhao0ZA19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Modern end-host network stacks have to handle traffic from tens of thousands of flows and hundreds of virtual machines per single host, to keep up with the scale of modern clouds. This can cause congestion for traffic egressing from the end host. The effects of this congestion have received little attention. Currently, an overflowing queue, like a kernel queuing discipline, will drop incoming packets. Packet drops lead to worse network and CPU performance by inflating the time to transmit the packet as well as spending extra effort on retansmissions. In this paper, we show that current end-host mechanisms can lead to high CPU utilization, high tail latency, and low throughput in cases of congestion of egress traffic within the end host. We present zD, a framework for applying backpressure from a congested queue to traffic sources at end hosts that can scale to thousands of flows. We implement zD to apply backpressure in two settings: i) between TCP sources and kernel queuing discipline, and ii) between VMs as traffic sources and kernel queuing discipline in the hypervisor. zD improves throughput by up to 60%, and improves tail RTT by at least 10x at high loads, compared to standard kernel implementation.}
+}
+
+@inproceedings{zhao-unison-icnp-2019,
+  author    = {Yimeng Zhao and
+               Ahmed Saeed and
+               Mostafa H. Ammar and
+               Ellen W. Zegura},
+  title     = {Unison: Enabling Content Provider/ISP Collaboration using a vSwitch
+               Abstraction},
+  booktitle = {Proceedings of the 27th {IEEE} International Conference on Network Protocols ({ICNP})},
+  series    = {ICNP '19},
+  pages     = {1--11},
+  publisher = {{IEEE}},
+  year      = {2019},
+  url       = {http://saeed.github.io/files/icnp2019-unison.pdf},
+  slides    = {http://saeed.github.io/files/unison_slides_icnp19.pdf},
+  doi       = {10.1109/ICNP.2019.8888032},
+  timestamp = {Wed, 06 Nov 2019 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/conf/icnp/Zhao0AZ19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {BGP was initially created assuming by default that all ASes are equal. Its policies and protocols, namely BGP, evolved to accommodate a hierarchical Internet, allowing an autonomous system more control over outgoing traffic than incoming traffic. However, the modern Internet is flat, making BGP asymmetrical. In particular, routing decisions are mostly in the hands of traffic sources (i.e., content providers). This leads to suboptimal routing decisions as traffic sources can only estimate route capacity at the destination (i.e., ISP). In this paper, we present the design of Unison, a system that allows an ISP to jointly optimize its intra-domain routes and inter-domain routes, in collaboration with content providers. Unison provides the ISP operator and the neighbors of the ISP with an abstraction ISP network in the form of a virtual switch. This abstraction allows the content providers to program the virtual switch with their requirements. It also allows the ISP to use that information to optimize the overall performance of its network. We show through extensive simulations that Unison can improve ISP throughput by up to 30% through cooperation with content providers. We also show that cooperation of content providers only improves performance, even for non-cooperating content providers (e.g., a single cooperating neighbour can improve ISP throughput by up to 6%).}
+}
+
+
+@inproceedings{abdullah-lte-tma-2019,
+  author    = {Kareem Abdullah and
+               Noha Korany and
+               Ayman Khalafallah and
+               Ahmed Saeed and
+               Ayman Gaber},
+  editor    = {Stefano Secci and Isabelle Chrisment and Marco Fiore and Lionel Tabourier and Keun{-}Woo Lim},
+  title     = {Characterizing the Effects of Rapid {LTE} Deployment: {A} Data-Driven
+               Analysis},
+  booktitle = {Proceedings of the Network Traffic Measurement and Analysis Conference ({TMA})},
+  series    = {TMA '19},
+  pages     = {97--104},
+  publisher = {{IEEE}},
+  year      = {2019},
+  url       = {http://saeed.github.io/files/tma2019-4g.pdf},
+  slides    = {http://saeed.github.io/files/tma2019-slides.pdf},
+  doi       = {10.23919/TMA.2019.8784522},
+  timestamp = {Wed, 16 Oct 2019 14:14:49 +0200},
+  biburl    = {https://dblp.org/rec/conf/tma/AbdullahKKSG19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {The deployment of LTE, while old news to developed countries, is ongoing in developing countries with some starting LTE deployments only a year ago. LTE is essential for developing countries where broadband access is mostly available through wireless connection. The process of LTE deployment is costly and time consuming. Network operators attempt to minimize both overheads. With the current challenges facing network operators to acquire new sites, 4G deployment always depends on reusing the already existing 2G/3G macro layer. In this paper, we study the approach of rapid 4G deployment by analyzing data from a major network operator in a developing country. In particular, we look at network measurements from a single large cluster right after LTE deployment. We analyze the impact of the deployment approach on user throughput and find that LTE throughput could be improved further for the majority of LTE users in more than 50% of the studied cells by improving either interference or coverage. We find that this is mainly because the LTE system is more sensitive to interference when compared to 3G. Finally, we show a data-driven approach to detect the affected cells and mitigate the issue through physical optimization, this approach balances employed LTE transition best practices with cost efficiency and rapid deployment.}
+}
+
+@inproceedings{saeed-stpp-icnp-2018,
+  author    = {Ahmed Saeed and
+               Mostafa H. Ammar and
+               Ellen W. Zegura and
+               Khaled Harras},
+  title     = {If you can't Beat Them, Augment Them: Improving Local WiFi with Only
+               Above-Driver Changes},
+  booktitle = {Proceedings of the 26th {IEEE} International Conference on Network Protocols ({ICNP})},
+  pages     = {378--388},
+  series    = {ICNP '18},
+  publisher = {{IEEE} Computer Society},
+  year      = {2018},
+  url       = {http://saeed.github.io/files/stpp-icnp19.pdf},
+  slides    = {http://saeed.github.io/files/stpp-icnp18.pptx},
+  code      = {http://saeed.github.io/stpp},
+  doi       = {10.1109/ICNP.2018.00053},
+  timestamp = {Wed, 16 Oct 2019 14:14:56 +0200},
+  biburl    = {https://dblp.org/rec/conf/icnp/0001AZH18.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {The basic MAC mechanisms in IEEE 802.11 (WiFi) have remained largely unchanged for over 20 years. In this paper, we argue that the prevalence of WiFi makes it almost impossible to improve its performance through changes that require modifying hardware, firmware, or drivers. New applications, however, continue to exert novel performance demands. We suggest that changes should be developed as augmentation-only solutions through above-driver, kernel-level software modifications. An augmentation-only solution needs to maintain inter-operability and afford transparency in performance to existing WiFi devices, as well as enable minimum overhead upgradability. Our goal is to demonstrate the feasibility of MAC augmentation according to these principles. To this end, we leverage soft scheduling, where nodes are asked for a best-effort attempt to adhere to a given schedule. We allow the soft scheduler to coexist with and work at a different time scale from WiFi’s Distributed Coordination Function (DCF); allowing it to reduce the time nodes spend contending for the medium while allowing DCF to handle only missed schedule slots and schedule divergence. We present a new Soft Token Passing Protocol (STPP) as an instance of this family of Soft Scheduling Protocols. We then show how STPP can be made part of a MAC protocol with specific performance improvement goals by developing the Wireless Low-Latency Local Links (WL4) system. We evaluate WL4 on a five node microbenchmark and quantify the system’s overhead on network throughput and latency. We show that soft scheduling, via STPP, enables WL4 to adhere to our augmentation principles while improving the latency within the system.}
+}
+
+@inproceedings{saeed-carousel-sigcomm-2017,
+  author    = {Ahmed Saeed and
+               Nandita Dukkipati and
+               Vytautas Valancius and
+               Vinh The Lam and
+               Carlo Contavalli and
+               Amin Vahdat},
+  title     = {Carousel: Scalable Traffic Shaping at End Hosts},
+  booktitle = {Proceedings of the 2017 Annual Conference of the {ACM} Special Interest Group on Data Communication ({SIGCOMM})},
+  series    = {SIGCOMM '17},
+  pages     = {404--417},
+  publisher = {{ACM}},
+  year      = {2017},
+  url       = {http://saeed.github.io/files/carousel-sigcomm17.pdf},
+  slides    = {http://saeed.github.io/files/carousel_sigcomm_final.pdf},
+  video     = {https://youtu.be/0Q8ROfwH9aQ},
+  doi       = {10.1145/3098822.3098852},
+  timestamp = {Tue, 06 Nov 2018 11:07:11 +0100},
+  biburl    = {https://dblp.org/rec/conf/sigcomm/SaeedDVLCV17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Traffic shaping, including pacing and rate limiting, is fundamental to the correct and effcient operation of both datacenter and wide area networks. Sample use cases include policy-based bandwidth allocation to flow aggregates, rate-based congestion control algorithms, and packet pacing to avoid bursty transmissions that can overwhelm router buffers. Driven by the need to scale to millions of flows and to apply complex policies, traffic shaping is moving from network switches into the end hosts, typically implemented in software in the kernel networking stack. In this paper, we show that the performance overhead of end-host traffic shaping is substantial limits overall system scalability as we move to thousands of individual traffic classes per server. Measurements from production servers show that shaping at hosts consumes considerable CPU and memory, unnecessarily drops packets, suffers from head of line blocking and inaccuracy, and does not provide backpressure up the stack. We present Carousel, a framework that scales to tens of thousands of policies and flows per server, built from the synthesis of three key ideas: i) a single queue shaper using time as the basis for releasing packets, ii) fine-grained, just-in-time freeing of resources in higher layers coupled to actual packet departures, and iii) one shaper per CPU core, with lock-free coordination. Our production experience in serving video traffic at a Cloud service provider shows that Carousel shapes traffic accurately while improving overall machine CPU utilization by 8% (an improvement of 20% in the CPU utilization attributed to networking) relative to state-of-art deployments. It also conforms 10 times more accurately to target rates, and consumes two orders of magnitude less memory than existing approaches.}
+}
+
+@inproceedings{saeed-waldo-icdcs-2017,
+  author    = {Ahmed Saeed and
+               Khaled A. Harras and
+               Ellen W. Zegura and
+               Mostafa H. Ammar},
+  editor    = {Kisung Lee and Ling Liu},
+  title     = {Local and Low-Cost White Space Detection},
+  booktitle = {Proceedings of the 37th {IEEE} International Conference on Distributed Computing Systems ({ICDCS})},
+  series    = {ICDCS '17},
+  pages     = {503--516},
+  publisher = {{IEEE} Computer Society},
+  year      = {2017},
+  url       = {http://saeed.github.io/files/waldo_icdcs17.pdf},
+  slides    = {http://saeed.github.io/files/icdcs_presentation.pdf},
+  code      = {http://saeed.github.io/waldo_vis/},
+  doi       = {10.1109/ICDCS.2017.292},
+  timestamp = {Wed, 16 Oct 2019 14:14:50 +0200},
+  biburl    = {https://dblp.org/rec/conf/icdcs/0001HZA17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{saeed-argus-ipsn-2017,
+  author    = {Ahmed Saeed and
+               Ahmed Abdelkader and
+               Mouhyemen Khan and
+               Azin Neishaboori and
+               Khaled A. Harras and
+               Amr Mohamed},
+  editor    = {Pei Zhang and Prabal Dutta and Guoliang Xing},
+  title     = {Argus: realistic target coverage by drones},
+  booktitle = {Proceedings of the 16th {ACM/IEEE} International Conference on Information Processing in Sensor Networks ({IPSN})},
+  series    = {IPSN '17},
+  pages     = {155--166},
+  publisher = {{ACM}},
+  year      = {2017},
+  url       = {http://saeed.github.io/files/argus_ipsn17.pdf},
+  slides    = {https://saeed.github.io/files/argus_ipsn_online.pptx},
+  doi       = {10.1145/3055031.3055078},
+  timestamp = {Tue, 18 May 2021 01:00:00 +0200},
+  biburl    = {https://dblp.org/rec/conf/ipsn/0001AKNHM17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Low-cost mini-drones with advanced sensing and maneuverability enable a new class of intelligent visual sensing systems. This potential motivated several research efforts to employ drones as standalone surveillance systems or to assist legacy deployments. However, several fundamental challenges remain unsolved including: 1) Adequate coverage of sizable targets; 2) Target orientation that render coverage effective only from certain directions; 3) Occlusion by elements in the environment, including other targets. In this paper, we present Argus, a system that provides visual coverage of wide and oriented targets, using camera-mounted drones, taking into account the challenges stated above. Argus relies on a geometric model that captures both target shapes and coverage constraints. With drones being the scarcest resource in Argus, we study the problem of minimizing the number of drones required to cover a set of such targets and derive a best-possible approximation algorithm. Building upon that, we present a sampling heuristic performs favorably yet is up to 100x faster compared to the approximation algorithm. We implement a complete prototype of Argus to demonstrate and evaluate the proposed coverage algorithms within a fully autonomous surveillance system. Finally, we evaluate the proposed algorithms via simulations to compare their performance at scale under various conditions.}
+}
+
+@article{saeed-dynawhite-netmag-2015,
+  author    = {Ahmed Saeed and
+               Mohamed Ibrahim and
+               Khaled A. Harras and
+               Moustafa Youssef},
+  title     = {Toward dynamic real-time geo-location databases for {TV} white spaces},
+  journal   = {{IEEE} Network},
+  volume    = {29},
+  number    = {5},
+  pages     = {76--82},
+  year      = {2015},
+  url       = {http://saeed.github.io/files/netmag_dynawhite.pdf},
+  doi       = {10.1109/MNET.2015.7293309},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/journals/network/SaeedIHY15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Recent FCC regulations on TV white spaces allow geo-location databases to be the sole source of spectrum information for White Space Devices (WSDs). Geo-location databases protect TV band incumbents by keeping track of TV transmitters and their protected service areas, based on each transmitter location and transmission parameters using sophisticated propagation models. In this article, we show that keeping track of both TV transmitters and TV receivers, i.e., TV sets, can achieve significant improvement in the availability of white spaces. We first identify temporal and spatial wasted spectrum opportunities due to the current approach of white spaces detection. We then propose our DynaWhite architecture which is responsible for orchestrating the detection and dissemination of highly-dynamic, real-time, and fine-grained TV white space information, based on both TV transmitter and receiver information. DynaWhite proposes the development of a new generation of geo-location databases that combine conventional geo-location databases with novel unconventional sensing approaches based on the detection of the passive TV receivers using standard cell phones. We present a quantitative evaluation of the potential gains, reaching 24 extra 6 MHz channels in some cases, in white space availability for potential deployments of DynaWhite. We finally identify research challenges associated with the adoption of our DynaWhite architecture.}
+}
+
+@inproceedings{abdelkader-fipapx-cccg-2015,
+  author    = {Ahmed Abdelkader and
+               Ahmed Saeed and
+               Khaled A. Harras and
+               Amr Mohamed},
+  title     = {The Inapproximability of Illuminating Polygons by {\(\alpha\)}-Floodlights},
+  booktitle = {Proceedings of the 27th Canadian Conference on Computational Geometry ({CCCG})},
+  series    = {CCCG '15},
+  publisher = {Queen's University, Ontario, Canada},
+  year      = {2015},
+  url       = {http://research.cs.queensu.ca/cccg2015/CCCG15-papers/25.pdf},
+  slides    = {http://www.cs.umd.edu/~akader/files/CCCG15_talk.pdf},
+  timestamp = {Wed, 19 May 2021 01:00:00 +0200},
+  biburl    = {https://dblp.org/rec/conf/cccg/AbdelkaderSHM15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {We consider variants of the art gallery problem where guard visibility is limited to a certain angular aperture α. We show that the problem is NP-hard even when guards can be located in the interior of the polygon. We then proceed to prove that both this problem and its vertex variant, where guard placement is restricted to the vertices of the polygon, are APX-hard. We observe that earlier constructions for such results in art gallery problems with 360◦ guards, usually required them to cover few specific elements. We exploit this by carefully updating the construction to replace 360◦ guards with α-floodlights. Similar transformations may be applicable to other constructions in traditional art gallery theorems, which is of independent interest.}
+}
+
+@inproceedings{saeed-symbiot-mcs-2015,
+  author    = {Ahmed Saeed and
+               Mostafa H. Ammar and
+               Khaled A. Harras and
+               Ellen W. Zegura},
+  editor    = {Nic Lane},
+  title     = {Vision: The Case for Symbiosis in the Internet of Things},
+  booktitle = {Proceedings of the 6th International Workshop on Mobile Cloud Computing
+               and Services (MCS@MobiCom)},
+  series    = {MCS '17},
+  pages     = {23--27},
+  publisher = {{ACM}},
+  year      = {2015},
+  url       = {http://saeed.github.io/files/mcs15_symbiot.pdf},
+  slides    = {http://saeed.github.io/files/symbiot_mcs_presentation.pptx},
+  doi       = {10.1145/2802130.2802133},
+  timestamp = {Tue, 06 Nov 2018 16:59:00 +0100},
+  biburl    = {https://dblp.org/rec/conf/mobicom/SaeedAHZ15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Smart devices are becoming more powerful with faster processors, larger storage, and different types of communication modalities (e.g., WiFi, Bluetooth, and cellular). In the predominant view of Internet of Things (IoT) architecture, all smart devices are expected to communicate with cloud services and/or user-held mobile devices for processing, storage, and user interaction. This architecture heavily taxes Internet bandwidth by moving large volumes of data from the edge to the cloud, and presumes the availability of low-cost, high-performance cloud services that satisfy all user needs. We envision a new approach where all devices within the same network are 1) logically mesh connected either directly through Bluetooth or indirectly through WiFi, and 2) cooperate in a symbiotic fashion to perform different tasks. We consider instantiating this vision in a system we call SymbIoT. We first present the design goals that need to be satisfied in SymbIoT. We then discuss a strawman system’s architecture that allows devices to assume different roles based on their capabilities (e.g., processing, storage, and UI). Finally, we show that it is, indeed, feasible to use low-end smart device capabilities in a cooperative manner to meet application requirements.}
+}
+
+@article{saeed-ichnaea-jstsp-2014,
+  author    = {Ahmed Saeed and
+               Ahmed E. Kosba and
+               Moustafa Youssef},
+  title     = {Ichnaea: {A} Low-Overhead Robust {WLAN} Device-Free Passive Localization
+               System},
+  journal   = {{IEEE} of Selected Topics in Signal Processing},
+  volume    = {8},
+  number    = {1},
+  pages     = {5--15},
+  year      = {2014},
+  url       = {http://saeed.github.io/files/ichnaea_jstsp.pdf},
+  doi       = {10.1109/JSTSP.2013.2287480},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/journals/jstsp/SaeedKY14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {WLAN Device-free passive (DfP) indoor localization is an emerging technology enabling the localization of entities that do not carry any devices nor participate actively in the localization process using the already installed wireless infrastructure. Current state-of-the-art DfP localization systems require a large overhead to construct an RF profile for the environment, that is then used as a reference for either motion detection or tracking. These profiles are also not robust to changes in the environment, requiring frequent manual maintenance or reconstruction. In this paper, we present the design, implementation and evaluation of Ichnaea, an accurate, robust, and low-overhead DfP localization system. Ichnaea uses a lightweight, typically two minutes, training period to learn the silence profile of the environment. It then applies statistical anomaly detection techniques and particle filtering, while adapting to changes in the environment, to provide its localization capabilities using standard WiFi hardware. Evaluation of Ichnaea in three typical testbeds with a side-by-side comparison to the state-of-the-art WLAN DfP systems shows that it can achieve can achieve a worst case median distance error of 2.5m while requiring significantly lower deployment overhead and being robust to environment changes.}
+}
+
+@inproceedings{neishaboori-coverage1-mass-2014,
+  author    = {Azin Neishaboori and
+               Ahmed Saeed and
+               Khaled A. Harras and
+               Amr Mohamed},
+  title     = {Low Complexity Target Coverage Heuristics Using Mobile Cameras},
+  booktitle = {Proceedings of the 11th {IEEE} International Conference on Mobile Ad Hoc and Sensor Systems ({MASS})},
+  series    = {MASS '14},
+  pages     = {217--221},
+  publisher = {{IEEE} Computer Society},
+  year      = {2014},
+  url       = {http://saeed.github.io/files/mass14_covergae.pdf},
+  doi       = {10.1109/MASS.2014.70},
+  timestamp = {Tue, 18 May 2021 01:00:00 +0200},
+  biburl    = {https://dblp.org/rec/conf/mass/NeishabooriSHM14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Wireless sensor and actuator networks have been extensively deployed for enhancing industrial control processes and supply-chains, and many forms of surveillance and environmental monitoring. The availability of low-cost mobile robots equipped with a variety of sensors in addition to communication and computational capabilities makes them particularly promising in target coverage tasks for ad hoc surveillance, where quick, low-cost or non-lasting visual sensing solutions are required, e.g. in border protection and disaster recovery. In this paper, we consider the problem of low complexity placement and orientation of mobile cameras to cover arbitrary targets. We tackle this problem by clustering proximal targets, while calculating/estimating the camera location/direction for each cluster separately through our cover-set coverage method. Our proposed solutions provide extremely computationally efficient heuristics with only a small increase in number of cameras used, and a small decrease in number of covered targets.}
+}
+
+@inproceedings{saeed-wserrors-wintech-2014,
+  author    = {Ahmed Saeed and
+               Khaled A. Harras and
+               Moustafa Youssef},
+  editor    = {Kyle Jamieson and Tommaso Melodia},
+  title     = {Towards a characterization of white spaces databases errors: an empirical
+               study},
+  booktitle = {Proceedings of the 9th {ACM} International Workshop on Wireless Network
+               Testbeds, Experimental Evaluation and Characterization ({WiNTECH})},
+  series    = {{WiNTECH}~'14},
+  pages     = {25--32},
+  publisher = {{ACM}},
+  year      = {2014},
+  url       = {http://saeed.github.io/files/win04f-saeed.pdf},
+  slides    = {http://saeed.github.io/files/WiNTECH_SPOC_2014.pptx},
+  doi       = {10.1145/2643230.2643234},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/conf/mobicom/SaeedHY14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Spectrum regulators consider geo-location databases as the most reliable source of spectrum information for White Space Devices (WSDs). Geo-location databases protect TV band incumbents by keeping track of TV transmitters, and their protected service areas based on their location, transmission parameters, and sophisticated propagation models. However, propagation models inaccuracies can cause an overestimation of the protected area of TV transmitters leading to the inefficient usage of white spaces. In this paper, we present a large scale study, spanning an area of around 3000 km2 over a driving path of around 190 km, showing that one of the most accurate propagation models, the Irregular Terrain Model (IMT), overestimates the signal power by up to 97% of the time. Based on this study, we provide a characterization of spectrum sensory readings that can be used to amend the prediction of propagation models. This characterization allows spectrum sensors to detect the absence of white spaces with a fairly high threshold of -84 dbm, which enables low cost and accurate spectrum sensing. Furthermore, we present the initial design of SPOC, a system that combines spectrum sensing and propagation modeling in order to better detect white spaces.}
+}
+
+@inproceedings{neishaboori-coverage2-mobiwac-2014,
+  author    = {Azin Neishaboori and
+               Ahmed Saeed and
+               Khaled A. Harras and
+               Amr Mohamed},
+  editor    = {Wessam Ajib and {\'{A}}ngel Cuevas Rum{\'{\i}}n},
+  title     = {On target coverage in mobile visual sensor networks},
+  booktitle = {Proceedings of the 12th {ACM} International Symposium on Mobility Management and Wireless Access ({MobiWac})},
+  series    = {{MobiWac}~'14},
+  pages     = {39--46},
+  publisher = {{ACM}},
+  year      = {2014},
+  url       = {http://saeed.github.io/files/mobiwac_saeed.pdf},
+  doi       = {10.1145/2642668.2642671},
+  timestamp = {Tue, 18 May 2021 01:00:00 +0200},
+  biburl    = {https://dblp.org/rec/conf/mobiwac/NeishabooriSHM14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Recent advancements in manufacturing low-cost wireless battery operated cameras has made their application in Wireless Video Sensor Networks (WVSN) increasingly more feasible and affordable. The application of robotic sensing agents equipped with cameras in WVSNs, seems particularly promising in performing coverage tasks for ad hoc surveillance. Their application in this context can be specifically useful for surveying areas with little to no available or affordable infrastructure, or where quick deployment is necessary. In this paper, we address the target coverage problem for finding the minimum number of cameras, their placement, and orientation to cover arbitrarily located targets in an area of interest. We propose a computationally light-weight heuristic, where the number of used mobile cameras is close to those found by near-optimal algorithms. Specifically, we address this problem for non-uniform target distributions that naturally form clusters. Having light-weight heuristics will be particularly useful when the application is required to adapt to target mobility and/or is implemented in embedded systems. Our simulation study shows that when clusters are sufficiently separated, the required number of cameras found by our proposed method is very close to those acquired by the near-optimal algorithm, whereas the computational complexity of our algorithm is about ten times less. We also deploy our algorithm on a drone testbed using off-the-shelf components to verify its feasibility.}
+}
+
+@inproceedings{elbagoury-probcog-wcnc-2014,
+  author    = {Ahmed Elbagoury and
+               Ahmed Saeed and
+               Moustafa Youssef},
+  title     = {Location-aware probabilistic route discovery for cognitive radio networks},
+  booktitle = {Proceedings of the {IEEE} Wireless Communications and Networking Conference ({WCNC})},
+  series    = {{WCNC}~'14},
+  pages     = {2102--2107},
+  publisher = {{IEEE}},
+  year      = {2014},
+  url       = {http://saeed.github.io/files/prob_routing-wcnc14.pdf},
+  doi       = {10.1109/WCNC.2014.6952634},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/conf/wcnc/ElbagourySY14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Cognitive radios emerged as a solution for utilizing the spectrum which is considered a limited resource. Multi-hop routing in cognitive radio networks (CRNs) has been gaining increasing attention as it enables future large-scale CRNs. However, many existing protocols flood the network with control packets in route discovery phase, which leads to wasting bandwidth. In this paper, we introduce a location-aware probabilistic route discovery technique for CRNs that leverages gossiping with dynamic probabilities to reduce the flooding overhead without affecting the quality of the discovered routes. The proposed technique can be used on top of any routing protocol regardless of whether it relies on a common control channel or not. Evaluation of our technique through ns2 simulations for improving different classes of routing protocols shows a significant reduction in the number of control packets by up to 75% and an increase in throughput by up to 400%.}
+}
+
+@inproceedings{saeed-una-wimob-2014,
+  author    = {Ahmed Saeed and
+               Azin Neishaboori and
+               Amr Mohamed and
+               Khaled A. Harras},
+  title     = {Up and away: {A} visually-controlled easy-to-deploy wireless {UAV}
+               Cyber-Physical testbed},
+  booktitle = {Proceedings of the 10th {IEEE} International Conference on Wireless and Mobile Computing, Networking and Communications ({WiMob})},
+  series    = {{WiMob}~'14},
+  pages     = {578--584},
+  publisher = {{IEEE} Computer Society},
+  year      = {2014},
+  url       = {http://saeed.github.io/files/wimob_una.pdf},
+  slides    = {http://saeed.github.io/files/una_wimob_presentation.pptx},
+  doi       = {10.1109/WiMOB.2014.6962228},
+  timestamp = {Tue, 18 May 2021 01:00:00 +0200},
+  biburl    = {https://dblp.org/rec/conf/wimob/SaeedNMH14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Cyber-Physical Systems (CPS) have the promise of presenting the next evolution in computing with potential applications that include aerospace, transportation, and various automation systems. These applications motivate advances in the different sub-fields of CPS such as mobile computing, context awareness, and computer vision. However, deploying and testing complete CPSs is known to be a complex and expensive task. In this paper, we present the design, implementation, and evaluation of Up and Away (UnA): a testbed for Cyber-Physical Systems that use Unmanned Aerial Vehicles (UAVs) as their main physical component. UnA aims to abstract the control of physical system components to reduce the complexity of UAV oriented CPS experiments. UnA provides APIs to allow for converting CPS algorithm implementations, developed typically for simulations, into physical experiments using a few simple steps. We present two scenarios of using UnA’s API to bring mobile-camera-based surveillance algorithms to life, thus exhibiting the ease of use and flexibility of UnA.}
+}
+
+@article{seifeldin-nuzzer-tmc-2013,
+  author    = {Moustafa Seifeldin and
+               Ahmed Saeed and
+               Ahmed E. Kosba and
+               Amr El{-}Keyi and
+               Moustafa Youssef},
+  title     = {Nuzzer: {A} Large-Scale Device-Free Passive Localization System for
+               Wireless Environments},
+  journal   = {{IEEE} Transactions on Mobile Computing},
+  volume    = {12},
+  number    = {7},
+  pages     = {1321--1334},
+  year      = {2013},
+  url       = {http://saeed.github.io/files/nuzzer-tmc.pdf},
+  doi       = {10.1109/TMC.2012.106},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/journals/tmc/SeifeldinSKEY13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {The widespread usage of WLANs and mobile devices has fostered the interest in localization systems for wireless environments. The majority of research in the context of wireless-based localization systems has focused on device-based active localization, in which devices are attached to tracked entities. Recently, device-free passive localization (DfP) has been proposed where the tracked entity is neither required to carry devices nor to participate actively in the localization process. Previous studies have focused on small areas and/or controlled environments. In this paper, we present the design, implementation and analysis of Nuzzer, a large-scale DfP localization system, which tracks entities in real environments, rich in multipath. We first present probabilistic techniques for DfP localization of a single entity and evaluate their performance both analytically and in typical office buildings. Our results show that Nuzzer gives location estimates with less than 2 meters median distance error. We then give an algorithm for estimating the number of entities in an area of interest and localizing them into coarse-grained zones to enhance the scalability of the system. This indicates the suitability of Nuzzer to a large number of application domains.}
+}
+
+@inproceedings{saeed-cogframe-icc-2013,
+  author    = {Ahmed Saeed and
+               Mohamed Ibrahim and
+               Khaled A. Harras and
+               Moustafa Youssef},
+  title     = {A low-cost large-scale framework for cognitive radio routing protocols
+               testing},
+  booktitle = {Proceedings of the {IEEE} International Conference on Communications ({ICC})},
+  series    = {{ICC}~'13},
+  pages     = {2900--2904},
+  publisher = {{IEEE}},
+  year      = {2013},
+  url       = {http://saeed.github.io/files/cogframe13_icc.pdf},
+  doi       = {10.1109/ICC.2013.6654982},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/conf/icc/SaeedIHY13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Cognitive radio networks (CRNs) provide a solution to increase the utilization of the scarce radio frequency spectrum. Building testbeds for CRNs is one of the main challenges that can affect the wide deployability of such networks. In this paper, we present the design, implementation, and evaluation of CogFrame: a framework that facilitates the development of cost-efficient large-scale CRNs routing protocols testbeds. The framework allows the designers to focus on the CRNs routing protocols by abstracting the PHY and MAC layers while providing the necessary cross layer functionalities. CogFrame works with standard computers and WiFi cards to reduce the cost while allowing integration with other special hardware for more flexibility. In addition, CogFrame provides different modules for implementing and emulating complex scenarios such as regulatory authority policies, mobility management, and topology management. We benchmark the performance of CogFrame and compare it to standard ns-2 simulations and USRP2 implementations. In addition, we case study a location-aided routing protocol for CRNs using both CogFrame and ns-2 simulations. Our results highlight the ease of implementation, low-cost, and realistic replication of the CRN environment, showing the promise of CogFrame as a testbed for future CRNs implementations.}
+}
+
+
+
+@inproceedings{kosba-rasid-percom-2012,
+  author    = {Ahmed E. Kosba and
+               Ahmed Saeed and
+               Moustafa Youssef},
+  editor    = {Silvia Giordano and Marc Langheinrich and Albrecht Schmidt},
+  title     = {{RASID:} {A} robust {WLAN} device-free passive motion detection system},
+  booktitle = {Proceedings of the 2012 {IEEE} International Conference on Pervasive Computing and Communications ({PerCom})},
+  series    = {{PerCom}~'12},
+  pages     = {180--189},
+  publisher = {{IEEE} Computer Society},
+  year      = {2012},
+  url       = {http://saeed.github.io/files/rasid-percom12.pdf},
+  slides    = {http://saeed.github.io/files/PerCom_final_presented.pptx},
+  doi       = {10.1109/PerCom.2012.6199865},
+  timestamp = {Wed, 24 Feb 2021 00:00:00 +0100},
+  biburl    = {https://dblp.org/rec/conf/percom/KosbaSY12.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {WLAN Device-free passive (DfP) indoor localization is an emerging technology enabling the localization of entities that do not carry any devices nor participate actively in the localization process using the already installed wireless infrastructure. This technology is useful for a variety of applications such as intrusion detection, smart homes and border protection. We present the design, implementation and evaluation of RASID, a DfP system for human motion detection. RASID combines different modules for statistical anomaly detection while adapting to changes in the environment to provide accurate, robust, and low-overhead detection of human activities using standard WiFi hardware. Evaluation of the system in two different testbeds shows that it can achieve an accurate detection capability in both environments with an F-measure of at least 0.93. In addition, the high accuracy and low overhead performance are robust to changes in the environment as compared to the current state of the art DfP detection systems.}
+}

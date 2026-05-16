@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Advanced Networked Systems Research Lab at Georgia Tech, led by Ahmed Saeed."
+    >
+    <title>ANSR Lab | Georgia Tech</title>
+    <link rel="icon" type="image/x-icon" href="https://brand.gatech.edu/themes/custom/brand/favicon.ico">
+    <style>
+      :root {
+        --gt-navy: #003057;
+        --gt-blue: #00558c;
+        --gt-gold: #b3a369;
+        --gt-gold-dark: #8a7a38;
+        --ink: #1f2933;
+        --muted: #5c6670;
+        --line: #d9dee5;
+        --surface: #ffffff;
+        --wash: #f5f7f9;
+        --radius: 6px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--surface);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .sr-only {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      a {
+        color: var(--gt-blue);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        color: var(--gt-navy);
+        text-decoration: underline;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--gt-navy);
+        border-bottom: 4px solid var(--gt-gold);
+      }
+
+      .nav-wrap {
+        align-items: center;
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1120px;
+        padding: 0.7rem 1.2rem;
+      }
+
+      .brand {
+        align-items: center;
+        color: #ffffff;
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-size: 0.98rem;
+        font-weight: 700;
+        gap: 0.7rem;
+      }
+
+      .brand:hover,
+      .brand:focus {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .brand img {
+        border-radius: var(--radius);
+        height: 52px;
+        width: auto;
+      }
+
+      .nav-links {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 1.1rem;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus {
+        color: #f4e7b0;
+      }
+
+      .container {
+        margin: 0 auto;
+        max-width: 1120px;
+        padding: 0 1.2rem;
+      }
+
+      .hero {
+        padding: 1.6rem 0 2rem;
+      }
+
+      .hero-logo-lockup {
+        align-items: center;
+        display: grid;
+        gap: 0.45rem;
+        justify-items: center;
+        margin: 0 auto 1.25rem;
+        max-width: 760px;
+      }
+
+      .hero-visual {
+        margin: 0 auto;
+        width: min(100%, 760px);
+      }
+
+      .hero-gt-logo {
+        margin-top: -0.25rem;
+        opacity: 0.9;
+        width: min(39%, 230px);
+      }
+
+      .hero-gt-logo img {
+        height: auto;
+        width: 100%;
+      }
+
+      .hero h1 {
+        color: var(--gt-navy);
+        font-size: clamp(1.85rem, 3.6vw, 3.35rem);
+        line-height: 1.05;
+        margin: 0 auto 0.9rem;
+        max-width: 920px;
+        text-align: center;
+      }
+
+      .hero .lead {
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        margin: 0 auto;
+        max-width: 900px;
+        text-align: center;
+      }
+
+      section {
+        padding: 3.1rem 0;
+      }
+
+      .section-wash {
+        background: var(--wash);
+        border-bottom: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+      }
+
+      .section-title {
+        color: var(--gt-navy);
+        font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+        line-height: 1.2;
+        margin: 0 0 1.4rem;
+      }
+
+      .intro-grid {
+        display: grid;
+        gap: 1.8rem;
+        grid-template-columns: minmax(0, 1fr) 320px;
+      }
+
+      .intro-copy p {
+        margin: 0 0 1.15rem;
+      }
+
+      .focus-list {
+        border-left: 4px solid var(--gt-gold);
+        margin: 0;
+        padding: 0.25rem 0 0.25rem 1.25rem;
+      }
+
+      .focus-list li {
+        margin: 0.35rem 0;
+      }
+
+      .quick-panel {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.2rem;
+      }
+
+      .quick-panel h3 {
+        color: var(--gt-navy);
+        font-size: 1.05rem;
+        margin: 0 0 0.9rem;
+      }
+
+      .quick-panel dl {
+        margin: 0;
+      }
+
+      .quick-panel dt {
+        color: var(--muted);
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-top: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      .quick-panel dd {
+        margin: 0.15rem 0 0;
+      }
+
+      .news-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .news-item {
+        display: grid;
+        gap: 1.2rem;
+        grid-template-columns: 150px minmax(0, 1fr);
+        padding: 0.95rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .news-date {
+        color: var(--gt-navy);
+        font-weight: 700;
+      }
+
+      .research-grid,
+      .people-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .research-card,
+      .person-card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.2rem;
+      }
+
+      .research-card h3,
+      .person-card h3 {
+        color: var(--gt-navy);
+        font-size: 1.15rem;
+        line-height: 1.25;
+        margin: 0 0 0.55rem;
+      }
+
+      .research-card p,
+      .person-card p {
+        margin: 0;
+      }
+
+      .publication-list {
+        display: grid;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .publication-list li {
+        background: #ffffff;
+        border-left: 4px solid var(--gt-gold);
+        list-style: none;
+        padding: 0.95rem 0 0.95rem 1rem;
+      }
+
+      .publication-title {
+        color: var(--gt-navy);
+        display: block;
+        font-weight: 700;
+      }
+
+      .publication-meta {
+        color: var(--muted);
+        display: block;
+        font-size: 0.96rem;
+        margin-top: 0.2rem;
+      }
+
+      .person-card.faculty {
+        grid-column: 1 / -1;
+      }
+
+      .people-section {
+        margin-top: 1.5rem;
+      }
+
+      .people-section h3 {
+        color: var(--gt-navy);
+        font-size: 1.1rem;
+        margin: 0 0 0.6rem;
+      }
+
+      .name-list {
+        columns: 2;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .name-list li {
+        break-inside: avoid;
+        margin: 0.3rem 0;
+      }
+
+      .join-band {
+        background: var(--gt-navy);
+        color: #ffffff;
+      }
+
+      .join-band .section-title {
+        color: #ffffff;
+      }
+
+      .join-band a {
+        color: #f4e7b0;
+        font-weight: 700;
+      }
+
+      .join-band p {
+        max-width: 860px;
+      }
+
+      .support-logos {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem 2rem;
+        margin-top: 1.2rem;
+      }
+
+      .support-logos img {
+        max-height: 46px;
+        width: auto;
+      }
+
+      .site-footer {
+        background: #111827;
+        color: #ffffff;
+        font-size: 0.9rem;
+        padding: 1.1rem 0;
+        text-align: center;
+      }
+
+      .site-footer p {
+        margin: 0;
+      }
+
+      @media (max-width: 820px) {
+        body {
+          font-size: 16px;
+        }
+
+        .nav-wrap {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .intro-grid,
+        .research-grid,
+        .people-grid,
+        .news-item {
+          grid-template-columns: 1fr;
+        }
+
+        .news-item {
+          gap: 0.1rem;
+        }
+
+        .name-list {
+          columns: 1;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .nav-links {
+          gap: 0.3rem 0.85rem;
+        }
+
+        .hero {
+          padding: 1.2rem 0 1.5rem;
+        }
+
+        .hero-logo-lockup {
+          margin-bottom: 0.9rem;
+          max-width: 100%;
+        }
+
+        .hero-gt-logo {
+          width: min(58%, 210px);
+        }
+
+        .hero h1 {
+          font-size: 1.75rem;
+        }
+
+        .hero .lead {
+          font-size: 1rem;
+        }
+
+        section {
+          padding: 2.4rem 0;
+        }
+
+        .quick-panel,
+        .research-card,
+        .person-card {
+          padding: 1rem;
+        }
+      }
+    </style>
+    <link href="static/site.css?v=gt-lockup" rel="stylesheet">
+  </head>
+
+  <body id="home">
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html" aria-label="ANSR Lab home">
+          <img src="top_logo.png" alt="">
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="news.html">News</a>
+          <a href="publications.html">Publications</a>
+          <a href="index.html#people">People</a>
+          <a href="index.html#join">Join</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-logo-lockup">
+            <img class="hero-visual" src="horizontal_logo.png" alt="Advanced Networked Systems Research Lab at Georgia Tech">
+            <span class="hero-gt-logo" aria-hidden="true">
+              <img src="static/logos/gt-logo.png" alt="">
+            </span>
+          </div>
+          <h1 class="sr-only" id="hero-title">Advanced Networked Systems Research</h1>
+          <p class="lead">
+            We build networked computer systems that are fast, efficient, sustainable,
+            and easier to reason about at scale.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-wash" aria-labelledby="about-title">
+        <div class="container intro-grid">
+          <div class="intro-copy">
+            <h2 class="section-title" id="about-title">Systems For A Connected World</h2>
+            <p>
+              The Advanced Networked Systems Research Lab at Georgia Tech is led by
+              <a href="https://saeed.github.io/">Ahmed Saeed</a>. Our research spans
+              the theory, design, and implementation of scalable computer networks
+              and computer systems, with a focus on resource scheduling, congestion
+              control, operating systems, Internet measurement, and formal methods.
+            </p>
+            <p>
+              We work on systems that operate under real pressure: cloud and
+              datacenter services, edge and satellite networks, and infrastructure
+              whose cost, energy use, and reliability shape everyday life. The lab
+              combines principled models with deployable mechanisms, aiming for
+              tools that improve performance without hiding the tradeoffs that
+              operators and developers need to understand.
+            </p>
+            <ul class="focus-list">
+              <li>High-utilization cloud and datacenter systems</li>
+              <li>Load, admission, and resource management for modern services</li>
+              <li>Congestion control, scheduling, and operating-system support</li>
+              <li>Internet measurement, resilience, and sustainable infrastructure</li>
+            </ul>
+          </div>
+
+          <aside class="quick-panel" aria-labelledby="quick-title">
+            <h3 id="quick-title">At A Glance</h3>
+            <dl>
+              <dt>Director</dt>
+              <dd><a href="https://saeed.github.io/">Ahmed Saeed</a></dd>
+              <dt>Home</dt>
+              <dd>Georgia Tech, Atlanta, GA</dd>
+              <dt>Contact</dt>
+              <dd><a href="mailto:asaeed@cc.gatech.edu">asaeed@cc.gatech.edu</a></dd>
+              <dt>Affiliations</dt>
+              <dd>
+                <a href="https://nrg.cc.gatech.edu/">NRG</a>,
+                <a href="https://scs.gatech.edu/">SCS</a>,
+                <a href="https://www.cc.gatech.edu/">College of Computing</a>,
+                <a href="https://research.gatech.edu/bbiss">BBISS</a>
+              </dd>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section id="news" aria-labelledby="news-title">
+        <div class="container">
+          <h2 class="section-title" id="news-title">News</h2>
+          <div class="news-list">
+            <article class="news-item">
+              <div class="news-date">May 2026</div>
+              <div>Ahmed Saeed received the NSF CAREER Award.</div>
+            </article>
+            <article class="news-item">
+              <div class="news-date">May 2026</div>
+              <div>A lab paper was accepted at TPRC 54.</div>
+            </article>
+            <article class="news-item">
+              <div class="news-date">May 2026</div>
+              <div>Kudos to Pratyush on graduating! 🎓 His thesis, <span class="thesis-title">"Modeling Modern-day Datacenter Design and Performance Using Formal Verification,"</span> features a published paper at MASCOTS 2025 and another currently under submission. Incredible work, Pratyush! 👏✨</div>
+            </article>
+            <article class="news-item">
+              <div class="news-date">May 2026</div>
+              <div>Kudos to Dhyey on graduating! 🎓 His thesis, <span class="thesis-title">"Maximizing Datacenter Power Efficiency Through Local Load Imbalancing,"</span> was featured and published as part of a poster session at NSDI 2026. Incredible work, Dhyey! 👏✨</div>
+            </article>
+            <article class="news-item">
+              <div class="news-date">Mar. 2026</div>
+              <div>
+                Bhaskar Pardeshi's work on overload control in large-scale servers
+                was accepted to OSDI 2026.
+              </div>
+            </article>
+            <article class="news-item">
+              <div class="news-date">Dec. 2025</div>
+              <div>
+                Iliana Xygkou's work on a dynamic Internet telescope was accepted
+                to NSDI 2026.
+              </div>
+            </article>
+            <article class="news-item">
+              <div class="news-date">Nov. 2025</div>
+              <div>Ahmed Saeed was selected as a BBISS Faculty Fellow.</div>
+            </article>
+          </div>
+          <p><a class="button-link" href="news.html">More news updates</a></p>
+        </div>
+      </section>
+
+      <section id="publications" aria-labelledby="publications-title">
+        <div class="container">
+          <h2 class="section-title" id="publications-title">Recent Conference Papers</h2>
+          <ol class="publication-list">
+            <li>
+              <span class="publication-title">
+                Svalinn: Overload Control in Large-Scale Servers with Multiple Resource Bottlenecks
+              </span>
+              <span class="publication-meta">
+                Bhaskar Pardeshi, Peidi Song, Ahmed Saeed. USENIX OSDI 2026.
+              </span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="http://saeed.github.io/files/morp4-nsdi26.pdf">
+                  Morp4: A Dynamic Network Telescope
+                </a>
+              </span>
+              <span class="publication-meta">
+                Iliana Xygkou, Jithin Sojan, Dhruv Rauthan, Feng Zhu,
+                Thomas Holterbach, Shane Alcock, Brian Flanagan,
+                Ahmed Saeed, Alberto Dainotti. USENIX NSDI 2026.
+              </span>
+              <span class="publication-links">
+                <a href="http://saeed.github.io/files/morp4-nsdi26.pdf">Paper</a>
+                <a href="https://github.com/InetIntel/morp4-dynamic-telescope">Code</a>
+              </span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="http://saeed.github.io/files/cosmosim-imc25.pdf">
+                  Assessing LEO Satellite Networks for National Emergency Failover
+                </a>
+              </span>
+              <span class="publication-meta">
+                Vaibhav Bhosale, Ying Zhang, Sameer Kapoor, Robin Kim,
+                Miguel Schlicht, Muskaan Gupta, Ekaterina Tumanova,
+                Zachary Bischof, Fabian E. Bustamante, Alberto Dainotti,
+                Ahmed Saeed. ACM IMC 2025.
+              </span>
+              <span class="publication-links">
+                <a href="http://saeed.github.io/files/cosmosim-imc25.pdf">Paper</a>
+                <a href="https://github.com/GT-ANSR-Lab/CosmoSim/">Code</a>
+                <a href="https://saeed.github.io/cosmosim-webapp/">Web App</a>
+                <a href="http://saeed.github.io/files/cosmosim-imc25-ppt.pdf">Slides</a>
+              </span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="http://saeed.github.io/files/coresync-icnp25.pdf">
+                  CoreSync: A Protocol for Joint Core Scheduling and Overload Control of μs-Scale Tasks
+                </a>
+              </span>
+              <span class="publication-meta">
+                Bhaskar Pardeshi, Eric Stuhr, Ahmed Saeed. IEEE ICNP 2025.
+              </span>
+              <span class="publication-links">
+                <a href="http://saeed.github.io/files/coresync-icnp25.pdf">Paper</a>
+                <a href="https://github.com/GT-ANSR-Lab/CoreSync">Code</a>
+              </span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="http://saeed.github.io/files/ldb_nsdi24.pdf">
+                  LDB: An Efficient Latency Debugging Tool for Datacenter Applications
+                </a>
+              </span>
+              <span class="publication-meta">
+                Inho Cho, Seo Jin Park, Ahmed Saeed, Mohammad Alizadeh,
+                Adam Belay. USENIX NSDI 2024.
+              </span>
+              <span class="publication-links">
+                <a href="http://saeed.github.io/files/ldb_nsdi24.pdf">Paper</a>
+                <a href="https://github.com/inhocho89/llvm14-ldb">Code</a>
+              </span>
+            </li>
+          </ol>
+          <p>
+            See the <a class="button-link" href="publications.html">full lab publication list</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-wash" id="people" aria-labelledby="people-title">
+        <div class="container">
+          <h2 class="section-title" id="people-title">People</h2>
+          <div class="people-grid">
+            <article class="person-card person-profile faculty">
+              <img class="person-photo" src="static/people/ahmed_profile_pic.jpeg" alt="Ahmed Saeed">
+              <div>
+                <h3><a href="https://saeed.github.io/">Ahmed Saeed</a></h3>
+                <p>
+                  Assistant Professor in the School of Computer Science and BBISS
+                  Fellow at Georgia Tech.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="people-section">
+            <h3>PhD Students</h3>
+            <div class="member-grid">
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/peidi.jpeg" alt="Peidi Song">
+                <div>
+                  <h3><a href="https://peidisong.github.io/">Peidi Song</a></h3>
+                  <p>PhD student</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/bhaskar.jpeg" alt="Bhaskar Pardeshi">
+                <div>
+                  <h3><a href="https://bpardeshi3.github.io/">Bhaskar Pardeshi</a></h3>
+                  <p>PhD student</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/xin.jpeg" alt="Xin Du">
+                <div>
+                  <h3>Xin Du</h3>
+                  <p>PhD student</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="people-section">
+            <h3>Lab Alumni</h3>
+            <div class="member-grid">
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/dhyey.png" alt="Dhyey Thummar">
+                <div>
+                  <h3>Dhyey Thummar</h3>
+                  <p>MSc alumnus</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/pratyush.jpg" alt="Pratyush Sahu">
+                <div>
+                  <h3>Pratyush Sahu</h3>
+                  <p>MSc alumnus</p>
+                  <p>Now at Arista Networks</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/sammy.jpg" alt="Sammy Kapoor">
+                <div>
+                  <h3><a href="https://www.linkedin.com/in/sammykapoor/">Sammy Kapoor</a></h3>
+                  <p>MSc alumnus</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/demi.jpg" alt="Demi Lei">
+                <div>
+                  <h3>Demi Lei</h3>
+                  <p>BS, Fall 2022 - Fall 2025</p>
+                  <p>Now at DoorDash</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/eric.jpg" alt="Eric Stuhr">
+                <div>
+                  <h3><a href="https://estuhr1206.github.io/">Eric Stuhr</a></h3>
+                  <p>BSMS, Spring 2023 - Fall 2024</p>
+                  <p>Now at Juniper Networks</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/aravindhan.jpeg" alt="Aravindhan Krishnan">
+                <div>
+                  <h3><a href="https://www.linkedin.com/in/akrishnan11/">Aravindhan Krishnan</a></h3>
+                  <p>MSc, Fall 2022 - Spring 2024</p>
+                  <p>Now at Snowflake</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/nikita.jpg" alt="Nikita Mohan Kokitkar">
+                <div>
+                  <h3><a href="https://www.linkedin.com/in/nikita-kokitkar/">Nikita Mohan Kokitkar</a></h3>
+                  <p>MSc, Spring 2022 - Spring 2023</p>
+                  <p>Now at Microsoft</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/saubhik.jpeg" alt="Saubhik Mukherjee">
+                <div>
+                  <h3><a href="https://www.linkedin.com/in/saubhikm/">Saubhik Mukherjee</a></h3>
+                  <p>MSc, Fall 2021 - Spring 2022</p>
+                  <p>Now at SambaNova</p>
+                </div>
+              </article>
+              <article class="person-card person-profile">
+                <img class="person-photo" src="static/people/muskan.jpeg" alt="Muskaan Gupta">
+                <div>
+                  <h3><a href="https://www.linkedin.com/in/mskaan/">Muskaan Gupta</a></h3>
+                  <p>BS, Fall 2023 - Spring 2025</p>
+                  <p>Now at Bloomberg</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="join-band" id="join" aria-labelledby="join-title">
+        <div class="container">
+          <h2 class="section-title" id="join-title">Join The Lab</h2>
+          <p>
+            We are interested in working with highly motivated PhD, master's, and
+            undergraduate students who want to build and understand networked
+            systems from first principles through real implementations.
+          </p>
+          <p>
+            Prospective students can read more about the group through
+            <a href="https://saeed.github.io/">Ahmed Saeed's homepage</a> and
+            contact him at <a href="mailto:asaeed@cc.gatech.edu">asaeed@cc.gatech.edu</a>.
+          </p>
+          <div class="support-logos" aria-label="Georgia Tech">
+            <img src="static/logos/gt-logo.png" alt="Georgia Tech">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Copyright &copy; Ahmed Saeed 2026</p>
+      </div>
+    </footer>
+  </body>
+</html>

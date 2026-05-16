@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Full publication list for the Advanced Networked Systems Research Lab at Georgia Tech."
+    >
+    <title>Publications | ANSR Lab</title>
+    <link rel="icon" type="image/x-icon" href="https://brand.gatech.edu/themes/custom/brand/favicon.ico">
+    <link href="static/site.css?v=gt-lockup" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script>
+      window.moment = window.moment || function momentShim(value) {
+        return {
+          format: function formatMoment(pattern) {
+            var text = String(value || "");
+            var year = text.match(/\d{4}/);
+            if (pattern === "YYYY") {
+              return year ? year[0] : "";
+            }
+            return text;
+          }
+        };
+      };
+    </script>
+    <script type="text/javascript" src="./js/bibtex_js.js" charset="utf-8"></script>
+    <bibtex src="./full_lab_pubs.bib?v=pub-venue"></bibtex>
+  </head>
+
+  <body class="publications-page">
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html" aria-label="ANSR Lab home">
+          <img src="top_logo.png" alt="">
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="publications.html" aria-current="page">Publications</a>
+          <a href="index.html#people">People</a>
+          <a href="index.html#join">Join</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero" aria-labelledby="publications-title">
+        <div class="container">
+          <p class="page-kicker">ANSR Lab</p>
+          <h1 id="publications-title">Publications</h1>
+          <p class="lead">
+            Research from the lab and collaborators across networked systems,
+            resource management, measurement, and verification.
+          </p>
+        </div>
+      </section>
+
+      <section aria-label="Publication list">
+        <div class="container">
+          <div id="bibtex_errors"></div>
+
+          <div class="bibtex_structure">
+            <div class="group year publication-year" extra="DESC number">
+              <h2 class="title publication-year-title"></h2>
+              <div class="templates"></div>
+            </div>
+          </div>
+
+          <div id="bibtex_display">
+            <div class="bibtex_template" style="display: none;">
+              <article class="publication-entry">
+                <h3>
+                  <span class="if url">
+                    <a class="bibtexVar" href="+URL+" extra="url">
+                      <span class="title"></span>
+                    </a>
+                  </span>
+                  <span class="if !url">
+                    <span class="title"></span>
+                  </span>
+                </h3>
+                <p class="publication-venue-line">
+                  <span class="if series"><span class="series"></span></span>
+                  <span class="if !series">
+                    <span class="if journal"><span class="journal"></span></span>
+                    <span class="if booktitle"><span class="booktitle"></span></span>
+                    <span class="if !journal">
+                      <span class="if !booktitle"><span class="type"></span></span>
+                    </span>
+                  </span>
+                  <span class="if year"><span class="pub-separator"> · </span><span class="year"></span></span>
+                </p>
+                <p class="publication-author-line">
+                  <span class="author"></span>
+                </p>
+                <div class="publication-links">
+                  <span class="if url">
+                    <a class="bibtexVar" href="+URL+" extra="url">Paper</a>
+                  </span>
+                  <span class="if notes">
+                    <a class="bibtexVar" href="+NOTES+" extra="notes">Extended Version</a>
+                  </span>
+                  <span class="if code">
+                    <a class="bibtexVar" href="+CODE+" extra="code">Code</a>
+                  </span>
+                  <span class="if gadget">
+                    <a class="bibtexVar" href="+GADGET+" extra="gadget">Web App</a>
+                  </span>
+                  <span class="if slides">
+                    <a class="bibtexVar" href="+SLIDES+" extra="slides">Slides</a>
+                  </span>
+                  <span class="if video">
+                    <a class="bibtexVar" href="+VIDEO+" extra="video">Video</a>
+                  </span>
+                  <span class="if doi">
+                    <a class="bibtexVar" href="https://doi.org/+DOI+" extra="doi">DOI</a>
+                  </span>
+                </div>
+                <span class="if abstract">
+                  <details class="publication-details">
+                    <summary>Abstract</summary>
+                    <p><span class="abstract"></span></p>
+                  </details>
+                </span>
+                <details class="publication-details">
+                  <summary>BibTeX</summary>
+                  <pre><span class="bibtexraw noread"></span></pre>
+                </details>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Copyright &copy; Ahmed Saeed 2026</p>
+      </div>
+    </footer>
+  </body>
+</html>
