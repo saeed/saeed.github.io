@@ -53,7 +53,8 @@
   series = {NSDI '26 Posters},
   abstract = {In this poster, we show that intentional load imbalancing, consolidating requests onto a subset of servers while leaving the rest idle, reduces cluster power without compromising capacity or affecting median latency. The approach exploits two common realities: (1) latency-sensitive services provision slack capacity to absorb bursts, and (2) CPU power scales sublinearly with load. Thus, total power depends on how the load is distributed, not just how much load exists. Our design uses a simple weighted round-robin policy with an overload guard that spills to an idle pool as active servers approach saturation, thereby preserving instantaneous peak capacity. In a 20-node memcached deployment at 80% aggregate load (20% headroom), intentional imbalancing reduces total power by 3.7–6.4% relative to evenly balanced baselines running typical CPU frequency governors, with unchanged throughput and near-identical median latency; 99th-percentile tail latency overhead ranges from ~6% to 3.4×, depending on the degree of imbalance. These results suggest that load consolidation is a practical, deployable knob for lowering power in latency-sensitive clusters.},
   url    = {http://saeed.github.io/files/imbalance-nsdi26posters.pdf},
-  slides    = {http://saeed.github.io/files/imbalance-nsdi26posters-poster.pdf.pdf}
+  slides    = {http://saeed.github.io/files/imbalance-nsdi26posters-poster.pdf},
+  year = {2026}
 }
 
 
