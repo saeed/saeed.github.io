@@ -44,6 +44,19 @@
   url     = {https://arxiv.org/pdf/2604.25506v1}
 }
 
+@inproceedings{abdelrazek-imbalance-nsdiposter-2026,
+  author = {Sherif Abdelrazek and 
+            Dhyey Thummar and
+            Ahmed Saeed},
+  title  = {When Server-Level Load Imbalance Helps: Power Savings without Capacity Loss},
+  booktitle = {Poster at the 23rd {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series = {NSDI '26 Posters},
+  abstract = {In this poster, we show that intentional load imbalancing, consolidating requests onto a subset of servers while leaving the rest idle, reduces cluster power without compromising capacity or affecting median latency. The approach exploits two common realities: (1) latency-sensitive services provision slack capacity to absorb bursts, and (2) CPU power scales sublinearly with load. Thus, total power depends on how the load is distributed, not just how much load exists. Our design uses a simple weighted round-robin policy with an overload guard that spills to an idle pool as active servers approach saturation, thereby preserving instantaneous peak capacity. In a 20-node memcached deployment at 80% aggregate load (20% headroom), intentional imbalancing reduces total power by 3.7–6.4% relative to evenly balanced baselines running typical CPU frequency governors, with unchanged throughput and near-identical median latency; 99th-percentile tail latency overhead ranges from ~6% to 3.4×, depending on the degree of imbalance. These results suggest that load consolidation is a practical, deployable knob for lowering power in latency-sensitive clusters.},
+  url    = {http://saeed.github.io/files/imbalance-nsdi26posters.pdf},
+  slides    = {http://saeed.github.io/files/imbalance-nsdi26posters-poster.pdf.pdf}
+}
+
+
 @inproceedings{saeed-dc-tprc-2026,
   author      = {Ahmed Saeed and
                  Josiah Hester},
@@ -707,7 +720,7 @@
                study},
   booktitle = {Proceedings of the 9th {ACM} International Workshop on Wireless Network
                Testbeds, Experimental Evaluation and Characterization ({WiNTECH})},
-  series    = {{WiNTECH}~'14},
+  series    = {{WiNTECH} '14},
   pages     = {25--32},
   publisher = {{ACM}},
   year      = {2014},
@@ -728,7 +741,7 @@
   editor    = {Wessam Ajib and {\'{A}}ngel Cuevas Rum{\'{\i}}n},
   title     = {On target coverage in mobile visual sensor networks},
   booktitle = {Proceedings of the 12th {ACM} International Symposium on Mobility Management and Wireless Access ({MobiWac})},
-  series    = {{MobiWac}~'14},
+  series    = {{MobiWac} '14},
   pages     = {39--46},
   publisher = {{ACM}},
   year      = {2014},
@@ -746,7 +759,7 @@
                Moustafa Youssef},
   title     = {Location-aware probabilistic route discovery for cognitive radio networks},
   booktitle = {Proceedings of the {IEEE} Wireless Communications and Networking Conference ({WCNC})},
-  series    = {{WCNC}~'14},
+  series    = {{WCNC} '14},
   pages     = {2102--2107},
   publisher = {{IEEE}},
   year      = {2014},
@@ -766,7 +779,7 @@
   title     = {Up and away: {A} visually-controlled easy-to-deploy wireless {UAV}
                Cyber-Physical testbed},
   booktitle = {Proceedings of the 10th {IEEE} International Conference on Wireless and Mobile Computing, Networking and Communications ({WiMob})},
-  series    = {{WiMob}~'14},
+  series    = {{WiMob} '14},
   pages     = {578--584},
   publisher = {{IEEE} Computer Society},
   year      = {2014},
@@ -808,7 +821,7 @@
   title     = {A low-cost large-scale framework for cognitive radio routing protocols
                testing},
   booktitle = {Proceedings of the {IEEE} International Conference on Communications ({ICC})},
-  series    = {{ICC}~'13},
+  series    = {{ICC} '13},
   pages     = {2900--2904},
   publisher = {{IEEE}},
   year      = {2013},
@@ -829,7 +842,7 @@
   editor    = {Silvia Giordano and Marc Langheinrich and Albrecht Schmidt},
   title     = {{RASID:} {A} robust {WLAN} device-free passive motion detection system},
   booktitle = {Proceedings of the 2012 {IEEE} International Conference on Pervasive Computing and Communications ({PerCom})},
-  series    = {{PerCom}~'12},
+  series    = {{PerCom} '12},
   pages     = {180--189},
   publisher = {{IEEE} Computer Society},
   year      = {2012},
