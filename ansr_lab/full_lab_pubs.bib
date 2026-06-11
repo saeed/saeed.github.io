@@ -5,9 +5,11 @@
   title       = {Svalinn: Overload Control in Large-Scale Servers with Multiple Resource Bottlenecks},
   booktitle   = {Proceedings of the 20th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI})},
   series      = {OSDI '26'},
-  publisher   = {USENIX},
+  publisher   = {{USENIX} Association},
   year        = {2026},
-  abstract  = {COMING SOON}
+  url         = {http://saeed.github.io/files/svalinn-osdi26.pdf},
+  code        = {https://github.com/GT-ANSR-Lab/svalinn-shenango},
+  abstract    = {Modern overload controllers treat application binaries as monoliths and react to aggregate performance, a misconception we call the single-queue fallacy. Real applications have diverse, data-dependent execution paths that stress different resources. Reacting to overall performance forces the controller to focus on the most bottlenecked resource while leaving others underutilized. We present Svalinn, a modular overload controller designed to maximize utilization across multiple potential bottlenecks such as CPU, memory bandwidth, and contended locks. Svalinn separates throughput control and latency control. A credit-based admission controller regulates offered load to maximize a user-defined utility function. Per-bottleneck controllers then enforce latency targets using Active Queue Management (AQM) policies. For resources with explicit software queues this is straightforward, but managing memory-bandwidth-intensive operations is more challenging because there is no explicit queue. To handle this case, we introduce m_semaphore, which adaptively limits the number of concurrent memory-bandwidth-intensive requests to achieve high memory-bandwidth utilization using the minimum necessary CPU cores. We integrate Svalinn into four applications and two runtimes and show that it improves goodput by up to 6.51× without compromising latency.}
 }
 
 @inproceedings{xygkou-morp4-nsdi-2026,
@@ -57,6 +59,17 @@
   year = {2026}
 }
 
+@inproceedings{stepan-trends-leonet-2026,
+  author      = {Stepan Kravtsov and
+                  Sherif Abdelrazek  and
+                  Vaibhav Bhosale and
+                  Ahmed Saeed},
+  title       = {Keeping Up with the Trends: Identifying Shifts in LEO Satellite Usage Patterns},
+  booktitle   = {The 4th ACM Workshop on LEO Networking and Communication 2026 (LEO-NET)},
+  series      = {LEO-NET '26},
+  year        = {2026},
+  abstract    = {COMING SOON.}
+}
 
 @inproceedings{saeed-dc-tprc-2026,
   author      = {Ahmed Saeed and
