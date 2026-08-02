@@ -1,3 +1,19 @@
+@inproceedings{sahu-archie-nsdi-2027,
+  author      = {Pratyush Sahu and
+                 Rahul Bothra and
+                 Venkat Arun and
+                 Brighten Godfrey and
+                 Akshay Narayan and
+                 Ahmed Saeed},
+  title       = {On the Role of LLMs in Designing the Architecture of Networked Systems},
+  booktitle   = {Proceedings of the 24th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series      = {NSDI '27},
+  publisher   = {{USENIX} Association},
+  year        = {2027},
+  abstract  = {Designing the architecture of modern networked systems requires navigating a large, combinatorial space of hardware, systems, and configuration choices with complex cross-layer interactions. Architects must balance competing objectives such as performance, cost, and deployability while satisfying compatibility and resource constraints, often relying on scattered rules-of-thumb drawn from benchmarks, papers, documentation, and expert experience. This raises a natural question: can large language models (LLMs) reliably perform this kind of architectural reasoning? We find that they cannot. While LLMs produce plausible configurations, they frequently miss critical constraints, encode incorrect assumptions, and exhibit ``stickiness'' to familiar patterns. A natural workaround--iterative validation via simulation or experimentation--is often prohibitively expensive at scale and, in many cases, infeasible, particularly when comparing hardware-dependent alternatives. Motivated by this gap, we present Kepler, a lightweight reasoning framework for architecture design that combines structured, expert-driven specifications with SMT-based optimization. Kepler encodes architecturally significant properties--requirements, incompatibilities, and qualitative trade-offs--about systems, hardware, and workloads as constraints, and synthesizes feasible designs that optimize user-defined objectives. It operates at an abstract level, capturing ``rules-of-thumb'' rather than detailed system behavior, enabling tractable reasoning while preserving key interactions, and provides explanations for its decisions. Through experiments and case studies, we show that Kepler uncovers interactions missed by LLMs and supports systematic, explainable design exploration.},
+  url     = {https://arxiv.org/pdf/2604.25506v1}
+}
+
 @inproceedings{pardeshi-svalinn-osdi-2026,
   author      = {Bhaskar Pardeshi and
                 Peidi Song and
@@ -30,20 +46,6 @@
   abstract    = {A network telescope passively monitors traffic reaching Internet address space that is not assigned to any hosts but is advertised to the global routing system. This traffic is by definition unsolicited. For more than two decades, network telescopes have enabled research breakthroughs by allowing global visibility into a wide range of Internet phenomena. However, telescopes are afflicted by two main issues: progressive erosion, due to the increasing scarcity and commercial value of address space, and blacklisting. To overcome these issues, we propose MORP4, a programmable data-plane framework implementing a “dynamic” network telescope. MORP4 accurately and adaptively tracks unused space of an organization’s network with configurable time and space granularity and captures only traffic directed towards unused addresses at line rate. We provide an implementation in P4 and Python/C++, and deploy it on a Tofino switch. We show that it can detect unused IPv4 address space at the finest granularity (/32) while operating at line rate as well as providing an effective approach for operating a telescope in the IPv6 domain.},
   url         = {http://saeed.github.io/files/morp4-nsdi26.pdf},
   code        = {https://github.com/InetIntel/morp4-dynamic-telescope}
-}
-
-@inproceedings{sahu-kepler-arxiv-2026,
-  author      = {Pratyush Sahu and
-                 Rahul Bothra and
-                 Venkat Arun and
-                 Brighten Godfrey and
-                 Akshay Narayan and
-                 Ahmed Saeed},
-  title       = {Assistants, Not Architects: The Role of LLMs in Networked Systems  Design},
-  booktitle   = {arXiv},
-  year        = {2026},
-  abstract  = {Designing the architecture of modern networked systems requires navigating a large, combinatorial space of hardware, systems, and configuration choices with complex cross-layer interactions. Architects must balance competing objectives such as performance, cost, and deployability while satisfying compatibility and resource constraints, often relying on scattered rules-of-thumb drawn from benchmarks, papers, documentation, and expert experience. This raises a natural question: can large language models (LLMs) reliably perform this kind of architectural reasoning? We find that they cannot. While LLMs produce plausible configurations, they frequently miss critical constraints, encode incorrect assumptions, and exhibit ``stickiness'' to familiar patterns. A natural workaround--iterative validation via simulation or experimentation--is often prohibitively expensive at scale and, in many cases, infeasible, particularly when comparing hardware-dependent alternatives. Motivated by this gap, we present Kepler, a lightweight reasoning framework for architecture design that combines structured, expert-driven specifications with SMT-based optimization. Kepler encodes architecturally significant properties--requirements, incompatibilities, and qualitative trade-offs--about systems, hardware, and workloads as constraints, and synthesizes feasible designs that optimize user-defined objectives. It operates at an abstract level, capturing ``rules-of-thumb'' rather than detailed system behavior, enabling tractable reasoning while preserving key interactions, and provides explanations for its decisions. Through experiments and case studies, we show that Kepler uncovers interactions missed by LLMs and supports systematic, explainable design exploration.},
-  url     = {https://arxiv.org/pdf/2604.25506v1}
 }
 
 @inproceedings{abdelrazek-imbalance-nsdiposter-2026,
@@ -94,7 +96,8 @@
   series      = {TPRC 54},
   publisher   = {SSRN},
   year        = {2026},
-  abstract  = {COMING SOON.}
+  url         = {http://saeed.github.io/files/saeed-tprc54.pdf},
+  abstract  = {The rapid expansion of hyperscale data centers is creating a new class of public-policy problems at the intersection of electric utility regulation, environmental governance, and computing-infrastructure design. This paper asks how states should govern data center integration into electricity systems and local resource environments given the facilities' distinctive technical characteristics: concentrated and rapidly increasing electric demand, high reliability requirements, backup-power coordination needs, and cooling-system tradeoffs. The paper compares emerging state approaches in Texas, Minnesota, South Dakota, New York, and Virginia. The analysis finds that the most technically grounded policies do not treat data centers as passive industrial or commercial facilities. They create formal utility--operator interfaces around interconnection readiness, load commitments, flexibility options, stranded-cost protection, clean-energy alignment, water availability, cooling design, and environmental performance. Texas provides the strongest enacted model for interconnection discipline and emergency grid operations; Minnesota links large-customer rates, clean-energy procurement, water permitting, and sustainable design; South Dakota emphasizes direct cost responsibility, water reporting, and local authority; New York has adopted a precautionary environmental-review model while permanent rules are developed; and Virginia combines voluntary flexibility, electricity-use taxation, water-efficient cooling requirements, water reporting, and backup-generator emissions controls. The paper concludes that durable data center governance requires explicit rules for cost sharing, transparency, and environmental performance, not ad hoc negotiation alone.}
 }
 
 @techreport{saeed-dc-ga-report-2026,

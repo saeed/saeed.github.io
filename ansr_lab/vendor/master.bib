@@ -5,9 +5,11 @@
   title       = {Svalinn: Overload Control in Large-Scale Servers with Multiple Resource Bottlenecks},
   booktitle   = {Proceedings of the 20th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI})},
   series      = {OSDI '26'},
-  publisher   = {USENIX},
+  publisher   = {{USENIX} Association},
   year        = {2026},
-  abstract  = {COMING SOON}
+  url         = {http://saeed.github.io/files/svalinn-osdi26.pdf},
+  code        = {https://github.com/GT-ANSR-Lab/svalinn-shenango},
+  abstract    = {Modern overload controllers treat application binaries as monoliths and react to aggregate performance, a misconception we call the single-queue fallacy. Real applications have diverse, data-dependent execution paths that stress different resources. Reacting to overall performance forces the controller to focus on the most bottlenecked resource while leaving others underutilized. We present Svalinn, a modular overload controller designed to maximize utilization across multiple potential bottlenecks such as CPU, memory bandwidth, and contended locks. Svalinn separates throughput control and latency control. A credit-based admission controller regulates offered load to maximize a user-defined utility function. Per-bottleneck controllers then enforce latency targets using Active Queue Management (AQM) policies. For resources with explicit software queues this is straightforward, but managing memory-bandwidth-intensive operations is more challenging because there is no explicit queue. To handle this case, we introduce m_semaphore, which adaptively limits the number of concurrent memory-bandwidth-intensive requests to achieve high memory-bandwidth utilization using the minimum necessary CPU cores. We integrate Svalinn into four applications and two runtimes and show that it improves goodput by up to 6.51× without compromising latency.}
 }
 
 @inproceedings{pardeshi-coresync-icnp-2025,
@@ -22,4 +24,56 @@
   code        = {https://github.com/GT-ANSR-Lab/CoreSync},
   url         = {http://saeed.github.io/files/coresync-icnp25.pdf},
   abstract  = {Modern datacenter operators require high resource utilization and low application latency, multiplexing the resources of individual servers between multiple applications, while minimizing latency faced by their requests, even at high loads. To meet these objectives, servers employ multiple resource management algorithms, including fast core schedulers and overload controllers. Individual algorithms and their amalgamation are required to meet these tight performance requirements. In this paper, we demonstrate that state-of-the-art core schedulers and overload controllers produce poor performance when deployed simultaneously. Fundamentally, the design assumptions of each controller are violated by the other controller. An overload controller assumes that all resources are dedicated to an application, while a core scheduler assumes that all incoming load will be admitted. To overcome this fundamental limitation, we present CoreSync, a server-driven credit-based protocol for joint core scheduling and overload control. CoreSync relies on the basic idea that the admitted load should be proportional to the allocated resources. However, strict proportionality can lead to low utilization when admitted load does not materialize at the server (e.g., when demand drops). Thus, CoreSync uses partial proportionality to balance latency, throughput, and utilization. Our evaluation across synthetic and real-world workloads shows that CoreSync outperforms state-of-the-art schedulers and overload controllers. In particular, in overload scenarios, CoreSync improves throughput by up to 6%. At low loads, CoreSync reduces the 99th percentile latency by up to 1.7× and improves CPU utilization by up to 1.4×.}
+}
+
+@inproceedings{cho-ldb-nsdi-2024,
+  author    = {Inho Cho and
+               Seo Jin Park and
+               Ahmed Saeed and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {LDB: An Efficient Latency Debugging Tool for Datacenter Applications },
+  booktitle = {Proceedings of the 21th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '24},
+  publisher = {{USENIX} Association},
+  year      = {2024},
+  url       = {http://saeed.github.io/files/ldb_nsdi24.pdf},
+  code      = {https://github.com/inhocho89/llvm14-ldb},
+  abstract  = {Maintaining low tail latency is critical for the efficiency and performance of large-scale datacenter systems. Software bugs that cause tail latency problems, however, are notoriously difficult to debug. We present LDB, a new latency profiling tool that aims to overcome this challenge by precisely identifying the specific functions that are responsible for tail latency anomalies. LDB observes the latency of all functions in a running program. It uses a novel, software-only technique called stack sampling, where a busy-spinning stack scanner thread polls light-weight metadata recorded in call frames, shifting instrumentation cost away from program threads. In addition, LDB uses event tagging to record requests, inter-thread synchronization, and context switching. This can be used, for example, to generate per-request timelines and to find the root cause of complex tail latency problems such as lock contention in multi-threaded programs. We evaluate LDB with four datacenter workloads, finding latency problems in each. Our results further show that LDBproduces actionable insights, has low overhead, and can rapidly analyze recordings, making it feasible to use in production settings.}
+}
+
+@inproceedings{cho-protego-nsdi-2023,
+  author    = {Inho Cho and
+               Ahmed Saeed and
+               Seo Jin Park and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {Protego: Overload Control for Applications with Unpredictable Lock Contention},
+  booktitle = {Proceedings of the 20th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI})},
+  series    = {NSDI '23},
+  publisher = {{USENIX} Association},
+  year      = {2023},
+  url       = {https://faculty.cc.gatech.edu/~amsmti3/assets/protego-nsdi23.pdf},
+  code      = {https://github.com/inhocho89/shenango-protego/tree/protego/breakwater},
+  video     = {https://www.youtube.com/watch?v=IDzqZ6JmtMs},
+  abstract  = {Modern datacenter applications are concurrent, so they require synchronization to control access to shared data. Requests can contend for different combinations of locks, depending on application and request state. In this paper, we show that locks, especially blocking synchronization, can squander throughput and harm tail latency, even when the CPU is underutilized. Moreover, the presence of a large number of contention points, and the unpredictability in knowing which locks a request will require, make it difficult to prevent contention through overload control using traditional signals such as queueing delay and CPU utilization. We present Protego, a system that resolves these problems with two key ideas. First, it contributes a new admission control strategy that prevents compute congestion in the presence of lock contention. The key idea is to use marginal improvements in observed throughput, rather than CPU load or latency measurements, within a credit-based admission control algorithm that regulates the rate of incoming requests to a server. Second, it introduces a new latency-aware synchronization abstraction called Active Synchronization Queue Management (ASQM) that allows applications to abort requests if delays exceed latency objectives. We apply Protego to two real-world applications, Lucene and Memcached, and show that it achieves up to 3.3x more goodput and 12.2x lower 99th percentile latency than the state-of-the-art overload control systems while avoiding congestion collapse.}
+} 
+
+@inproceedings{cho-breakwater-osdi-2020,
+  author    = {Inho Cho and
+               Ahmed Saeed and
+               Joshua Fried and
+               Seo Jin Park and
+               Mohammad Alizadeh and
+               Adam Belay},
+  title     = {Overload Control for us-scale RPCs with Breakwater},
+  booktitle = {Proceedings of the 14th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI})},
+  series    = {OSDI '20},
+  publisher = {{USENIX} Association},
+  year      = {2020},
+  url       = {http://saeed.github.io/files/breakwater_osdi20.pdf},
+  video     = {https://youtu.be/-sXsEfnn5vA},
+  slides    = {https://joshfried.io/assets/breakwater_osdi20_slides.pdf},
+  code      = {https://github.com/shenango/caladan/tree/main/breakwater},
+  abstract  = {Modern datacenter applications are composed of hundreds of microservices with high degrees of fanout. As a result, they are sensitive to tail latency and require high request throughputs. Maintaining these characteristics under overload is difficult, especially for RPCs with short service times. In this paper, we consider the challenging case of microsecond-scale RPCs, where the cost of communicating information and dropping a request is similar to the cost of processing a request. We present Breakwater, an overload control scheme that can prevent overload in microsecond-scale services through a new, server-driven admission control scheme that issues credits based on server-side queueing delay. Breakwater contributes several techniques to amortize communication costs. It engages in demand speculation, where it assumes clients have unmet demand and issues additional credits when the server is not overloaded. Moreover, it piggybacks client-side demand information in RPC requests and credits in RPC responses. To cope with the occasional bursts in load caused by demand speculation, Breakwater drops requests when overloaded using active queue management. When clients’ demand spikes unexpectedly to 1.4× capacity, Breakwater converges to stable performance in less than 20 ms with no congestion collapse while DAGOR and SEDA take 500 ms and 1.58 s to recover from congestion collapse, respectively.}
 }
