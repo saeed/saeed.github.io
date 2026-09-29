@@ -94,7 +94,13 @@
      <div class="threshold-row" data-threshold="50"><span>New York</span><div><i style="width:41.67%"></i></div><b>50</b></div>
      <div class="threshold-row" data-threshold="75"><span>Texas</span><div><i style="width:62.5%"></i></div><b>75</b></div>
      <div class="threshold-row" data-threshold="100"><span>Minnesota</span><div><i style="width:83.33%"></i></div><b>100</b></div>
-     <label for="facility-size">Explore an illustrative facility <output id="facility-value">20 MW</output></label><input id="facility-size" type="range" min="1" max="120" step="1" value="20"><p id="threshold-result" class="graphic-note" aria-live="polite"></p>
+     <label for="facility-size">Explore an illustrative facility <output id="facility-value">20 MW</output></label><input id="facility-size" type="range" min="1" max="120" step="1" value="20" aria-describedby="household-assumption"><p id="threshold-result" class="graphic-note" aria-live="polite"></p>
+     <div class="household-equivalent">
+      <span class="household-label">Equivalent average electricity demand</span>
+      <output id="household-value" for="facility-size" aria-live="polite">≈16,200</output>
+      <span class="household-unit">U.S. households</span>
+      <p id="household-assumption">Assumes the selected MW draw is sustained continuously. Uses 10,791 kWh per residential customer per year (about 1.23 kW on average), from <a href="https://www.eia.gov/tools/faqs/faq.php?id=97&amp;t=7">EIA’s 2022 U.S. average</a>. This compares average demand, not household peak demand.</p>
+     </div>
     </div>
     <p class="qualification">These are the principal triggers compared in the study, not every provision. Definitions and boundary conditions differ; Virginia has separate provisions reaching smaller facilities. The slider compares sizes, not legal coverage.</p>
     <div class="case-links"><a href="https://mylrc.sdlegislature.gov/api/Documents/SessionLaw/306613.pdf?Year=2026">South Dakota SB 135</a><a href="#method">All criteria</a></div>

@@ -62,9 +62,14 @@
  document.querySelector('#next-case').addEventListener('click',()=>{const i=Math.min(cases.length-1,active+1);location.hash=cases[i].id;activate(i);});
  document.querySelectorAll('.criteria-list a').forEach(a=>a.addEventListener('click',()=>{const i=cases.findIndex(c=>'#'+c.id===a.hash);if(i>=0)activate(i);}));
  const input=document.querySelector('#facility-size');
+ // Convert sustained MW to annual kWh, then divide by EIA's 2022
+ // residential-customer annual purchases. Round to 100 households.
+ const householdAnnualKwh=10791;
  function updateThreshold(){
   const value=Number(input.value),passed=[];
   document.querySelector('#facility-value').textContent=value+' MW';
+  const households=Math.round(value*1000*8760/householdAnnualKwh/100)*100;
+  document.querySelector('#household-value').textContent='≈'+households.toLocaleString('en-US');
   document.querySelectorAll('.threshold-row').forEach(r=>{const above=value>Number(r.dataset.threshold);r.classList.toggle('passed',above);if(above)passed.push(r.firstElementChild.textContent);});
   document.querySelector('#threshold-result').textContent=passed.length?'This illustrative size is above the displayed principal trigger in '+passed.join(', ')+'. Exact legal coverage depends on the provision.':'This illustrative size is at or below every displayed principal trigger. Exact legal coverage depends on the provision.';
  }
