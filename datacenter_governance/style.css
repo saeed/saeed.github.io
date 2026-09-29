@@ -8,11 +8,13 @@
 .texas-illustration{margin:30px 0 0}
 .texas-illustration img{aspect-ratio:1672/620;object-fit:cover;object-position:center}
 .law-figure{margin:30px 0;background:#edf2f5;border:1px solid var(--line);padding:24px}
-.law-pages{display:flex;justify-content:center;align-items:flex-start;gap:20px}
+.law-pages{display:flex;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:20px}
 .law-pages a{display:block;flex:1;max-width:190px}
 .law-pages img{display:block;width:100%;height:auto;background:white;box-shadow:0 3px 12px #10344b20;border:1px solid #d9e0e4}
 .law-pages a:hover img{box-shadow:0 5px 18px #10344b35}
 .law-figure figcaption{margin-top:24px}
+.implementation-note{background:#f2f6f7;border-left:3px solid var(--gold);padding:22px 24px;color:var(--muted);font-size:.97rem}
+.implementation-note b{color:var(--navy)}
 @media(max-width:600px){.law-figure{padding:17px}.law-pages{gap:14px}}
 .household-equivalent{margin-top:24px;padding:23px 0 0;border-top:1px solid var(--line)}
 .household-label{display:block;font-size:.8rem;color:var(--muted)}
