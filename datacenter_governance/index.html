@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Governing Datacenter Growth · TPRC54</title>
+<meta name="description" content="Challenges, opportunities, and seven state policy case studies for governing datacenter growth.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230d3049'/%3E%3Cpath d='M14 15h36v14H14zm0 20h36v14H14z' fill='%23b29956'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="assets/states.js" defer></script>
+<script src="story.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+ <a href="#top" class="brand"><span class="brand-mark">DC</span> Governing growth <span class="edition">TPRC54</span></a>
+ <nav aria-label="Chapters"><a href="#challenges">01 <span>Challenges & opportunities</span></a><a href="#method">02 <span>The study</span></a><a href="#cases">03 <span>State cases</span></a><a href="#highways">04 <span>The larger picture</span></a></nav>
+ <div class="reading-progress" aria-hidden="true"><i id="reading-progress"></i></div>
+</header>
+<main id="main">
+<section class="hero wrap" id="top">
+ <p class="eyebrow">Technology policy / Electricity / Water / Communities</p>
+ <h1>Governing<br>datacenter growth.</h1>
+ <p class="subtitle">Regulatory challenges, technical constraints,<br class="desktop"> and policy responses across states.</p>
+ <div class="hero-bottom"><p class="authors">Ahmed Saeed & Josiah Hester<br><span>Georgia Institute of Technology<br>College of Computing · Brook Byers Institute for Sustainable Systems</span></p><p class="opening-question">How can states turn growing digital infrastructure into a public asset while accounting for the costs borne by its neighbors?</p></div>
+ <div class="chapter-strip"><a href="#challenges"><b>01</b> Challenges & opportunities</a><a href="#method"><b>02</b> Scope & method</a><a href="#cases"><b>03</b> Seven policy examples</a><a href="#highways"><b>04</b> Highways & datacenters</a></div>
+</section>
+
+<section class="chapter wrap" id="challenges">
+ <div class="section-heading"><p class="eyebrow">01 / Challenges & opportunities</p><h2>Long-lived commitments.<br>Rapidly changing loads.</h2><p class="intro">Datacenters combine dense computing equipment with power conversion, backup generation, and cooling. Their growth creates demands on electricity and water systems that outlast any single generation of hardware.</p></div>
+ <div class="tension-layout">
+  <div><h3 class="column-heading">The regulatory challenges</h3>
+   <article class="item"><span>01</span><div><h4>Speed</h4><p>Development moves much faster than regulation, infrastructure planning, and upgrades. A site can seek service before the grid or permitting process is ready to accommodate it.</p></div></article>
+   <article class="item"><span>02</span><div><h4>Scale</h4><p>The number of proposed sites and their sizes continually change the landscape. Utilities must plan for large additions while distinguishing credible demand from proposals that may never materialize.</p></div></article>
+   <article class="item"><span>03</span><div><h4>Turnover</h4><p>Buildings endure, but compute, power, and cooling hardware change. A facility’s energy demand, load shape, or cooling requirements can evolve within the same physical footprint.</p></div></article>
+   <article class="item"><span>04</span><div><h4>Scope</h4><p>Power, water, land use, emissions, and community effects demand decisions across different policy areas. A choice that eases one constraint can increase pressure on another.</p></div></article>
+  </div>
+  <div class="opportunities"><h3 class="column-heading">The opportunities operators bring</h3>
+   <article class="item"><span>01</span><div><h4>Workload flexibility</h4><p>Shift suitable computing tasks across time and locations to ease grid constraints through demand response and make better use of available clean power. The useful amount depends on the workload and service commitments.</p></div></article>
+   <article class="item"><span>02</span><div><h4>Energy resources</h4><p>Onsite generation and energy storage can reduce demand on the grid or become grid assets. Coordination and environmental limits determine whether those resources can help during a system emergency.</p></div></article>
+   <article class="item"><span>03</span><div><h4>Strategic siting</h4><p>Choose locations that work for both the operator and the community. Electricity availability, water conditions, and local impacts can enter the decision before a project creates long-term commitments.</p></div></article>
+   <article class="item"><span>04</span><div><h4>Financial capacity</h4><p>Fund new clean generation, grid upgrades, water infrastructure, and community benefits through specific, long-term commitments. The terms determine which costs the project carries.</p></div></article>
+  </div>
+ </div>
+ <p class="pullquote">Operators have unusual control over where and when they compute, and how they power and cool it.</p>
+ <div class="resource-context">
+  <div class="resource-copy"><p class="eyebrow">Why the physical constraints matter</p><h3>More capacity.<br>More variability.</h3><p>Datacenter growth requires expansion of power generation and delivery capacity. Large, fast changes in AI workload demand also pose an operational problem for grid stability.</p><p>Cooling links electricity and water. Water-saving choices can increase electric demand, while water-intensive cooling can place pressure on an already stressed basin. Regulation needs both the scale of consumption and the local context.</p></div>
+  <div class="evidence">
+   <figure class="figure-panel"><img src="assets/figure-16.webp" alt="Power trace from ML infrastructure showing a sharp demand change annotated as 15 megawatts." loading="lazy"><figcaption><b>Seconds matter as well as annual energy use.</b> The trace highlights a 15 MW fluctuation. <a href="https://cloud.google.com/blog/topics/systems/mitigating-power-and-thermal-fluctuations-in-ml-infrastructure">Google Cloud, 2025</a></figcaption></figure>
+   <details><summary>Explore the electricity and water evidence</summary><div class="evidence-expanded">
+    <figure class="figure-panel"><img class="small-chart" src="assets/figure-15.webp" alt="Comparison of studies estimating future US data center electricity use, with rising projections after 2020." loading="lazy"><figcaption>Electricity projections from the <a href="https://escholarship.org/uc/item/32d6m0d1">2024 LBNL report</a>. The projections reflect the report’s 2024 forecast vintage.</figcaption></figure>
+    <figure class="figure-panel"><img src="assets/figure-17.webp" alt="World map showing data center clusters overlapping areas of water stress." loading="lazy"><figcaption>Datacenters are arriving in water-stressed regions. GWI/Xylem, <a href="https://amp.xylem.com/m/aa10f8022757c5e/original/Watering-the-New-Economy-DIGITAL-final.pdf">Watering the New Economy</a>.</figcaption></figure>
+    <figure class="figure-panel"><img class="small-chart" src="assets/figure-18.webp" alt="Historical direct site water use and low and high projections for 2024 and 2028, in billions of liters per year." loading="lazy"><figcaption>Direct site water consumption, with distinct low and high projection scenarios. <a href="https://escholarship.org/uc/item/32d6m0d1">LBNL, 2024</a>. Local availability and other users remain essential to interpreting the total.</figcaption></figure>
+   </div></details>
+  </div>
+ </div>
+</section>
+
+<section class="study-band" id="method"><div class="wrap chapter">
+ <div class="section-heading"><p class="eyebrow">02 / Scope & method</p><h2>No single regulator<br>sees the whole project.</h2><p class="intro">The study focuses on state-level legislation because states have broad control over utilities, resources, and tax incentives, and can offer transferable regulatory models.</p></div>
+ <div class="jurisdictions"><article><span>Local</span><h3>The site and its neighbors</h3><p>Land use, local water, noise, property taxes, and community impacts.</p></article><article class="selected"><span>State / Study focus</span><h3>Utilities, resources, incentives</h3><p>Utility regulation and costs, water policy, and incentives. These tools connect project decisions to system-wide obligations.</p></article><article><span>Federal</span><h3>The wider infrastructure system</h3><p>Transmission, wholesale markets, environmental rules, and reliability requirements.</p></article></div>
+ <div class="method-copy"><div><h3>Five states, different emphases</h3><p>The cases examine concrete regulatory mechanisms for datacenter integration. Local decisions remain important, but their site-specific character makes them harder to transfer directly across jurisdictions.</p></div><dl class="state-emphases"><div><dt>Texas</dt><dd>Grid reliability, credible demand, ratepayer protection, and emergency flexibility.</dd></div><div><dt>Minnesota & Virginia</dt><dd>Integrated resource regulation spanning power, water, and emissions.</dd></div><div><dt>South Dakota</dt><dd>Attributable-cost recovery, public water reporting, and preservation of local authority.</dd></div><div><dt>New York</dt><dd>Precautionary review while longer-term standards develop.</dd></div></dl></div>
+ <h3 class="criteria-heading">Seven dimensions, seven selected examples</h3><p class="criteria-note">Follow the cases in order, or choose a criterion to go directly to its example.</p>
+ <div class="criteria-list">
+  <a href="#c1"><b>C1</b><div><h4>Definition</h4><p>Facility scope and the principal demand triggers that bring a project into the regime.</p></div><span>South Dakota</span></a>
+  <a href="#c2"><b>C2</b><div><h4>Grid & interconnection</h4><p>Readiness screening, studies, queues, load forecasting, planning, and reliability conditions.</p></div><span>Texas</span></a>
+  <a href="#c3"><b>C3</b><div><h4>Flexibility</h4><p>Defined ability to shift or reduce demand, respond to emergencies, and measure delivery.</p></div><span>Texas / Virginia</span></a>
+  <a href="#c4"><b>C4</b><div><h4>Costs & transparency</h4><p>Responsibility for upgrades and stranded assets, and the information that makes it verifiable.</p></div><span>South Dakota</span></a>
+  <a href="#c5"><b>C5</b><div><h4>Clean energy</h4><p>Clean capacity, efficiency and sustainable design, and controls on onsite emissions.</p></div><span>Minnesota</span></a>
+  <a href="#c6"><b>C6</b><div><h4>Water</h4><p>Supply review, permits, cooling, conservation, reuse, reporting, and authority to limit use.</p></div><span>Minnesota</span></a>
+  <a href="#c7"><b>C7</b><div><h4>Implementation</h4><p>How binding obligations become operating procedures, enforcement, and measured outcomes.</p></div><span>Texas / New York</span></a>
+ </div>
+ <p class="source-note">The cases and qualitative assessments reflect the study’s policy snapshot. They compare policy design; they do not establish measured outcomes or a current legal compliance test.</p>
+</div></section>
+
+<section class="case-chapter" id="cases">
+ <div class="wrap section-heading"><p class="eyebrow">03 / State case studies</p><h2>What each policy<br>makes concrete.</h2><p class="intro">Definitions establish coverage. Service conditions assign obligations. Implementation determines whether those obligations work. The examples below follow that sequence.</p></div>
+ <div class="case-layout">
+  <aside class="map-panel" aria-label="Map of the case studies">
+   <div class="map-top"><span class="eyebrow">Five-state study</span><button id="map-reset" type="button">Show all states</button></div>
+   <svg id="map" viewBox="0 0 975 610" role="img" aria-labelledby="map-title map-desc"><title id="map-title">United States policy case studies</title><desc id="map-desc">Real US state boundaries. The map focuses on the state for the current policy example.</desc><g id="map-layer"></g></svg>
+   <div class="map-legend"><span class="legend-selected"></span>Current example <span class="legend-study"></span>Study states</div>
+   <div class="map-callout" aria-live="polite"><span id="map-criterion">C1 / Definition</span><h3 id="map-name">South Dakota</h3><p id="map-explanation">A 10 MW principal threshold brings the illustrative 20 MW facility into the definition.</p></div>
+   <div class="case-controls"><button id="previous-case" type="button" aria-label="Previous case">Previous</button><span id="case-count">1 of 7</span><button id="next-case" type="button" aria-label="Next case">Next</button></div>
+   <p class="map-credit">Boundaries: US Atlas / US Census Bureau. Albers USA projection. All map data is stored locally.</p>
+  </aside>
+  <div class="case-stories">
+   <article class="case" id="c1" data-states="46" data-title="South Dakota" data-criterion="C1 / Definition" data-summary="A 10 MW principal threshold brings the illustrative 20 MW facility into the definition.">
+    <p class="eyebrow">C1 / Definition · South Dakota</p><h3>A lower trigger brings more facilities into the regime.</h3>
+    <p>The first policy decision is who counts as a datacenter. The study compares principal electric-demand triggers ranging from 10 MW in South Dakota to 100 MW in Minnesota.</p><p>An illustrative 20 MW facility sits within South Dakota’s definition. That same size falls below the other principal thresholds shown in the comparison. The threshold therefore shapes how much of the sector a regulatory framework reaches.</p>
+    <div class="case-graphic threshold-chart"><div class="graphic-heading"><h4>Principal demand triggers</h4><span>Megawatts (MW)</span></div>
+     <div class="threshold-row" data-threshold="10"><span>South Dakota</span><div><i style="width:8.33%"></i></div><b>10</b></div>
+     <div class="threshold-row" data-threshold="25"><span>Virginia</span><div><i style="width:20.83%"></i></div><b>25</b></div>
+     <div class="threshold-row" data-threshold="50"><span>New York</span><div><i style="width:41.67%"></i></div><b>50</b></div>
+     <div class="threshold-row" data-threshold="75"><span>Texas</span><div><i style="width:62.5%"></i></div><b>75</b></div>
+     <div class="threshold-row" data-threshold="100"><span>Minnesota</span><div><i style="width:83.33%"></i></div><b>100</b></div>
+     <label for="facility-size">Explore an illustrative facility <output id="facility-value">20 MW</output></label><input id="facility-size" type="range" min="1" max="120" step="1" value="20"><p id="threshold-result" class="graphic-note" aria-live="polite"></p>
+    </div>
+    <p class="qualification">These are the principal triggers compared in the study, not every provision. Definitions and boundary conditions differ; Virginia has separate provisions reaching smaller facilities. The slider compares sizes, not legal coverage.</p>
+    <div class="case-links"><a href="https://mylrc.sdlegislature.gov/api/Documents/SessionLaw/306613.pdf?Year=2026">South Dakota SB 135</a><a href="#method">All criteria</a></div>
+   </article>
+   <article class="case" id="c2" data-states="48" data-title="Texas" data-criterion="C2 / Grid & interconnection" data-summary="Study fees, site control, disclosure, and financial commitments make a proposed load more credible.">
+    <p class="eyebrow">C2 / Grid & interconnection · Texas</p><h3>Texas screens project readiness before infrastructure commitments.</h3><p>A proposed load can lead a utility to plan transmission and other infrastructure long before it consumes electricity. If several speculative requests describe alternative versions of the same project, planning can overstate the demand that will actually arrive.</p><p>SB 6 links the request for service to evidence and financial commitments. Its readiness screen brings four pieces of information into the interconnection process.</p>
+    <ol class="readiness"><li><span>01</span><div><h4>A study fee of at least $100,000</h4><p>Funds initial transmission screening for covered large loads.</p></div></li><li><span>02</span><div><h4>Evidence of site control</h4><p>Ownership, a lease, or another accepted legal interest supports the proposed location.</p></div></li><li><span>03</span><div><h4>Disclosure of competing requests</h4><p>Reveals substantially similar in-state service requests when an alternative approval could materially change, delay, or withdraw this request.</p></div></li><li><span>04</span><div><h4>A financial commitment</h4><p>Requires backing for the transmission infrastructure needed to serve the load.</p></div></li></ol>
+    <p class="takeaway">Credible projects reduce the risk of stranded grid investments.</p><p class="qualification">The screen supports planning; it does not guarantee a project will proceed. Detailed interconnection procedures and implementation rules still matter.</p>
+    <div class="case-links"><a href="https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm">Texas SB 6</a><a href="#method">All criteria</a></div>
+   </article>
+   <article class="case" id="c3" data-states="48,51" data-title="Texas & Virginia" data-criterion="C3 / Flexibility" data-summary="Texas establishes an emergency direction mechanism. Virginia provides a voluntary program contrast.">
+    <p class="eyebrow">C3 / Flexibility · Texas & Virginia</p><h3>A technical capability becomes useful when operating terms are clear.</h3><p>Datacenters may be able to shift work, reduce grid demand, or use backup power. The regulatory distinction is who can call on that capability, under what conditions, and with what limits.</p>
+    <div class="comparison"><article><span class="eyebrow">Texas</span><h4>Emergency direction</h4><dl><dt>Facility response</dt><dd>Deploy qualifying backup generation or curtail grid demand.</dd><dt>Authority</dt><dd>An emergency mechanism can make the response an obligation.</dd><dt>Constraint</dt><dd>Environmental and emissions limits still apply.</dd></dl></article><article><span class="eyebrow">Virginia</span><h4>Voluntary program</h4><dl><dt>Facility response</dt><dd>Shift or reduce electricity use under program arrangements.</dd><dt>Participation</dt><dd>Participation and terms depend on program design.</dd><dt>Constraint</dt><dd>Potential flexibility must become a defined, deliverable service.</dd></dl></article></div>
+    <p>In Texas, the sequence matters: the relevant market services must be deployed before the emergency direction described in SB 6, subject to the statute’s exception for frequency-responsive services. The mechanism concerns qualifying backup resources and does not authorize an emissions violation.</p>
+    <p class="takeaway">“Flexible” needs an operational meaning: a response, an authority, and conditions for delivery.</p>
+    <div class="case-links"><a href="https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm">Texas SB 6</a><a href="#method">All criteria</a></div>
+   </article>
+   <article class="case" id="c4" data-states="46" data-title="South Dakota" data-criterion="C4 / Costs & transparency" data-summary="Cost responsibility follows the datacenter, including when it departs or materially reduces its load.">
+    <p class="eyebrow">C4 / Costs & transparency · South Dakota</p><h3>The customer carries the costs attributable to its demand.</h3><p>New infrastructure can remain in place after a datacenter closes, leaves, or reduces its electricity use. A consumer-protection framework must address that possibility when service begins.</p><p>South Dakota requires separate terms and conditions for electricity service to datacenters. The law provides for recovery of costs fairly attributable to serving the facility, including costs incurred if it departs the system or materially reduces its load.</p>
+    <div class="cost-flow case-graphic"><h4>Follow the responsibility through the project</h4><div><article><b>Service begins</b><p>Set separate service terms and identify attributable costs.</p></article><article><b>Infrastructure is committed</b><p>Assign recovery of the costs created by the datacenter.</p></article><article><b>Demand falls or the facility leaves</b><p>Retain responsibility for the attributable costs that remain.</p></article></div></div>
+    <p>Transparency makes the allocation verifiable. The state’s wider approach includes public water reporting and preserves local authority, connecting the utility agreement to resource use and community oversight.</p><p class="takeaway">Specify both who bears the risk and what information makes that responsibility verifiable.</p>
+    <div class="case-links"><a href="https://mylrc.sdlegislature.gov/api/Documents/SessionLaw/306613.pdf?Year=2026">South Dakota SB 135</a><a href="#method">All criteria</a></div>
+   </article>
+   <article class="case" id="c5" data-states="27" data-title="Minnesota" data-criterion="C5 / Clean energy" data-summary="An optional clean-energy tariff and incentive-linked certification create two distinct obligations.">
+    <p class="eyebrow">C5 / Clean energy · Minnesota</p><h3>Two paths for greener datacenters.</h3><p>Minnesota uses service arrangements and incentive conditions to influence energy choices. They create different obligations, so participation, requirements, and consequences need to remain distinct.</p>
+    <div class="comparison"><article><span class="eyebrow">Path 01 / Service</span><h4>Clean energy and capacity tariff</h4><dl><dt>Participation</dt><dd>Optional.</dd><dt>Obligation</dt><dd>Fund proportional costs of new clean energy and capacity.</dd><dt>Consequence</dt><dd>The customer pays for the resources it contracts for.</dd></dl></article><article><span class="eyebrow">Path 02 / Incentive</span><h4>Certification for incentives</h4><dl><dt>Participation</dt><dd>Required for qualifying incentive recipients.</dd><dt>Obligation</dt><dd>Obtain approved sustainable-design or energy-management certification.</dd><dt>Consequence</dt><dd>Failure can trigger tax recapture.</dd></dl></article></div>
+    <p class="takeaway">A voluntary tariff and a condition attached to tax benefits give the state different ways to influence energy choices.</p><p class="qualification">The tariff is optional. The certification requirement applies to qualifying incentive recipients; it is not presented here as a universal requirement for every facility.</p>
+    <div class="case-links"><a href="https://www.revisor.mn.gov/laws/2025/1/12/laws.0.8.0">Minnesota Chapter 12</a><a href="#method">All criteria</a></div>
+   </article>
+   <article class="case" id="c6" data-states="27" data-title="Minnesota" data-criterion="C6 / Water" data-summary="Review supply, cooling, reuse, and competing needs before issuing a new or amended appropriation permit.">
+    <p class="eyebrow">C6 / Water · Minnesota</p><h3>Examine cooling before permitting.</h3><p>A cooling design commits a facility to a particular relationship with electricity and water. Minnesota’s special review connects that choice to the availability of the resource before a permit decision.</p>
+    <div class="water-trigger"><div><strong>&gt;100 million</strong><span>gallons per year of consumptive use</span></div><b>AND</b><div><strong>A new or amended</strong><span>water appropriation permit</span></div></div>
+    <p>The trigger has both conditions. Once it applies, the review considers the supply, the cooling approach, and the effects on others.</p>
+    <div class="review-list"><article><span>01</span><h4>Water availability</h4><p>Evaluate whether the source can support the proposed consumptive demand.</p></article><article><span>02</span><h4>Cooling and reuse</h4><p>Examine the cooling choices and opportunities to conserve or reuse water.</p></article><article><span>03</span><h4>Other users and ecosystems</h4><p>Consider the consequences for competing users and the surrounding environment.</p></article></div>
+    <p class="takeaway">The review joins a technical choice inside the datacenter to a resource decision outside it.</p><p class="qualification">Consumptive use is the relevant quantity in this trigger. It should not be silently substituted with total water withdrawals.</p>
+    <div class="case-links"><a href="https://www.revisor.mn.gov/laws/2025/1/12/laws.0.8.0">Minnesota Chapter 12</a><a href="#method">All criteria</a></div>
+   </article>
+   <article class="case" id="c7" data-states="48,36" data-title="Texas & New York" data-criterion="C7 / Implementation" data-summary="Binding foundations still require procedures, service design, and permanent standards before outcomes can be judged.">
+    <p class="eyebrow">C7 / Implementation · Texas & New York</p><h3>Binding law still needs implementation.</h3><p>Enactment establishes authority and obligations. Operational completeness depends on the procedures and institutions that make those obligations work.</p>
+    <div class="maturity"><div class="maturity-head"><span>Binding foundation</span><span>Details still developing</span></div><article><h4>Texas</h4><div><p>Grid-screening and emergency duties.</p><p>Interconnection procedures and reliability-service design.</p></div></article><article><h4>New York</h4><div><p>Temporary restraint on covered permits.</p><p>Permanent environmental and operating standards.</p></div></article></div>
+    <p>Texas illustrates the distance between a statute and a fully specified service or interconnection process. New York offers a contrasting precautionary approach, creating a period for review while permanent standards develop.</p><p class="qualification">New York’s restraint concerns covered environmental permits, with exclusions. It is not a blanket ban on all datacenters. The comparison retains the study’s interim assessment.</p>
+    <p class="takeaway">Legal implementation and measured policy outcomes remain to be determined.</p>
+    <div class="case-links"><a href="https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm">Texas SB 6</a><a href="https://www.governor.ny.gov/sites/default/files/2026-07/EO_62.pdf">New York EO 62</a><a href="#method">All criteria</a></div>
+   </article>
+  </div>
+ </div>
+</section>
+<section class="synthesis wrap chapter" id="comparison">
+ <p class="eyebrow">Across the cases</p><h2>States offer<br>complementary lessons.</h2><p class="intro">The comparison brings the examples back together. Texas emphasizes grid integration and flexibility; Minnesota links energy and water decisions; South Dakota focuses on protection and disclosure. Virginia combines several resource tools, while New York’s community review remains an interim model.</p>
+ <div class="table-scroll" tabindex="0" role="region" aria-label="Comparison of five states across six policy dimensions"><table id="matrix"><caption>Qualitative assessment from the study. Categories describe relative policy emphasis, not measured performance.</caption><thead><tr><th scope="col">Dimension</th><th scope="col">Texas</th><th scope="col">Minnesota</th><th scope="col">South Dakota</th><th scope="col">New York</th><th scope="col">Virginia</th></tr></thead><tbody></tbody></table></div>
+ <p class="source-note">Community review is a cross-cutting row in the study’s comparison, distinct from the seven numbered case criteria. New York’s “Leading / interim” assessment is provisional.</p>
+</section>
+<section class="conclusion-band" id="highways"><div class="wrap chapter">
+ <p class="eyebrow">04 / Highways & datacenters</p><h2>Build assets.<br>Prevent liabilities.</h2><p class="intro">The interstate highway system connected the twentieth-century economy. Datacenters serve as infrastructure for AI, security, and global digital trade in the twenty-first. Both connect a national purpose to costs concentrated in the communities that host them.</p>
+ <div class="closing-comparison"><article><p class="eyebrow">Physical connectivity</p><h3>Highways</h3><p>The twentieth-century model for national growth enabled commerce and security through an interconnected transportation system.</p><dl><dt>National purpose</dt><dd>Interstate commerce and national defense.</dd><dt>Local burden</dt><dd>Noise, land-use disruption, and pollution concentrated in communities.</dd></dl></article><article><p class="eyebrow">Digital connectivity</p><h3>Datacenters</h3><p>The twenty-first-century network supports AI, security, and a global digital economy through interconnected computing infrastructure.</p><dl><dt>National purpose</dt><dd>AI capability, digital trade, and economic sovereignty.</dd><dt>Local burden</dt><dd>Grid strain, water extraction, and the risk of shifting costs onto ratepayers.</dd></dl></article></div>
+ <figure class="closing-figure"><img src="assets/figure-27.webp" alt="Side-by-side illustration of highways and data centers, connecting national benefits with local burdens including pollution, land use, noise, grid strain, water demand, and ratepayer costs." loading="lazy"><figcaption>National benefits and local burdens of physical and digital infrastructure.</figcaption></figure>
+ <p class="closing-statement">National infrastructure ambitions need specific commitments to the places that make them possible.</p><p class="closing-text">The state examples show how those commitments can take shape: credible projects, defined flexibility, attributable costs, clean-energy arrangements, water review, and implementation that can be evaluated.</p>
+</div></section>
+</main>
+<footer class="wrap"><p>Ahmed Saeed & Josiah Hester · Georgia Institute of Technology</p><p><a href="https://saeed.github.io/files/saeed-tprc54.pdf">Research paper</a> <a href="#top">Back to top</a></p><small>Local edition. The page, figures, and geographic data load from local files. External source links open only when selected.</small></footer>
+</body></html>
