@@ -1,0 +1,123 @@
+﻿** Assignments **
+
+
+** Hardware assignments **
+pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_1IN-RACK_3_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_2IN-RACK_6_DEVICE_TYPE.COMPUTE = 8Cores
+pod1IN-POD_2IN-RACK_5_DEVICE_TYPE.LINK = 40GLink
+pod1IN-POD_2IN-RACK_6_DEVICE_TYPE.LINK = 80GLink
+pod1IN-POD_1IN-RACK_5_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_0_0_DEVICE_TYPE.LINK = 25GLink
+pod1IN-POD_1IN-RACK_2_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_2IN-RACK_0_DEVICE_TYPE.LINK = 25GLink
+pod1IN-POD_0_DEVICE_TYPE.ROUTER = router_16_qos_10_memory_ecn_int
+pod1IN-POD_1IN-RACK_2_DEVICE_TYPE.LINK = 25GLink
+pod1IN-POD_1IN-RACK_4_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_1IN-RACK_6_DEVICE_TYPE.LINK = 80GLink
+pod1IN-POD_2IN-RACK_DEVICE_TYPE.ROUTER = router_highcores
+pod1IN-POD_1IN-RACK_6_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_1IN-RACK_3_DEVICE_TYPE.LINK = 25GLink
+pod1IN-POD_2IN-RACK_3_DEVICE_TYPE.LINK = 80GLink
+pod1IN-POD_2IN-RACK_3_DEVICE_TYPE.COMPUTE = 16Cores
+pod1IN-POD_2IN-RACK_2_DEVICE_TYPE.COMPUTE = 16Cores_lowFPGA
+pod1IN-POD_2IN-RACK_5_DEVICE_TYPE.COMPUTE = 16Cores_lowFPGA
+pod1IN-POD_2IN-RACK_4_DEVICE_TYPE.COMPUTE = 4Cores_highFPGA
+pod1IN-POD_2IN-RACK_1_DEVICE_TYPE.COMPUTE = 16Cores_lowFPGA
+pod1IN-POD_1IN-RACK_DEVICE_TYPE.ROUTER = TofinoV1Router
+pod1IN-POD_2IN-RACK_2_DEVICE_TYPE.LINK = 80GLink
+pod1IN-POD_0_1_DEVICE_TYPE.LINK = 40GLink
+pod1IN-POD_2IN-RACK_4_DEVICE_TYPE.LINK = 80GLink
+pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK = 25GLink
+pod1IN-POD_1IN-RACK_1_DEVICE_TYPE.LINK = 40GLink
+pod1IN-POD_2IN-RACK_0_DEVICE_TYPE.COMPUTE = 8Cores_SmartNIC
+pod1IN-POD_1IN-RACK_1_DEVICE_TYPE.COMPUTE = 16Cores_highFPGA
+pod1IN-POD_1IN-RACK_4_DEVICE_TYPE.LINK = 80GLink
+pod1IN-POD_1IN-RACK_5_DEVICE_TYPE.LINK = 25GLink
+pod1IN-POD_2IN-RACK_1_DEVICE_TYPE.LINK = 40GLink
+
+
+** Systems deployed **
+ML_Training -
+1. cpu_sched role: Netchannel
+2. cca role: DCQCN
+3. virtual_switch role: ANDROMEDA
+4. transport role: RDMA
+5. load_balancer role: PLB
+6. Monitor role: SIMON
+
+
+
+
+** Other values **
+Total cost = 11760
+###########################
+EXPLAINING
+High priority systems for ML_Training than DCQCN : ['BFC']
+No feasible solution found
+Unsat core: [dc_flows is a workload property,
+ short_flows is not a workload property,
+ incast is not a workload property,
+ BFC_enable,
+ track_2,
+ track_1,
+ track_5,
+ track_8,
+ RDMA_keep_enabled,
+ track_3914]
+
+
+CHOICES
+
+
+Solution BFC for workload ML_Training == True
+-------
+Solution RDMA for workload ML_Training == True
+-------
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+CONSTRAINTS
+
+
+Implies ( 0 ==
+        Hardware ID for pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK , 
+        pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK_bandwidth ==
+        25 ) 
+-------
+Or ( Hardware ID for pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK == 0 , 
+   Hardware ID for pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK == 1 , 
+   Hardware ID for pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK == 2 ) 
+-------
+Implies ( 1 ==
+        Hardware ID for pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK , 
+        pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK_bandwidth ==
+        40 ) 
+-------
+Implies ( 2 ==
+        Hardware ID for pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK , 
+        pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK_bandwidth ==
+        80 ) 
+-------
+Implies ( Solution BFC for workload ML_Training , 
+        And ( And ( And ( pod1IN-POD_1IN-RACK_DEVICE_TYPE.ROUTER_P4 )  , 
+                And ( Constrained slot P4-stages for pod1IN-POD_1IN-RACK_DEVICE_TYPE.ROUTER with id BFC ==
+                    8 )  , 
+                Solution RDMA for workload ML_Training , 
+                dc_flows is a property of the workload )  , 
+            Implies ( Not ( Or ( short_flows is a property of the workload ,  incast is a property of the workload )  )  , 
+                    And ( pod1IN-POD_1IN-RACK_0_DEVICE_TYPE.LINK_bandwidth >=
+                        100 , 
+                        pod1IN-POD_1IN-RACK_1_DEVICE_TYPE.LINK_bandwidth >=
+                        100 , 
+                        pod1IN-POD_1IN-RACK_2_DEVICE_TYPE.LINK_bandwidth >=
+                        100 , 
+                        pod1IN-POD_1IN-RACK_3_DEVICE_TYPE.LINK_bandwidth >=
+                        100 , 
+                        pod1IN-POD_1IN-RACK_4_DEVICE_TYPE.LINK_bandwidth >=
+                        100 , 
+                        pod1IN-POD_1IN-RACK_5_DEVICE_TYPE.LINK_bandwidth >=
+                        100 , 
+                        pod1IN-POD_1IN-RACK_6_DEVICE_TYPE.LINK_bandwidth >=
+                        100 )  )  )  ) 
+-------

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eeefe8"><meta name="description" content="Archie combines expert knowledge with constraint-based reasoning to explore networked systems designs. Explore two architecture-design conversations with an LLM and learn how to use Archie."><title>Archie — Assistants, not architects.</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><a class="brand" href="#" aria-label="Archie home">archie</a><nav aria-label="Main navigation"><a href="#conversations">AI conversations</a><a href="#why">How Archie works</a><a href="#start">Get started</a></nav><a class="nav-paper" href="https://arxiv.org/pdf/2604.25506v1" target="_blank" rel="noopener">Read the paper <span></span></a></header>
+<main id="main">
+<section class="hero wrap"><div class="eyebrow">ASSISTANTS, NOT ARCHITECTS</div><h1>Archie: explicit reasoning<br> for systems design.</h1><div class="thesis-grid"><p class="hero-copy">Archie helps architects choose systems that work together and meet their priorities. It combines expert-reviewed specifications with constraint-based optimization to find feasible designs and explain the choices behind them.</p><div class="thesis-aside"><p><strong>LLMs are not yet reliable architects.</strong> They can recommend convincing components while missing hardware constraints or the consequences of changing objectives. Archie makes those requirements and trade-offs explicit so they can be checked together.</p><p>The two AI conversations below show why Archie is needed: follow the requirements, inspect the mistakes, and see how explicit constraints and priorities change the result.</p></div></div><div class="hero-actions"><a class="button dark" href="#conversations">See why Archie is needed</a><a class="text-link" href="#why">How Archie addresses this</a></div></section>
+
+<section id="conversations" class="stories-intro wrap section"><div class="section-index">01 / WHY ARCHIE IS NEEDED</div><h2>What the user asked.<br> What the LLM answered. What it missed.</h2><p class="intro-copy">These two architecture-design conversations with a large language model (LLM) illustrate the reasoning gap Archie addresses. One leaves hardware requirements unjustified; the other differs from the paper’s preferred design after priorities change. Each walkthrough follows the user’s requirements, the AI’s response, the constraint analysis, and Archie’s result.</p><div class="case-jumps"><a href="#case-hardware"><span>AI CONVERSATION 1</span> Design a datacenter for ML training</a><a href="#case-priority"><span>AI CONVERSATION 2</span> Choose a Hotel Reservation deployment stack</a></div></section>
+<section id="case-hardware" class="case-heading wrap"><div class="section-index">AI CONVERSATION 1 / DATACENTER DESIGN</div><h2>“Choose hardware for every device slot<br> and one system for each role.”</h2><p>The LLM is asked to design a datacenter for an ML training workload. The user supplies a topology, a finite hardware catalog, six software roles, and explicit preference orderings. The output must be a complete, compatible design.</p><div class="context-strip"><div><b>33 hardware slots</b><span>14 compute + 3 routers + 16 links</span></div><div><b>6 system roles</b><span>One candidate selected per role</span></div><div><b>5 ordered objectives</b><span>Latency first; hardware cost last</span></div></div></section><section class="story wrap" data-case="hardware"><div class="story-narrative"><div class="story-step" data-step="0"><div class="section-index">USER PROMPT / THE DEPLOYMENT</div><h3>What must be designed?</h3><p>One pod contains Rack A and Rack B. Each rack has seven compute slots, each with its own server-to-leaf link. The two leaf routers each connect to one shared spine router.</p><p>ML_Training runs on <strong>Rack A only</strong>. Its properties are <code>dc_flows</code>, <code>long_flows</code>, and <code>ml_training</code>. The user asks for hardware assignments even for the remaining slots.</p><p>The answer must include all six system choices, all 33 hardware assignments, total hardware cost, and a justification for every role.</p></div><div class="story-step" data-step="1"><div class="section-index">USER PROMPT / CHOICES AND PRIORITIES</div><h3>Which choices are allowed?</h3><p>The LLM must select exactly one system from each of the six lists shown here. The hardware catalog contains 13 compute profiles, eight router profiles, and three link types.</p><p>Objectives are <strong>lexicographic</strong>: optimize latency first; use deployment ease only to break latency ties, then monitoring, throughput, and finally hardware cost.</p><p>The relative rankings express the architect’s experience from using and experimenting with the systems. The prompt supplies these preferences and asks the LLM to determine hardware prerequisites. The full catalog and conditional orderings appear after this walkthrough.</p></div><div class="story-step" data-step="2"><div class="section-index">AI RESPONSE / RECORDED ANSWER</div><h3>The AI fills the slots.</h3><p>The LLM selects Demikernel, BFC, Andromeda, RDMA, PacketSpray, and Simon. Every Rack A host gets <code>16Cores_highFPGA</code> and an 80G link.</p><p>The table preserves every hardware assignment, grouping slots that receive identical hardware. This looks like a complete configuration. But the chosen systems must also be feasible together.</p><p>The provided response stops after its assignment tables; it does not include the requested total cost or per-role justification.</p></div><div class="story-step" data-step="3"><div class="section-index">ANALYSIS / BFC AND FEEDBACK DELAY</div><h3>When is BFC worth the switch cost?</h3><p>BFC’s central motivation is very high bandwidth with messages small relative to the <strong>bandwidth-delay product (BDP)</strong>. If most messages fit well within one round trip, end-to-end congestion control reacts too late to shape them.</p><p>Hop-by-hop feedback reacts sooner. Its switch resource and deployment costs need justification through a workload that benefits from that faster control, especially with bursty traffic and limited buffers.</p><p>The AI supplies no such justification. The prompt gives long-flow tags, but no RTT or message-size distribution. A link-speed cutoff alone cannot settle the choice.</p></div><div class="story-step" data-step="4"><div class="section-index">ANALYSIS / PACKET SPRAYING AND NIC MEMORY</div><h3>Packet spraying moves complexity to the receiver.</h3><p>Sending successive packets along different paths can introduce significant reordering. A receiver that restores order before delivery must hold later packets while earlier ones are still in flight.</p><p>At high rates, that can require a <strong>substantial reorder buffer at the NIC</strong>. Capacity depends on traffic rate, path-delay differences, and concurrent flows; RDMA support alone does not establish that the receiver can cope.</p><p>The AI chooses PacketSpray and RDMA without explaining the receiver design or checking this resource requirement. Archie makes that assumption explicit and checks it against the catalog.</p></div><div class="story-step" data-step="5"><div class="section-index">ARCHIE / RECORDED RESULT</div><h3>Make the assumptions inspectable.</h3><p>Archie’s result selects <strong>DCQCN instead of BFC</strong> and <strong>PLB instead of PacketSpray</strong>, retaining RDMA. It selects NetChannel for the CPU scheduler by applying the architect’s experience-based rankings within the stated objective priorities and feasibility constraints.</p><p>The recorded explanation forces BFC into the configuration and exposes the model’s bandwidth policy. Architects and experts can inspect and challenge that policy, then solve again.</p><p>The table shows a precomputed result for this design problem. Its reported hardware cost is 11,760 catalog units; this webpage does not run the solver.</p></div></div><div class="sticky-panel"><div class="replay" id="hardware-replay"><div class="replay-top"><span>ARCHITECTURE DESIGN</span><span id="hardware-count">1 / 6</span></div><div class="speaker-banner" aria-live="polite"><strong id="hardware-speaker">User prompt</strong><span id="hardware-speaker-detail">Requirements and choices given to the AI</span></div><div class="replay-body" id="hardware-body" aria-live="polite" tabindex="0" aria-label="Conversation excerpt"></div><div class="replay-controls"><button class="prev" aria-label="Previous step in hardware conversation">Previous</button><div class="step-dots" aria-label="Hardware conversation steps"></div><button class="next" aria-label="Next step in hardware conversation">Next</button></div></div><p class="panel-caption">Scroll to advance, or choose a numbered step. The banner identifies whose input or output is shown.</p></div></section>
+
+<div id="hardware-transcript" class="transcript wrap"><details><summary>Full datacenter prompt and AI response</summary><p>The user prompt and AI response are shown in sequence. Headings identify each speaker.</p><pre><strong class="inline-speaker">User prompt</strong>
+
+You are solving a datacenter systems-design problem. Choose hardware for every device slot
+and one system for each role, so that the workload&#x27;s objectives are optimized in strict priority
+order (lexicographic: optimize objective 1 first; only use objective 2 to break ties among designs
+that are equally good on objective 1; and so on).
+
+=== TOPOLOGY ===
+- One pod containing 2 racks (Rack A and Rack B).
+- Each rack has 7 compute slots. Each compute slot connects to its rack&#x27;s leaf router via its own
+dedicated link (7 server-to-leaf links per rack).
+- Each leaf router connects to a single spine router via its own link (2 leaf-to-spine links).
+- Device slots to assign: 14 compute, 3 routers (2 leaf + 1 spine), 16 links.
+
+=== HARDWARE CATALOG (choose one per slot of the matching type) ===
+Links:
+- 25GLink: bandwidth 25, cost 5
+- 40GLink: bandwidth 40, cost 10
+- 80GLink: bandwidth 80, cost 40
+
+Compute:
+- 4Cores: cost 100, cores 4, NIC_Reorder_Buffer 10
+- 8Cores: cost 250, cores 8, NIC_Reorder_Buffer 10
+- 16Cores: cost 700, cores 16, NIC_Reorder_Buffer 10
+- 4Cores_lowFPGA: cost 100, cores 4, FPGA, FPGA-capacity 10, NIC_Reorder_Buffer 20
+- 8Cores_lowFPGA: cost 300, cores 8, FPGA, FPGA-capacity 10, NIC_Reorder_Buffer 20
+- 16Cores_lowFPGA: cost 500, cores 16, FPGA, FPGA-capacity 15, NIC_Reorder_Buffer 20
+- 4Cores_highFPGA: cost 500, cores 4, FPGA, FPGA-capacity 15, RDMA, NIC_TIMESTAMPS,
+NIC_Reorder_Buffer 20
+- 16Cores_highFPGA: cost 1000, cores 16, FPGA, FPGA-capacity 5, RDMA,
+NIC_TIMESTAMPS, SMART_NIC, NIC_Reorder_Buffer 20
+- 4Cores_HighReorder: cost 120, cores 4, NIC_Reorder_Buffer 50
+- 4Cores_SmartNIC: cost 150, cores 4, NIC_TIMESTAMPS, SMART_NIC, NIC_Reorder_Buffer
+10
+- 8Cores_SmartNIC: cost 400, cores 8, NIC_TIMESTAMPS, SMART_NIC, NIC_Reorder_Buffer
+10
+- 4Cores_rdma: cost 200, cores 4, RDMA, NIC_TIMESTAMPS, NIC_Reorder_Buffer 10
+- 8Cores_rdma: cost 420, cores 8, RDMA, NIC_TIMESTAMPS, NIC_Reorder_Buffer 20
+
+Routers:
+- router_2qos_5memory: cost 40, QoS 2, memory 5
+- router_4_qos_10_memory_ecn: cost 65, QoS 4, memory 10, ECN
+- router_4_qos_10_memory_int: cost 80, QoS 4, memory 10, ECN, INT
+- router_8_qos_20_memory_ecn_int: cost 200, QoS 8, memory 20, ECN, INT
+
+
+- router_16_qos_10_memory_ecn_int: cost 200, QoS 16, memory 10, ECN, INT
+- TofinoV1Router: cost 300, QoS 8, memory 10, ECN, INT, P4, P4-stages 12
+- TofinoV2Router: cost 600, QoS 32, memory 20, ECN, INT, P4, P4-stages 20
+- router_highcores: cost 600, QoS 32, cores 50, memory 200, ECN, INT
+
+=== WORKLOAD ===
+Name: ML_Training, deployed on Rack A only.
+Properties:
+- dc_flows: flows contained within a data-center network.
+- long_flows: long-lived network flows.
+- ml_training: performs machine-learning model training.
+
+Objectives in priority order:
+1. latency: absolute minimum end-to-end latency observed by the client under appropriate load,
+without sacrificing throughput (no traffic loss).
+2. ease_of_deployment: systems with readily available documentation, configurable in a very
+short time without feedback loops, few hops from official docs, extremely simple to debug.
+3. monitoring: sufficient visibility into application and system behavior for operation and
+diagnosis.
+4. throughput: maximize useful work or data processed per unit time.
+5. cost_efficiency: minimize total hardware cost (tie-breaker only).
+
+=== ROLES AND CANDIDATE SYSTEMS (pick exactly one per role) ===
+- cpu_sched: ZygOS, Shenango, Snap, Demikernel, Linux, NetChannel
+- cca (congestion control): DCQCN, BFC, TIMELY, DCTCP, BBR, CUBIC, LEDBAT
+- virtual_switch: Andromeda, VFP, Nitro
+- transport: TCP, RDMA, Pony, SRD
+- load_balancer: CONGA, PacketSpray, PLB, ECMP
+- monitor: PingMesh, Simon
+
+Each system has hardware prerequisites (e.g., RDMA transport needs RDMA-capable NICs on
+the workload&#x27;s compute nodes). Use your knowledge of each system to determine which
+hardware it requires, and make sure the chosen hardware satisfies them.
+[OPTIONAL: paste exact per-system hardware requirements here]
+
+=== PREFERENCE ORDERINGS ===
+Notation: &quot;A &gt; B&quot; means A is better than B on that objective; &quot;A = B&quot; means equally good.
+Orderings are transitive. Pairs not related (directly or transitively) are incomparable. Conditional
+orderings apply only when their condition holds.
+
+CPU schedulers
+host_resource_isolation: Shenango &gt; Linux; ZygOS = Shenango; Linux = NetChannel; Linux =
+Snap; Snap &gt; Demikernel
+
+
+throughput: NetChannel &gt; Linux; ZygOS &gt; Linux; Shenango &gt; Linux; Demikernel &gt; Linux; Snap
+&gt; Linux;
+  Demikernel = Snap [if Snap runs in Pony mode]; Demikernel = Linux [if Snap runs in Linux
+mode]
+ease_of_deployment: Linux &gt; Snap; NetChannel = Linux; Snap &gt; Shenango; Shenango &gt;
+ZygOS;
+  Demikernel = Shenango [if RDMA is NOT the selected transport]; Demikernel = Linux [if RDMA
+IS the selected transport]
+application_modification: Linux &gt; Snap [if Snap in Pony mode]; Linux = Snap [if Snap in Linux
+mode]; NetChannel = Linux; Snap &gt; Shenango; Shenango = Demikernel; Shenango = ZygOS
+latency: ZygOS &gt; Shenango; Shenango = Demikernel; Shenango &gt; Snap; ZygOS &gt; Snap;
+  Snap &gt; Linux [if ALL links within the workload&#x27;s rack have bandwidth &gt;= 40];
+  Linux = ZygOS [if ALL links within the workload&#x27;s rack have bandwidth &lt; 40];
+  Linux = NetChannel
+compute_efficiency: Shenango = Demikernel; Shenango &gt; Snap; Snap &gt; Linux; Linux &gt; ZygOS;
+Linux &gt; NetChannel
+
+Congestion control
+latency: BFC &gt; DCQCN; DCQCN &gt; TIMELY; DCTCP = TIMELY; TIMELY &gt; BBR; BBR &gt; CUBIC
+throughput: DCQCN = BFC = TIMELY = DCTCP = BBR; DCQCN &gt; CUBIC
+fairness: BFC &gt; DCTCP; DCTCP &gt; DCQCN; DCQCN &gt; CUBIC; CUBIC &gt; BBR; CUBIC &gt;
+TIMELY
+scavenger: LEDBAT has fixed score 10
+
+Virtual switch
+ease_of_deployment: Andromeda &gt; VFP; Andromeda &gt; Nitro
+
+Transport
+latency: RDMA = SRD; RDMA &gt; Pony; Pony &gt; TCP
+throughput: RDMA = SRD; RDMA = Pony; RDMA &gt; TCP
+ease_of_deployment: TCP &gt; RDMA; RDMA &gt; SRD; RDMA = Pony
+application_modification: TCP &gt; RDMA; RDMA = Pony; RDMA &gt; SRD
+
+Load balancing
+load_balancing: PacketSpray &gt; CONGA; CONGA = PLB; PLB &gt; ECMP
+latency: PacketSpray &gt; CONGA; CONGA &gt; ECMP; CONGA = PLB
+ease_of_deployment: PLB &gt; CONGA; ECMP &gt; CONGA; PacketSpray &gt; CONGA; ECMP &gt;
+PacketSpray
+
+Monitoring
+monitoring: Simon &gt; PingMesh
+
+=== OUTPUT REQUIRED ===
+1. The chosen system for each of the 6 roles.
+
+
+2. The hardware assignment for every device slot (all 14 compute, 3 routers, 16 links).
+3. Total hardware cost.
+4. A short justification per role, explicitly stating which objective decided the choice, and noting
+any conditional ordering you relied on and why its condition holds.
+
+
+
+
+<strong class="inline-speaker ai">AI response</strong>
+| Role | System |
+|---|---|
+| cpu_sched | Demikernel |
+| cca | BFC |
+| virtual_switch | Andromeda |
+| transport | RDMA |
+| load_balancer | PacketSpray |
+| monitor | Simon |
+
+| Compute slot | Hardware | Dedicated link to rack leaf |
+|---|---|---|
+| A1 | 16Cores_highFPGA | 80GLink |
+| A2 | 16Cores_highFPGA | 80GLink |
+| A3 | 16Cores_highFPGA | 80GLink |
+| A4 | 16Cores_highFPGA | 80GLink |
+| A5 | 16Cores_highFPGA | 80GLink |
+| A6 | 16Cores_highFPGA | 80GLink |
+| A7 | 16Cores_highFPGA | 80GLink |
+| B1 | 4Cores | 25GLink |
+| B2 | 4Cores | 25GLink |
+| B3 | 4Cores | 25GLink |
+| B4 | 4Cores | 25GLink |
+| B5 | 4Cores | 25GLink |
+| B6 | 4Cores | 25GLink |
+| B7 | 4Cores | 25GLink |
+
+| Router slot | Hardware |
+|---|---|
+| Rack A leaf | TofinoV2Router |
+| Rack B leaf | router_2qos_5memory |
+| Spine | TofinoV2Router |
+
+| Leaf-to-spine link | Hardware |
+|---|---|
+| Rack A leaf ↔ Spine | 80GLink |
+| Rack B leaf ↔ Spine | 25GLink |</pre></details></div><section id="case-priority" class="case-heading wrap"><div class="section-index">AI CONVERSATION 2 / APPLICATION DEPLOYMENT</div><h2>“What if I flip the objectives?”</h2><p>The LLM is asked to help a non-expert deploy DeathStarBench’s Hotel Reservation service. The cluster has ten CloudLab nodes drawn from c220g1 and c220g2, with low to medium load and uneven request rates across services.</p><div class="context-strip"><div><b>5 software roles</b><span>Runtime, orchestrator, RPC, mesh, autoscaler</span></div><div><b>First: easy deployment</b><span>Latency is the secondary objective</span></div><div><b>Then: minimum latency</b><span>Deployment ease becomes secondary</span></div></div></section><section class="story wrap" data-case="priority"><div class="story-narrative"><div class="story-step" data-step="0"><div class="section-index">USER PROMPT / THE TASK</div><h3>Choose one system for each role.</h3><p>The user supplies five candidate lists and asks for a configuration with deployment guidance. The LLM is allowed extensive web search.</p><p>The first priority is readily available documentation, short setup time, minimal hops from official docs, no configuration feedback loops, and simple debugging.</p><p>The second priority is minimum end-to-end latency without sacrificing successful throughput. If objectives conflict, the first one must win.</p></div><div class="story-step" data-step="1"><div class="section-index">AI RESPONSE / INITIAL DESIGN</div><h3>An ease-first answer that agrees with Archie.</h3><p>The LLM chooses containerd, Kubernetes, gRPC, Linkerd, and Kubernetes HPA. Its explanation cites Kubernetes integration, the application’s existing RPC, mesh diagnostics, and avoiding unnecessary autoscaling components.</p><p>These five choices agree with the paper’s ease-of-deployment-first configuration. This is the baseline; the difference appears when the user changes the goal.</p></div><div class="story-step" data-step="2"><div class="section-index">USER FOLLOW-UP / REVERSED OBJECTIVES</div><h3>Make latency the primary objective.</h3><p>The user explicitly flips the two objectives, while still asking for both when possible. Deployment ease can be sacrificed only when the latency objective benefits.</p><p>A correct response must reconsider the design using the changed priority order. The preferred mesh can change even though the application and hardware stay the same.</p></div><div class="story-step" data-step="3"><div class="section-index">AI RESPONSE / FOLLOW-UP</div><h3>“Keep the same five systems.”</h3><p>The LLM initially retains Linkerd. It discusses limitations of unrelated mesh benchmarks and proposes testing Istio ambient, but does not select it.</p><p>The full AI response is shown here, including its caveats. Those caveats are reasonable; nevertheless, against the paper’s workload-specific ordering and evaluation, the latency-first mesh choice is missed.</p><p>Archie makes the architect’s experience-based comparisons explicit and applies them when priorities change. The paper’s experiment provides quantitative support for the latency preference.</p></div><div class="story-step" data-step="4"><div class="section-index">CORRECTION / THE PAPER’S COMPARISON</div><h3>Prioritize latency using the architect’s experience.</h3><p>The paper’s latency-first design keeps containerd, Kubernetes, gRPC, and HPA, but replaces Linkerd with <strong>Istio in ambient mode</strong>.</p><p>The evaluation reports better median latency than Linkerd and comparable tail latency at 90 requests/s on ten c220g1 nodes.</p><p>The architect’s experience supplies the relative preference; the experiment supports it for Hotel Reservation. The chat describes a mix of c220g1/c220g2 nodes, while the experiment uses c220g1 nodes. This setup difference does not demonstrate a different mesh ranking.</p></div></div><div class="sticky-panel"><div class="replay" id="priority-replay"><div class="replay-top"><span>ARCHITECTURE DESIGN</span><span id="priority-count">1 / 5</span></div><div class="speaker-banner" aria-live="polite"><strong id="priority-speaker">User prompt</strong><span id="priority-speaker-detail">Requirements and choices given to the AI</span></div><div class="replay-body" id="priority-body" aria-live="polite" tabindex="0" aria-label="Conversation excerpt"></div><div class="replay-controls"><button class="prev" aria-label="Previous step in priority conversation">Previous</button><div class="step-dots" aria-label="Priority conversation steps"></div><button class="next" aria-label="Next step in priority conversation">Next</button></div></div><p class="panel-caption">Scroll to advance, or choose a numbered step. The banner identifies whose input or output is shown.</p></div></section>
+<div id="priority-transcript" class="transcript wrap"><details><summary>Full application-design prompt and AI response</summary><p>The user prompt and AI response are shown in sequence. Headings identify each speaker.</p><pre><strong class="inline-speaker">User prompt</strong>
+
+FORGET ANY PAST CONTEXT, TAKE THIS TO BE AN ENTIRELY NEW ASK. YOU ARE
+ONLY ALLOWED WEB SEARCHES.
+Consider the hotel-reservation service of DeathStarBench under low load to medium load (some
+services have much more requests coming in than others). I want to deploy it in my cluster with
+10 nodes consisting of c220g1 and c220g2 Cloudlab nodes.I have 5 roles to fill up:
+&quot;Orchestrator&quot;: &quot;Coordinates the deployment, scheduling, lifecycle, and scaling of application
+components across the available infrastructure.&quot;,
+&quot;Rpc&quot;: &quot;Provides the request/response communication mechanism used by distributed
+application components.&quot;,
+&quot;Service Mesh&quot;: &quot;Manages service-to-service networking capabilities such as routing, traffic
+policy, security, and observability.&quot;,
+&quot;Autoscaler&quot;: &quot;Adjusts application capacity in response to workload demand or
+resource-utilization signals.&quot;,
+&quot;Container Runtime&quot;: &quot;Runs and manages application containers on a compute node.&quot;
+
+I want my top most priority to be that the overall deployment must be: carried out with systems
+that have readily available documentation and enough documentation through LLM training
+context. Allow the user to configure in very short time span and not rely on feedback loops for
+configuration. Also allow user to setup with minimal hops from the official documentation of each
+system, doesn&#x27;t have to necessarily be from the application however (hops should step from
+official docs) and finally should be extremely simple to debug
+The secondary requirement (not above the top, but nonetheless an objective): Absolutely
+minimum end-to-end latency as observed by the client under appropriate load context without
+sacrificing throughput (experiencing traffic loss).
+If there is conflict, always choose the top priority, allowing sacrificing of the lower one.
+
+Please provide me with the configuration and steps on how to proceed. We consider this default
+configuration to begin. You are allowed extensive web search.
+The options to choose from (you have to a single system per set of choices):
+Container runtime: Docker/CRI-O/Containerd
+Orchestrator: Kubernetes/Knative/Docker Swarm
+Service Mesh: Istio/Linkerd
+RPC: gRPC/Thrift
+Autoscaler: Kubernetes HPA/KEDA
+
+Please break down the problem into multiple steps, thinking like you are helping a non-expert
+deploy this.
+You don&#x27;t need to give all the steps, if I prompt you, you can do that further.
+
+
+<strong class="inline-speaker ai">AI response</strong>
+
+
+     Role           Choice                          Why it fits your priorities
+
+ Container       containerd     Direct Kubernetes integration and an installation path in
+ Runtime                        Kubernetes’ documentation. Docker Engine requires the
+                                additional cri-dockerd adapter. CRI-O is also valid; this
+                                choice is about the deployment path, not a claim that
+                                containerd inherently delivers lower request latency.
+
+ Orchestrator    Kubernetes     Both allowed autoscalers operate on Kubernetes workloads.
+                                Swarm therefore does not provide a straightforward compatible
+                                stack. Knative adds components on top of Kubernetes that this
+                                application does not need initially.
+
+ RPC             gRPC           Hotel Reservation already implements its service
+                                communication using gRPC. Selecting Thrift would introduce
+                                application development and debugging work.
+
+ Service         Linkerd        My preference for this student deployment: its documented
+ Mesh                           workflow combines installation checks, proxy checks, and
+                                gRPC-aware diagnostics. Add its Viz extension for service
+                                success rates, traffic rates, and latency.
+
+ Autoscaler      Kubernetes     CPU-based scaling needs Metrics Server and an HPA
+                 HPA            definition per application Deployment. KEDA adds machinery
+                                whose event-source capabilities are unnecessary for this initial
+                                configuration.
+
+
+
+<strong class="inline-speaker">User follow-up</strong>
+Ok, what if I flip the objectives: have the secondary objective be the primary and the primary be
+the secondary. Again, keep in mind that we ideally want both but it is ok to sacrifice the
+secondary objective only in the case where the primary is affected.
+
+<strong class="inline-speaker ai">AI response to follow-up</strong>
+With latency and successful throughput first, I would initially keep the same five systems—but
+change how capacity, placement, and performance are configured and validated. Reversing
+priorities does not automatically make a different product faster.
+
+The mesh deserves particular care. “Ambient has no sidecars” does not establish that it
+delivers lower end-to-end latency. Istio ambient still processes traffic through node-level
+ztunnel proxies, with an additional waypoint when Layer 7 features are enabled.A
+Linkerd-published benchmark favored Linkerd over ambient with a waypoint. However, it used
+Emojivoto on GKE, and discarded the two worst of five runs—not sufficient evidence to declare
+
+
+a winner for your workload. Meanwhile, Istio’s headline performance comparison measures TCP
+bandwidth using iperf, which also does not establish Hotel Reservation latency.
+
+Istio ambient with only its L4 layer is worth testing, because it avoids HTTP/gRPC
+processing in the mesh. But it also gives up mesh-provided gRPC request metrics and Layer 7
+policies. Following your instruction, I would accept that loss of debugging convenience only if it
+produces a repeatable latency improvement while preserving successful throughput</pre></details></div><section class="argument wrap section"><div class="section-index">02 / WHAT THESE CONVERSATIONS SHOW</div><h2>Plausible recommendations<br> are not enough.</h2><p>The first answer provides no resource or cost justification for its choices, which also conflict with Archie’s encoded hardware policies. The second differs from the paper’s latency-first choice. These examples motivate explicit reasoning and validation; they do not measure how often LLMs fail.</p><p><strong>LLMs remain useful assistants.</strong> They can help interpret documentation and express a design problem. Archie gives architects and system experts a way to make the underlying knowledge explicit, check combinations, and inspect why an alternative was rejected.</p></section><section id="why" class="why wrap section"><div class="section-index">03 / THE ROLE FOR ARCHIE</div><div class="section-heading"><h2>Keep human expertise.<br> Make the reasoning explicit.</h2><p>These conversations show why plausible recommendations need a separate reasoning process. Archie combines expert-reviewed specifications with the architect’s constraints and objectives, then uses Z3 to check and optimize the design.</p></div><div class="workflow" aria-label="Archie workflow"><h3>How Archie turns knowledge into a design</h3><div class="workflow-inputs"><div><b>System expert</b><p>Encode and audit requirements, compatibility rules, resource use, and conditional preferences.</p></div><div><b>Architect</b><p>Supply workload, topology, hardware inventory, deployment constraints, and objective priorities.</p></div></div><div class="flow-join" aria-hidden="true"></div><div class="workflow-stage"><b>Archie: formulate and solve</b><p>Combine both inputs into a constraint model. Check feasibility and optimize objectives in priority order using Z3.</p></div><div class="flow-down" aria-hidden="true"></div><div class="workflow-stage output-stage"><b>Inspect the design and its explanation</b><p>Review the selected systems and hardware, or the conflicting constraints. Refine the inputs and validate the deployment.</p></div><p class="workflow-note">LLMs can assist with drafting specifications and presenting results. Experts review the specifications; the solver reasons over the encoded model.</p></div><div class="feature-grid"><article><span class="feature-num">01</span><h3>Make knowledge explicit.</h3><p>Experts encode hardware prerequisites, resource limits, and incompatibilities. Architects contribute conditional comparisons grounded in their experience and experiments. LLMs can help draft; humans audit the rules.</p><code>RDMA ⇒ NIC.RDMA = true</code></article><article><span class="feature-num">02</span><h3>Optimize what matters.</h3><p>Architects supply workloads, topology, inventory, and ordered objectives. Z3 searches for a design that respects those constraints and priorities.</p><code>latency → deployment → cost</code></article><article><span class="feature-num">03</span><h3>Ask “why not?”</h3><p>Try an alternative choice. Archie can expose the trade-off or identify conflicting constraints in an UNSAT core, with expert-provided labels.</p><code>“Why wasn’t BFC selected?”</code></article></div><p class="scope-note">The model is deliberately lightweight: Archie reasons over encoded rules and qualitative preferences. It does not predict exact latency or replace deployment validation.</p></section>
+<section id="start" class="wrap section"><div class="section-index">04 / WORK WITH ARCHIE</div><div class="section-heading"><h2>Two perspectives.<br> One shared model.</h2><p>Architects describe the problem. System experts encode the knowledge needed to solve it. One person can do both.</p></div><div class="role-tabs" role="tablist" aria-label="Getting started role"><button id="architect-tab" role="tab" aria-selected="true" aria-controls="architect-guide" data-role="architect">I’m an architect <span></span></button><button id="expert-tab" role="tab" aria-selected="false" aria-controls="expert-guide" tabindex="-1" data-role="expert">I’m a system expert <span></span></button></div><div id="architect-guide" role="tabpanel" aria-labelledby="architect-tab" class="guide"><div class="guide-steps"><article><b>01</b><div><h3>Describe your deployment.</h3><p>Start from a runnable example. Edit <code>user_topology.py</code> for device slots and <code>user_input.py</code> for workload properties, demands, and objectives; add hardware to the example’s catalog.</p></div></article><article><b>02</b><div><h3>State constraints and priorities.</h3><p>Pin required systems, add deployment restrictions, then order objectives strictly. Add performance bounds where needed.</p></div></article><article><b>03</b><div><h3>Synthesize, inspect, refine.</h3><p>Inspect the report in <code>output/</code>. Use explanation mode and <code>explain(...)</code> to investigate alternatives, then revise the input and solve again.</p></div></article></div><div class="code-card"><div>ARCHITECT INPUT <span>Conceptual example</span></div><pre><code><span class="code-comment"># Describe the design problem</span>
+workload: ML_Training
+properties: [dc_flows, long_flows, ml_training]
+topology: two racks, seven hosts each
+
+<span class="code-comment"># Highest priority first</span>
+objectives:
+  1. latency
+  2. ease_of_deployment
+  3. monitoring
+  4. throughput
+  5. cost_efficiency
+
+<span class="code-comment"># Inspect the result</span>
+ask: "Why not BFC?"</code></pre><p>Conceptual notation, not executable Archie API code.</p></div></div><div id="expert-guide" role="tabpanel" aria-labelledby="expert-tab" class="guide" hidden><div class="guide-steps"><article><b>01</b><div><h3>Define a system’s contract.</h3><p>Maintain the roles, properties, objectives, and systems in <code>definitions.json</code>. Register the vocabulary, then encode prerequisites and resource constraints in the relevant <code>systems/</code> module.</p></div></article><article><b>02</b><div><h3>Encode comparisons in context.</h3><p>Use <code>systems/orderings.py</code> in an example to capture comparisons from the architect’s interactions and experiments with systems. State the conditions where each preference applies, keep incomparable choices distinct from ties, and label constraints for explanations.</p></div></article><article><b>03</b><div><h3>Audit and explain your rules.</h3><p>Check LLM-assisted drafts against evidence. Label constraints for readable explanations and test feasible and conflicting combinations. Resolve opposing orderings explicitly.</p></div></article></div><div class="code-card"><div>EXPERT SPECIFICATION <span>Conceptual example</span></div><pre><code><span class="code-comment"># Requirements in this case study</span>
+RDMA:
+  requires: every host has RDMA
+
+PacketSpray:
+  requires: NIC_Reorder_Buffer &gt; 20
+
+<span class="code-comment"># Available RDMA hardware</span>
+NIC_Reorder_Buffer: [10, 20]
+
+<span class="code-comment"># Label the resulting conflict</span>
+explanation:
+  "No catalog option satisfies
+   both requirements."</code></pre><p>This reproduces the case-study policy. Before reusing it, define buffer units and derive the limit from traffic, path-delay differences, and the NIC’s receive design.</p></div></div><section class="implementation" aria-labelledby="implementation-title"><div class="section-index">FROM THE CONCEPT TO THE API</div><h3 id="implementation-title">Express the same example in Python.</h3><p class="implementation-intro">The code below uses the API and policy modules in Archie’s illustrative design example. Choose the architect or system-expert tab above to see the corresponding implementation.</p><div id="architect-implementation" class="implementation-panel"><h4>Architect: workload and objective priorities</h4><p>This adapts the example’s initialization to the five priorities shown above. The imported modules register the hardware, systems, and orderings; the topology constructor defines the two racks. The special COST target minimizes total hardware cost after the other objectives.</p><div class="code-card"><div>ARCHIE PYTHON API <span>Adapted workload example</span></div><pre><code>from src.archie import *
+from src.systems_import import *
+from hardware.hardware import *
+from systems.orderings import *
+import user_topology
+
+# Two racks with seven compute slots each.
+pod = user_topology.create_topology()
+racks = pod.get_children(
+    devicegroup_type=DEVICEGROUP_TYPE.RACK)
+
+workload = Workload(
+    &quot;ML_Training&quot;, racks[0],
+    [dc_flows, long_flows, ml_training],
+    [latency, ease_of_deployment,
+     monitoring, throughput])
+
+# Lower numbers mean higher priority.
+Optimize(workload, latency, 1)
+Optimize(workload, ease_of_deployment, 2)
+Optimize(workload, monitoring, 3)
+Optimize(workload, throughput, 4)
+Optimize(&quot;COST&quot;, cost_efficiency, 5)
+
+add_topology_constraints(SOLVER)
+evaluate(debug=True)
+
+# After a feasible design, ask why a better-ranked
+# congestion-control option was not chosen.
+if SOLVER.check() == sat:
+    explain(&quot;ML_Training&quot;, &quot;cca&quot;, &quot;latency&quot;)</code></pre><p><a href="https://github.com/GT-ANSR-Lab/Archie/blob/main/illustrative_design_example/user_input.py" target="_blank" rel="noopener">View the corresponding repository code</a></p></div></div><div id="expert-implementation" class="implementation-panel" hidden><h4>System expert: encode the two requirements</h4><p>These policy definitions implement the RDMA and PacketSpray requirements shown above. They belong in the existing systems/rdma.py and systems/packetspray.py modules. Together with the hardware catalog, they let the solver identify the incompatible combination within this model. The value 20 reproduces the artifact; it is not a universal NIC capacity requirement.</p><div class="code-card"><div>ARCHIE PYTHON API <span>System policy definitions</span></div><pre><code>from src.archie import *
+
+# systems/rdma.py: every compute must support RDMA.
+def rdma_apply(workload):
+    computes = workload.topology.get_children(
+        device_type=DEVICE_TYPE.COMPUTE)
+    return And(*[
+        host.configuration[&quot;RDMA&quot;]
+        for host in computes])
+
+RDMA = System(
+    &quot;RDMA&quot;, transport, rdma_apply,
+    objectives=[latency, throughput,
+                ease_of_deployment])
+
+# systems/packetspray.py: enforce the buffer limit.
+def packetspray_apply(workload):
+    computes = workload.topology.get_children(
+        device_type=DEVICE_TYPE.COMPUTE)
+    return And(*[
+        host.configuration[&quot;NIC_Reorder_Buffer&quot;] &gt; 20
+        for host in computes])
+
+PACKETSPRAY = System(
+    &quot;PacketSpray&quot;, load_balancer, packetspray_apply,
+    objectives=[load_balancing])</code></pre><p><a href="https://github.com/GT-ANSR-Lab/Archie/blob/main/illustrative_design_example/systems/packetspray.py" target="_blank" rel="noopener">View the corresponding repository code</a></p></div></div></section><div class="quickstart"><div><div class="section-index">RUN YOUR FIRST EXAMPLE</div><h3>Start with the working artifact.</h3><p>Requires Python 3.11.5 or newer. These macOS/Linux commands follow the repository’s illustrative example. Review the workload and objective priorities before interpreting the result.</p><a class="text-link" href="https://github.com/GT-ANSR-Lab/Archie" target="_blank" rel="noopener">Explore the GitHub repository </a></div><div class="code-card"><div>TERMINAL <span>macOS / Linux</span></div><pre><code>git clone https://github.com/GT-ANSR-Lab/Archie.git
+cd Archie
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install "z3-solver==4.13.0"
+cd illustrative_design_example
+mkdir -p output
+PYTHONPATH=. python3 user_input.py explain \
+  &gt; output/illustrative_design_explain.txt</code></pre><p><a href="https://github.com/GT-ANSR-Lab/Archie/tree/main/illustrative_design_example" target="_blank" rel="noopener">Illustrative example guide </a> · <a href="https://github.com/GT-ANSR-Lab/Archie/tree/main/microservice_design_example" target="_blank" rel="noopener">Microservice example </a></p></div></div><div class="limits"><strong>Know the boundary.</strong><p>Archie reasons within its encodings. The current model keeps topology, workload placement size, and workload properties fixed. Missing or incorrect rules can produce misleading results; expert review remains essential.</p></div></section>
+<section class="resources wrap section" id="sources"><div class="section-index">05 / REFERENCES</div><h2>Follow the evidence.</h2><div class="resource-list"><a href="https://github.com/GT-ANSR-Lab/Archie" target="_blank" rel="noopener"><div><span>CODE &amp; GETTING STARTED</span><h3>The Archie artifact</h3><p>Source code, modeling templates, and two runnable case studies from GT-ANSR-Lab.</p></div><b></b></a><a href="https://arxiv.org/pdf/2604.25506v1" target="_blank" rel="noopener"><div><span>RESEARCH PAPER</span><h3>Assistants, Not Architects</h3><p>The framework, abstractions, evaluation, and limitations. </p></div><b></b></a></div></section>
+</main><footer class="wrap"><a class="brand" href="#">archie</a><p>Expert knowledge. Explicit constraints. Explainable choices.</p><a href="#main">Back to top </a></footer>
+</body></html>
